@@ -33,7 +33,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 from pyrogram.types import Message
 
 from NaoRobot import aiohttpsession as aiosession
-from NaoRobot.ex_plugin.dbfunctions import start_restart_stage
+from NaoRobot.ex_plugins.dbfunctions import start_restart_stage
 from NaoRobot.utils.http import get, post
 
 
