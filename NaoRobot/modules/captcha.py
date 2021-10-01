@@ -22,12 +22,10 @@ from NaoRobot.ex_plugins.dbfunctions import (captcha_off, captcha_on,
                                    is_gbanned_user, set_welcome,
                                    update_captcha_cache)
 from NaoRobot.utils.filter_groups import welcome_captcha_group
-from NaoRobot.utils.functions import generate_captcha
-from NaoRobot import loop 
+from NaoRobot.utils.functions import extract_text_and_keyb, generate_captcha
 
 answers_dicc = []
-
-
+loop = asyncio.get_running_loop()
 
 async def get_initial_captcha_cache():
     global answers_dicc
