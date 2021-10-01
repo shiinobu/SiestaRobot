@@ -39,7 +39,7 @@ from pyrogram.types import (
 )
 from search_engine_parser import GoogleSearch
 from NaoRobot import BOT_USERNAME, pbot as app, arq
-from NaoRobot.utils.pluginhelpers import convert_seconds_to_minutes as time_convert, fetch
+from NaoRobot.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
 
 
 async def _netcat(host, port, content):
