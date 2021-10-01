@@ -26,7 +26,7 @@ from NaoRobot.utils.filter_groups import welcome_captcha_group
 from NaoRobot.utils.functions import extract_text_and_keyb, generate_captcha
 
 answers_dicc = []
-loop = asyncio.get_running_loop()
+loop = await asyncio.get_running_loop()
 
 async def get_initial_captcha_cache():
     global answers_dicc
