@@ -21,6 +21,7 @@ from NaoRobot.ex_plugins.dbfunctions import (captcha_off, captcha_on,
                                    get_welcome, is_captcha_on,
                                    is_gbanned_user, set_welcome,
                                    update_captcha_cache)
+from NaoRobot.services.keyboard import Ikb
 from NaoRobot.utils.filter_groups import welcome_captcha_group
 from NaoRobot.utils.functions import extract_text_and_keyb, generate_captcha
 
