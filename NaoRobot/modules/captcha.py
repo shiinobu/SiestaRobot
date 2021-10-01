@@ -13,10 +13,10 @@ from pyrogram.types import (
     User,
 )
 
-from AsunaRobot import pbot as app, DRAGONS, WELCOME_DELAY_KICK_SEC
-from AsunaRobot.utils.errors import capture_err
-from AsunaRobot.utils.permissions import adminsOnly
-from AsunaRobot.bot_plugins.dbfunctions import (captcha_off, captcha_on,
+from NaoRobot import pbot as app, DRAGONS, WELCOME_DELAY_KICK_SEC
+from NaoRobot.utils.errors import capture_err
+from NaoRobot.utils.permissions import adminsOnly
+from NaoRobot.ex_plugins.dbfunctions import (captcha_off, captcha_on,
                                    del_welcome, get_captcha_cache,
                                    get_welcome, is_captcha_on,
                                    is_gbanned_user, set_welcome,
@@ -302,40 +302,3 @@ async def captcha_state(_, message):
         await message.reply_text("Disabled Captcha For New Users.")
     else:
         await message.reply_text(usage)
-
-
-""" WELCOME MESSAGE """
-
-
-@app.on_message(filters.command("set_welcome") & ~filters.private)
-@adminsOnly("can_change_info")
-async def set_welcome_func(_, message):
-    usage = "You need to reply to a text, check the Greetings module in /help"
-    if not message.reply_to_message:
-        await message.reply_text(usage)
-        return
-    if not message.reply_to_message.text:
-        await message.reply_text(usage)
-        return
-    chat_id = message.chat.id
-    raw_text = str(message.reply_to_message.text.markdown)
-    await set_welcome(chat_id, raw_text)
-    await message.reply_text(
-        "Welcome message has been successfully set."
-    )
-
-
-@app.on_message(filters.command("del_welcome") & ~filters.private)
-@adminsOnly("can_change_info")
-async def del_welcome_func(_, message):
-    chat_id = message.chat.id
-    await del_welcome(chat_id)
-    await message.reply_text("Welcome message has been deleted.")
-
-
-@app.on_message(filters.command("get_welcome") & ~filters.private)
-@adminsOnly("can_change_info")
-async def get_welcome_func(_, message):
-    chat_id = message.chat.id
-    welcome_message = await get_welcome(chat_id)
-    await message.reply_text(welcome_message)
