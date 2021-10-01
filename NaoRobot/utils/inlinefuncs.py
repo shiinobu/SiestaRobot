@@ -37,9 +37,9 @@ from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
 from search_engine_parser import GoogleSearch
 
 from NaoRobot import BOT_USERNAME, MESSAGE_DUMP_CHAT, DRAGONS, pbot as app, arq
-from NaoRobot.core.keyboard import ikb
-from NaoRobot.core.tasks import _get_tasks_text, all_tasks, rm_task
-from NaoRobot.core.types import InlineQueryResultCachedDocument
+from NaoRobot.services.keyboard import ikb
+from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
+from NaoRobot.services.types import InlineQueryResultCachedDocument
 from NaoRobot.modules.info import get_chat_info, get_user_info
 from NaoRobot.modules.music import download_youtube_audio
 from NaoRobot.utils.functions import test_speedtest
