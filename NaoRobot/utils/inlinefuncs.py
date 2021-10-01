@@ -36,7 +36,7 @@ from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
                             InputTextMessageContent)
 from search_engine_parser import GoogleSearch
 
-from NaoRobot import BOT_USERNAME, MESSAGE_DUMP_CHAT, DRAGONS, pbot as app, arq
+from NaoRobot import BOT_USERNAME, MESSAGE_DUMP, DRAGONS, pbot as app, arq
 from NaoRobot.services.keyboard import ikb
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from NaoRobot.services.types import InlineQueryResultCachedDocument
