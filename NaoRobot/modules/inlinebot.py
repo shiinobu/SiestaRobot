@@ -24,7 +24,7 @@ from tswift import Song
 from youtubesearchpython import VideosSearch
 from NaoRobot.utils.inlinehelper import *
 from NaoRobot.utils.pluginhelpers import fetch, json_prettify
-from NaoRobot import pbot as app, OPENWEATHERMAP_ID, TIME_API_KEY
+from NaoRobot import pbot as app, arq, OPENWEATHERMAP_ID, TIME_API_KEY
 
 dictionary = PyDictionary()
 
