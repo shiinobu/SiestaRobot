@@ -67,7 +67,8 @@ if ENV:
     except ValueError:
         raise Exception("Your tiger users list does not contain valid integers.")
 
-    INFOPIC = bool(os.environ.get("INFOPIC", False))
+    INFOPIC = bool(os.environ.get("INFOPIC", True))
+    BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
@@ -175,6 +176,7 @@ else:
     SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
     SPAMWATCH_API = Config.SPAMWATCH_API
     INFOPIC = Config.INFOPIC
+    BOT_USERNAME = Config.BOT_USERNAME
     LASTFM_API_KEY = Config.LASTFM_API_KEY
     CF_API_KEY = Config.CF_API_KEY
 
