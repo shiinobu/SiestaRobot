@@ -22,7 +22,7 @@ from NaoRobot.ex_plugins.dbfunctions import (captcha_off, captcha_on,
                                    is_gbanned_user, set_welcome,
                                    update_captcha_cache)
 from NaoRobot.utils.filter_groups import welcome_captcha_group
-from NaoRobot.utils.utils_helper import generate_captcha
+from NaoRobot.utils.functions import generate_captcha
 from NaoRobot import loop 
 
 answers_dicc = []
