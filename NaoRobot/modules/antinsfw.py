@@ -5,7 +5,7 @@ from pyrogram import filters
 from NaoRobot import pbot, arq
 from NaoRobot.utils.errors import capture_err
 from NaoRobot.utils.permissions import adminsOnly
-from NaoRobot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
+from NaoRobot.ex_plugins.dbfunc import is_nsfw_on, nsfw_off, nsfw_on
 from NaoRobot.utils.filter_groups import nsfw_detect_group
 
 __mod_name__ = "Anti-NSFW​"
