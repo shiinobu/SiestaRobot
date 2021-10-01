@@ -6,7 +6,7 @@ from Python_ARQ import ARQ
 from NaoRobot import pbot as app, BOT_ID
 from NaoRobot.utils.errors import capture_err
 from NaoRobot.utils.permissions import adminsOnly
-from NaoRobot.ex_plugins.dbfunctions import (
+from NaoRobot.ex_plugins.dbfunc import (
     alpha_to_int,
     get_karma,
     get_karmas,
@@ -17,14 +17,9 @@ from NaoRobot.ex_plugins.dbfunctions import (
     update_karma,
 )      
 from NaoRobot.utils.filter_groups import karma_negative_group, karma_positive_group
+from NaoRobot import arq
 
-aiohttpsession = ClientSession()
-ARQ_API_KEY = "BIHMCQ-RKNBRK-HPVADU-BMPNJE-ARQ"
-ARQ_API_URL = "https://thearq.tech"
-arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
-
-
-regex_upvote = r"^((?i)\+|\+\+|\+1|thx|tnx|ty|thank you|thanx|thanks|pro|cool|good|👍)$"
+regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|pro|cool|good|👍)$"
 regex_downvote = r"^(\-|\-\-|\-1|👎)$"
 
 
