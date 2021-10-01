@@ -6,7 +6,7 @@ import emoji
 import nude
 import requests
 from better_profanity import profanity
-from googletrans import google_translator
+from google_trans_new import google_translator
 from telethon import events
 from telethon.tl.types import ChatBannedRights
 from NaoRobot.config import get_int_key, get_str_key
