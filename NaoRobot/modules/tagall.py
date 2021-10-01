@@ -12,7 +12,7 @@ from NaoRobot.events import register as tomori
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "Hi Friends I'm Asuna I Call To All Of You"
+    mentions = "Hi Friends I'm Nao Tomori I Call To All Of You"
     chat = await event.get_input_chat()
     async for x in telethn.iter_participants(chat, 100):
         mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
