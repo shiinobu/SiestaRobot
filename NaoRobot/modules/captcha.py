@@ -21,9 +21,9 @@ from NaoRobot.ex_plugins.dbfunctions import (captcha_off, captcha_on,
                                    get_welcome, is_captcha_on,
                                    is_gbanned_user, set_welcome,
                                    update_captcha_cache)
-from AsunaRobot.utils.filter_groups import welcome_captcha_group
-from AsunaRobot.utils.utils_helper import generate_captcha
-from AsunaRobot import loop 
+from NaoRobot.utils.filter_groups import welcome_captcha_group
+from NaoRobot.utils.utils_helper import generate_captcha
+from NaoRobot import loop 
 
 answers_dicc = []
 
