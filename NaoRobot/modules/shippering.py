@@ -1,6 +1,6 @@
 from NaoRobot import pbot as app
 from NaoRobot.utils.errors import capture_err
-from NaoRobot.ex_plugins.dbfunctions import get_couple, save_couple
+from NaoRobot.ex_plugins.dbfunc import get_couple, save_couple
 from pyrogram import filters
 import random
 from datetime import datetime
