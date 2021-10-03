@@ -123,9 +123,9 @@ async def lego(event):
     x = (image_widthz-w)/2
     y= ((image_heightz-h)/2+6)
     draw.text((x, y), text, font=font, fill="white", stroke_width=5, stroke_fill="black")
-    fname="Kennedy.png"
+    fname="naorobot.png"
     img.save(fname, "png")
-    await tbot.send_file(event.chat_id, file=fname, caption="Made by @KennedyXRobot\n\n• Support @kenbotsupport")         
+    await tbot.send_file(event.chat_id, file=fname, caption="Made by @naoex_bot")         
     await pesan.delete()
     if os.path.exists(fname):
             os.remove(fname)
@@ -165,9 +165,9 @@ async def lego(event):
         x = (image_widthz-w)/2
         y= ((image_heightz-h)/2+6)
         draw.text((x, y), text, font=font, fill="white", stroke_width=5, stroke_fill="black")
-        fname="Kennedy.png"
+        fname="naorobot.png"
         img.save(fname, "png")
-        await tbot.send_file(event.chat_id, file=fname, caption="Made by @KennedyXRobot\n\n• Support @kenbotsupport")         
+        await tbot.send_file(event.chat_id, file=fname, caption="Made by @naoex_bot")         
         await pesan.delete()
         if os.path.exists(fname):
                 os.remove(fname)
