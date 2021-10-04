@@ -572,6 +572,13 @@ Get information about anime, manga or characters from [AniList](anilist.co).
  • `/kayo <anime>`*:* search an anime on animekayo.com
  • `/airing <anime>`*:* returns anime airing info.
  • /whatanime - reply to gif or video
+
+Get information about [MyAnimeList](https://myanimelist.net).
+*Available commands:*
+ - /manime <anime>: returns information about the anime.
+ - /mcharacter <character>: returns information about the character.
+ - /mmanga <manga>: returns information about the manga.
+ - /mupcoming: returns a list of new anime in the upcoming seasons.
  """
 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
