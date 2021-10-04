@@ -217,9 +217,18 @@ def start(update: Update, context: CallbackContext):
         update.effective_message.reply_text(
             "I'm already to working!\n<b>Haven't slept since:</b> <code>{}</code>".format(
                 uptime
-            ),
-            parse_mode=ParseMode.HTML,
-        )
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                                {
+                                    InlineKeyboardButton(
+                                        text="• sᴜᴘᴘᴏʀᴛ •​",
+                                        url="https://t.me/kenbotsupport",
+                                    )
+                                }
+                            ]
+                        ),
+                        parse_mode=ParseMode.HTML,
+                    )
 
 
 def error_handler(update, context):
