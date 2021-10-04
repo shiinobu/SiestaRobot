@@ -16,13 +16,13 @@ from telegram.utils.helpers import mention_html, escape_markdown
 
 from NaoRobot import dispatcher, LOGGER, DRAGONS
 from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.helper_funsc.handlers import MessageHandlerChecker
-from NaoRobot.modules.helper_funsc.chat_status import user_admin
-from NaoRobot.modules.helper_funsc.extraction import extract_text
-from NaoRobot.modules.helper_funsc.filters import CustomFilters
-from NaoRobot.modules.helper_funsc.misc import build_keyboard_parser
-from NaoRobot.modules.helper_funsc.msg_types import get_filter_type
-from NaoRobot.modules.helper_funsc.string_handling import (
+from NaoRobot.modules.helper_funcs.handlers import MessageHandlerChecker
+from NaoRobot.modules.helper_funcs.chat_status import user_admin
+from NaoRobot.modules.helper_funcs.extraction import extract_text
+from NaoRobot.modules.helper_funcs.filters import CustomFilters
+from NaoRobot.modules.helper_funcs.misc import build_keyboard_parser
+from NaoRobot.modules.helper_funcs.msg_types import get_filter_type
+from NaoRobot.modules.helper_funcs.string_handling import (
     split_quotes,
     button_markdown_parser,
     escape_invalid_curly_brackets,
@@ -32,7 +32,7 @@ from NaoRobot.modules.sql import cust_filters_sql as sql
 
 from NaoRobot.modules.connection import connected
 
-from NaoRobot.modules.helper_funsc.alternate import send_message, typing_action
+from NaoRobot.modules.helper_funcs.alternate import send_message, typing_action
 
 HANDLER_GROUP = 10
 
