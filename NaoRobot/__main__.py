@@ -74,7 +74,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello*  My name is *Nao Tomori* [✨](https://telegra.ph/file/bb65aa648137f39c4baa9.jpg)
+*Hello*  My name is *Nao Tomori* [✨](https://telegra.ph/file/95d26003b981614015c0c.jpg)
 I'm A Anime Theme Bot For Management Your Group Easily, Maintained by @xgothboi ♥️.
 """
 buttons = [
@@ -353,22 +353,28 @@ def nao_about_callback(update, context):
     query = update.callback_query
     if query.data == "nao_":
         query.message.edit_text(
-            text=""" ❗ I'm *Nao Tomori*, a powerful group management bot built to help you manage your group easily.
-                 \n• I can restrict users.
-                 \n• I can greet users with customizable welcome messages and even set a group's rules.
-                 \n• I have an advanced anti-flood system.
-                 \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n• I check for admins' permissions before executing any command and more stuffs
-                 \n\n_Nao's licensed under the GNU General Public License v3.0_
-                 \nHere is my [Author](https://github.com/KennedyProject).
-                 \n\nIf you have any question about *Nao Tomori*, let us know at .""",
+            text=""" ❗ I'm *Nao Tomori*, If you have any question about *Nao Tomori*, let us know at On Support Groups.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_back")]]
-            ),
-        )
+                [
+                     [
+                         InlineKeyboardButton(
+                             text="Updated​",
+                             url="https://t.me/KennedyProject"),
+                         InlineKeyboardButton(
+                             text="Support​",
+                             url="https://t.me/kenbotsupport"
+                        ),
+                     ],
+                     [
+                         InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"
+                   ),
+                ]
+              disable_web_page_preview=True
+            )
+          
+
     elif query.data == "nao_back":
         query.message.edit_text(
             PM_START_TEXT,
