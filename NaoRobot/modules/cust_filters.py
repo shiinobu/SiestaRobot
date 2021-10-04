@@ -410,7 +410,7 @@ def reply_filter(update, context):
                         ENUM_FUNC_MAP[filt.file_type](
                             chat.id,
                             filt.file_id,
-                            markdown_to_html(filtext),
+                            caption=markdown_to_html(filtext),
                             reply_to_message_id=message.message_id,
                             ParseMode.HTML,
                             disable_web_page_preview=True,
