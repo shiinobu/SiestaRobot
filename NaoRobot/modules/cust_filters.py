@@ -510,7 +510,7 @@ def rmall_filters(update, context):
         update.effective_message.reply_text(
             f"Are you sure you would like to stop ALL filters in {chat.title}? This action cannot be undone.",
             reply_markup=buttons,
-            parse_mode=ParseMode.MARKDOWN,
+            ParseMode.MARKDOWN,
         )
 
 
