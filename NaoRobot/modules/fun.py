@@ -336,10 +336,16 @@ __help__ = """
 - Shippering
  • /couples - get couples of today
 
-- Music module:
- • /video or /vsong <i>query</i>: download video from youtube
- • /music or /song <i>query</i>: download song from yt servers. (API BASED)
- • /lyrics <i>song name</i> : This plugin searches for song lyrics with song name.
+- Here is the help for the Styletext module:
+
+ • /weebify <text>: weebify your text!
+ • /bubble <text>: bubble your text!
+ • /fbubble <text>: bubble-filled your text!
+ • /square <text>: square your text!
+ • /fsquare <text>: square-filled your text!
+ • /blue <text>: bluify your text!
+ • /latin <text>: latinify your text!
+ • /lined <text>: lined your text!
 """
 """
 
