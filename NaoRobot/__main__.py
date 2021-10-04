@@ -215,8 +215,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            "I'm already online!\n<b>Haven't slept since:</b> <code>{}</code>".format(
-                uptime,
+            "I'm already online!\n<b>Haven't slept since:</b> <code>{}</code>".format(uptime,
                         reply_markup=InlineKeyboardMarkup(
                             [
                                 {
