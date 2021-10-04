@@ -361,7 +361,7 @@ def nao_about_callback(update, context):
                      [
                          InlineKeyboardButton(
                              text="Developer​",
-                             callback_data="maintain_"),
+                             callback_data="main_"),
                          InlineKeyboardButton(
                              text="More Info​",
                              callback_data="source_"
@@ -413,7 +413,7 @@ def Source_about_callback(update, context):
         )
     elif query.data == "source_back":
         query.message.edit_text(
-            nao_,
+            nao_about_callback,
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
@@ -421,9 +421,9 @@ def Source_about_callback(update, context):
         )
 
 
-def maintain_about_callback(update, context):
+def main_about_callback(update, context):
     query = update.callback_query
-    if query.data == "maintain_":
+    if query.data == "main_":
         query.message.edit_text(
             text=""" ❓ I'm Depeloved by Sena Or people now as Kennedy or they call Ken.
                  \n\n•> He was born in Bandung
@@ -434,10 +434,10 @@ def maintain_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="maintain_back")]]
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="main_back")]]
             ),
         )
-    elif query.data == "maintain_back":
+    elif query.data == "main_back":
         query.message.edit_text(
             nao_,
             reply_markup=InlineKeyboardMarkup(buttons),
