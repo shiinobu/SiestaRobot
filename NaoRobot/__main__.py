@@ -74,9 +74,9 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello*  My name is *Nao Tomori* [✨](https://telegra.ph/file/95d26003b981614015c0c.jpg)
+*Hello*  My name is *Nao Tomori* ✨
 I'm A Anime Theme Bot For Management Your Group Easily!
-Maintained By [Sena](https://t.me/xgothboi)
+Maintained By [Muhammad Sena](https://t.me/xgothboi) ❤️
 """
 disable_web_page_preview=True
 buttons = [
@@ -88,14 +88,19 @@ buttons = [
     [
         InlineKeyboardButton(text="ᴀʙᴏᴜᴛ​", callback_data="nao_"),
         InlineKeyboardButton(
-            text="ᴄᴏᴍᴍᴀɴᴅ", callback_data="help_back"
+            text="sᴜᴘᴘᴏʀᴛ​", url="https://t.me/kenbotsupport"
+        ),
+    ],
+    [
+        InlineKeyboardButton(
+            text="❓ ʜᴇʟᴘ &​ ᴄᴏᴍᴍᴀɴᴅ", callback_data="help_back"
         ),
     ],
 ]
 
 
 HELP_STRINGS = """
-*Click on the buttons to get help specific modules*"""
+*Click on the buttons to get help specific modules, If you need any help you can ask on my support group*"""
 
 
 NAO_IMG = "https://telegra.ph/file/87c6bcbeb6f0f2302830a.png"
