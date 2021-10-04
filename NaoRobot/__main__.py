@@ -412,7 +412,7 @@ def Source_about_callback(update, context):
         )
     elif query.data == "source_back":
         query.edit_message_text(
-            nao,
+            nao_,
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
