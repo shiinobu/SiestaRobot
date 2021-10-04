@@ -406,9 +406,9 @@ def reply_filter(update, context):
                         chat.id,
                         filt.file_id,
                         filtext,
-                        reply_to_message_id=message.message_id,
-                        ParseMode.HTML,
-                        reply_markup=keyboard
+                        reply_to_message_id=message.message_id
+                        reply_markup=keyboard,
+                        PharseMode=PharseMode.HTML,
                     )
                 break
             if filt.is_sticker:
@@ -510,7 +510,7 @@ def rmall_filters(update, context):
         update.effective_message.reply_text(
             f"Are you sure you would like to stop ALL filters in {chat.title}? This action cannot be undone.",
             reply_markup=buttons,
-            ParseMode.MARKDOWN,
+            parse_mode.MARKDOWN,
         )
 
 
