@@ -417,7 +417,7 @@ def Source_about_callback(update, context):
     elif query.data == "source_back":
         query.message.edit_text(
             "nao_",
-            reply_markup=InlineKeyboardMarkup(buttons),
+            reply_markup=InlineKeyboardMarkup,
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
             disable_web_page_preview=True,
