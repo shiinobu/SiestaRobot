@@ -391,9 +391,10 @@ def nao_about_callback(update, context):
         query.message.edit_text(
             PM_START_TEXT,
             reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode,
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
             disable_web_page_preview=True,
-        )
+       )
 
 def Source_about_callback(update, context):
     query = update.callback_query
@@ -417,8 +418,7 @@ def Source_about_callback(update, context):
         query.message.edit_text(
             "nao_",
             reply_markup,
-            parse_mode=ParseMode.MARKDOWN,
-            timeout=60,
+            parse_mode,
             disable_web_page_preview=True,
         )
 
