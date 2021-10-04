@@ -95,9 +95,5 @@ file_help = os.path.basename(__file__)
 file_help = file_help.replace(".py", "")
 file_helpo = file_help.replace("_", " ")
 
-__help__ = """
- - /tm : Get Telegraph Link Of Replied Media
- - /txt: Get Telegraph Link of Replied Text
-"""
 
 __mod_name__ = "Telegraph"
