@@ -12,7 +12,7 @@ PHOTO = "https://telegra.ph/file/b342fdfdfbb8e915231ed.jpg"
 @register(pattern=("/alive"))
 async def awake(event):
   ken = event.sender.first_name
-  TEXT = f"🌻 **Holla {ken}, I'm Nao Tomori!** \n\n"
+  TEXT = f"🌻 **Hi {ken}, I'm Nao Tomori!** \n\n"
   TEXT += "🌻 **I'm Working Properly** \n\n"
   TEXT += "🌻 **My Master : [Sena](https://t.me/xgothboi)** \n\n"
   TEXT += f"🌻 **Telethon Version : {tlhver}** \n\n"
