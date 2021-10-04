@@ -16,8 +16,8 @@ from telegram.ext import (
     CommandHandler,
     Filters,
     MessageHandler,
-    run_async
-),
+    run_async,
+)
 
 AFK_GROUP = 7
 AFK_REPLY_GROUP = 8
