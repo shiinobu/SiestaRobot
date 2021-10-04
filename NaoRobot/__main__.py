@@ -415,12 +415,7 @@ def Source_about_callback(update, context):
             ),
         )
     elif query.data == "source_back":
-        query.message.edit_text(
-            "nao_",
-            reply_markup,
-            parse_mode,
-            disable_web_page_preview=True,
-        )
+        query.message.edit_text("nao_")
 
 
 def main_about_callback(update, context):
