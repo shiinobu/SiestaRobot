@@ -368,9 +368,8 @@ def nao_about_callback(update, context):
                         ),
                      ],
                      [
-                         InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"
-                   ),
-                ]
+                         InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"),
+                ],
             )
           
 
