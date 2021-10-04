@@ -74,7 +74,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello*  My name is *Nao Tomori* [✨](https://telegra.ph/file/4c39ca7816e21d91eb868.jpg)
+*Hello*  My name is *Nao Tomori* [✨](https://telegra.ph/file/bb65aa648137f39c4baa9.jpg)
 I'm A Anime Theme Bot For Management Your Group Easily, Maintained by @xgothboi ♥️.
 """
 buttons = [
@@ -96,7 +96,7 @@ buttons = [
 
 
 HELP_STRINGS = """
-Hi.. I'm Nao Tomori [🌻](https://telegra.ph/file/52bb978b0ef08804b4322.jpg)
+Hi.. I'm Nao Tomori [🌻](https://telegra.ph/file/66e7d1a7148d6b00151fb.jpg)
 *Click on the buttons below to get documentation about specific modules*"""
 
 
