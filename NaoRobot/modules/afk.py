@@ -10,6 +10,7 @@ from NaoRobot.modules.sql import afk_sql as sql
 from NaoRobot.modules.users import get_user_id
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import (
     CallbackContext,
     CallbackQueryHandler,
@@ -143,7 +144,24 @@ def check_afk(update, context, user_id, fst_name, userc_id):
             update.effective_message.reply_text(res, parse_mode="html")
 
 
-__help__ = callback_data="afkbio_"
+__help__ = """*This Is help menu for AFK and Bio.*""",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                     [
+                         InlineKeyboardButton(
+                             text="AFK​",
+                             callback_data="afk_"),
+                         InlineKeyboardButton(
+                             text="Support​",
+                             callback_data="Bio/about"
+                        ),
+                     ],
+                     [
+                         InlineKeyboardButton(text="🔙 Back", callback_data="help_back"),
+                     ],
+                ]
+            ),
+       )
 
 
 AFK_HANDLER = DisableAbleCommandHandler("afk", afk, run_async=True)
