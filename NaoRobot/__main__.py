@@ -371,8 +371,8 @@ def nao_about_callback(update, context):
                          InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"),
                      ],
                 ]
-            )
-          
+            ),
+       )
 
     elif query.data == "nao_back":
         query.message.edit_text(
