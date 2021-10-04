@@ -407,7 +407,7 @@ def reply_filter(update, context):
                         filt.file_id,
                         filtext,
                         reply_to_message_id=message.message_id,
-                        parse_mode=ParseMode.HTML,
+                        ParseMode.HTML,
                         reply_markup=keyboard,
                     )
                 break
