@@ -371,7 +371,6 @@ def nao_about_callback(update, context):
                          InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"
                    ),
                 ]
-              disable_web_page_preview=True
             )
           
 
