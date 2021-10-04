@@ -187,7 +187,7 @@ def start(update: Update, context: CallbackContext):
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="⬅️ BACK", callback_data="help_back"
+                                    text="🔙 BACK", callback_data="help_back"
                                 )
                             ]
                         ]
@@ -304,7 +304,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="🔙 Back", callback_data="help_back")]]
                 ),
             )
 
@@ -362,7 +362,7 @@ def nao_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="nao_back")]]
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_back")]]
             ),
         )
     elif query.data == "nao_back":
@@ -384,7 +384,7 @@ def Source_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="source_back")]]
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="source_back")]]
             ),
         )
     elif query.data == "source_back":
@@ -520,7 +520,7 @@ def settings_button(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Back",
+                                text="🔙 Back",
                                 callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
