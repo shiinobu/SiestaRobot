@@ -48,7 +48,7 @@ async def _(event):
                 ms_two = (end - start).seconds
                 os.remove(downloaded_file_name)
                 await h.edit(
-                    "Uploaded to https://telegra.ph{} in {} seconds.".format(
+                    "Uploaded to [telegra.ph](https://telegra.ph{}) in {} seconds.".format(
                         media_urls[0], (ms + ms_two)
                     ),
                     link_preview=True,
