@@ -415,7 +415,7 @@ def reply_filter(update, context):
                             ParseMode.HTML,
                             disable_web_page_preview=True,
                             reply_markup=keyboard,
-                        )
+                            )
                     except BadRequest:
                         send_message(
                             message,
