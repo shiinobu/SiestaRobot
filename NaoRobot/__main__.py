@@ -360,7 +360,16 @@ def nao_about_callback(update, context):
                 [
                      [
                          InlineKeyboardButton(
-                             text="Updated​",
+                             text="Developer​",
+                             callback_data="maintain_"),
+                         InlineKeyboardButton(
+                             text="More Info​",
+                             callback_data="source_"
+                        ),
+                     ],
+                     [
+                         InlineKeyboardButton(
+                             text="Updates​",
                              url="https://t.me/KennedyProject"),
                          InlineKeyboardButton(
                              text="Support​",
@@ -388,8 +397,14 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..I'm *Nao Tomori*
-                 \nHere is my [Author](https://github.com/KennedyProject) .""",
+            text=""" ❓ I'm *Nao Tomori*, a powerful group management bot built to help you manage your group easily.
+                 \n•> I can restrict users.
+                 \n•> I can greet users with customizable welcome messages and even set a group's rules.
+                 \n•> I have an advanced anti-flood system.
+                 \n•> I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+                 \n•> I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+                 \n•> I check for admins' permissions before executing any command and more stuffs
+                 \n\n_Nao's licensed under the GNU General Public License v3.0_.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -398,11 +413,37 @@ def Source_about_callback(update, context):
         )
     elif query.data == "source_back":
         query.message.edit_text(
-            PM_START_TEXT,
+            nao_,
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
+        )
+
+
+def maintain_about_callback(update, context):
+    query = update.callback_query
+    if query.data == "maintain_":
+        query.message.edit_text(
+            text=""" ❓ I'm Depeloved by Sena Or people now as Kennedy or they call Ken.
+                 \n\n•> He was born in Bandung
+                 \n•> Date of birth on 4 November 2004
+                 \n•> He's Hobby is Drawing, digital painting and other about art
+                 \n•> Veri obsessed to LIL PEEP.
+                 \n\n Maybe its all about my Owner! Thanks for Reading it.""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="maintain_back")]]
+            ),
+        )
+    elif query.data == "maintain_back":
+        query.message.edit_text(
+            nao_,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=True,
         )
 
 
