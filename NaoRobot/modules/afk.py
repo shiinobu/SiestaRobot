@@ -144,23 +144,24 @@ def check_afk(update, context, user_id, fst_name, userc_id):
             update.effective_message.reply_text(res, parse_mode="html")
 
 
-__help__ = """*This Is help menu for AFK and Bio.*""",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                          [
-                              InlineKeyboardButton(
-                                  text="AFK​",
-                                  callback_data="afk_"),
-                              InlineKeyboardButton(
-                                  text="Support​",
-                                  callback_data="Bio/about"
-                             ),
-                          ],
-                          [
-                              InlineKeyboardButton(text="🔙 Back", callback_data="help_back"),
-                          ],
-                     ]
-            )
+__help__ = """This Is help menu for AFK and Bio.
+           \n Tap the button for more info.""",
+                   reply_markup=InlineKeyboardMarkup(
+                       [
+                             [
+                                 InlineKeyboardButton(
+                                     text="AFK​",
+                                     callback_data="afk_"),
+                                 InlineKeyboardButton(
+                                     text="Support​",
+                                     callback_data="Bio/about"
+                                ),
+                             ],
+                             [
+                                 InlineKeyboardButton(text="🔙 Back", callback_data="help_back"),
+                             ],
+                        ]
+                   )
 
 
 AFK_HANDLER = DisableAbleCommandHandler("afk", afk, run_async=True)
