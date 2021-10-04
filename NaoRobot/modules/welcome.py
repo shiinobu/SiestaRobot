@@ -279,13 +279,7 @@ def new_member(update: Update, context: CallbackContext):
                             ]
                         ),
                         parse_mode=ParseMode.HTML,
-                        reply_to_message_id=reply,
                     )
-                bot.send_message(
-                    JOIN_LOGGER,
-                    "I have been added to {} with \nID: <pre>{}</pre>".format(
-                        chat.title, chat.id),
-                    parse_mode=ParseMode.HTML)
 
             # Welcome yourself
             elif new_mem.id == bot.id:
