@@ -7,11 +7,11 @@ from pyrogram import __version__ as pyrover
 from NaoRobot.events import register
 from NaoRobot import telethn as tbot
 
-PHOTO = "https://telegra.ph/file/a0a51e6a9e0beba56ae5c.jpg"
+PHOTO = "https://telegra.ph/file/b342fdfdfbb8e915231ed.jpg"
 
 @register(pattern=("/alive"))
 async def awake(event):
-  ken = event.sender.first_name
+  ken = event.sender.mention
   TEXT = f"🌻 **Holla {ken}, I'm Nao Tomori!** \n\n"
   TEXT += "🌻 **I'm Working Properly** \n\n"
   TEXT += "🌻 **My Master : [Sena](https://t.me/xgothboi)** \n\n"
