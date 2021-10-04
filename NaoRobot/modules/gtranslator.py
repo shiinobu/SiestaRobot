@@ -25,7 +25,7 @@ eg: `/tl ja//en`: translates from Japanese to English.
 • `/langs`: get a list of supported languages for translation.
 """
 
-__mod_name__ = "◎G-Trans"
+__mod_name__ = "Translator"
 
 
 trans = Translator()
