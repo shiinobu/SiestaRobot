@@ -411,11 +411,9 @@ def Source_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="source_back")]]
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_")]]
             ),
         )
-    elif query.data == "source_back":
-        query.message.edit_text("nao_")
 
 
 def main_about_callback(update, context):
