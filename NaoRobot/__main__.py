@@ -393,6 +393,50 @@ def nao_about_callback(update, context):
         )
 
 
+def puki_callback(update, context):
+    query = update.callback_query
+    if query.data == "puki_":
+        query.message.edit_text(
+            text=""" ❗ I'm *Nao Tomori*, If you have any question about *Nao Tomori*, let us know at On Support Groups.""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                     [
+                         InlineKeyboardButton(
+                             text="Developer​",
+                             callback_data="main_"),
+                         InlineKeyboardButton(
+                             text="More Info​",
+                             callback_data="source_"
+                        ),
+                     ],
+                     [
+                         InlineKeyboardButton(
+                             text="Updates​",
+                             url="https://t.me/KennedyProject"),
+                         InlineKeyboardButton(
+                             text="Support​",
+                             url="https://t.me/kenbotsupport"
+                        ),
+                     ],
+                     [
+                         InlineKeyboardButton(text="🔙 Back", callback_data="puki_back"),
+                     ],
+                ]
+            ),
+       )
+
+    elif query.data == "puki_back":
+        query.message.edit_text(
+            PM_START_TEXT,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=False,
+        )
+
+
 def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
@@ -413,7 +457,7 @@ def Source_about_callback(update, context):
         )
     elif query.data == "source_back":
         query.message.edit_text(
-            nao_about_callback,
+            puki_callback,
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
@@ -439,7 +483,7 @@ def main_about_callback(update, context):
         )
     elif query.data == "main_back":
         query.message.edit_text(
-            nao_,
+            puki_,
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
