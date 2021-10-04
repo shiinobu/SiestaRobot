@@ -84,20 +84,16 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ ᴍᴇ​", callback_data="nao_"),
-        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://telegram.dog/kenbotsupport"),
-    ],
-    [
+        InlineKeyboardButton(text="❗ ᴀʙᴏᴜᴛ​", callback_data="nao_"),
         InlineKeyboardButton(
-            text="ʜᴇʟᴘ ᴄᴏᴍᴍᴀɴᴅ", callback_data="help_back"
+            text="ᴄᴏᴍᴍᴀɴᴅ ❓", callback_data="help_back"
         ),
     ],
 ]
 
 
 HELP_STRINGS = """
-Hi.. I'm Nao Tomori [🌻](https://telegra.ph/file/66e7d1a7148d6b00151fb.jpg)
-*Click on the buttons below to get documentation about specific modules*"""
+*Click on the buttons to get help specific modules*"""
 
 
 NAO_IMG = "https://telegra.ph/file/87c6bcbeb6f0f2302830a.png"
@@ -358,13 +354,13 @@ def nao_about_callback(update, context):
     if query.data == "nao_":
         query.message.edit_text(
             text=""" ❗ I'm *Nao Tomori*, a powerful group management bot built to help you manage your group easily.
-                 \n❍ I can restrict users.
-                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
-                 \n❍ I have an advanced anti-flood system.
-                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n❍ I check for admins' permissions before executing any command and more stuffs
-                 \n\n_shasa's licensed under the GNU General Public License v3.0_
+                 \n• I can restrict users.
+                 \n• I can greet users with customizable welcome messages and even set a group's rules.
+                 \n• I have an advanced anti-flood system.
+                 \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+                 \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+                 \n• I check for admins' permissions before executing any command and more stuffs
+                 \n\n_Nao's licensed under the GNU General Public License v3.0_
                  \nHere is my [Author](https://github.com/KennedyProject).
                  \n\nIf you have any question about *Nao Tomori*, let us know at .""",
             parse_mode=ParseMode.MARKDOWN,
