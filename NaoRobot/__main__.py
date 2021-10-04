@@ -416,29 +416,68 @@ def Source_about_callback(update, context):
         )
 
 
-def main_about_callback(update, context):
+def afkbio_callback(update, context):
     query = update.callback_query
-    if query.data == "main_":
+    if query.data == "afkbio_":
         query.message.edit_text(
-            text=""" ❓ I'm Depeloved by Sena Or people now as Kennedy or they call Ken.
-                 \n\n•> He was born in Bandung
-                 \n•> Date of birth on 4 November 2004
-                 \n•> He's Hobby is Drawing, digital painting and other about art
-                 \n•> Veri obsessed to LIL PEEP.
-                 \n\n Maybe its all about my Owner! Thanks for Reading it.""",
+            text="""*This Is help menu for AFK and Bio.*""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="main_back")]]
+                [
+                     [
+                         InlineKeyboardButton(
+                             text="AFK​",
+                             callback_data="afk_"),
+                         InlineKeyboardButton(
+                             text="Support​",
+                             callback_data="Bio/about"
+                        ),
+                     ],
+                     [
+                         InlineKeyboardButton(text="🔙 Back", callback_data="help_back"),
+                     ],
+                ]
+            ),
+       )
+
+
+def afk_callback(update, context):
+    query = update.callback_query
+    if query.data == "afk_":
+        query.message.edit_text(
+            text=""" This is help for afk.
+                 \n• /afk (reason) - Mark you as afk
+                 \n• brb (reason) - afk use regex brb""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="afkbio_")]]
             ),
         )
-    elif query.data == "main_back":
+
+
+def bio_callback(update, context):
+    query = update.callback_query
+    if query.data == "bio_":
         query.message.edit_text(
-            puki_,
-            reply_markup=InlineKeyboardMarkup(buttons),
+            text=""" Here is the help for the Bio/Abouts module:
+                  \n\nWriting something about yourself is cool, whether to make people know about yourself or promoting your profile.
+                  \nAll bios are displayed on /info command.
+                  \n  - /setbio <text>: While replying, will save another user's bio
+                  \n   - /bio: Will get your or another user's bio. This cannot be set by yourself.
+                  \n   - /setme <text>: Will set your info
+                  \n   - /me: Will get your or another user's info
+                  \nAn example of setting a bio for yourself:
+                  /setme I work for Telegram; Bio is set to yourself.
+                  An example of writing someone else' bio:
+                  Reply to user's message: /setbio He is such cool person.
+                  \n\nNotice: Do not use /setbio against yourself!""",
             parse_mode=ParseMode.MARKDOWN,
-            timeout=60,
             disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="afkbio_")]]
+            ),
         )
 
 
