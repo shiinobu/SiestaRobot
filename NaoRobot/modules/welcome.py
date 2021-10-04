@@ -269,8 +269,8 @@ def new_member(update: Update, context: CallbackContext):
                             [
                                 {
                                     InlineKeyboardButton(
-                                        text="ɢᴏ ɪɴʟɪɴᴇ​!",
-                                        switch_inline_query_current_chat=""),
+                                        text="ᴄᴏᴍᴍᴀɴᴅ​",
+                                        url="https://t.me/naoex_bot?start=help"),
                                     InlineKeyboardButton(
                                         text="sᴜᴘᴘᴏʀᴛ​",
                                         url="https://t.me/kenbotsupport",
