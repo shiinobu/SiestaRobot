@@ -144,6 +144,35 @@ def check_afk(update, context, user_id, fst_name, userc_id):
             update.effective_message.reply_text(res, parse_mode="html")
 
 
+def afkbio_callback(update, context):
+    query = update.callback_query
+    if query.data == "afkbio_":
+        query.message.edit_text(
+            text="""*This Is help menu for AFK and Bio.*""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                     [
+                         InlineKeyboardButton(
+                             text="AFK​",
+                             callback_data="afk_"),
+                         InlineKeyboardButton(
+                             text="​Bio/About",
+                             callback_data="bio_"
+                        ),
+                     ],
+                     [
+                         InlineKeyboardButton(text="🔙 Back", callback_data="help_back"),
+                     ],
+                ]
+            ),
+       )
+
+
+__help__ = callback_data="afkbio_"
+
+
 AFK_HANDLER = DisableAbleCommandHandler("afk", afk, run_async=True)
 AFK_REGEX_HANDLER = DisableAbleMessageHandler(
     Filters.regex(r"^(?i)brb(.*)$"), afk, friendly="afk", run_async=True
