@@ -170,7 +170,7 @@ def afkbio_(update, context):
        )
 
 
-__help__ = callback_data="afkbio_"
+__help__ = query.data="afkbio_"
 
 
 AFK_HANDLER = DisableAbleCommandHandler("afk", afk, run_async=True)
