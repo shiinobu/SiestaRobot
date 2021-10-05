@@ -48,7 +48,7 @@ async def is_administrator(user_id: int, message):
     return admin
 
 
-@telethn.on(events.NewMessage(pattern=f"^[!/.]zombies ?(.*)"))
+@telethn.on(events.NewMessage(pattern=f"^[!/]zombies ?(.*)"))
 async def zombies(event):
     """For .zombies command, list all the zombies in a chat."""
 
