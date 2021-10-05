@@ -41,7 +41,7 @@ from NaoRobot import (BOT_USERNAME, LOGGER, DRAGONS, USERBOT_ID,
 from NaoRobot.services.keyboard import Ikb
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from NaoRobot.services.types import InlineQueryResultCachedDocument
-from NaoRobot.modules.info import get_chat_info, get_user_info
+from NaoRobot.modules.info import get_user_info, get_chat_info
 from NaoRobot.modules.music import ytmusic
 from NaoRobot.utils.functions import test_speedtest
 from NaoRobot.utils.pastebin import paste
@@ -85,16 +85,7 @@ async def inline_help_func(__HELP__):
             thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
             reply_markup=buttons,
         ),
-        InlineQueryResultArticle(
-            title="Owner",
-            description="To see my owner",
-            input_message_content=InputTextMessageContent(
-                "I'm Nao Tomori\nmaintained by [Sena ❤️](https://t.me/xgothboi)\nI'm a telegram bot modular written with python for management group on telegram easily!",
-                disable_web_page_preview=True
-            ),
-            thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
-        ),
-    ]
+
     answerss = await alive_function(answerss)
     return answerss
 
@@ -349,7 +340,7 @@ async def lyrics_func(answers, text):
         lyrics = await paste(lyrics)
         lyrics = f"**LYRICS_TOO_LONG:** [URL]({lyrics})"
 
-    msg = f"__{lyrics}__"
+    msg = f"**__{lyrics}__**"
 
     answers.append(
         InlineQueryResultArticle(
