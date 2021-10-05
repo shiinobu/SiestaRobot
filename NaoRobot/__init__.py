@@ -224,12 +224,6 @@ aiohttpsession = ClientSession()
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-ubot = Client(
-      "userbot",
-      phone_number=PHONE_NUMBER,
-      api_id=API_ID,
-      api_hash=API_HASH,
-)
 
 pbot = Client(
     ":memory:",
@@ -240,16 +234,6 @@ pbot = Client(
 )
 apps = []
 apps.append(pbot)
-
-
-print("[INFO]: STARTING BOT CLIENT")
-pbot.start()
-print("[INFO]: STARTING USERBOT CLIENT")
-ubot.start()
-
-print("[INFO]: GATHERING PROFILE INFO")
-x = pbot.get_me()
-y = ubot.get_me()
 
 
 async def get_entity(client, entity):
