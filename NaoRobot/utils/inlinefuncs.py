@@ -89,7 +89,7 @@ async def inline_help_func(__HELP__):
             title="Owner",
             description="To see my owner",
             input_message_content=InputTextMessageContent(
-                "I'm Nao Tomori\nmaintained by [Sena ❤️](https://t.me/xgothboi)\nI'm a telegram bot modular written with python for management group on telegram easily!"
+                "I'm Nao Tomori\nmaintained by [Sena ❤️](https://t.me/xgothboi)\nI'm a telegram bot modular written with python for management group on telegram easily!",
                 disable_web_page_preview=True
             ),
             thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
