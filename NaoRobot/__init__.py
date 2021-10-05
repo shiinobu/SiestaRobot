@@ -230,8 +230,6 @@ ubot = Client(
       api_id=API_ID,
       api_hash=API_HASH,
 )
-else:
-    ubot = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 
 pbot = Client(
     ":memory:",
