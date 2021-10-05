@@ -224,18 +224,7 @@ aiohttpsession = ClientSession()
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-ubot = Client(
-    "userbot",
-    phone_number=PHONE_NUMBER,
-    api_id=API_ID,
-    api_hash=API_HASH,
-)
-ubot = Client(SESSION_STRING, api_id=API_ID,api_hash=API_HASH)
-try:
-    ubot.start()
-except BaseException:
-    print("Userbot Error ! Have you added a SESSION_STRING in deploying??")
-    sys.exit(1)
+ubot = pyrogram
 
 pbot = Client(
     ":memory:",
@@ -244,15 +233,8 @@ pbot = Client(
     bot_token=TOKEN,
     workers=min(32, os.cpu_count() + 4),
 )
-
-print("[INFO]: STARTING BOT CLIENT")
-pbot.start()
-print("[INFO]: STARTING USERBOT CLIENT")
-ubot.start()
-
-print("[INFO]: GATHERING PROFILE INFO")
-x = pbot.get_me()
-y = ubot.get_me()
+apps = []
+apps.append(pbot)
 
 
 async def get_entity(client, entity):
