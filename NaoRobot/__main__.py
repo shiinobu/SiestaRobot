@@ -74,11 +74,10 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello*  My name is *Nao Tomori* ✨
+*Hello*  My name is *Nao Tomori* [✨](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg)
 I'm A Anime Theme Bot For Management Your Group Easily!
 Maintained By [Muhammad Sena](https://t.me/xgothboi) ❤️
 """
-disable_web_page_preview=True,
 buttons = [
     [
         InlineKeyboardButton(
