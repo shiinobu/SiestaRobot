@@ -223,6 +223,12 @@ print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
 
+ubot = Client(
+    ":memory:",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    session_string=SESSION_STRING,
+
 pbot = Client(
     ":memory:",
     api_id=API_ID,
