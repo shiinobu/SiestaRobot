@@ -59,7 +59,7 @@ if ENV:
 
     try:
         WOLVES = {int(x) for x in os.environ.get("WOLVES", "").split()}
-    except ValueError:
+    except ValueError: 
         raise Exception("Your whitelisted users list does not contain valid integers.")
 
     try:
@@ -224,10 +224,9 @@ arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
 
 ubot = Client(
-    ":memory:",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    session_string=SESSION_STRING,
+      SESSION_STRING, 
+      api_id=API_ID,
+      api_hash=API_HASH)
 
 pbot = Client(
     ":memory:",
@@ -236,8 +235,15 @@ pbot = Client(
     bot_token=TOKEN,
     workers=min(32, os.cpu_count() + 4),
 )
-apps = []
-apps.append(pbot)
+
+print("[INFO]: STARTING BOT CLIENT")
+pbot.start()
+print("[INFO]: STARTING USERBOT CLIENT")
+ubot.start()
+
+print("[INFO]: GATHERING PROFILE INFO")
+x = pbot.get_me()
+y = ubot.get_me()
 
 
 async def get_entity(client, entity):
