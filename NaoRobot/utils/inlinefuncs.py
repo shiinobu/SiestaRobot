@@ -36,11 +36,12 @@ from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
                             InputTextMessageContent)
 from search_engine_parser import GoogleSearch
 
-from NaoRobot import BOT_USERNAME, JOIN_LOGGER, DRAGONS, pbot as app, arq
+from NaoRobot import (BOT_USERNAME, LOGGER, DRAGONS, USERBOT_ID,
+                 USERBOT_NAME, USERBOT_USERNAME, pbot as app, ubot as app2, arq)
 from NaoRobot.services.keyboard import ikb
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from NaoRobot.services.types import InlineQueryResultCachedDocument
-from NaoRobot.modules.userinfo import get_chat_info, get_user_info
+from NaoRobot.modules.info import get_chat_info, get_user_info
 from NaoRobot.modules.music import download_youtube_audio
 from NaoRobot.utils.functions import test_speedtest
 from NaoRobot.utils.pastebin import paste
@@ -81,8 +82,16 @@ async def inline_help_func(__HELP__):
             input_message_content=InputTextMessageContent(
                 "Click A Button To Get Started."
             ),
-            thumb_url="https://telegra.ph/file/fd2cdb4080ab9e88216a2.jpg",
+            thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
             reply_markup=buttons,
+        ),
+        InlineQueryResultArticle(
+            title="Github",
+            description="To see my github owner",
+            input_message_content=InputTextMessageContent(
+                "https://github.com/KennedyProject"
+            ),
+            thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
         ),
     ]
     answerss = await alive_function(answerss)
@@ -101,20 +110,20 @@ async def alive_function(answers):
     )
 
     msg = f"""
-**[Nao Tomori✨](https://github.com/KennedyProject):**
+**[Nao Tomori 🌻](https://github.com/KennedyProject):**
 **MainBot:** `{bot_state}`
-**UserBot:** `Alive`
+**UserBot:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
 **Pyrogram:** `{pyrover}`
 **MongoDB:** `{mongover}`
 **Platform:** `{sys.platform}`
-**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/xgothboi)
+**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/{USERBOT_USERNAME})
 """
     answers.append(
         InlineQueryResultArticle(
             title="Alive",
             description="Check Bot's Stats",
-            thumb_url="https://static2.aniimg.com/upload/20170515/414/c/d/7/cd7EEF.jpg",
+            thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
             ),
@@ -516,7 +525,7 @@ async def speedtest_init(query):
 
 @app.on_callback_query(filters.regex("test_speedtest"))
 async def test_speedtest_cq(_, cq):
-    if cq.from_user.id not in DRAGONS:
+    if cq.from_user.id not in SUDOERS:
         return await cq.answer("This Isn't For You!")
     inline_message_id = cq.inline_message_id
     await app.edit_inline_text(inline_message_id, "**Testing**")
@@ -606,7 +615,7 @@ async def yt_music_func(answers, url):
         thumbnail,
     ) = music
     m = await app.send_audio(
-        MESSAGE_DUMP_CHAT,
+        LOGGER,
         audio,
         title=title,
         duration=duration,
