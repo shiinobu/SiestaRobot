@@ -41,7 +41,7 @@ from NaoRobot import (BOT_USERNAME, LOGGER, DRAGONS, USERBOT_ID,
 from NaoRobot.services.keyboard import Ikb
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from NaoRobot.services.types import InlineQueryResultCachedDocument
-from NaoRobot.modules.userinfo import get_chat_info, get_user_info
+from NaoRobot.modules.info import get_chat_info, get_user_info
 from NaoRobot.modules.music import ytmusic
 from NaoRobot.utils.functions import test_speedtest
 from NaoRobot.utils.pastebin import paste
