@@ -224,13 +224,12 @@ aiohttpsession = ClientSession()
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-if not HEROKU:
-    ubot = Client(
-        "userbot",
-        phone_number=PHONE_NUMBER,
-        api_id=API_ID,
-        api_hash=API_HASH,
-    )
+ubot = Client(
+      "userbot",
+      phone_number=PHONE_NUMBER,
+      api_id=API_ID,
+      api_hash=API_HASH,
+)
 else:
     ubot = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 
