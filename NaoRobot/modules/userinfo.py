@@ -160,13 +160,7 @@ def get_id(update: Update, context: CallbackContext):
             )
 
 
-@SaitamaTelethonClient.on(
-    events.NewMessage(
-        pattern="/ginfo ",
-        from_users=(TIGERS or []) + (DRAGONS or []) + (DEMONS or []),
-    ),
-)
-async def group_info(event) -> None:
+async def ginfo(event) -> None:
     chat = event.text.split(" ", 1)[1]
     try:
         entity = await event.client.get_entity(chat)
