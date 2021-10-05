@@ -80,16 +80,17 @@ async def inline_help_func(__HELP__):
             title="Inline Commands",
             description="Help Related To Inline Usage.",
             input_message_content=InputTextMessageContent(
-                "Click A Button To Get Started."
+                "**__Click A Button To Get Started.__**"
             ),
             thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
             reply_markup=buttons,
         ),
         InlineQueryResultArticle(
-            title="Github",
-            description="To see my github owner",
+            title="Owner",
+            description="To see my owner",
             input_message_content=InputTextMessageContent(
-                "https://github.com/KennedyProject"
+                "I'm Nao Tomori\nmaintained by [Sena ❤️](https://t.me/xgothboi)\nI'm a telegram bot modular written with python for management group on telegram easily!"
+                disable_web_page_preview=True
             ),
             thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
         ),
@@ -103,7 +104,7 @@ async def alive_function(answers):
     bot_state = "Dead" if not await app.get_me() else "Alive"
     ubot_state = "Dead" if not await app2.get_me() else "Alive"
     buttons.add(
-        InlineKeyboardButton("Stats", callback_data="stats_callback"),
+        InlineKeyboardButton("Help", url="https://t.me/naoex_bot?start=help"),
         InlineKeyboardButton(
             "Go Inline!", switch_inline_query_current_chat=""
         ),
@@ -525,7 +526,7 @@ async def speedtest_init(query):
 
 @app.on_callback_query(filters.regex("test_speedtest"))
 async def test_speedtest_cq(_, cq):
-    if cq.from_user.id not in SUDOERS:
+    if cq.from_user.id not in DRAGONS:
         return await cq.answer("This Isn't For You!")
     inline_message_id = cq.inline_message_id
     await app.edit_inline_text(inline_message_id, "**Testing**")
@@ -637,11 +638,11 @@ async def info_inline_func(answers, peer):
     )
     try:
         user = await app.get_users(peer)
-        caption, _ = await get_user_info(user, True)
+        caption, _ = await info(user, True)
     except IndexError:
         try:
             chat = await app.get_chat(peer)
-            caption, _ = await get_chat_info(chat, True)
+            caption, _ = await group_info(chat, True)
         except Exception:
             return [not_found]
     except Exception:
