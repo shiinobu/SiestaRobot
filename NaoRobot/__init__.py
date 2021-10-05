@@ -73,6 +73,7 @@ if ENV:
     USERBOT_USERNAME = os.environ.get("USERBOT_USERNAME", None)
     USERBOT_ID = os.environ.get("USERBOT_ID", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
+    PHONE_NUMBER = os.environ.get("PHONE_NUMBER", None)
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
@@ -173,6 +174,7 @@ else:
     DEL_CMDS = Config.DEL_CMDS
     STRICT_GBAN = Config.STRICT_GBAN
     USERBOT_PREFIX = Config.USERBOT_PREFIX
+    PHONE_NUMBER = Config.PHONE_NUMBER
     WORKERS = Config.WORKERS
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
@@ -222,11 +224,18 @@ aiohttpsession = ClientSession()
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-
 ubot = Client(
-      SESSION_STRING, 
-      api_id=API_ID,
-      api_hash=API_HASH)
+    "userbot",
+    phone_number=PHONE_NUMBER,
+    api_id=API_ID,
+    api_hash=API_HASH,
+)
+ubot = Client(SESSION_STRING, api_id=API_ID,api_hash=API_HASH)
+try:
+    ubot.start()
+except BaseException:
+    print("Userbot Error ! Have you added a SESSION_STRING in deploying??")
+    sys.exit(1)
 
 pbot = Client(
     ":memory:",
