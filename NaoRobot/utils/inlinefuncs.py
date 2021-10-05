@@ -96,6 +96,8 @@ async def alive_function(answers):
             "Go Inline!", switch_inline_query_current_chat=""
         ),
     )
+    answerss = await alive_function(answerss)
+    return answerss
 
     msg = f"""
 **[Nao Tomori 🌻](https://github.com/KennedyProject):**
