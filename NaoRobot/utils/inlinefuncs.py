@@ -85,6 +85,9 @@ async def inline_help_func(__HELP__):
             thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
             reply_markup=buttons,
         ),
+    ]
+    answerss = await alive_function(answerss)
+    return answerss
 
 async def alive_function(answers):
     buttons = InlineKeyboard(row_width=2)
