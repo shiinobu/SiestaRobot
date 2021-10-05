@@ -82,12 +82,6 @@ async def _get_tasks_text():
     return text
 
 
-@app2.on_message(
-    filters.user(DRAGONS)
-    & ~filters.forwarded
-    & ~filters.via_bot
-    & filters.command("lsTasks", prefixes=USERBOT_PREFIX)
-)
 async def task_list(_, message: Message):
     if message.from_user.is_self:
         await message.delete()
