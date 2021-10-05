@@ -78,7 +78,7 @@ PM_START_TEXT = """
 I'm A Anime Theme Bot For Management Your Group Easily!
 Maintained By [Muhammad Sena](https://t.me/xgothboi) ❤️
 """
-disable_web_page_preview=True
+disable_web_page_preview=True,
 buttons = [
     [
         InlineKeyboardButton(
@@ -416,7 +416,7 @@ def Source_about_callback(update, context):
         )
 
 
-def afkbio_callback(update, context):
+def afkbio_(update, context):
     query = update.callback_query
     if query.data == "afkbio_":
         query.message.edit_text(
@@ -442,11 +442,11 @@ def afkbio_callback(update, context):
        )
 
 
-def afk_callback(update, context):
+def afk_(update, context):
     query = update.callback_query
     if query.data == "afk_":
         query.message.edit_text(
-            text=""" This is help for afk.
+            text=""" This is for afk.
                  \n• /afk (reason) - Mark you as afk
                  \n• brb (reason) - afk use regex brb""",
             parse_mode=ParseMode.MARKDOWN,
@@ -457,7 +457,7 @@ def afk_callback(update, context):
         )
 
 
-def bio_callback(update, context):
+def bio_(update, context):
     query = update.callback_query
     if query.data == "bio_":
         query.message.edit_text(
