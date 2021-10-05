@@ -38,7 +38,7 @@ from search_engine_parser import GoogleSearch
 
 from NaoRobot import (BOT_USERNAME, LOGGER, DRAGONS, USERBOT_ID,
                  USERBOT_NAME, USERBOT_USERNAME, pbot as app, arq)
-from NaoRobot import ubot as app2
+from NaoRobot.telethonubot import ubot as app2
 from NaoRobot.services.keyboard import Ikb
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from NaoRobot.services.types import InlineQueryResultCachedDocument
