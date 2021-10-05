@@ -61,7 +61,7 @@ async def _(event):
     )
 
 
-@register(pattern="^/img (.*)")
+@register(pattern="^/image (.*)")
 async def img_sampler(event):
     if event.fwd_from:
         return
