@@ -181,7 +181,7 @@ NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, no_longe
 AFK_REPLY_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, reply_afk)
 
 afkbio_handler = CallbackQueryHandler(
-     afkbii_callback, pattern=r"afkbio_", run_async=True
+     afkbio_callback, pattern=r"afkbio_", run_async=True
 )
 
 dispatcher.add_handler(AFK_HANDLER, AFK_GROUP)
