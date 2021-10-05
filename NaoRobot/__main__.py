@@ -416,7 +416,7 @@ def Source_about_callback(update, context):
         )
 
 
-def afkbio_(update, context):
+def afkbio_callback(update, context):
     query = update.callback_query
     if query.data == "afkbio_":
         query.message.edit_text(
@@ -774,6 +774,9 @@ def main():
 
     about_callback_handler = CallbackQueryHandler(
         nao_about_callback, pattern=r"nao_", run_async=True
+    )
+    afkbio_callback_handler = CallbackQueryHandler(
+        afkbio_callback, pattern=r"afkbio_", run_async=True
     )
     source_callback_handler = CallbackQueryHandler(
         Source_about_callback, pattern=r"source_", run_async=True
