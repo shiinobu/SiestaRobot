@@ -80,9 +80,9 @@ async def inline_help_func(__HELP__):
             title="Inline Commands",
             description="Help Related To Inline Usage.",
             input_message_content=InputTextMessageContent(
-                "**__Click A Button To Get Started.__**"
+                "Click A Button To Get Started."
             ),
-            thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
+            thumb_url="https://hamker.me/cy00x5x.png",
             reply_markup=buttons,
         ),
     ]
@@ -100,8 +100,6 @@ async def alive_function(answers):
             "Go Inline!", switch_inline_query_current_chat=""
         ),
     )
-    answerss = await alive_function(answerss)
-    return answerss
 
     msg = f"""
 **[Nao Tomori 🌻](https://github.com/KennedyProject):**
