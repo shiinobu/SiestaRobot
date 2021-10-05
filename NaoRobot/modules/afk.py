@@ -144,32 +144,6 @@ def check_afk(update, context, user_id, fst_name, userc_id):
             update.effective_message.reply_text(res, parse_mode="html")
 
 
-def afkbio_callback(update, context):
-    query = update.callback_query
-    if query.data == "afkbio_":
-        query.message.edit_text(
-            text="""*This Is help menu for AFK and Bio.*""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                     [
-                         InlineKeyboardButton(
-                             text="AFK​",
-                             callback_data="afk_"),
-                         InlineKeyboardButton(
-                             text="​Bio/About",
-                             callback_data="bio_"
-                        ),
-                     ],
-                     [
-                         InlineKeyboardButton(text="🔙 Back", callback_data="help_back"),
-                     ],
-                ]
-            ),
-       )
-
-
 __help__ = callback_data="afkbio_"
 
 
@@ -179,10 +153,6 @@ AFK_REGEX_HANDLER = DisableAbleMessageHandler(
 )
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, reply_afk)
-
-afkbio_handler = CallbackQueryHandler(
-     afkbio_callback, pattern=r"afkbio_", run_async=True
-)
 
 dispatcher.add_handler(AFK_HANDLER, AFK_GROUP)
 dispatcher.add_handler(AFK_REGEX_HANDLER, AFK_GROUP)
