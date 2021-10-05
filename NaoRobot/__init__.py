@@ -74,7 +74,6 @@ if ENV:
     USERBOT_ID = os.environ.get("USERBOT_ID", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
-    PHONE_NUMBER = os.environ.get("PHONE_NUMBER", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
@@ -184,7 +183,6 @@ else:
     SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
     SPAMWATCH_API = Config.SPAMWATCH_API
     SESSION_STRING = Config.SESSION_STRING
-    PHONE_NUMBER = Config.PHONE_NUMBER
     INFOPIC = Config.INFOPIC
     BOT_USERNAME = Config.BOT_USERNAME
     USERBOT_NAME = Config.USERBOT_NAME
