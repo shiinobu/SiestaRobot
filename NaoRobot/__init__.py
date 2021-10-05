@@ -68,14 +68,20 @@ if ENV:
         raise Exception("Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get("INFOPIC", True))
+    USERBOT_PREFIX = os.environ.get("USERBOT_PREFIX", "$")
+    USERBOT_NAME = os.environ.get("USERBOT_NAME", None)
+    USERBOT_USERNAME = os.environ.get("USERBOT_USERNAME", None)
+    USERBOT_ID = os.environ.get("USERBOT_ID", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
+    PHONE_NUMBER = os.environ.get("PHONE_NUMBER", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
     API_ID = os.environ.get("API_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
+    SESSION_STRING = os.environ.get("SESSION_STRING", None)
     DB_URI = os.environ.get("DATABASE_URL")
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     ARQ_API = os.environ.get("ARQ_API", None)
@@ -167,6 +173,7 @@ else:
     HEROKU_APP_NAME = Config.HEROKU_APP_NAME
     DEL_CMDS = Config.DEL_CMDS
     STRICT_GBAN = Config.STRICT_GBAN
+    USERBOT_PREFIX = Config.USERBOT_PREFIX
     WORKERS = Config.WORKERS
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
@@ -176,8 +183,13 @@ else:
     SUPPORT_CHAT = Config.SUPPORT_CHAT
     SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
     SPAMWATCH_API = Config.SPAMWATCH_API
+    SESSION_STRING = Config.SESSION_STRING
+    PHONE_NUMBER = Config.PHONE_NUMBER
     INFOPIC = Config.INFOPIC
     BOT_USERNAME = Config.BOT_USERNAME
+    USERBOT_NAME = Config.USERBOT_NAME
+    USERBOT_USERNAME = Config.USERBOT_USERNAME
+    USERBOT_ID = Config.USERBOT_ID
     WELCOME_DELAY_KICK_SEC = WELCOME_DELAY_KICK_SEC
     LASTFM_API_KEY = Config.LASTFM_API_KEY
     CF_API_KEY = Config.CF_API_KEY
@@ -212,6 +224,15 @@ aiohttpsession = ClientSession()
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
+if not HEROKU:
+    ubot = Client(
+        "userbot",
+        phone_number=PHONE_NUMBER,
+        api_id=API_ID,
+        api_hash=API_HASH,
+    )
+else:
+    ubot = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 
 pbot = Client(
     ":memory:",
@@ -222,6 +243,16 @@ pbot = Client(
 )
 apps = []
 apps.append(pbot)
+
+
+print("[INFO]: STARTING BOT CLIENT")
+pbot.start()
+print("[INFO]: STARTING USERBOT CLIENT")
+ubot.start()
+
+print("[INFO]: GATHERING PROFILE INFO")
+x = pbot.get_me()
+y = ubot.get_me()
 
 
 async def get_entity(client, entity):
