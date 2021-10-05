@@ -41,7 +41,7 @@ from NaoRobot import (BOT_USERNAME, LOGGER, DRAGONS, USERBOT_ID,
 from NaoRobot.services.keyboard import Ikb
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from NaoRobot.services.types import InlineQueryResultCachedDocument
-from NaoRobot.modules.userinfo import group_info, info
+from NaoRobot.modules.userinfo import ginfo, info
 from NaoRobot.modules.music import ytmusic
 from NaoRobot.utils.functions import test_speedtest
 from NaoRobot.utils.pastebin import paste
@@ -642,7 +642,7 @@ async def info_inline_func(answers, peer):
     except IndexError:
         try:
             chat = await app.get_chat(peer)
-            caption, _ = await group_info(chat, True)
+            caption, _ = await ginfo(chat, True)
         except Exception:
             return [not_found]
     except Exception:
