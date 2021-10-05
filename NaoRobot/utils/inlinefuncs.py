@@ -80,7 +80,7 @@ async def inline_help_func(__HELP__):
             title="Inline Commands",
             description="Help Related To Inline Usage.",
             input_message_content=InputTextMessageContent(
-                "Click A Button To Get Started."
+                "**__Click A Button To Get Started.__**"
             ),
             thumb_url="https://hamker.me/cy00x5x.png",
             reply_markup=buttons,
@@ -102,7 +102,7 @@ async def alive_function(answers):
     )
 
     msg = f"""
-**[Nao Tomori 🌻](https://github.com/KennedyProject):**
+**[Nao Tomori ❤️](https://t.me/kenbotsupport):**
 **MainBot:** `{bot_state}`
 **UserBot:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
