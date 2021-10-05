@@ -9,6 +9,7 @@ import telegram.ext as tg
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 from telethon import TelegramClient
+from telethon.sessions import StringSession
 from telethon.sessions import MemorySession
 from pyrogram import Client, errors
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
@@ -224,7 +225,12 @@ aiohttpsession = ClientSession()
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-ubot = pyrogram
+ubot = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
+try:
+    ubot.start()
+except BaseException:
+    print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
+    sys.exit(1)
 
 pbot = Client(
     ":memory:",
