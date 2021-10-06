@@ -541,7 +541,7 @@ async def update_captcha_cache(captcha_dict):
 
 
 async def get_captcha_cache():
-    cache = await captcha_cachedb.find_one({"captcha": "cache"})
+    cache = captcha_cachedb.find_one({"captcha": "cache"})
     if not cache:
         return []
     return str_to_obj(cache["pickled"])
