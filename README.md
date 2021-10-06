@@ -23,13 +23,6 @@
   <img src="https://telegra.ph/file/50a4f6dccef4a0a29cc0d.jpg">
 </p>
 
-## Requirements
-
-- PTB >= 13.7
-- A Telegram bot token.
-- A MongoDB URI.
-- A elephant sql
-
 # Run On Heroku
 
 ### Easiest Way To Deploy On Heroku 
