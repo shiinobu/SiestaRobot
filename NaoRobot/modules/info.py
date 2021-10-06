@@ -1,9 +1,9 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
-from KanekiRobot import DEV_USERS
-from KanekiRobot import pbot as app
-from KanekiRobot.core.sections import section
+from NaoRobot import DEV_USERS
+from NaoRobot import pbot as app
+from NaoRobot.services.sections import section
 
 
 async def get_user_info(user, already=False):
