@@ -6,6 +6,7 @@ import aiohttp
 from googletrans import Translator as google_translator
 from pyrogram import filters
 from aiohttp import ClientSession
+from NaoRobot import BOT_USERNAME as bu
 from NaoRobot import BOT_ID, pbot, arq
 from NaoRobot.ex_plugins.chatbot import add_chat, get_session, remove_chat
 from NaoRobot.utils.pluginhelper import admins_only, edit_or_reply
@@ -43,12 +44,12 @@ ewe_chats = []
 en_chats = []
 
 
-@pbot.on_message(filters.command("chatbot") & ~filters.edited & ~filters.bot & ~filters.private)
+@pbot.on_message(filters.command(["chatbot", f"chatbot@{bu}"]) & ~filters.edited & ~filters.bot & ~filters.private)
 @admins_only
 async def hmm(_, message):
     global ewe_chats
     if len(message.command) != 2:
-        await message.reply_text("I only recognize `/chatbot on` and /chatbot `off only`")
+        await message.reply_text("I only recognize /chatbot on and /chatbot off only")
         message.continue_propagation()
     status = message.text.split(None, 1)[1]
     chat_id = message.chat.id
@@ -249,7 +250,7 @@ async def inuka(client, message):
 
 
 @pbot.on_message(
-    filters.regex("Nao|tomori|nao|Nao Tomori|NAO")
+    filters.regex("Nao|tomori|nao|Bot|NAO")
     & ~filters.bot
     & ~filters.via_bot
     & ~filters.forwarded
