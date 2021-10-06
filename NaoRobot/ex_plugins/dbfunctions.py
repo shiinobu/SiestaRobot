@@ -530,10 +530,10 @@ async def del_welcome(chat_id: int):
 
 async def update_captcha_cache(captcha_dict):
     pickle = obj_to_str(captcha_dict)
-    await captcha_cachedb.delete_one({"captcha": "cache"})
+    captcha_cachedb.delete_one({"captcha": "cache"})
     if not pickle:
         return
-    await captcha_cachedb.update_one(
+    captcha_cachedb.update_one(
         {"captcha": "cache"},
         {"$set": {"pickled": pickle}},
         upsert=True,
