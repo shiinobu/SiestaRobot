@@ -22,7 +22,7 @@ import os
 from pyrogram import filters
 from pyrogram.types import Message
 
-from NaoRobot import DRAGONS, pbot as app
+from NaoRobot import DEV_USERS, pbot as app
 from NaoRobot.services.sections import section
 from NaoRobot.ex_plugins.dbfunctions import is_gbanned_user, user_global_karma
 
@@ -42,7 +42,7 @@ async def get_user_info(user, already=False):
     dc_id = user.dc_id
     photo_id = user.photo.big_file_id if user.photo else None
     is_gbanned = await is_gbanned_user(user_id)
-    is_sudo = user_id in DRAGONS
+    is_sudo = user_id in DEV_USERS
     karma = await user_global_karma(user_id)
     body = {
         "ID": user_id,
