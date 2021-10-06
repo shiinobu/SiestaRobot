@@ -26,6 +26,7 @@ from NaoRobot import DRAGONS, pbot as app
 from NaoRobot.services.sections import section
 from NaoRobot.ex_plugins.dbfunctions import is_gbanned_user, user_global_karma
 
+
 __mod_name__ = "Info"
 
 
@@ -85,6 +86,31 @@ async def get_chat_info(chat, already=False):
     }
     caption = section("Chat info", body)
     return [caption, photo_id]
+
+
+@app.on_message(filters.command("uinfo"))
+async def info_func(_, message: Message):
+    if message.reply_to_message:
+        user = message.reply_to_message.from_user.id
+    elif not message.reply_to_message and len(message.command) == 1:
+        user = message.from_user.id
+    elif not message.reply_to_message and len(message.command) != 1:
+        user = message.text.split(None, 1)[1]
+
+    m = await message.reply_text("Processing")
+
+    try:
+        info_caption, photo_id = await get_user_info(user)
+    except Exception as e:
+        return await m.edit(str(e))
+
+    if not photo_id:
+        return await m.edit(info_caption, disable_web_page_preview=True)
+    photo = await app.download_media(photo_id)
+
+    await message.reply_photo(photo, caption=info_caption, quote=False)
+    await m.delete()
+    os.remove(photo)
 
 
 @app.on_message(filters.command("cinfo"))
