@@ -294,10 +294,10 @@ async def captcha_state(_, message):
     state = message.text.split(None, 1)[1].strip()
     state = state.lower()
     if state == "enable":
-        captcha_on(chat_id)
+        await captcha_on(chat_id)
         await message.reply_text("Enabled Captcha For New Users.")
     elif state == "disable":
-        captcha_off(chat_id)
+        await captcha_off(chat_id)
         await message.reply_text("Disabled Captcha For New Users.")
     else:
         await message.reply_text(usage)
