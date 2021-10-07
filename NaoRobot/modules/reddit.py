@@ -20,7 +20,7 @@ SOFTWARE.
 from pyrogram import filters
 
 from NaoRobot import pbot as app, arq
-from NaoRobot.utils.decorators.errors import capture_err
+from NaoRobot.utils.errors import capture_err
 
 __mod_name__ = "Reddit"
 
