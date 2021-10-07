@@ -175,7 +175,8 @@ def airing(update: Update, context: CallbackContext):
             "query": airing_query,
             "variables": variables
         }).json()["data"]["Media"]
-    msg += f"*Name*: *{response['title']['romaji']}*(`{response['title']['native']}`)\n*ID*: `{response['id']}`"
+    msg = f"*Name*: *{response['title']['romaji']}*(`{response['title']['native']}`)\n*ID*: `{response['id']}`"
+    msg += (msg)
     image = json.get("bannerImage", None)
     if response["nextAiringEpisode"]:
         time = response["nextAiringEpisode"]["timeUntilAiring"] * 1000
