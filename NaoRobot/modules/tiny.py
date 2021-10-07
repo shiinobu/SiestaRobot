@@ -14,7 +14,7 @@ async def _(event):
     xx = await event.edit("`Converting sticker to tiny`")
     ik = await tbot.download_media(reply)
     im1 = Image.open("NaoRobot/resources/ken.png")
-    if ik.endswitch(".tgs"):
+    if ik.endswith(".tgs"):
         await event.tbot.download_media(reply, "ken.tgs")
         os.system("lottie_convert.py ken.tgs json.json")
         json = open("json.json", "r")
@@ -24,7 +24,7 @@ async def _(event):
         os.system("lottie_convert.py json.json ken.tgs")
         file = "ken.tgs"
         os.remove("json.json")
-    elif ik.endswitch((".gif", ".mp4")):
+    elif ik.endswith((".gif", ".mp4")):
         iik = cv2.VideoCapture(ik)
         busy = iik.read()
         cv2.imwrite("i.png", busy)
