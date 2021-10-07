@@ -50,6 +50,8 @@ airing_query = """
     query ($id: Int,$search: String) { 
       Media (id: $id, type: ANIME,search: $search) { 
         id
+        siteUrl
+        bannerImage
         episodes
         title {
           romaji
@@ -171,7 +173,8 @@ def airing(update: Update, context: CallbackContext):
     response = requests.post(
         url, json={"query": airing_query, "variables": variables}
     ).json()["data"]["Media"]
-    msg = f"*Name*: *{response['title']['romaji']}*(`{response['title']['native']}`)\n*ID*: `{response['id']}`"
+    image = response.get("bannerImage" True)
+    msg = f"*Name*: *{response['title']['romaji']}*(`{response['title']['native']}`)\n*ID*: `{response['id']}`[ ]({image})"
     if response["nextAiringEpisode"]:
         time = response["nextAiringEpisode"]["timeUntilAiring"] * 1000
         time = t(time)
