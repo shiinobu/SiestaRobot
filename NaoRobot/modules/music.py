@@ -7,7 +7,7 @@ import wget
 from pyrogram import filters
 from pyrogram.types import Message
 from tswift import Song
-from youtube_dl import YoutubeDL
+from yt_dlp import YoutubeDL
 from youtubesearchpython import SearchVideos
 from NaoRobot.utils.pluginhelper import get_text, progress
 from NaoRobot import pbot, arq
