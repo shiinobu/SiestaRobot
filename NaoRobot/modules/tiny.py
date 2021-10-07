@@ -13,7 +13,7 @@ async def _(event):
        await event.reply("`Please reply to a sticker`")
        return
     xx = await event.edit("`Converting sticker to tiny`")
-    ik = await cient.download_media(reply)
+    ik = await bot.download_media(reply)
     im1 = Image.open("NaoRobot/resources/ken.png")
     if ik.endswith(".tgs"):
         await event.bot.download_media(reply, "ken.tgs")
