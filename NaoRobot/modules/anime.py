@@ -182,7 +182,9 @@ def airing(update: Update, context: CallbackContext):
         buttons = [[InlineKeyboardButton("More Info", url=info)]]
         msg += f"\n*Episode*: `{response['episodes']}`\n*Status*: `N/A`"
     update.effective_message.reply_photo(
-        photo=image, caption=msg, parse_mode=ParseMode.MARKDOWN
+        photo=image,
+        caption=msg,
+        parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup(buttons)
     )
 
