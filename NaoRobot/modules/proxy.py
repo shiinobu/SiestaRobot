@@ -57,7 +57,7 @@ async def proxy_func(_, message: Message):
     location = proxies[0].location
     proxy = proxies[0].proxy
     url = url_from_proxy(proxy)
-    keyb = ikb(
+    keyb = Ikb(
         {
             "←": "proxy_arq_-1",
             "→": "proxy_arq_1",
@@ -81,7 +81,7 @@ async def proxy_callback_func(_, cq: CallbackQuery):
     location = proxies[index].location
     proxy = proxies[index].proxy
     url = url_from_proxy(proxy)
-    keyb = ikb(
+    keyb = Ikb(
         {
             "←": f"proxy_arq_{index-1}",
             "→": f"proxy_arq_{index+1}",
