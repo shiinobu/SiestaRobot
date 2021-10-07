@@ -16,7 +16,7 @@ async def _(event):
     ik = await cient.download_media(reply)
     im1 = Image.open("NaoRobot/resources/ken.png")
     if ik.endswith(".tgs"):
-        await event.client.download_media(reply, "ken.tgs")
+        await event.bot.download_media(reply, "ken.tgs")
         os.system("lottie_convert.py ken.tgs json.json")
         json = open("json.json", "r")
         jsn = json.read()
@@ -72,7 +72,7 @@ async def _(event):
         back_im.save("o.webp", "WEBP", quality=95)
         file = "o.webp"
         os.remove("k.png")
-    await event.client.send_file(event.chat_id, file, reply_to=event.reply_to_msg_id)
+    await event.bot.send_file(event.chat_id, file, reply_to=event.reply_to_msg_id)
     await xx.delete()
     os.remove(file)
     os.remove(ik)
