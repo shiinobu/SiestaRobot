@@ -83,3 +83,4 @@ odmantic
 tzlocal
 pendulum
 fuzzysearch
+img2pdf
