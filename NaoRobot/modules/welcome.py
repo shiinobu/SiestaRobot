@@ -261,26 +261,6 @@ def new_member(update: Update, context: CallbackContext):
                 )
                 continue
 
-            # Make bot greet admins
-            elif new_mem.id == bot.id:
-                update.effective_message.reply_text(
-                        "❤️ <b>Thanks for adding me to the group!</b>\n\n<b>Promote me as administrator of the group, otherwise I will not be able to work properly.</b>",
-                        reply_markup=InlineKeyboardMarkup(
-                            [
-                                {
-                                    InlineKeyboardButton(
-                                        text="ᴄᴏᴍᴍᴀɴᴅ​",
-                                        url="https://t.me/naoex_bot?start=help"),
-                                    InlineKeyboardButton(
-                                        text="sᴜᴘᴘᴏʀᴛ​",
-                                        url="https://t.me/kenbotsupport",
-                                    )
-                                }
-                            ]
-                        ),
-                        parse_mode=ParseMode.HTML,
-                    )
-
             # Welcome yourself
             elif new_mem.id == bot.id:
                 creator = None
