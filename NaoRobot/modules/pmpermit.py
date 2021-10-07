@@ -22,8 +22,8 @@ from pyrogram import filters
 from pyrogram.raw.functions.messages import DeleteHistory
 
 from NaoRobot import BOT_ID, DEV_USERS, USERBOT_ID, USERBOT_PREFIX, pbot as app, ubot as app2, eor
-from NaoRobot.services.decorators.errors import capture_err
-from NaoRobot.utils.dbfunctions import (approve_pmpermit, disapprove_pmpermit,
+from NaoRobot.utils.errors import capture_err
+from NaoRobot.ex_plugins.dbfunctions import (approve_pmpermit, disapprove_pmpermit,
                                    is_pmpermit_approved)
 
 flood = {}
