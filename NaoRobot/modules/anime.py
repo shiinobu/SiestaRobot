@@ -176,6 +176,7 @@ def airing(update: Update, context: CallbackContext):
             "variables": variables
         }).json()["data"]["Media"]
     msg = f"*Name*: *{response['title']['romaji']}*(`{response['title']['native']}`)\n*ID*: `{response['id']}`"
+    info = json.get("siteUrl")
     image = response.get("bannerImage", None)
     if response["nextAiringEpisode"]:
         time = response["nextAiringEpisode"]["timeUntilAiring"] * 1000
@@ -183,24 +184,27 @@ def airing(update: Update, context: CallbackContext):
         msg += f"\n*Episode*: `{response['nextAiringEpisode']['episode']}`\n*Airing In*: `{time}`"
     else:
         msg += f"\n*Episode*:{response['episodes']}\n*Status*: `N/A`"
-    update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
+        buttons = [[InlineKeyboardButton("More Info", url=info)]]
     if image:
         try:
             update.effective_message.reply_photo(
                 photo=image,
                 caption=msg,
                 parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(buttons),
              )
         except:
             msg += f" [〽️]({image})"
             update.effective_message.reply_text(
                 msg,
                 parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(buttons),
             )
     else:
           update.effective_message.reply_text(
               msg,
               parse_mode=ParseMode.MARKDOWN,
+              reply_markup=InlineKeyboardMarkup(buttons),
           )
 
 def anime(update: Update, context: CallbackContext):
