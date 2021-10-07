@@ -191,7 +191,7 @@ def airing(update: Update, context: CallbackContext):
                 caption=msg,
                 parse_mode=ParseMode.MARKDOWN,
              )
-         except:
+        except:
             msg += f" [〽️]({image})"
             update.effective_message.reply_text(
                 msg,
