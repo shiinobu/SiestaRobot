@@ -171,9 +171,11 @@ def airing(update: Update, context: CallbackContext):
         return
     variables = {"search": search_str[1]}
     response = requests.post(
-        url, json={"query": airing_query, "variables": variables}
-    ).json()["data"]["Media"]
-    image = response.get("bannerImage" True)
+        url, json={
+            "query": airing_query,
+            "variables": variables
+        }).json()["data"]["Media"]
+    image = response.get("bannerImage", True)
     msg = f"*Name*: *{response['title']['romaji']}*(`{response['title']['native']}`)\n*ID*: `{response['id']}`[ ]({image})"
     if response["nextAiringEpisode"]:
         time = response["nextAiringEpisode"]["timeUntilAiring"] * 1000
