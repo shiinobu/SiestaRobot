@@ -588,6 +588,7 @@ __help__ = """
 •  `/stickerid`*:* reply to a sticker to me to tell you its file ID.
 •  `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
 •  `/kang`*:* reply to a sticker to add it to your pack.
+•  `/tiny`*:* reply to a sticker to change size the sticker to small.
 •  /delsticker*:* Reply to your anime exist sticker to your pack to delete it.
 • `/stickers`*:* Find stickers for given term on combot sticker catalogue
 """
