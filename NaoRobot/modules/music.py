@@ -45,6 +45,45 @@ async def lyrics_func(answers, text):
     return answers
 
 
+def get_file_extension_from_url(url):
+    url_path = urlparse(url).path
+    basename = os.path.basename(url_path)
+    return basename.split(".")[-1]
+
+
+def download_youtube_audio(url: str):
+    global is_downloading
+    with youtube_dl.YoutubeDL(
+        {
+            "format": "bestaudio",
+            "writethumbnail": True,
+            "quiet": True,
+        }
+    ) as ydl:
+        info_dict = ydl.extract_info(url, download=False)
+        if int(float(info_dict["duration"])) > 600:
+            is_downloading = False
+            return []
+        ydl.process_info(info_dict)
+        audio_file = ydl.prepare_filename(info_dict)
+        basename = audio_file.rsplit(".", 1)[-2]
+        if info_dict["ext"] == "webm":
+            audio_file_opus = basename + ".opus"
+            ffmpeg.input(audio_file).output(
+                audio_file_opus, codec="copy", loglevel="error"
+            ).overwrite_output().run()
+            os.remove(audio_file)
+            audio_file = audio_file_opus
+        thumbnail_url = info_dict["thumbnail"]
+        thumbnail_file = (
+            basename + "." + get_file_extension_from_url(thumbnail_url)
+        )
+        title = info_dict["title"]
+        performer = info_dict["uploader"]
+        duration = int(float(info_dict["duration"]))
+    return [title, performer, duration, audio_file, thumbnail_file]
+
+
 @pbot.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message: Message):
     urlissed = get_text(message)
