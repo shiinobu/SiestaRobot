@@ -184,24 +184,24 @@ def airing(update: Update, context: CallbackContext):
     else:
         msg += f"\n*Episode*:{response['episodes']}\n*Status*: `N/A`"
     update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
-        if image:
-            try:
-                update.effective_message.reply_photo(
-                    photo=image,
-                    caption=msg,
-                    parse_mode=ParseMode.MARKDOWN,
-                )
-            except:
-                msg += f" [〽️]({image})"
-                update.effective_message.reply_text(
-                    msg,
-                    parse_mode=ParseMode.MARKDOWN,
-                )
-        else:
+    if image:
+        try:
+            update.effective_message.reply_photo(
+                photo=image,
+                caption=msg,
+                parse_mode=ParseMode.MARKDOWN,
+             )
+         except:
+            msg += f" [〽️]({image})"
             update.effective_message.reply_text(
                 msg,
                 parse_mode=ParseMode.MARKDOWN,
             )
+    else:
+          update.effective_message.reply_text(
+              msg,
+              parse_mode=ParseMode.MARKDOWN,
+          )
 
 def anime(update: Update, context: CallbackContext):
     message = update.effective_message
