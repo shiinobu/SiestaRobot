@@ -25,7 +25,7 @@ async def _(event):
         file = "man_black.tgs"
         os.remove("json.json")
     elif ik.endswitch((".gif", ".mp4")):
-                iik = cv2.VideoCapture(ik)
+        iik = cv2.VideoCapture(ik)
         busy = iik.read()
         cv2.imwrite("i.png", busy)
         fil = "i.png"
