@@ -179,9 +179,11 @@ def airing(update: Update, context: CallbackContext):
         time = t(time)
         msg += f"\n*Episode*: `{response['nextAiringEpisode']['episode']}`\n*Airing In*: `{time}`"
     else:
+        buttons = [[InlineKeyboardButton("More Info", url=info)]]
         msg += f"\n*Episode*: `{response['episodes']}`\n*Status*: `N/A`"
     update.effective_message.reply_photo(
         photo=image, caption=msg, parse_mode=ParseMode.MARKDOWN
+        reply_markup=InlineKeyboardMarkup(buttons)
     )
 
 def anime(update: Update, context: CallbackContext):
