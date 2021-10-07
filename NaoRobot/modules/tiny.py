@@ -2,7 +2,6 @@ import os
 import cv2
 from PIL import Image
 from NaoRobot.events import register
-from NaoRobot import Client as client
 from NaoRobot import telethn as tbot
 
 
@@ -12,7 +11,6 @@ async def _(event):
     if not (reply and(reply.media)):
        await event.reply("`Please reply to a sticker`")
        return
-    xx = await event.edit("`Converting sticker to tiny`")
     ik = await tbot.download_media(reply)
     im1 = Image.open("NaoRobot/resources/ken.png")
     if ik.endswith(".tgs"):
@@ -73,7 +71,6 @@ async def _(event):
         file = "o.webp"
         os.remove("k.png")
     await tbot.send_file(event.chat_id, file, reply_to=event.reply_to_msg_id)
-    await xx.delete()
     os.remove(file)
     os.remove(ik)
 
