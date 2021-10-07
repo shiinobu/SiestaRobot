@@ -2,6 +2,7 @@ import os
 import cv2
 from PIL import Image
 from NaoRobot.events import register
+from NaoRobot import Client as client
 from NaoRobot import telethn as tbot
 
 
@@ -12,10 +13,10 @@ async def _(event):
        await event.reply("`Please reply to a sticker`")
        return
     xx = await event.edit("`Converting sticker to tiny`")
-    ik = await tbot.download_media(reply)
+    ik = await cient.download_media(reply)
     im1 = Image.open("NaoRobot/resources/ken.png")
     if ik.endswith(".tgs"):
-        await event.tbot.download_media(reply, "ken.tgs")
+        await event.client.download_media(reply, "ken.tgs")
         os.system("lottie_convert.py ken.tgs json.json")
         json = open("json.json", "r")
         jsn = json.read()
@@ -71,7 +72,7 @@ async def _(event):
         back_im.save("o.webp", "WEBP", quality=95)
         file = "o.webp"
         os.remove("k.png")
-    await event.tbot.send_file(event.chat_id, file, reply_to=event.reply_to_msg_id)
+    await event.client.send_file(event.chat_id, file, reply_to=event.reply_to_msg_id)
     await xx.delete()
     os.remove(file)
     os.remove(ik)
