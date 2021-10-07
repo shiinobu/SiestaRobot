@@ -26,7 +26,7 @@ async def _(event):
         os.remove("json.json")
     elif ik.endswitch((".gif", ".mp4")):
                 iik = cv2.VideoCapture(ik)
-        dani, busy = iik.read()
+        busy = iik.read()
         cv2.imwrite("i.png", busy)
         fil = "i.png"
         im = Image.open(fil)
