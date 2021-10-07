@@ -1,3 +1,6 @@
+# ported from TheHamkerCat 
+# https://github.com/TheHamkerCat/WilliamButcherBot
+
 from pyrogram import filters
 
 from NaoRobot import pbot as app, arq
