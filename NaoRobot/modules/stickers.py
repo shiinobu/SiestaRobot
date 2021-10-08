@@ -96,6 +96,10 @@ def kang(update, context):
         else:
             sticker_emoji = "🙂"
 
+        adding_process = msg.reply_text(
+            "<b>Your sticker will be added in few seconds, please wait...</b>",
+            parse_mode=ParseMode.HTML,
+        )
 
         if not is_animated:
             try:
@@ -135,7 +139,7 @@ def kang(update, context):
                         ]
                     ]
                 )
-                msg.reply_text(
+                adding_process.edit_text(
                     f"<b>Your sticker has been added!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
@@ -177,7 +181,7 @@ def kang(update, context):
                             ]
                         ]
                     )
-                    msg.reply_text(
+                    adding_process.edit_text(
                         f"<b>Your sticker has been added!</b>"
                         f"\nEmoji Is : {sticker_emoji}",
                         reply_markup=edited_keyboard,
@@ -243,7 +247,7 @@ def kang(update, context):
                         ]
                     ]
                 )
-                msg.reply_text(
+                adding_process.edit_text(
                     f"<b>Your sticker has been added!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
@@ -274,7 +278,7 @@ def kang(update, context):
                             ]
                         ]
                     )
-                    msg.reply_text(
+                    adding_process.edit_text(
                         f"<b>Your sticker has been added!</b>"
                         f"\nEmoji Is : {sticker_emoji}",
                         reply_markup=edited_keyboard,
@@ -327,7 +331,7 @@ def kang(update, context):
                     ]
                 ]
             )
-            msg.reply_text(
+            adding_process.edit_text(
                 f"<b>Your sticker has been added!</b>" f"\nEmoji Is : {sticker_emoji}",
                 reply_markup=edited_keyboard,
                 parse_mode=ParseMode.HTML,
@@ -366,7 +370,7 @@ def kang(update, context):
                         ]
                     ]
                 )
-                msg.reply_text(
+                adding_process.edit_text(
                     f"<b>Your sticker has been added!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
@@ -580,7 +584,6 @@ __help__ = """
 •  `/stickerid`*:* reply to a sticker to me to tell you its file ID.
 •  `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
 •  `/kang`*:* reply to a sticker to add it to your pack.
-•  `/tiny`*:* reply to a sticker to change size the sticker to small.
 •  /delsticker*:* Reply to your anime exist sticker to your pack to delete it.
 • `/stickers`*:* Find stickers for given term on combot sticker catalogue
 """
