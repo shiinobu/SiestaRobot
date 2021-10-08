@@ -513,6 +513,12 @@ def get_help(update: Update, context: CallbackContext):
                             text="Help",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Support chat",
+                            url="t.me/kenbotsupport"
+                        ),
                     ]
                 ]
             ),
