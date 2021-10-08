@@ -7,11 +7,11 @@ from NaoRobot import telethn as tbot
 from NaoRobot import TEMP_DOWNLOAD_DIRECTORY
 
 
-@register(pattern="^/wall ?(.*)")
+@register(pattern="^/kamuii ?(.*)")
 async def _(event):
     try:
         query = event.pattern_match.group(1)
-        feri = await event.reply("`Searching for Images....`")
+        feri = await event.reply("`Deepfrying this image....`")
         async with ubot.conversation("@image_deepfrybot") as conv:
             try:
                 query1 = await conv.send_message(f"/deepfry {level}")
