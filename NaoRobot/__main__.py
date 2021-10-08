@@ -370,7 +370,7 @@ def nao_about_callback(update, context):
                              callback_data="source_"),
                          InlineKeyboardButton(
                              text="ᴜᴘᴅᴀᴛᴇs​",
-                             url="https://t.me/KennedyProject"),
+                             url="https://t.me/KennedyProject"
                         ),
                      ],
                      [
