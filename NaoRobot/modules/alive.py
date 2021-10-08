@@ -15,7 +15,7 @@ async def awake(event):
   TEXT = f"**Hi {ken}, I'm Nao Tomori.** \n\n"
   TEXT += "🌼 **I'm Working Properly** \n\n"
   TEXT += "🌼 **My Master : [Sena](https://t.me/xgothboi)** \n\n"
-  TEXT += "🌼 **Python Version :** `3.9.7`
+  TEXT += "🌼 **Python Version :** `3.9.7` \n\n"
   TEXT += f"🌼 **Telethon Version :** `{tlhver}` \n\n"
   TEXT += f"🌼 **Pyrogram Version :** `{pyrover}` \n\n"
   TEXT += "**Thanks For Adding Me Here ❤️**"
