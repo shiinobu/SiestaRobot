@@ -569,10 +569,11 @@ def getsticker(update: Update, context: CallbackContext):
 
 
 def delsticker(update, context):
+    bot = context.bot
     msg = update.effective_message
     if msg.reply_to_message and msg.reply_to_message.sticker:
         file_id = msg.reply_to_message.sticker.file_id
-        context.bot.delete_sticker_from_set(file_id)
+        bot.delete_sticker_from_set(file_id)
         msg.reply_text("Deleted!")
     else:
         update.effective_message.reply_text(
