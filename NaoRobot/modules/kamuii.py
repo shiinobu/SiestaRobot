@@ -10,7 +10,7 @@ from NaoRobot import TEMP_DOWNLOAD_DIRECTORY
 @register(pattern="^/kamuii ?(.*)")
 async def _(event):
     try:
-        query = event.pattern_match.group(1)
+        level = fry.pattern_match.group(2)
         feri = await event.reply("`Deepfrying this image....`")
         async with ubot.conversation("@image_deepfrybot") as conv:
             try:
