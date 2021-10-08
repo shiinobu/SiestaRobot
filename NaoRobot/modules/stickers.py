@@ -243,7 +243,7 @@ def kang(update, context):
                         ]
                     ]
                 )
-                adding_process.edit_text(
+                msg.reply_text(
                     f"<b>Your sticker has been added!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
@@ -274,7 +274,7 @@ def kang(update, context):
                             ]
                         ]
                     )
-                    adding_process.edit_text(
+                    msg.reply_text(
                         f"<b>Your sticker has been added!</b>"
                         f"\nEmoji Is : {sticker_emoji}",
                         reply_markup=edited_keyboard,
@@ -327,7 +327,7 @@ def kang(update, context):
                     ]
                 ]
             )
-            adding_process.edit_text(
+            msg.reply_text(
                 f"<b>Your sticker has been added!</b>" f"\nEmoji Is : {sticker_emoji}",
                 reply_markup=edited_keyboard,
                 parse_mode=ParseMode.HTML,
@@ -366,7 +366,7 @@ def kang(update, context):
                         ]
                     ]
                 )
-                adding_process.edit_text(
+                msg.reply_text(
                     f"<b>Your sticker has been added!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
