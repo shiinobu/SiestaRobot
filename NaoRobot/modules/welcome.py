@@ -223,7 +223,7 @@ def new_member(update: Update, context: CallbackContext):
         media_wel = False
 
         if spamwatch is not None:
-            sw_ban = spamwatch.get_ban(new_mem.id)
+            sw_ban = spamwatch.is_user_ban(new_mem.id)
             if sw_ban:
                 return
 
@@ -635,7 +635,7 @@ def left_member(update: Update, context: CallbackContext):
 
             # Ignore spamwatch banned users
             try:
-                sw = spamwatch.get_ban(int(left_mem.id))
+                sw = spamwatch.is_user_ban(int(left_mem.id))
                 if sw:
                     return
             except BaseException:
