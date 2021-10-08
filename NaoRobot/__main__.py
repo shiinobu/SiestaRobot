@@ -92,6 +92,11 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
+            text="🎵 ᴍᴜsɪᴄᴘʟᴀʏᴇʀ ɢᴜɪᴅᴇ​​", url="https://telegra.ph/MUSICPLAYER-GUIDE-FOR-NAO-TOMORI-10-08"
+        ),
+    ],
+    [
+        InlineKeyboardButton(
             text="❓ ʜᴇʟᴘ &​ ᴄᴏᴍᴍᴀɴᴅ", callback_data="help_back"
         ),
     ],
