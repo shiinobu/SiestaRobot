@@ -6,9 +6,9 @@ from functools import partial
 from contextlib import suppress
 from typing import Tuple, Optional
 from telethon import events
-import KanekiRobot.modules.sql.welcome_sql as sql
-import KanekiRobot
-from KanekiRobot import (
+import NaoRobot.modules.sql.welcome_sql as sql
+import NaoRobot
+from NaoRobot import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
@@ -23,19 +23,19 @@ from KanekiRobot import (
     BL_CHATS,
     BOT_ID,
 )
-from KanekiRobot.modules.helper_funsc.chat_status import (
+from NaoRobot.modules.helper_funsc.chat_status import (
     is_user_ban_protected,
     user_admin,
 )
-from KanekiRobot.modules.helper_funsc.misc import build_keyboard_parser, revert_buttons
-from KanekiRobot.modules.helper_funsc.msg_types import get_welcome_type
-from KanekiRobot.modules.helper_funsc.handlers import MessageHandlerChecker
-from KanekiRobot.modules.helper_funsc.string_handling import (
+from NaoRobot.modules.helper_funcs.misc import build_keyboard_parser, revert_buttons
+from NaoRobot.modules.helper_funcs.msg_types import get_welcome_type
+from NaoRobot.modules.helper_funcs.handlers import MessageHandlerChecker
+from NaoRobot.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
-from KanekiRobot.modules.log_channel import loggable
-from KanekiRobot.modules.sql.global_bans_sql import is_user_gbanned
+from NaoRobot.modules.log_channel import loggable
+from NaoRobot.modules.sql.global_bans_sql import is_user_gbanned
 from telegram import (
     ChatPermissions,
     InlineKeyboardButton,
@@ -207,7 +207,7 @@ def new_member(update: Update, context: CallbackContext):
             )
             bot.leave_chat(BL_CHATS)
 
-        if new_mem.id == bot.id and not KanekiRobot.ALLOW_CHATS:
+        if new_mem.id == bot.id and not NaoRobot.ALLOW_CHATS:
             with suppress(BadRequest):
                 update.effective_chat.send_message(
                     f"Groups are disabled for {bot.first_name}, I'm outta here."
@@ -345,7 +345,7 @@ def new_member(update: Update, context: CallbackContext):
                 buttons = sql.get_welc_buttons(chat.id)
                 keyb = build_keyboard_parser(
                     bot, chat_id, buttons
-                )  # KanekiRobot/modules/cust_filters.py
+                )  # NaoRobot/modules/cust_filters.py
 
                 if welc_type not in (sql.Types.TEXT, sql.Types.BUTTON_TEXT):
                     media_wel = True
