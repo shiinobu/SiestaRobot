@@ -23,7 +23,7 @@ from NaoRobot import (
     BL_CHATS,
     BOT_ID,
 )
-from NaoRobot.modules.helper_funsc.chat_status import (
+from NaoRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     user_admin,
 )
