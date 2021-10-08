@@ -92,11 +92,6 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="🎵 ᴍᴜsɪᴄᴘʟᴀʏᴇʀ ɢᴜɪᴅᴇ​​", url="https://telegra.ph/MUSICPLAYER-GUIDE-FOR-NAO-TOMORI-10-08"
-        ),
-    ],
-    [
-        InlineKeyboardButton(
             text="❓ ʜᴇʟᴘ &​ ᴄᴏᴍᴍᴀɴᴅ", callback_data="help_back"
         ),
     ],
@@ -371,17 +366,17 @@ def nao_about_callback(update, context):
                 [
                      [
                          InlineKeyboardButton(
-                             text="More Info​",
-                             callback_data="source_"
+                             text="ᴍᴏʀᴇ ɪɴꜰᴏ​",
+                             callback_data="source_"),
+                         InlineKeyboardButton(
+                             text="ᴜᴘᴅᴀᴛᴇs​",
+                             url="https://t.me/KennedyProject"),
                         ),
                      ],
                      [
                          InlineKeyboardButton(
-                             text="Updates​",
-                             url="https://t.me/KennedyProject"),
-                         InlineKeyboardButton(
-                             text="Support​",
-                             url="https://t.me/kenbotsupport"
+                             text="🎵 ᴍᴜsɪᴄᴘʟᴀʏᴇʀ ɢᴜɪᴅᴇ​​", 
+                             url="https://telegra.ph/MUSICPLAYER-GUIDE-FOR-NAO-TOMORI-10-08"
                         ),
                      ],
                      [
