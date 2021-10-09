@@ -817,9 +817,10 @@ def main():
     else:
         LOGGER.info("Using long polling.")
         updater.start_polling(
+            allowed_updates=Update.ALL_TYPES,
             timeout=15, 
             read_latency=4, 
-            drop_pending_updates=True,
+            drop_pending_updates=True
         )
 
     if len(argv) not in (1, 3, 4):
