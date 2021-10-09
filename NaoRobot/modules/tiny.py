@@ -11,6 +11,7 @@ async def _(event):
     if not (reply and(reply.media)):
        await event.reply("`Please reply to a sticker`")
        return
+    kontol = await event.reply("`Processing tiny...`")
     ik = await tbot.download_media(reply)
     im1 = Image.open("NaoRobot/resources/ken.png")
     if ik.endswith(".tgs"):
@@ -71,6 +72,7 @@ async def _(event):
         file = "o.webp"
         os.remove("k.png")
     await tbot.send_file(event.chat_id, file, reply_to=event.reply_to_msg_id)
+    await kontol.delete()
     os.remove(file)
     os.remove(ik)
 
