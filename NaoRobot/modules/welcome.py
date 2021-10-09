@@ -16,7 +16,6 @@ from NaoRobot import (
     DEMONS,
     TIGERS,
     WOLVES,
-    spamwatch,
     dispatcher,
     JOIN_LOGGER,
     telethn,
@@ -221,11 +220,6 @@ def new_member(update: Update, context: CallbackContext):
         should_mute = True
         welcome_bool = True
         media_wel = False
-
-        if spamwatch is not None:
-            sw_ban = spamwatch.is_user_ban(new_mem.id)
-            if sw_ban:
-                return
 
         if is_user_gbanned(new_mem.id):
             return
@@ -632,14 +626,6 @@ def left_member(update: Update, context: CallbackContext):
             # Ignore gbanned users
             if is_user_gbanned(left_mem.id):
                 return
-
-            # Ignore spamwatch banned users
-            try:
-                sw = spamwatch.is_user_ban(int(left_mem.id))
-                if sw:
-                    return
-            except BaseException:
-                pass
 
             # Dont say goodbyes to gbanned users
             if is_user_gbanned(left_mem.id):
