@@ -525,38 +525,7 @@ Examples:
  `/setbio This user is a wolf` (reply to the user)
 *Overall Information about you:*
  • `/info`*:* get information about a user.
-*What is that health thingy?*
- Come and see [HP System explained](📈 What is that health bar that Kennedy displays on /info❔
-That is a new web tech called "HP system", aka Health points system.
 
-Explaining what the panel is
-Health: avail_hp/max_hp
-[Health Bar] percantage
-
-What does this even do❔
-It's an interactive way of showing how complete your profile is.
-Users with no PFP, no username, no bio on Kennedy or no what others say will have less health as their profile is considered as "incomplete".
-
-How we determine Max HP
-((Number of chats seen in +10 ) * 10)
-Basically the more groups Kennedy sees you in, the higher your max hp is.
-You don't need to stay in the group, you can just join, send a message and leave and max hp will slightly increase.
-
-Penalties from available HP:
--25% if no username
--25% if no profile pic
--20% if no set me exists
--10% if no what others say exists
- -7% if user is AFK
- -5% if the user is AFK with reason
-
-Bad status effects:
-Gbanned users will always have 5% HP from max HP
-Example: If HP is 100 but gbanned
-Available HP is 5% of 100 = 5HP
-
-Why was this added❔
-To make the info panel more fun but mainly to urge our users to have a properly written profile, good profiles help you connect to users around you (plus looking like some spammer ID isnt a good experience, is it?))
 """
 
 SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio, run_async=True)
@@ -577,7 +546,7 @@ dispatcher.add_handler(GET_BIO_HANDLER)
 dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
-__mod_name__ = "Info/About"
+__mod_name__ = "Info"
 __command_list__ = ["setbio", "bio", "setme", "me", "info"]
 __handlers__ = [
     ID_HANDLER,
