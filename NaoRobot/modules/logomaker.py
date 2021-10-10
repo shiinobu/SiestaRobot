@@ -56,13 +56,13 @@ async def logo_gen(event):
         fpath_ = glob.glob("./NaoRobot/resources/*")
         font_ = random.choice(fpath_)
     if len(name) <= 8:
-        fnt_size = 150
+        fnt_size = 120
         strke = 10
     elif len(name) >= 9:
         fnt_size = 50
         strke = 5
     else:
-        fnt_size = 130
+        fnt_size = 100
         strke = 20
     img = Image.open(bg_)
     draw = ImageDraw.Draw(img)
@@ -80,7 +80,7 @@ async def logo_gen(event):
     y = (image_height - h) / 2
     draw.text((x, y), name, font=font, fill="white",
               stroke_width=strke, stroke_fill="black")
-    flnme = f"knbot.png"
+    flnme = f"naobot.png"
     img.save(flnme, "png")
     await xx.edit("`Done!`")
     if os.path.exists(flnme):
