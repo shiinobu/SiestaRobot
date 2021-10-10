@@ -12,6 +12,6 @@ def spill(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(spill_string.SPILL))
 
 
-DARE_HANDLER = DisableAbleCommandHandler("spill", spill, run_async=True)
+SPILL_HANDLER = DisableAbleCommandHandler("spill", spill, run_async=True)
 
 dispatcher.add_handler(SPILL_HANDLER)
