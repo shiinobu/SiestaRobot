@@ -23,7 +23,7 @@ async def logo_gen(event):
     if not name:
         await xx.edit("`Provide some text to draw!`")
     try:
-        await event.reply("`Creating your logo...`")
+        xx = await event.reply("`Creating your logo...`")
     bg_, font_ = "", ""
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
