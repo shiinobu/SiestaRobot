@@ -6,14 +6,14 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters, CallbackContext
 from telegram.utils.helpers import mention_html
 
-from KanekiRobot import dispatcher, DRAGONS
-from KanekiRobot.modules.connection import connected
-from KanekiRobot.helper_extra.admin_rights import (
+from NaoRobot import dispatcher, DRAGONS
+from NaoRobot.modules.connection import connected
+from NaoRobot.helper_funcs.admin_rights import (
     user_can_changeinfo,
     user_can_pin,
     user_can_promote,
 )
-from KanekiRobot.modules.helper_funsc.chat_status import (
+from NaoRobot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_pin,
     can_promote,
@@ -22,13 +22,13 @@ from KanekiRobot.modules.helper_funsc.chat_status import (
     is_user_admin,
     ADMIN_CACHE,
 )
-from KanekiRobot.modules.helper_funsc.extraction import (
+from NaoRobot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from KanekiRobot.modules.log_channel import loggable
-from KanekiRobot.modules.disable import DisableAbleCommandHandler
-from KanekiRobot.modules.helper_funsc.decorators import linacmd
+from NaoRobot.modules.log_channel import loggable
+from NaoRobot.modules.disable import DisableAbleCommandHandler
+from NaoRobot.modules.helper_funcs.decorators import linacmd
 
 
 @linacmd(command="promote", pass_args=True, filters=Filters.chat_type.groups)
@@ -354,11 +354,15 @@ def pinned(update: Update, context: CallbackContext) -> str:
             message_link = f"https://t.me/c/{link_chat_id}/{pinned_id}"
 
         msg.reply_text(
-            f'The pinned message of {html.escape(chat.title)} is <a href="{message_link}">here</a>.',
+            f'Tap on button bellow to see pinned chat on {html.escape(chat.title)}.',
             reply_to_message_id=msg_id,
             parse_mode=ParseMode.HTML,
             disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="See Message", url=f"{message_link}")]]
+            ),
         )
+
     else:
         msg.reply_text(
             f"There is no pinned message in <b>{html.escape(chat.title)}!</b>",
