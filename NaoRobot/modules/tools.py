@@ -1,11 +1,6 @@
-__mod_name__ = "◎Tools"
+__mod_name__ = "Tools"
 
 __help__ = """
-*Chatbot* 
-_Admins only:_
- ❍ /chatbot on*:* Enables Chatbot mode in the chat.
- ❍ /chatbot off*:* Disables Chatbot mode in the chat.
-
 *Date-time-Weather*
  ❍ /time <country code>*:* Gives information about a timezone.
  ❍ /weather <city>*:* Get weather info in a particular place.
