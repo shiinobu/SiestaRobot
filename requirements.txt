@@ -85,3 +85,4 @@ tzlocal
 pendulum
 fuzzysearch
 img2pdf
+pymediainfo
