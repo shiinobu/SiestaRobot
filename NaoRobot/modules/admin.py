@@ -28,10 +28,10 @@ from NaoRobot.modules.helper_funcs.extraction import (
 )
 from NaoRobot.modules.log_channel import loggable
 from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.helper_funcs.decorators import linacmd
+from NaoRobot.modules.helper_funcs.decorators import naocmd
 
 
-@linacmd(command="promote", pass_args=True, filters=Filters.chat_type.groups)
+@naocmd(command="promote", pass_args=True, filters=Filters.chat_type.groups)
 @connection_status
 @bot_admin
 @can_promote
@@ -111,7 +111,7 @@ def promote(update: Update, context: CallbackContext) -> str:
     return log_message
 
 
-@linacmd(command="fullpromote", pass_args=True, filters=Filters.chat_type.groups)
+@naocmd(command="fullpromote", pass_args=True, filters=Filters.chat_type.groups)
 @connection_status
 @bot_admin
 @can_promote
@@ -192,7 +192,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     return log_message
 
 
-@linacmd(command="demote", pass_args=True, filters=Filters.chat_type.groups)
+@naocmd(command="demote", pass_args=True, filters=Filters.chat_type.groups)
 @connection_status
 @bot_admin
 @can_promote
@@ -273,7 +273,7 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
 
-@linacmd(command="pin", can_disable=False)
+@naocmd(command="pin", can_disable=False)
 @bot_admin
 @can_pin
 @user_admin
@@ -332,7 +332,7 @@ def pin(update: Update, context: CallbackContext) -> str:
         return log_message
 
 
-@linacmd(command="pinned", filters=Filters.chat_type.groups)
+@naocmd(command="pinned", filters=Filters.chat_type.groups)
 @bot_admin
 def pinned(update: Update, context: CallbackContext) -> str:
     bot = context.bot
@@ -370,7 +370,7 @@ def pinned(update: Update, context: CallbackContext) -> str:
         )
 
 
-@linacmd(command="unpin", can_disable=False)
+@naocmd(command="unpin", can_disable=False)
 @bot_admin
 @can_pin
 @user_admin
@@ -409,7 +409,7 @@ def unpin(update: Update, context: CallbackContext):
     return log_message
 
 
-@linacmd(command="invitelink", pass_args=True, filters=Filters.chat_type.groups)
+@naocmd(command="invitelink", pass_args=True, filters=Filters.chat_type.groups)
 @bot_admin
 @user_admin
 def invite(update: Update, context: CallbackContext):
@@ -444,7 +444,7 @@ def invite(update: Update, context: CallbackContext):
         )
 
 
-@linacmd(command="admins", filters=Filters.chat_type.groups)
+@naocmd(command="admins", filters=Filters.chat_type.groups)
 @connection_status
 def adminlist(update: Update, context: CallbackContext):
     administrators = update.effective_chat.get_administrators()
@@ -465,7 +465,7 @@ def adminlist(update: Update, context: CallbackContext):
     update.effective_message.reply_text(text, parse_mode=ParseMode.HTML)
 
 
-@linacmd(command="title", pass_args=True, filters=Filters.chat_type.groups)
+@naocmd(command="title", pass_args=True, filters=Filters.chat_type.groups)
 @bot_admin
 @can_promote
 @user_admin
@@ -524,7 +524,7 @@ def set_title(update: Update, context: CallbackContext):
         message.reply_text("I can't set custom title for admins that I didn't promote!")
 
 
-@linacmd(command="setgpic", filters=Filters.chat_type.groups)
+@naocmd(command="setgpic", filters=Filters.chat_type.groups)
 @bot_admin
 @user_admin
 def setchatpic(update: Update, context: CallbackContext):
@@ -561,7 +561,7 @@ def setchatpic(update: Update, context: CallbackContext):
         msg.reply_text("Reply to some photo or file to set new chat pic!")
 
 
-@linacmd(command="delgpic", filters=Filters.chat_type.groups)
+@naocmd(command="delgpic", filters=Filters.chat_type.groups)
 @bot_admin
 @user_admin
 def rmchatpic(update: Update, context: CallbackContext):
@@ -580,7 +580,7 @@ def rmchatpic(update: Update, context: CallbackContext):
         return
 
 
-@linacmd(command="setgtitle", filters=Filters.chat_type.groups)
+@naocmd(command="setgtitle", filters=Filters.chat_type.groups)
 @bot_admin
 @user_admin
 def setchat_title(update: Update, context: CallbackContext):
@@ -609,7 +609,7 @@ def setchat_title(update: Update, context: CallbackContext):
         return
 
 
-@linacmd(command="setsticker", filters=Filters.chat_type.groups)
+@naocmd(command="setsticker", filters=Filters.chat_type.groups)
 @bot_admin
 @user_admin
 def set_sticker(update: Update, context: CallbackContext):
@@ -639,7 +639,7 @@ def set_sticker(update: Update, context: CallbackContext):
         msg.reply_text("You need to reply to some sticker to set chat sticker set!")
 
 
-@linacmd(command="setdesc", filters=Filters.chat_type.groups)
+@naocmd(command="setdesc", filters=Filters.chat_type.groups)
 @bot_admin
 @user_admin
 def set_desc(update: Update, context: CallbackContext):
@@ -664,7 +664,7 @@ def set_desc(update: Update, context: CallbackContext):
         msg.reply_text(f"Error! {excp.message}.")
 
 
-@linacmd(command="admincache", filters=Filters.chat_type.groups)
+@naocmd(command="admincache", filters=Filters.chat_type.groups)
 @user_admin
 def refresh_admin(update: Update, _):
     try:
