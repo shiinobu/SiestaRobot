@@ -428,5 +428,5 @@ __handlers__ = [
     KICK_HANDLER,
     UNBAN_HANDLER,
     ROAR_HANDLER,
-    KUCKME_HANDLER,
+    KICKME_HANDLER,
 ]
