@@ -359,7 +359,7 @@ def pinned(update: Update, context: CallbackContext) -> str:
             parse_mode=ParseMode.HTML,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="See Message", url=f"{message_link}")]]
+                [[InlineKeyboardButton(text="See Message", url=f"https://t.me/{link_chat_id}/{pinned_id}")]]
             ),
         )
 
