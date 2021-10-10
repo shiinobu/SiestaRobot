@@ -18,9 +18,9 @@ from NaoRobot import telethn as tbot
 
 @register(pattern="^/logo ?(.*)")
 async def logo_gen(event):
+    name = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     xx = await event.reply("`Creating your logo...`")
-    name = event.pattern_match.group(1)
     if not name:
         await xx.edit("`Provide some text to draw!`")
     bg_, font_ = "", ""
