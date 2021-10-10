@@ -7,6 +7,7 @@ import io
 import requests
 from io import BytesIO
 from requests import get
+from pymediainfo import MediaInfo as mediainfo
 
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
