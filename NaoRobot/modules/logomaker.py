@@ -8,13 +8,14 @@ from telethon.tl.types import InputMessagesFilterPhotos
 from NaoRobot import ubot
 from NaoRobot.events import register
 from NaoRobot import telethn as tbot
+from NaoRobot import eor
 
 @register(pattern="^/logo ?(.*)")
 async def logo_gen(event):
     xx = await event.edit("`Creating your logo...`")
     name = event.pattern_match.group(1)
     if not name:
-        await xx.edit("`Provide some text to draw!`")
+        await xx.eor("`Provide some text to draw!`")
     bg_, font_ = "", ""
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
