@@ -7,22 +7,21 @@ import io
 import requests
 from io import BytesIO
 from requests import get
-
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
-
-from NaoRobot import ubot
 from NaoRobot.events import register
-from NaoRobot import telethn as tbot
+from NaoRobot import telethn as tbot, ubot
 
 
 @register(pattern="^/logo ?(.*)")
 async def logo_gen(event):
+    xx = await event.reply("`Creating your logo...`")
     name = event.pattern_match.group(1)
     reply = await event.get_reply_message()
-    xx = await event.reply("`Creating your logo...`")
+    name = event.pattern_match.group(1)
     if not name:
-        await xx.edit("`Provide some text to draw!`")
+        await xx.edit("`Provide some text to draw!\nExample: /wlogo <your name>!`")
+        return
     bg_, font_ = "", ""
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
