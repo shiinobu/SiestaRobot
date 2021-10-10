@@ -76,6 +76,3 @@ async def _(event):
     await kontol.delete()
     os.remove(file)
     os.remove(ik)
-
-
-__mod_name__="tiny"
