@@ -6,7 +6,7 @@ from Python_ARQ import ARQ
 from NaoRobot import pbot as app, BOT_ID
 from NaoRobot.utils.errors import capture_err
 from NaoRobot.utils.permissions import adminsOnly
-from NaoRobot.ex_plugins.dbfuncions import (
+from NaoRobot.ex_plugins.dbfunctions import (
     alpha_to_int,
     get_karma,
     get_karmas,
