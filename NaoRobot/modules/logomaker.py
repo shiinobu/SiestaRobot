@@ -12,7 +12,8 @@ from NaoRobot import eor
 
 @register(pattern="^/logo ?(.*)")
 async def logo_gen(event):
-    xx = await event.edit("`Creating your logo...`")
+    reply = await event.get_reply_message()
+    xx = await event.reply("`Creating your logo...`")
     name = event.pattern_match.group(1)
     if not name:
         await xx.event.reply("`Provide some text to draw!`")
