@@ -8,7 +8,7 @@ from telegram.utils.helpers import mention_html
 
 from NaoRobot import dispatcher, DRAGONS
 from NaoRobot.modules.connection import connected
-from NaoRobot.helper_funcs.admin_rights import (
+from NaoRobot.modules.helper_funcs.admin_rights import (
     user_can_changeinfo,
     user_can_pin,
     user_can_promote,
