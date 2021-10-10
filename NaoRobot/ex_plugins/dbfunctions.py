@@ -33,6 +33,7 @@ from NaoRobot.mongo import db
 notesdb = db.notes
 filtersdb = db.filters
 warnsdb = db.warns
+nsfwdb = db.nsfw
 karmadb = db.karma
 chatsdb = db.chats
 usersdb = db.users
@@ -284,7 +285,7 @@ async def user_global_karma(user_id) -> int:
 
 
 async def get_karmas(chat_id: int) -> Dict[str, int]:
-    karma = await karmadb.find_one({"chat_id": chat_id})
+    karma = karmadb.find_one({"chat_id": chat_id})
     if not karma:
         return {}
     return karma["karma"]
@@ -301,13 +302,13 @@ async def update_karma(chat_id: int, name: str, karma: dict):
     name = name.lower().strip()
     karmas = await get_karmas(chat_id)
     karmas[name] = karma
-    await karmadb.update_one(
+    karmadb.update_one(
         {"chat_id": chat_id}, {"$set": {"karma": karmas}}, upsert=True
     )
 
 
 async def is_karma_on(chat_id: int) -> bool:
-    chat = await karmadb.find_one({"chat_id_toggle": chat_id})
+    chat = karmadb.find_one({"chat_id_toggle": chat_id})
     if not chat:
         return True
     return False
@@ -317,14 +318,34 @@ async def karma_on(chat_id: int):
     is_karma = await is_karma_on(chat_id)
     if is_karma:
         return
-    return await karmadb.delete_one({"chat_id_toggle": chat_id})
+    return karmadb.delete_one({"chat_id_toggle": chat_id})
 
 
 async def karma_off(chat_id: int):
     is_karma = await is_karma_on(chat_id)
     if not is_karma:
         return
-    return await karmadb.insert_one({"chat_id_toggle": chat_id})
+    return karmadb.insert_one({"chat_id_toggle": chat_id})
+
+
+async def is_nsfw_on(chat_id: int) -> bool:
+    chat = nsfwdb.find_one({"chat_id": chat_id})
+    if not chat:
+        return True
+    return False
+
+async def nsfw_on(chat_id: int):
+    is_nsfw = is_nsfw_on(chat_id)
+    if is_nsfw:
+        return
+    return nsfwdb.delete_one({"chat_id": chat_id})
+
+
+async def nsfw_off(chat_id: int):
+    is_nsfw = is_nsfw_on(chat_id)
+    if not is_nsfw:
+        return
+    return nsfwdb.insert_one({"chat_id": chat_id})
 
 
 async def is_served_chat(chat_id: int) -> bool:
@@ -410,7 +431,7 @@ async def remove_gban_user(user_id: int):
 
 
 async def _get_lovers(chat_id: int):
-    lovers = await coupledb.find_one({"chat_id": chat_id})
+    lovers = coupledb.find_one({"chat_id": chat_id})
     if not lovers:
         return {}
     return lovers["couple"]
@@ -426,7 +447,7 @@ async def get_couple(chat_id: int, date: str):
 async def save_couple(chat_id: int, date: str, couple: dict):
     lovers = await _get_lovers(chat_id)
     lovers[date] = couple
-    await coupledb.update_one(
+    coupledb.update_one(
         {"chat_id": chat_id},
         {"$set": {"couple": lovers}},
         upsert=True,
