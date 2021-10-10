@@ -336,6 +336,9 @@ __help__ = """
 - Shippering
  • /couples - get couples of today
 
+- Logomaker
+ • /logo <some text> - Creating logo with your name.
+
 - Here is the help for the Styletext module:
 
  • /weebify <text>: weebify your text!
