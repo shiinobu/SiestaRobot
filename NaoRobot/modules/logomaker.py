@@ -17,8 +17,6 @@ from NaoRobot import telethn as tbot, ubot
 async def logo_gen(event):
     xx = await event.reply("`Creating your logo...`")
     name = event.pattern_match.group(1)
-    reply = await event.get_reply_message()
-    name = event.pattern_match.group(1)
     if not name:
         await xx.edit("`Provide some text to draw!\nExample: /wlogo <your name>!`")
         return
