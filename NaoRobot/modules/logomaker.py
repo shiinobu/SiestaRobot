@@ -1,6 +1,12 @@
-import glob
 import os
-import random
+import shutil
+import random, re
+import glob
+import time
+import io
+import requests
+from io import BytesIO
+from requests import get
 
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
