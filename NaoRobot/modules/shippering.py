@@ -74,8 +74,4 @@ __New couple of the day may be chosen at 12AM {tomorrow}__"""
         message.reply_text(e)
 
 
-__help__ = """
- ❍ /couples - To Choose Couple Of The Day
-
- """
 __mod_name__ = "Couples"
