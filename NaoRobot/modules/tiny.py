@@ -7,11 +7,11 @@ from NaoRobot import telethn as tbot
 
 @register(pattern="^/tiny ?(.*)")
 async def _(event):
-    reply = await event.get_reply_message()
-    if not (reply and(reply.media)):
-       await event.reply("`Please reply to a sticker`")
-       return
-    try:
+ reply = await event.get_reply_message()
+ if not (reply and(reply.media)):
+         await event.reply("`Please reply to a sticker`")
+         return
+ try:
     kontol = await event.reply("`Processing tiny...`")
     ik = await tbot.download_media(reply)
     im1 = Image.open("NaoRobot/resources/ken.png")
