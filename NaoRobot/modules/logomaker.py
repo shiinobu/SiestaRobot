@@ -9,7 +9,7 @@ from NaoRobot import ubot
 from NaoRobot.events import register
 from NaoRobot import telethn as tbot
 
-@register(outgoing=True, pattern="^.logo(?: |$)(.*)")
+@register(pattern="^/logo ?(.*)")
 async def logo_gen(event):
     xx = await event.edit("`Creating your logo...`")
     name = event.pattern_match.group(1)
