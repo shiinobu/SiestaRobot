@@ -7,7 +7,6 @@ import io
 import requests
 from io import BytesIO
 from requests import get
-from pymediainfo import MediaInfo as mediainfo
 
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
@@ -15,7 +14,7 @@ from telethon.tl.types import InputMessagesFilterPhotos
 from NaoRobot import ubot
 from NaoRobot.events import register
 from NaoRobot import telethn as tbot
-from NaoRobot import eor
+
 
 @register(pattern="^/logo ?(.*)")
 async def logo_gen(event):
