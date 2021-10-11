@@ -339,6 +339,9 @@ __help__ = """
 - Logomaker
  • /logo <some text> - Creating logo with your name.
 
+- Deepfry
+ • /kamuii <level 1-8> - To deeprying sticker
+
 - Here is the help for the Styletext module:
 
  • /weebify <text>: weebify your text!
