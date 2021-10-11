@@ -83,7 +83,7 @@ async def logo_gen(event):
         await tbot.send_file(
             event.chat_id,
             file=flnme,
-            caption=f"Logo by @naoex_bot",
+            caption="Logo by [Nao Tomori ❤️](https://t.me/naoex_bot)",
             force_document=False,
         )
         os.remove(flnme)
