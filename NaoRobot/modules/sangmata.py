@@ -22,7 +22,7 @@ async def lastname(steal):
         return
     await steal.edit("```Mohon Menunggu..```")
     try:
-        async with bot.conversation(chat) as conv:
+        async with ubot.conversation(chat) as conv:
             try:
                 msg = await conv.send_message(id)
                 r = await conv.get_response()
