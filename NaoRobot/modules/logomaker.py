@@ -131,14 +131,14 @@ async def logo_(event):
         fpath_ = glob.glob("./NaoRobot/resources/fonts/*")
         font_ = random.choice(fpath_)
     if len(name) <= 8:
-        fnt_size = 120
-        strke = 10
+        fnt_size = 160
+        strke = 8
     elif len(name) >= 9:
         fnt_size = 50
-        strke = 5
+        strke = 4
     else:
-        fnt_size = 100
-        strke = 20
+        fnt_size = 130
+        strke = 13
     img = Image.open(bg_)
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype(font_, fnt_size)
