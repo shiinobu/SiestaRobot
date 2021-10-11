@@ -3,7 +3,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from NaoRobot import ubot
 from NaoRobot.events import register
-from NaoRobot import telethn as bot, TEMP_DOWNLOAD_DIRECTORY
+from NaoRobot import telethn as tbot, TEMP_DOWNLOAD_DIRECTORY
 
 
 @register(pattern="^/kamuii ?(.*)")
@@ -58,7 +58,7 @@ async def _(fry):
             try:
                 msg_level
             except NameError:
-                await fry.client.delete_messages(conv.chat_id,
+                await fry.ubot.delete_messages(conv.chat_id,
                                                  [msg.id, response.id])
             else:
                 await ubot.delete_messages(
