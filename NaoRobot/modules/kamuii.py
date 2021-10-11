@@ -9,7 +9,7 @@ from NaoRobot import telethn as bot, TEMP_DOWNLOAD_DIRECTORY
 @register(pattern="^/kamuii ?(.*)")
 async def _(fry):
     await fry.edit("`Cringgggg Jadi Benjol...`")
-    level = fry.pattern_match.group(2)
+    level = fry.pattern_match.group(1)
     if fry.fwd_from:
         return
     if not fry.reply_to_msg_id:
