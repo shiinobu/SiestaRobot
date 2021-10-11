@@ -7,10 +7,11 @@ from asyncio.exceptions import TimeoutError
 
 @register(pattern="^/sg ?(.*)")
 async def lastname(steal):
+    kntl = await kntl.edit("```Mengambil Informasi Pengguna Tersebut..```")
     if steal.fwd_from:
         return
     if not steal.reply_to_msg_id:
-        kntl = await steal.reply("```Mohon Balas Ke Pesan Pengguna.```")
+        await steal.reply("```Mohon Balas Ke Pesan Pengguna.```")
         return
     message = await steal.get_reply_message()
     chat = "@SangMataInfo_bot"
@@ -19,7 +20,7 @@ async def lastname(steal):
     if message.sender.bot:
         await kntl.edit("```Balas Ke Pesan Pengguna Yang Sebenarnya.```")
         return
-    await kntl.edit("```Mengambil Informasi Pengguna Tersebut, Mohon Menunggu..```")
+    await kntl.edit("```Mohon Menunggu..```")
     try:
         async with bot.conversation(chat) as conv:
             try:
@@ -36,7 +37,7 @@ async def lastname(steal):
                 await steal.edit(f"`{r.message}`")
                 await ubot.delete_messages(
                     conv.chat_id, [msg.id, r.id, response.id, respond.id]
-                )
+                ) 
                 return
             if response.text.startswith("No records") or r.text.startswith(
                 "No records"
