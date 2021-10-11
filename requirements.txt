@@ -86,3 +86,4 @@ pendulum
 fuzzysearch
 img2pdf
 pymediainfo
+pyUltroid
