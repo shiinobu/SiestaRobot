@@ -1,11 +1,6 @@
 import os
-import shutil
-import random, re
+import random
 import glob
-import time
-import io
-import requests
-from requests import get
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
 from NaoRobot.events import register
