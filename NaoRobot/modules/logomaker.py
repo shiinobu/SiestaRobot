@@ -90,7 +90,6 @@ async def logo_gen(event):
             os.remove(font_)
 
 
-
 @register(pattern="^/wlogo ?(.*)")
 async def logo_(event):
     xx = await event.reply("`Creating your logo...`")
@@ -172,3 +171,12 @@ async def logo_(event):
     if os.path.exists(font_):
         if not font_.startswith("./NaoRobot/resources/fonts"):
             os.remove(font_)
+
+
+__mod_name__ = "Logomaker"
+
+__help__ = """ This is help menu for logomaker
+
+ • /logo <text/name> - Create a logo with random view.
+ • /wlogo <text/name> - Create a logo with wide view only.
+"""
