@@ -8,12 +8,12 @@ from NaoRobot import telethn as tbot, TEMP_DOWNLOAD_DIRECTORY
 
 @register(pattern="^/kamuii ?(.*)")
 async def _(fry):
-    await fry.edit("`Cringgggg Jadi Benjol...`")
     level = fry.pattern_match.group(1)
+    kntl = await fry.reply("`Deepfrying this image...`")
     if fry.fwd_from:
         return
     if not fry.reply_to_msg_id:
-        await fry.edit("`Mohon Balas Di Sticker`")
+        await kntl.edit("`Reply to a stickers`")
         return
     reply_message = await fry.get_reply_message()
     if not reply_message.media:
@@ -58,11 +58,11 @@ async def _(fry):
             try:
                 msg_level
             except NameError:
-                await fry.ubot.delete_messages(conv.chat_id,
+                await ubot.delete_messages(conv.chat_id,
                                                  [msg.id, response.id])
             else:
                 await ubot.delete_messages(
                     conv.chat_id,
                     [msg.id, response.id, r.id, msg_level.id])
-    await fry.delete()
+    await kntl.delete()
     return os.remove(downloaded_file_name)
