@@ -7,7 +7,7 @@ from NaoRobot.events import register
 PLACE = ""
 
 
-@register(pattern="^adzan ?(.*)")
+@register(pattern="^/adzan ?(.*)")
 async def get_adzan(adzan):
     if not adzan.pattern_match.group(1):
         LOCATION = PLACE
