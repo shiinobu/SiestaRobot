@@ -39,6 +39,7 @@ from search_engine_parser import GoogleSearch
 from NaoRobot import (BOT_USERNAME, LOGGER, DRAGONS, USERBOT_ID,
                  USERBOT_NAME, USERBOT_USERNAME, pbot as app, ubot as app2, arq)
 from NaoRobot.services.keyboard import Ikb
+from NaoRobot import convert_seconds_to_minutes as time_convert, fetch
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from NaoRobot.services.types import InlineQueryResultCachedDocument
 from NaoRobot.modules.info import get_user_info, get_chat_info
@@ -69,6 +70,19 @@ keywords_list = [
     "music",
     "ytmusic",
 ]
+
+
+async def _netcat(host, port, content):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, int(port)))
+    s.sendall(content.encode())
+    s.shutdown(socket.SHUT_WR)
+    while True:
+        data = s.recv(4096).decode("utf-8").strip("\n\x00")
+        if not data:
+            break
+        return data
+    s.close()
 
 
 async def paste(content):
