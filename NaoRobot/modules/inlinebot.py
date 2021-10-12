@@ -299,6 +299,31 @@ async def inline_query_handler(client, query):
             answerss = await paste_func(answers, tex)
             await client.answer_inline_query(query.id, results=answerss, cache_time=2)
 
+        elif text.split()[0] == "fakegen":
+            results = []
+            fake = Faker()
+            name = str(fake.name())
+            fake.add_provider(internet)
+            address = str(fake.address())
+            ip = fake.ipv4_private()
+            cc = fake.credit_card_full()
+            email = fake.ascii_free_email()
+            job = fake.job()
+            android = fake.android_platform_token()
+            pc = fake.chrome()
+            res = f"<b><u> Fake Information Generated</b></u>\n<b>Name :-</b><code>{name}</code>\n\n<b>Address:-</b><code>{address}</code>\n\n<b>IP ADDRESS:-</b><code>{ip}</code>\n\n<b>credit card:-</b><code>{cc}</code>\n\n<b>Email Id:-</b><code>{email}</code>\n\n<b>Job:-</b><code>{job}</code>\n\n<b>android user agent:-</b><code>{android}</code>\n\n<b>Pc user agent:-</b><code>{pc}</code>"
+            results.append(
+                InlineQueryResultArticle(
+                    title="Fake infomation gathered",
+                    description="Click here to see them",
+                    input_message_content=InputTextMessageContent(
+                        res, parse_mode="HTML", disable_web_page_preview=True
+                    ),
+                )
+            )
+            await client.answer_inline_query(query.id, cache_time=0, results=results)
+
+
         elif text.split()[0] == "image":
             if len(text.split()) < 2:
                 return await client.answer_inline_query(
