@@ -55,17 +55,23 @@ keywords_list = [
     "speedtest",
     "search",
     "ping",
+    "paste",
     "tr",
     "ud",
     "yt",
     "info",
     "google",
     "torrent",
+    "pokedex",
     "wiki",
     "music",
     "ytmusic",
 ]
 
+
+async def paste(content):
+    link = await _netcat("ezup.dev", 9999, content)
+    return link
 
 async def inline_help_func(__HELP__):
     buttons = InlineKeyboard(row_width=4)
@@ -412,49 +418,58 @@ async def tg_search_func(answers, text, user_id):
     return answers
 
 
-async def music_inline_func(answers, query):
-    chat_id = -1001445180719
-    group_invite = "https://t.me/joinchat/vSDE2DuGK4Y4Nzll"
-    try:
-        messages = [
-            m
-            async for m in app2.search_messages(
-                chat_id, query, filter="audio", limit=100
-            )
-        ]
-    except Exception as e:
-        print(e)
-        msg = f"You Need To Join Here With Your Bot And Userbot To Get Cached Music.\n{group_invite}"
+async def music_func(answers, text):
+    buttons_list = []
+    results = await arq.saavn(text)
+    if not results.ok:
         answers.append(
             InlineQueryResultArticle(
-                title="ERROR",
-                description="Click Here To Know More.",
-                input_message_content=InputTextMessageContent(
-                    msg, disable_web_page_preview=True
-                ),
+                title="Error",
+                description=results.result,
+                input_message_content=InputTextMessageContent(results.result),
             )
         )
         return answers
-    messages_ids_and_duration = []
-    for f_ in messages:
-        messages_ids_and_duration.append(
-            {
-                "message_id": f_.message_id,
-                "duration": f_.audio.duration if f_.audio.duration else 0,
-            }
+    results = results.result
+    for count, i in enumerate(results):
+        buttons = InlineKeyboard(row_width=1)
+        buttons.add(InlineKeyboardButton("Download | Play", url=i.media_url))
+        buttons_list.append(buttons)
+        duration = await time_convert(i.duration)
+        caption = f"""
+**Title:** {i.song}
+**Album:** {i.album}
+**Duration:** {duration}
+**Release:** {i.year}
+**Singers:** {i.singers}"""
+        description = f"{i.album} | {duration} " + f"| {i.singers} ({i.year})"
+        answers.append(
+            InlineQueryResultArticle(
+                title=i.song,
+                input_message_content=InputTextMessageContent(
+                    caption, disable_web_page_preview=True
+                ),
+                description=description,
+                thumb_url=i.image,
+                reply_markup=buttons_list[count],
+            )
         )
-    messages = list(
-        {v["duration"]: v for v in messages_ids_and_duration}.values()
+    return answers
+
+
+async def paste_func(answers, text):
+    start_time = time()
+    url = await paste(text)
+    msg = f"__**{url}**__"
+    end_time = time()
+    answers.append(
+        InlineQueryResultArticle(
+            title=f"Pasted In {round(end_time - start_time)} Seconds.",
+            description=url,
+            input_message_content=InputTextMessageContent(msg),
+        )
     )
-    messages_ids = [ff_["message_id"] for ff_ in messages]
-    messages = await app.get_messages(chat_id, messages_ids[0:48])
-    return [
-        InlineQueryResultCachedDocument(
-            file_id=message_.audio.file_id,
-            title=message_.audio.title,
-        )
-        for message_ in messages
-    ]
+    return answers
 
 
 async def wiki_func(answers, text):
@@ -727,6 +742,35 @@ async def image_func(answers, query):
                 reply_markup=buttons,
             )
         )
+    return answers
+
+
+async def pokedexinfo(answers, pokemon):
+    Pokemon = f"https://some-random-api.ml/pokedex?pokemon={pokemon}"
+    result = await fetch(Pokemon)
+    buttons = InlineKeyboard(row_width=1)
+    buttons.add(
+        InlineKeyboardButton("Pokedex", switch_inline_query_current_chat="pokedex")
+    )
+    caption = f"""
+**Pokemon:** `{result['name']}`
+**Pokedex:** `{result['id']}`
+**Type:** `{result['type']}`
+**Abilities:** `{result['abilities']}`
+**Height:** `{result['height']}`
+**Weight:** `{result['weight']}`
+**Gender:** `{result['gender']}`
+**Stats:** `{result['stats']}`
+**Description:** `{result['description']}`"""
+    answers.append(
+        InlineQueryResultPhoto(
+            photo_url=f"https://img.pokemondb.net/artwork/large/{pokemon}.jpg",
+            title=result["name"],
+            description=result["description"],
+            caption=caption,
+            reply_markup=buttons,
+        )
+    )
     return answers
 
 
