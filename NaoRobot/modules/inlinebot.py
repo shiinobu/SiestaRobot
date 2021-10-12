@@ -282,6 +282,22 @@ async def inline_query_handler(client, query):
             await client.answer_inline_query(
                 query.id, results=answerss, cache_time=2
             )
+        elif text.split()[0] == "pokedex":
+            if len(text.split()) < 2:
+                await client.answer_inline_query(
+                    query.id,
+                    results=answers,
+                    switch_pm_text="Pokemon [text]",
+                    switch_pm_parameter="pokedex",
+                )
+                return
+            pokedex = text.split(None, 1)[1].strip()
+            Pokedex = await pokedexinfo(answers, pokedex)
+            await client.answer_inline_query(query.id, results=Pokedex, cache_time=2)
+        elif text.split()[0] == "paste":
+            tex = text.split(None, 1)[1]
+            answerss = await paste_func(answers, tex)
+            await client.answer_inline_query(query.id, results=answerss, cache_time=2)
 
         elif text.split()[0] == "image":
             if len(text.split()) < 2:
