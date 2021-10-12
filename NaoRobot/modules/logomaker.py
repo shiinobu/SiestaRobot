@@ -1,6 +1,7 @@
 import os
 import random
 import glob
+from py_Ultroid.functions.all import mediainfo
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
 from NaoRobot.events import register
