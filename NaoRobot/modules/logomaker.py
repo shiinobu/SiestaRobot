@@ -1,7 +1,7 @@
 import os
 import random
 import glob
-from pyUltroid.functions.all import mediainfo
+from pyUltroid.functions.misc import unsplashsearch
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
 from NaoRobot.events import register
