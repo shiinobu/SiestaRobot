@@ -21,6 +21,7 @@ SOFTWARE.
 import traceback
 
 from NaoRobot import pbot as app
+from NaoRobot.utils.pluginhelper import fetch
 from NaoRobot.utils.inlinefuncs import *
 
 __MODULE__ = "Inline"
