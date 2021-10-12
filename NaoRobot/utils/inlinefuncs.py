@@ -418,7 +418,7 @@ async def tg_search_func(answers, text, user_id):
     return answers
 
 
-async def music_func(answers, text):
+async def music_inline_func(answers, text):
     buttons_list = []
     results = await arq.saavn(text)
     if not results.ok:
