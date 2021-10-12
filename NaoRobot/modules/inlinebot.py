@@ -37,13 +37,11 @@ async def inline_query_handler(client, query):
             await client.answer_inline_query(
                 query.id, results=answerss, cache_time=10
             )
-
         elif text.split()[0] == "alive":
             answerss = await alive_function(answers)
             await client.answer_inline_query(
                 query.id, results=answerss, cache_time=10
             )
-
         elif text.split()[0] == "tr":
             if len(text.split()) < 3:
                 return await client.answer_inline_query(
@@ -52,7 +50,6 @@ async def inline_query_handler(client, query):
                     switch_pm_text="Translator | tr [LANG] [TEXT]",
                     switch_pm_parameter="inline",
                 )
-
             lang = text.split()[1]
             tex = text.split(None, 2)[2].strip()
             answerss = await translate_func(answers, lang, tex)
@@ -60,7 +57,6 @@ async def inline_query_handler(client, query):
                 query.id,
                 results=answerss,
             )
-
         elif text.split()[0] == "ud":
             if len(text.split()) < 2:
                 return await client.answer_inline_query(
@@ -69,14 +65,12 @@ async def inline_query_handler(client, query):
                     switch_pm_text="Urban Dictionary | ud [QUERY]",
                     switch_pm_parameter="inline",
                 )
-
             tex = text.split(None, 1)[1].strip()
             answerss = await urban_func(answers, tex)
             await client.answer_inline_query(
                 query.id,
                 results=answerss,
             )
-
         elif text.split()[0] == "google":
             if len(text.split()) < 2:
                 return await client.answer_inline_query(
