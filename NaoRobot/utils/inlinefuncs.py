@@ -20,6 +20,10 @@ SOFTWARE.
 import asyncio
 import os
 import sys
+import socket
+import aiohttp
+from random import randint
+from time import time
 from html import escape
 from re import sub as re_sub
 from sys import version as pyver
