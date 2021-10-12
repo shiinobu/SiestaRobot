@@ -375,8 +375,8 @@ def nao_about_callback(update, context):
                      ],
                      [
                          InlineKeyboardButton(
-                             text="🎵 ᴍᴜsɪᴄᴘʟᴀʏᴇʀ ɢᴜɪᴅᴇ​​", 
-                             url="https://telegra.ph/MUSICPLAYER-GUIDE-FOR-NAO-TOMORI-10-08"
+                             text="sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ​, 
+                             url="https://KennedyProject/NaoRobot"
                         ),
                      ],
                      [
@@ -411,71 +411,6 @@ def Source_about_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_")]]
-            ),
-        )
-
-
-def afkbio_callback(update, context):
-    query = update.callback_query
-    if query.data == "afkbio_":
-        query.message.edit_text(
-            text="""*This Is help menu for AFK and Bio.*""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                     [
-                         InlineKeyboardButton(
-                             text="AFK​",
-                             callback_data="afk_"),
-                         InlineKeyboardButton(
-                             text="Support​",
-                             callback_data="Bio/about"
-                        ),
-                     ],
-                     [
-                         InlineKeyboardButton(text="🔙 Back", callback_data="help_back"),
-                     ],
-                ]
-            ),
-       )
-
-
-def afk_(update, context):
-    query = update.callback_query
-    if query.data == "afk_":
-        query.message.edit_text(
-            text=""" This is for afk.
-                 \n• /afk (reason) - Mark you as afk
-                 \n• brb (reason) - afk use regex brb""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="afkbio_")]]
-            ),
-        )
-
-
-def bio_(update, context):
-    query = update.callback_query
-    if query.data == "bio_":
-        query.message.edit_text(
-            text=""" Here is the help for the Bio/Abouts module:
-                  \n\nWriting something about yourself is cool, whether to make people know about yourself or promoting your profile.
-                  \nAll bios are displayed on /info command.
-                  \n  - /setbio <text>: While replying, will save another user's bio
-                  \n   - /bio: Will get your or another user's bio. This cannot be set by yourself.
-                  \n   - /setme <text>: Will set your info
-                  \n   - /me: Will get your or another user's info
-                  \nAn example of setting a bio for yourself:
-                  /setme I work for Telegram; Bio is set to yourself.
-                  An example of writing someone else' bio:
-                  Reply to user's message: /setbio He is such cool person.
-                  \n\nNotice: Do not use /setbio against yourself!""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="afkbio_")]]
             ),
         )
 
@@ -779,9 +714,6 @@ def main():
 
     about_callback_handler = CallbackQueryHandler(
         nao_about_callback, pattern=r"nao_", run_async=True
-    )
-    afkbio_callback_handler = CallbackQueryHandler(
-        afkbio_callback, pattern=r"afkbio_", run_async=True
     )
     source_callback_handler = CallbackQueryHandler(
         Source_about_callback, pattern=r"source_", run_async=True
