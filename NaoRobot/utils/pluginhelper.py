@@ -7,6 +7,7 @@ import traceback
 from functools import wraps
 from typing import Callable, Coroutine, Dict, List, Tuple, Union
 
+import aiohttp
 from PIL import Image
 from pyrogram import Client
 from pyrogram.errors import FloodWait, MessageNotModified
@@ -237,6 +238,15 @@ async def convert_to_image(message, client) -> [None, str]:
         vid_path = await client.download_media(message.reply_to_message)
         await runcmd(f"ffmpeg -i {vid_path} -filter:v scale=500:500 -an {final_path}")
     return final_path
+
+
+async def convert_seconds_to_minutes(seconds: int):
+    seconds = int(seconds)
+    seconds = seconds % (24 * 3600)
+    seconds %= 3600
+    minutes = seconds // 60
+    seconds %= 60
+    return "%02d:%02d" % (minutes, seconds)
 
 
 async def fetch(url):
