@@ -85,4 +85,4 @@ tzlocal
 pendulum
 fuzzysearch
 img2pdf
-pyultroid
+py-Ultroid==2021.10.11.1
