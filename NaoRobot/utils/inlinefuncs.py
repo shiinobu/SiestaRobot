@@ -55,6 +55,7 @@ keywords_list = [
     "speedtest",
     "search",
     "ping",
+    "webss",
     "paste",
     "tr",
     "ud",
@@ -63,6 +64,7 @@ keywords_list = [
     "google",
     "torrent",
     "pokedex",
+    "saavn",
     "wiki",
     "music",
     "ytmusic",
@@ -418,7 +420,84 @@ async def tg_search_func(answers, text, user_id):
     return answers
 
 
-async def music_inline_func(answers, text):
+async def music_inline_func(answers, query):
+    chat_id = -1001445180719
+    group_invite = "https://t.me/joinchat/vSDE2DuGK4Y4Nzll"
+    try:
+        messages = [
+            m
+            async for m in app2.search_messages(
+                chat_id, query, filter="audio", limit=100
+            )
+        ]
+    except Exception as e:
+        print(e)
+        msg = f"You Need To Join Here With Your Bot And Userbot To Get Cached Music.\n{group_invite}"
+        answers.append(
+            InlineQueryResultArticle(
+                title="ERROR",
+                description="Click Here To Know More.",
+                input_message_content=InputTextMessageContent(
+                    msg, disable_web_page_preview=True
+                ),
+            )
+        )
+        return answers
+    messages_ids_and_duration = []
+    for f_ in messages:
+        messages_ids_and_duration.append(
+            {
+                "message_id": f_.message_id,
+                "duration": f_.audio.duration if f_.audio.duration else 0,
+            }
+        )
+    messages = list(
+        {v["duration"]: v for v in messages_ids_and_duration}.values()
+    )
+    messages_ids = [ff_["message_id"] for ff_ in messages]
+    messages = await app.get_messages(chat_id, messages_ids[0:48])
+    return [
+        InlineQueryResultCachedDocument(
+            file_id=message_.audio.file_id,
+            title=message_.audio.title,
+        )
+        for message_ in messages
+    ]
+
+
+async def paste_func(answers, text):
+    start_time = time()
+    url = await paste(text)
+    msg = f"__**{url}**__"
+    end_time = time()
+    answers.append(
+        InlineQueryResultArticle(
+            title=f"Pasted In {round(end_time - start_time)} Seconds.",
+            description=url,
+            input_message_content=InputTextMessageContent(msg),
+        )
+    )
+    return answers
+
+
+async def webss(url):
+    start_time = time()
+    if "." not in url:
+        return
+    screenshot = await fetch(f"https://patheticprogrammers.cf/ss?site={url}")
+    end_time = time()
+    # m = await app.send_photo(LOG_GROUP_ID, photo=screenshot["url"])
+    await m.delete()
+    a = []
+    pic = InlineQueryResultPhoto(
+        photo_url=screenshot["url"],
+        caption=(f"`{url}`\n__Took {round(end_time - start_time)} Seconds.__"),
+    )
+    a.append(pic)
+    return a
+
+
+async def saavn_func(answers, text):
     buttons_list = []
     results = await arq.saavn(text)
     if not results.ok:
@@ -454,21 +533,6 @@ async def music_inline_func(answers, text):
                 reply_markup=buttons_list[count],
             )
         )
-    return answers
-
-
-async def paste_func(answers, text):
-    start_time = time()
-    url = await paste(text)
-    msg = f"__**{url}**__"
-    end_time = time()
-    answers.append(
-        InlineQueryResultArticle(
-            title=f"Pasted In {round(end_time - start_time)} Seconds.",
-            description=url,
-            input_message_content=InputTextMessageContent(msg),
-        )
-    )
     return answers
 
 
