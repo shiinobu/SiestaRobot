@@ -239,6 +239,16 @@ async def convert_to_image(message, client) -> [None, str]:
     return final_path
 
 
+async def fetch(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp:
+            try:
+                data = await resp.json()
+            except Exception:
+                data = await resp.text()
+    return data
+
+
 def get_text(message: Message) -> [None, str]:
     """Extract Text From Commands"""
     text_to_return = message.text
