@@ -9,7 +9,7 @@ from NaoRobot import telethn as tbot, ubot
 
 @register(pattern="^/logo ?(.*)")
 async def logo_gen(event):
-    xx = await event.reply("`Creating your logo...`")
+    xx = await event.reply("`Preparing your logo...`")
     name = event.pattern_match.group(1)
     if not name:
         await xx.edit("`Provide some text to draw!\nExample: /logo <your name>!`")
@@ -73,7 +73,7 @@ async def logo_gen(event):
               stroke_width=strke, stroke_fill="black")
     flnme = f"naobot.png"
     img.save(flnme, "png")
-    await xx.edit("`Done!`")
+    await xx.edit("`Uploading`")
     if os.path.exists(flnme):
         await tbot.send_file(
             event.chat_id,
@@ -92,7 +92,7 @@ async def logo_gen(event):
 
 @register(pattern="^/wlogo ?(.*)")
 async def logo_(event):
-    xx = await event.reply("`Creating your logo...`")
+    xx = await event.reply("`Preparing your logo...`")
     name = event.pattern_match.group(1)
     if not name:
         await xx.edit("`Provide some text to draw!\nExample: /wlogo <your name>!`")
@@ -156,7 +156,7 @@ async def logo_(event):
               stroke_width=strke, stroke_fill="black")
     flnme = f"naobot.png"
     img.save(flnme, "png")
-    await xx.edit("`Done!`")
+    await xx.edit("`Uploading`")
     if os.path.exists(flnme):
         await tbot.send_file(
             event.chat_id,
