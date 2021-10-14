@@ -81,7 +81,6 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 ──「 [Nao Tomori](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) 」──
-
 *Hello ! {},*
 *I'm A  Anime themed group management bot*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
@@ -219,7 +218,6 @@ def start(update: Update, context: CallbackContext):
             first_name = update.effective_user.first_name
             update.effective_message.reply_text(
                 PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
@@ -395,7 +393,6 @@ def nao_about_callback(update, context):
         first_name = update.effective_user.first_name
         query.message.edit_text(
                 PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
@@ -443,7 +440,6 @@ def nao_about_callback(update, context):
         first_name = update.effective_user.first_name
         query.message.edit_text(
                 PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
@@ -549,7 +545,6 @@ def Source_about_callback(update, context):
         first_name = update.effective_user.first_name
         query.message.edit_text(
                 PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
