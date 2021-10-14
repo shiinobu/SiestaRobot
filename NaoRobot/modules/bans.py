@@ -127,7 +127,7 @@ def ban(update: Update, context: CallbackContext) -> str:
             f"<code> </code><b>• User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
         )
         if reason:
-            reply += f"<code> </code><b>• Reason:</b> \n{html.escape(reason)}"
+            reply += f"<code> </code><b>• Reason:</b> {html.escape(reason)}"
 
         bot.sendMessage(
             chat.id,
