@@ -5,7 +5,7 @@ import requests
 from datetime import datetime
 from telethon import events
 
-from NaoRobot.utils.pluginshelper import is_admin
+from NaoRobot.utils.pluginhelper import is_admin
 from NaoRobot import telethn, BOT_USERNAME, SUPPORT_CHAT
 
 
