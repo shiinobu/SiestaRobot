@@ -36,6 +36,15 @@ def get_user(message: Message, text: str) -> [int, str, None]:
     return user_s, reason_
 
 
+async def is_admin(event, user):
+    try:
+        sed = await event.client.get_permissions(event.chat_id, user)
+        is_mod = bool(sed.is_admin)
+    except:
+        is_mod = False
+    return is_mod
+
+
 def get_readable_time(seconds: int) -> int:
     count = 0
     ping_time = ""
