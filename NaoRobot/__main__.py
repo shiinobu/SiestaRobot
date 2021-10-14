@@ -354,26 +354,21 @@ def nao_about_callback(update, context):
     query = update.callback_query
     if query.data == "nao_":
         query.message.edit_text(
-            text=""" 💡 I'm *NaoRobot*, a powerful group management bot built to help you manage your group easily.
-                 \n• I can restrict users.
-                 \n• I can greet users with customizable welcome messages and even set a group's rules.
-                 \n• I have an advanced anti-flood system.
-                 \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n• I check for admins' permissions before executing any command and more stuffs
-                 \n\n_naorobot's licensed under the GNU General Public License v3.0_
-                 \n\nIf you have any question about NaoRobot, let us know at .""",
+            text="🎵 Here is help menu for Musicplayer.
+            "\n • First send /userbotjoin on your group for invite the assistant."
+            "\n • This command can be use for admins only"
+            "\n • If the assistant not joined the voice chat, you can try end and turn on back the vcg."
+            "\n • Then enjoy the music playback."
+            "\n\nIf music have trouble, you can report this to @kenbotsupport",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Owner", url="https://t.me/xgothboi"
-                    ),
-                    InlineKeyboardButton(text="Basic help", callback_data="nao_basichelp")
+                    InlineKeyboardButton(text="Advance Command", callback_data="source_")
                  ],
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_back")
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp")
                  ]
                 ]
             ),
@@ -412,7 +407,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Credits", callback_data="nao_credit"),
                  ],
                  [
-                    InlineKeyboardButton(text="Musicplayer", callback_data="nao_music"),
+                    InlineKeyboardButton(text="Musicplayer", callback_data="nao_"),
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_mback"),
@@ -474,62 +469,7 @@ def nao_about_callback(update, context):
                 ]
             ),
         )
-    elif query.data == "nao_music":
-        query.message.edit_text(
-            text="* Here is Musicplayer help menu*"
-            "\n*• First Add me as admin with full right."
-            "\n*• Then type /play or /userbotjoin for inviting @naoex_helper to your group."
-            "\n*• Now you can play music, enjoy!"
-            "\n\n If you need any help or wanna report problem. You can report to my support group.",
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Admins", callback_data="nao_madmin"),
-                    InlineKeyboardButton(text="All Member", callback_data="nao_member"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp"),
-                 ]
-                ]
-            ),
-        )
 
-    elif query.data == "nao_madmin":
-        query.message.edit_text(
-            text="""Here is the musicplayer command only for admin group
-                 \n • /reload - for refresh the adminlist
-                 \n • /userbotjoin - for inviting @naoex_helper to your group
-                 \n • /userbotleave - for kicking the assistant from your group
-                 \n • /skip - skipping the music to the next queue
-                 \n • /pause or /resume - pause to paused the track and resume to resuming playing
-                 \n • /end - for stopped playback music""",
-            parse_mode=ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_music"),
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "nao_member":
-        query.message.edit_text(
-            text="""Here is the musicplayer command for any members group
-                 \n • /play <title> - for playing music
-                 \n • /ytp <title> - for playing music dorect from youtube
-                 \n • /playlist - to see the queue of playback
-                 \n • /song or /music <title> - for download audio music from youtube
-                 \n • /video or /vsong <title> - for download music video from youtube""",
-            parse_mode=ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_music"),
-                 ]
-                ]
-            ),
-        )
 
     elif query.data == "nao_credit":
         query.message.edit_text(
@@ -553,14 +493,24 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi I'm *NaoRobot*
-                 \nHere is the [Source Code](https://github.com/KennedyProject/NaoRobot) .""",
+            text="This advance command for Musicplayer 🎵"
+            "\n\n👷 Command for admins only"
+            "\n • /userbotjoin - For inviting the assistant to your groups"
+            "\n • /userbotleave - Use this if you want the assistant leaving your groups"
+            "\n • /pause - To pause the playback"
+            "\n • /resume - To resuming the playback You've paused"
+            "\n • /skip - To skipping the player"
+            "\n • /end - For end the playback"
+            "\n\n👥 Command for all members"
+            "\n • /play or /ytp <query> - Playing music via YouTube"
+            "\n • /player - to open pannel settings of the Musicplayer"
+            "\n • /playlist - to show the playlist on your group",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="source_back")
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_")
                  ]
                 ]
             ),
