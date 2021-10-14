@@ -127,7 +127,7 @@ def ban(update: Update, context: CallbackContext) -> str:
             f"<code> </code><b>• User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
         )
         if reason:
-            reply += f"<code> </code><b>• Reason:</b> {html.escape(reason)}"
+            reply += f"\n<code> </code><b>• Reason:</b> {html.escape(reason)}"
 
         bot.sendMessage(
             chat.id,
@@ -221,7 +221,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         f"<b>Time:</b> {time_val}"
     )
     if reason:
-        log += "<b>Reason:</b> {}".format(reason)
+        log += "\n<b>Reason:</b> {}".format(reason)
 
     try:
         chat.ban_member(user_id, until_date=bantime)
@@ -234,7 +234,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         )
 
         if reason:
-            reply_msg += f"<code> </code><b>• Reason:</b> {html.escape(reason)}"
+            reply_msg += f"\n<code> </code><b>• Reason:</b> {html.escape(reason)}"
 
         bot.sendMessage(
             chat.id,
@@ -374,7 +374,7 @@ def punch(update: Update, context: CallbackContext) -> str:
             f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
         )
         if reason:
-            log += f"<b>Reason:</b> {reason}"
+            log += f"\n<b>Reason:</b> {reason}"
 
         return log
 
@@ -443,7 +443,7 @@ def unban(update: Update, context: CallbackContext) -> str:
         f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     )
     if reason:
-        log += f"<b>Reason:</b> {reason}"
+        log += f"\n<b>Reason:</b> {reason}"
 
     return log
 
