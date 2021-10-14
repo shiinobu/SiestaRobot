@@ -354,7 +354,7 @@ def nao_about_callback(update, context):
     query = update.callback_query
     if query.data == "nao_":
         query.message.edit_text(
-            text="🎵 Here is help menu for Musicplayer.
+            text="🎵 Here is help menu for Musicplayer."
             "\n • First send /userbotjoin on your group for invite the assistant."
             "\n • This command can be use for admins only"
             "\n • If the assistant not joined the voice chat, you can try end and turn on back the vcg."
