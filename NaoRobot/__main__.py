@@ -87,11 +87,11 @@ buttons = [
     [
         InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="nao_basichelp"),
         InlineKeyboardButton(
-            text="sᴏᴜʀᴄᴇ​", url=f"https://github.com/KennedyProject/NaoRobot"
+            text="ᴛʀʏ ɪɴʟɪɴᴇ​​", switch_inline_query_current_chat=""
         ),
     ],
     [
-        InlineKeyboardButton(text="ʜᴇʟᴘ & ᴄᴏᴍᴍᴀɴᴅꜱ❔", callback_data="help_back"),
+        InlineKeyboardButton(text="ʜᴇʟᴘ & ᴄᴏᴍᴍᴀɴᴅꜱ ❓", callback_data="help_back"),
     ],
 ]
 
