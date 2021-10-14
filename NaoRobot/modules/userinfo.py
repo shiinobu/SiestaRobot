@@ -425,7 +425,7 @@ def set_about_me(update: Update, context: CallbackContext):
 def stats(update, context):
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
     botuptime = get_readable_time((time.time() - StartTime))
-    status = "*╒═══「 System statistics 」*\n\n"
+    status = "*╒════「 System statistics 」*\n\n"
     status += "*➢ System Start time:* " + str(uptime) + "\n"
     uname = platform.uname()
     status += "*➢ System:* " + str(uname.system) + "\n"
@@ -446,8 +446,8 @@ def stats(update, context):
             status
             + "\n*Bot statistics*:\n"
             + "\n".join([mod.__stats__() for mod in STATS])
-            + f"\n\n[Support](https://t.me/{SUPPORT_CHAT}) | [✦ Updates](https://t.me/KennedyProject)\n\n"
-            + "╘══「 by [Kennedy](https://github.com/KennedyProject) 」\n",
+            + f"\n\n[Support](https://t.me/{SUPPORT_CHAT}) | [Updates](https://t.me/KennedyProject)\n\n"
+            + "╘═════「 by [Kennedy](https://github.com/KennedyProject) 」\n",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
@@ -459,7 +459,7 @@ def stats(update, context):
                         "\n*Bot statistics*:\n"
                         + "\n".join(mod.__stats__() for mod in STATS)
                     )
-                    + f"\n\n✦ [Support](https://t.me/{SUPPORT_CHAT}) | ✦ [Updates](https://t.me/KennedyProject)\n\n"
+                    + f"\n\n [Support](https://t.me/{SUPPORT_CHAT}) | [Updates](https://t.me/KennedyProject)\n\n"
                 )
                 + "╘══「 by [Kennedy](https://github.com/KennedyProject) 」\n"
             ),
@@ -573,17 +573,8 @@ Examples:
 *Overall Information about you:*
  • `/info`*:* get information about a user. 
  
-*◢ Intellivoid SpamProtection:*
- • `/spwinfo`*:* SpamProtection Info
- 
 *json Detailed info:*
  • `/json`*:* Get Detailed info about any message.
- 
-*Covid info:*
- • `/covid`*:* Get Detailed info about Covid.
- 
-*ARQ Statistics:*
- /arq : ARQ API Stats.
  
 *AFk:*
 When marked as AFK, any mentions will be replied to with a message stating that you're not available!
