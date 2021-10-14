@@ -97,7 +97,7 @@ def mute(update: Update, context: CallbackContext) -> str:
             f"<code> </code><b>• Muted User:</b> {mention_html(member.user.id, member.user.first_name)}"
             )
         if reason:
-            msg += f"<code> </code><b>• Reason:</b> \n{html.escape(reason)}"
+            msg += f"<code> </code><b>• Reason:</b> {html.escape(reason)}"
 
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
