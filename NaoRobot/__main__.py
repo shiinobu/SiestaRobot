@@ -871,6 +871,11 @@ def main():
     about_callback_handler = CallbackQueryHandler(
         nao_about_callback, pattern=r"nao_", run_async=True
     )
+
+    nao_music_callback_handler = CallbackQueryHandler(
+        nao_about_callback, pattern=r"nao_music", run_async=True
+    )
+
     source_callback_handler = CallbackQueryHandler(
         Source_about_callback, pattern=r"source_", run_async=True
     )
@@ -885,6 +890,7 @@ def main():
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(source_callback_handler)
+    dispatcher.add_handler(nao_music_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
