@@ -392,6 +392,9 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Credits", callback_data="nao_credit"),
                  ],
                  [
+                    InlineKeyboardButton(text="Musicplayer", callback_data="source_"),
+                 ],
+                 [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"),
                  ]
                 ]
@@ -452,7 +455,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Updates", url="https://t.me/KennedyProject"),
                  ],
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp"),
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
                  
                  ]
                 ]
@@ -471,7 +474,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Sena", url="t.me/xgothboi"),
                  ],
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp"),
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
                  
                  ]
                 ]
