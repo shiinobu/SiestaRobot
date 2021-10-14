@@ -519,23 +519,21 @@ def nao_about_callback(update, context):
         )
     elif query.data == "nao_musicmember":
         query.message.edit_text(
-            text="Here is the musicplayer command for any members group"
-            f"\n • /play <title> - for playing music",
-            "\n • /ytp <title> - for playing music dorect from youtube",
-            "\n • /playlist - to see the queue of playback",
-            "\n • /song or /music <title> - for download audio music from youtube",
-            "\n • /video or /vsong <title> - for download music video from youtube",
+            text="""Here is the musicplayer command for any members group
+                 \n • /play <title> - for playing music
+                 \n • /ytp <title> - for playing music dorect from youtube
+                 \n • /playlist - to see the queue of playback
+                 \n • /song or /music <title> - for download audio music from youtube
+                 \n • /video or /vsong <title> - for download music video from youtube""",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_music"),
-                 
                  ]
                 ]
             ),
         )
-
 
 def Source_about_callback(update, context):
     query = update.callback_query
