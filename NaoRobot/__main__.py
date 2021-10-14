@@ -487,7 +487,7 @@ def nao_about_callback(update, context):
                  ]
                 ]
             ),
-       )
+        )
     elif query.data == "nao_musicadmin":
         query.message.edit_text(
             text="""Here is the musicplayer command only for admin group
