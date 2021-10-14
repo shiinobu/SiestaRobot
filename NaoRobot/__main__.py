@@ -1,6 +1,12 @@
+import html
+import os
+import json
 import importlib
 import time
 import re
+import sys
+import traceback
+import NaoRobot.modules.sql.users_sql as sql
 from sys import argv
 from typing import Optional
 
