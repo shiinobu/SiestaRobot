@@ -74,30 +74,35 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-[✨](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) ʜᴇʟʟᴏ  ᴍʏ ɴᴀᴍᴇ ɪs ɴᴀᴏ ᴛᴏᴍᴏʀɪ
-ɪ'ᴍ ᴀ ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇ ʙᴏᴛ ꜰᴏʀ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴇᴀsɪʟʏ!
-ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ @xgothboi ❤️​!   
+──「 [Nao Tomori](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) 」──
+*Hello ! {},*
+*I'm A next Gen Anime themed group management bot*
+➖➖➖➖➖➖➖➖➖➖➖➖➖
+• *Uptime:* `{}`
+• `{}` *users, across* `{}` *chats.*
+➖➖➖➖➖➖➖➖➖➖➖➖➖
+*Hit the /help or tap on button to se available command on me.*
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕️", url="t.me/naoex_bot?startgroup=true"),
+            text="➕️ Add Nao To Your Group ➕️", url="t.me/naoex_bot?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="nao_basichelp"),
+        InlineKeyboardButton(text="Basic", callback_data="nao_basichelp"),
         InlineKeyboardButton(
-            text="ᴛʀʏ ɪɴʟɪɴᴇ​​", switch_inline_query_current_chat=""
+            text="Try inline!​​", switch_inline_query_current_chat=""
         ),
     ],
     [
-        InlineKeyboardButton(text="ʜᴇʟᴘ & ᴄᴏᴍᴍᴀɴᴅꜱ ❓", callback_data="help_back"),
+        InlineKeyboardButton(text="Help & Command ❓", callback_data="help_back"),
     ],
 ]
 
 
 HELP_STRINGS = """
-ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴏᴄᴜᴍᴇɴᴛᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴍᴏᴅᴜʟᴇꜱ."""
+Click on the button bellow to get description about specifics command."""
 
 nao_IMG = "https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg"
 
@@ -217,7 +222,7 @@ def start(update: Update, context: CallbackContext):
                             [
                                 {
                                     InlineKeyboardButton(
-                                        text="sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ​",
+                                        text="Support Chat​",
                                         url="https://t.me/kenbotsupport",
                                     )
                                 }
@@ -554,7 +559,7 @@ def get_help(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Help",
+                            text="Help & Command ❓",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
                     ]
