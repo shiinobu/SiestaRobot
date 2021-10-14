@@ -464,9 +464,11 @@ def nao_about_callback(update, context):
         )
     elif query.data == "nao_music":
         query.message.edit_text(
-            text="* Here is Musicplayer help menu*",
-            "\n*• First Add me as admin with full right."
-            "\n*• Then type /play or /userbotjoin for inviting @naoex_helper to your group.\n*• Now you can play music, enjoy!\n\n If you need any help or wanna report problem. You can report to my support group.",
+            text="""* Here is Musicplayer help menu*
+                 \n*• First Add me as admin with full right.
+                 \n*• Then type /play or /userbotjoin for inviting @naoex_helper to your group.
+                 \n*• Now you can play music, enjoy!
+                 \n\n If you need any help or wanna report problem. You can report to my support group.""",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -479,7 +481,7 @@ def nao_about_callback(update, context):
                  ]
                 ]
             ),
-        )
+       )
     elif query.data == "nao_credit":
         query.message.edit_text(
             text=f"<b> Credis for NaoRobot</b>\n"
