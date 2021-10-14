@@ -1,23 +1,3 @@
-"""
-MIT License
-Copyright (c) 2021 TheHamkerCat
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
-
 import traceback
 
 from NaoRobot import pbot as app
@@ -222,6 +202,40 @@ async def inline_query_handler(client, query):
             await client.answer_inline_query(
                 query.id, results=answerss, cache_time=2
             )
+
+        elif text.split()[0] == "gh":
+            if len(text.split()) < 2:
+                return await client.answer_inline_query(
+                    query.id,
+                    results=answers,
+                    switch_pm_text="gh | gh [USERNAME]",
+                    switch_pm_parameter="inline",
+                )
+            results = []
+            gett = text.split(None, 1)[1]
+            text = gett + ' "site:github.com"'
+            gresults = await GoogleSearch().async_search(text, 1)
+            result = ""
+            for i in range(4):
+                try:
+                    title = gresults["titles"][i].replace("\n", " ")
+                    source = gresults["links"][i]
+                    description = gresults["descriptions"][i]
+                    result += f"[{title}]({source})\n"
+                    result += f"`{description}`\n\n"
+                except IndexError:
+                    pass
+            results.append(
+                InlineQueryResultArticle(
+                    title=f"Results for {gett}",
+                    description=f" Github info of {title}\n  Touch to read",
+                    input_message_content=InputTextMessageContent(
+                        result, disable_web_page_preview=True
+                    ),
+                )
+            )
+            await client.answer_inline_query(query.id, cache_time=0, results=results)
+
 
         elif text.split()[0] == "ping":
             answerss = await ping_func(answers)
