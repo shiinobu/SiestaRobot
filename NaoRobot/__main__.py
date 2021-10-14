@@ -73,7 +73,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-PM_START_TEXT = f"""
+PM_START_TEXT = """
 ──「 [Nao Tomori](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) 」──
 
 *Hello ! {},*
@@ -869,7 +869,7 @@ def main():
 
 
 if __name__ == "__main__":
-    LOGGER.info("[NaoRobot] Successfully loaded modules: " + str(ALL_MODULES))
+    LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
     pbot.start()
     main()
