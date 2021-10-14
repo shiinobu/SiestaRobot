@@ -370,42 +370,6 @@ def nao_about_callback(update, context):
     query = update.callback_query
     if query.data == "nao_":
         query.message.edit_text(
-            text="๏ Here is help menu for Musicplayer."
-            "\n • First send /userbotjoin on your group for invite the assistant."
-            "\n • This command can be use for admins only"
-            "\n • If the assistant not joined the voice chat, you can try end and turn on back the vcg."
-            "\n • Then enjoy the music playback."
-            "\n\nIf music have trouble, you can report this to @kenbotsupport",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Advance Command", callback_data="source_")
-                 ],
-                 [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp")
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "nao_back":
-        first_name = update.effective_user.first_name
-        query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
-
-
-    elif query.data == "nao_basichelp":
-        query.message.edit_text(
             text="๏ I'm *NaoRobot*, a powerful group management bot built to help you manage your group easily."
             "\n• I can restrict users."
             "\n• I can greet users with customizable welcome messages and even set a group's rules."
@@ -428,13 +392,23 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Credits", callback_data="nao_credit"),
                  ],
                  [
-                    InlineKeyboardButton(text="Musicplayer", callback_data="nao_"),
-                 ],
-                 [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"),
                  ]
                 ]
             ),
+        )
+    elif query.data == "nao_back":
+        first_name = update.effective_user.first_name
+        query.message.edit_text(
+                PM_START_TEXT.format(
+                    escape_markdown(first_name),
+                    escape_markdown(uptime),
+                    sql.num_users(),
+                    sql.num_chats()),
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
         )
 
     elif query.data == "nao_admin":
