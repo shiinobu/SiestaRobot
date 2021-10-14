@@ -390,16 +390,15 @@ def nao_about_callback(update, context):
 
     elif query.data == "nao_basichelp":
         query.message.edit_text(
-            text=""" 💡 I'm *NaoRobot*, a powerful group management bot built to help you manage your group easily.
-                 • I can restrict users.
-                 • I can greet users with customizable welcome messages and even set a group's rules.
-                 • I have an advanced anti-flood system.
-                 • I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 • I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 • I check for admins' permissions before executing any command and more stuffs
-                 \n\n_naorobot's licensed under the GNU General Public License v3.0_
-                 \nIf you have any question about NaoRobot, let us know at .
-                 \n\n Clict on button bellow to get basic help for NaoRobot.""",
+            text="🌼 I'm *NaoRobot*, a powerful group management bot built to help you manage your group easily.",
+                 "\n• I can restrict users.",
+                 "\n• I can greet users with customizable welcome messages and even set a group's rules.",
+                 "\n• I have an advanced anti-flood system.",
+                 "\n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.",
+                 "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.",
+                 "\n• I check for admins' permissions before executing any command and more stuffs",
+                 "\n\n_naorobot's licensed under the GNU General Public License v3.0_",
+                 "\n\n Clict on button bellow to get basic help for NaoRobot.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -432,12 +431,12 @@ def nao_about_callback(update, context):
     elif query.data == "nao_admin":
         query.message.edit_text(
             text=f"""*Let's make your group bit effective now*"
-                 \nCongragulations, NaoRobot now ready to manage your group."
+                 \nCongragulations, NaoRobot now ready to manage your group.
                  \n\n*Admin Tools*"
-                 \nBasic Admin tools help you to protect and powerup your group."
-                 \nYou can ban members, Kick members, Promote someone as admin through commands of bot."
-                 \n\n*Welcome*"
-                 \nLets set a welcome message to welcome new users coming to your group."
+                 \nBasic Admin tools help you to protect and powerup your group.
+                 \nYou can ban members, Kick members, Promote someone as admin through commands of bot.
+                 \n\n*Welcome*
+                 \nLets set a welcome message to welcome new users coming to your group.
                  \nsend `/setwelcome [message]` to set a welcome message!""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -477,17 +476,17 @@ def nao_about_callback(update, context):
         )
     elif query.data == "nao_music":
         query.message.edit_text(
-            text="""* Here is Musicplayer help menu*
-                 \n*• First Add me as admin with full right.
-                 \n*• Then type /play or /userbotjoin for inviting @naoex_helper to your group.
-                 \n*• Now you can play music, enjoy!
-                 \n\n If you need any help or wanna report problem. You can report to my support group.""",
+            text="* Here is Musicplayer help menu*",
+                 "\n*• First Add me as admin with full right.",
+                 "\n*• Then type /play or /userbotjoin for inviting @naoex_helper to your group.",
+                 "\n*• Now you can play music, enjoy!",
+                 "\n\n If you need any help or wanna report problem. You can report to my support group.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Admins", callback_data="nao_mhsicadmin"),
-                    InlineKeyboardButton(text="All Member", callback_data="nao_musicmember"),
+                    InlineKeyboardButton(text="Admins", callback_data="nao_madmin"),
+                    InlineKeyboardButton(text="All Member", callback_data="nao_member"),
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp"),
@@ -496,7 +495,7 @@ def nao_about_callback(update, context):
             ),
        )
 
-    elif query.data == "nao_musicadmin":
+    elif query.data == "nao_madmin":
         query.message.edit_text(
             text="""Here is the musicplayer command only for admin group
                  \n • /reload - for refresh the adminlist
@@ -514,7 +513,7 @@ def nao_about_callback(update, context):
                 ]
             ),
         )
-    elif query.data == "nao_musicmember":
+    elif query.data == "nao_member":
         query.message.edit_text(
             text="""Here is the musicplayer command for any members group
                  \n • /play <title> - for playing music
