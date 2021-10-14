@@ -416,10 +416,18 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Musicplayer", callback_data="nao_music"),
                  ],
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_mback"),
                  ]
                 ]
             ),
+        )
+    elif query.data == "nao_mback":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
         )
     elif query.data == "nao_admin":
         query.message.edit_text(
@@ -467,8 +475,9 @@ def nao_about_callback(update, context):
                 ]
             ),
         )
-
-    elif query.data == "nao_music":
+def nao_music_callback(update, context):
+    query = update.callback_query
+    if query.data == "nao_music":
         query.message.edit_text(
             text="""* Here is Musicplayer help menu*
                  \n*• First Add me as admin with full right.
