@@ -476,7 +476,6 @@ def nao_about_callback(update, context):
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp"),
-                 
                  ]
                 ]
             ),
