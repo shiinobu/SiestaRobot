@@ -378,7 +378,7 @@ def nao_about_callback(update, context):
             "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
             "\n• I check for admins' permissions before executing any command and more stuffs"
             "\n\n_naorobot's licensed under the GNU General Public License v3.0_"
-            "\n\n Clict on button bellow to get basic help for NaoRobot.",
+            "\n\n Click on button bellow to get basic help for NaoRobot.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -428,7 +428,7 @@ def nao_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp")]]
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_")]]
             ),
         )
 
@@ -487,16 +487,17 @@ def Source_about_callback(update, context):
         query.message.edit_text(
             text="๏›› This advance command for Musicplayer."
             "\n\n๏ Command for admins only"
-            "\n • /userbotjoin - For inviting the assistant to your groups"
-            "\n • /userbotleave - Use this if you want the assistant leaving your groups"
-            "\n • /pause - To pause the playback"
-            "\n • /resume - To resuming the playback You've paused"
-            "\n • /skip - To skipping the player"
-            "\n • /end - For end the playback"
+            "\n • `/reload` - For refreshing the adminlist"
+            "\n • `/userbotjoin` - For inviting the assistant to your groups"
+            "\n • `/userbotleave` - Use this if you want the assistant leaving your groups"
+            "\n • `/pause` - To pause the playback"
+            "\n • `/resume` - To resuming the playback You've paused"
+            "\n • `/skip` - To skipping the player"
+            "\n • `/end` - For end the playback"
             "\n\n๏ Command for all members"
-            "\n • /play or /ytp <query> - Playing music via YouTube"
-            "\n • /player - to open pannel settings of the Musicplayer"
-            "\n • /playlist - to show the playlist on your group",
+            "\n • `/play` or /ytp <query> - Playing music via YouTube"
+            "\n • `/player` - to open pannel settings of the Musicplayer"
+            "\n • `/playlist` - to show the playlist on your group",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
