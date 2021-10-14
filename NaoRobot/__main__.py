@@ -501,19 +501,18 @@ def nao_about_callback(update, context):
         )
     elif query.data == "nao_musicadmin":
         query.message.edit_text(
-            text="Here is the musicplayer command only for admin group"
-            f"\n • /reload - for refresh the adminlist",
-            "\n • /userbotjoin - for inviting @naoex_helper to your group",
-            "\n • /userbotleave - for kicking the assistant from your group",
-            "\n • /skip - skipping the music to the next queue",
-            "\n • /pause or /resume - pause to paused the track and resume to resuming playing",
-            "\n • /end - for stopped playback music",
+            text="""Here is the musicplayer command only for admin group
+                 \n • /reload - for refresh the adminlist
+                 \n • /userbotjoin - for inviting @naoex_helper to your group
+                 \n • /userbotleave - for kicking the assistant from your group
+                 \n • /skip - skipping the music to the next queue
+                 \n • /pause or /resume - pause to paused the track and resume to resuming playing
+                 \n • /end - for stopped playback music""",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_music"),
-                 
                  ]
                 ]
             ),
