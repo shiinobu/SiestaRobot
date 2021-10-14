@@ -1,47 +1,174 @@
 import html
-import os
 
-from telegram import ParseMode, Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import ParseMode, Update
 from telegram.error import BadRequest
-from telegram.ext import CommandHandler, Filters, CallbackContext
+from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from NaoRobot import dispatcher, DRAGONS
-from NaoRobot.modules.connection import connected
-from NaoRobot.modules.helper_funcs.admin_rights import (
-    user_can_changeinfo,
-    user_can_pin,
-    user_can_promote,
-)
+from NaoRobot import DRAGONS, dispatcher
+from NaoRobot.modules.disable import DisableAbleCommandHandler
 from NaoRobot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_pin,
     can_promote,
-    user_admin,
     connection_status,
-    is_user_admin,
+    user_admin,
     ADMIN_CACHE,
 )
+
 from NaoRobot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
 from NaoRobot.modules.log_channel import loggable
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.helper_funcs.decorators import naocmd
+from NaoRobot.modules.helper_funcs.alternate import send_message
 
 
-@naocmd(command="promote", pass_args=True, filters=Filters.chat_type.groups)
+@bot_admin
+@user_admin
+def set_sticker(update: Update, context: CallbackContext):
+    msg = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+
+    if user_can_changeinfo(chat, user, context.bot.id) is False:
+        return msg.reply_text("You're missing rights to change chat info!")
+
+    if msg.reply_to_message:
+        if not msg.reply_to_message.sticker:
+            return msg.reply_text(
+                "You need to reply to some sticker to set chat sticker set!"
+            )
+        stkr = msg.reply_to_message.sticker.set_name
+        try:
+            context.bot.set_chat_sticker_set(chat.id, stkr)
+            msg.reply_text(f"Successfully set new group stickers in {chat.title}!")
+        except BadRequest as excp:
+            if excp.message == "Participants_too_few":
+                return msg.reply_text(
+                    "Sorry, due to telegram restrictions chat needs to have minimum 100 members before they can have group stickers!"
+                )
+            msg.reply_text(f"Error! {excp.message}.")
+    else:
+        msg.reply_text("You need to reply to some sticker to set chat sticker set!")
+       
+    
+@bot_admin
+@user_admin
+def setchatpic(update: Update, context: CallbackContext):
+    chat = update.effective_chat
+    msg = update.effective_message
+    user = update.effective_user
+
+    if user_can_changeinfo(chat, user, context.bot.id) is False:
+        msg.reply_text("You are missing right to change group info!")
+        return
+
+    if msg.reply_to_message:
+        if msg.reply_to_message.photo:
+            pic_id = msg.reply_to_message.photo[-1].file_id
+        elif msg.reply_to_message.document:
+            pic_id = msg.reply_to_message.document.file_id
+        else:
+            msg.reply_text("You can only set some photo as chat pic!")
+            return
+        dlmsg = msg.reply_text("Just a sec...")
+        tpic = context.bot.get_file(pic_id)
+        tpic.download("gpic.png")
+        try:
+            with open("gpic.png", "rb") as chatp:
+                context.bot.set_chat_photo(int(chat.id), photo=chatp)
+                msg.reply_text("Successfully set new chatpic!")
+        except BadRequest as excp:
+            msg.reply_text(f"Error! {excp.message}")
+        finally:
+            dlmsg.delete()
+            if os.path.isfile("gpic.png"):
+                os.remove("gpic.png")
+    else:
+        msg.reply_text("Reply to some photo or file to set new chat pic!")
+        
+@bot_admin
+@user_admin
+def rmchatpic(update: Update, context: CallbackContext):
+    chat = update.effective_chat
+    msg = update.effective_message
+    user = update.effective_user
+
+    if user_can_changeinfo(chat, user, context.bot.id) is False:
+        msg.reply_text("You don't have enough rights to delete group photo")
+        return
+    try:
+        context.bot.delete_chat_photo(int(chat.id))
+        msg.reply_text("Successfully deleted chat's profile photo!")
+    except BadRequest as excp:
+        msg.reply_text(f"Error! {excp.message}.")
+        return
+    
+@bot_admin
+@user_admin
+def set_desc(update: Update, context: CallbackContext):
+    msg = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+
+    if user_can_changeinfo(chat, user, context.bot.id) is False:
+        return msg.reply_text("You're missing rights to change chat info!")
+
+    tesc = msg.text.split(None, 1)
+    if len(tesc) >= 2:
+        desc = tesc[1]
+    else:
+        return msg.reply_text("Setting empty description won't do anything!")
+    try:
+        if len(desc) > 255:
+            return msg.reply_text("Description must needs to be under 255 characters!")
+        context.bot.set_chat_description(chat.id, desc)
+        msg.reply_text(f"Successfully updated chat description in {chat.title}!")
+    except BadRequest as excp:
+        msg.reply_text(f"Error! {excp.message}.")        
+        
+@bot_admin
+@user_admin
+def setchat_title(update: Update, context: CallbackContext):
+    chat = update.effective_chat
+    msg = update.effective_message
+    user = update.effective_user
+    args = context.args
+
+    if user_can_changeinfo(chat, user, context.bot.id) is False:
+        msg.reply_text("You don't have enough rights to change chat info!")
+        return
+
+    title = " ".join(args)
+    if not title:
+        msg.reply_text("Enter some text to set new title in your chat!")
+        return
+
+    try:
+        context.bot.set_chat_title(int(chat.id), str(title))
+        msg.reply_text(
+            f"Successfully set <b>{title}</b> as new chat title!",
+            parse_mode=ParseMode.HTML,
+        )
+    except BadRequest as excp:
+        msg.reply_text(f"Error! {excp.message}.")
+        return
+        
+        
 @connection_status
 @bot_admin
 @can_promote
 @user_admin
 @loggable
 def promote(update: Update, context: CallbackContext) -> str:
-    bot, args = context.bot, context.args
+    bot = context.bot
+    args = context.args
+
     message = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
+
     promoter = chat.get_member(user.id)
 
     if (
@@ -64,7 +191,7 @@ def promote(update: Update, context: CallbackContext) -> str:
     except:
         return
 
-    if user_member.status in ("administrator", "creator"):
+    if user_member.status in ('administrator', 'creator'):
         message.reply_text("How am I meant to promote someone that's already an admin?")
         return
 
@@ -111,17 +238,19 @@ def promote(update: Update, context: CallbackContext) -> str:
     return log_message
 
 
-@naocmd(command="fullpromote", pass_args=True, filters=Filters.chat_type.groups)
 @connection_status
 @bot_admin
 @can_promote
 @user_admin
 @loggable
-def fullpromote(update: Update, context: CallbackContext) -> str:
-    bot, args = context.bot, context.args
+def lowpromote(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    args = context.args
+
     message = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
+
     promoter = chat.get_member(user.id)
 
     if (
@@ -144,7 +273,84 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     except:
         return
 
-    if user_member.status in ("administrator", "creator"):
+    if user_member.status in ('administrator', 'creator'):
+        message.reply_text("How am I meant to promote someone that's already an admin?")
+        return
+
+    if user_id == bot.id:
+        message.reply_text("I can't promote myself! Get an admin to do it for me.")
+        return
+
+    # set same perms as bot - bot can't assign higher perms than itself!
+    bot_member = chat.get_member(bot.id)
+
+    try:
+        bot.promoteChatMember(
+            chat.id,
+            user_id,
+            can_delete_messages=bot_member.can_delete_messages,
+            can_invite_users=bot_member.can_invite_users,
+            can_pin_messages=bot_member.can_pin_messages,
+        )
+    except BadRequest as err:
+        if err.message == "User_not_mutual_contact":
+            message.reply_text("I can't promote someone who isn't in the group.")
+        else:
+            message.reply_text("An error occured while promoting.")
+        return
+
+    bot.sendMessage(
+        chat.id,
+        f"Sucessfully promoted <b>{user_member.user.first_name or user_id}</b> with low rights!",
+        parse_mode=ParseMode.HTML,
+    )
+
+    log_message = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"#LOWPROMOTED\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
+    )
+
+    return log_message
+
+
+@connection_status
+@bot_admin
+@can_promote
+@user_admin
+@loggable
+def fullpromote(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    args = context.args
+
+    message = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+
+    promoter = chat.get_member(user.id)
+
+    if (
+        not (promoter.can_promote_members or promoter.status == "creator")
+        and user.id not in DRAGONS
+    ):
+        message.reply_text("You don't have the necessary rights to do that!")
+        return
+
+    user_id = extract_user(message, args)
+
+    if not user_id:
+        message.reply_text(
+            "You don't seem to be referring to a user or the ID specified is incorrect..",
+        )
+        return
+
+    try:
+        user_member = chat.get_member(user_id)
+    except:
+        return
+
+    if user_member.status in ('administrator', 'creator'):
         message.reply_text("How am I meant to promote someone that's already an admin?")
         return
 
@@ -192,25 +398,18 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     return log_message
 
 
-@naocmd(command="demote", pass_args=True, filters=Filters.chat_type.groups)
 @connection_status
 @bot_admin
 @can_promote
 @user_admin
 @loggable
 def demote(update: Update, context: CallbackContext) -> str:
-    bot, args = context.bot, context.args
+    bot = context.bot
+    args = context.args
+
     chat = update.effective_chat
     message = update.effective_message
     user = update.effective_user
-    demoter = chat.get_member(user.id)
-
-    if (
-        not (demoter.can_promote_members or demoter.status == "creator")
-        and user.id not in DRAGONS
-    ):
-        message.reply_text("You don't have the necessary rights to do that!")
-        return
 
     user_id = extract_user(message, args)
     if not user_id:
@@ -228,7 +427,7 @@ def demote(update: Update, context: CallbackContext) -> str:
         message.reply_text("This person CREATED the chat, how would I demote them?")
         return
 
-    if user_member.status != "administrator":
+    if not user_member.status == "administrator":
         message.reply_text("Can't demote what wasn't promoted!")
         return
 
@@ -273,66 +472,145 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
 
-@naocmd(command="pin", can_disable=False)
+@user_admin
+def refresh_admin(update, _):
+    try:
+        ADMIN_CACHE.pop(update.effective_chat.id)
+    except KeyError:
+        pass
+
+    update.effective_message.reply_text("Admins cache refreshed!")
+
+
+@connection_status
+@bot_admin
+@can_promote
+@user_admin
+def set_title(update: Update, context: CallbackContext):
+    bot = context.bot
+    args = context.args
+
+    chat = update.effective_chat
+    message = update.effective_message
+
+    user_id, title = extract_user_and_text(message, args)
+    try:
+        user_member = chat.get_member(user_id)
+    except:
+        return
+
+    if not user_id:
+        message.reply_text(
+            "You don't seem to be referring to a user or the ID specified is incorrect..",
+        )
+        return
+
+    if user_member.status == "creator":
+        message.reply_text(
+            "This person CREATED the chat, how can i set custom title for him?",
+        )
+        return
+
+    if user_member.status != "administrator":
+        message.reply_text(
+            "Can't set title for non-admins!\nPromote them first to set custom title!",
+        )
+        return
+
+    if user_id == bot.id:
+        message.reply_text(
+            "I can't set my own title myself! Get the one who made me admin to do it for me.",
+        )
+        return
+
+    if not title:
+        message.reply_text("Setting blank title doesn't do anything!")
+        return
+
+    if len(title) > 16:
+        message.reply_text(
+            "The title length is longer than 16 characters.\nTruncating it to 16 characters.",
+        )
+
+    try:
+        bot.setChatAdministratorCustomTitle(chat.id, user_id, title)
+    except BadRequest:
+        message.reply_text(
+            "Either they aren't promoted by me or you set a title text that is impossible to set."
+        )
+        return
+
+    bot.sendMessage(
+        chat.id,
+        f"Sucessfully set title for <code>{user_member.user.first_name or user_id}</code> "
+        f"to <code>{html.escape(title[:16])}</code>!",
+        parse_mode=ParseMode.HTML,
+    )
+
+
 @bot_admin
 @can_pin
 @user_admin
 @loggable
 def pin(update: Update, context: CallbackContext) -> str:
-    bot, args = context.bot, context.args
+    bot = context.bot
+    args = context.args
+
     user = update.effective_user
     chat = update.effective_chat
-    msg = update.effective_message
-    msg_id = msg.reply_to_message.message_id if msg.reply_to_message else msg.message_id
 
-    if msg.chat.username:
-        # If chat has a username, use this format
-        link_chat_id = msg.chat.username
-        message_link = f"https://t.me/{link_chat_id}/{msg_id}"
-    elif (str(msg.chat.id)).startswith("-100"):
-        # If chat does not have a username, use this
-        link_chat_id = (str(msg.chat.id)).replace("-100", "")
-        message_link = f"https://t.me/c/{link_chat_id}/{msg_id}"
-
-    is_group = chat.type not in ("private", "channel")
+    is_group = chat.type not in ('private', 'channel')
     prev_message = update.effective_message.reply_to_message
-
-    if prev_message is None:
-        msg.reply_text("Reply a message to pin it!")
-        return
 
     is_silent = True
     if len(args) >= 1:
-        is_silent = (
-            args[0].lower() != "notify"
-            or args[0].lower() == "loud"
-            or args[0].lower() == "violent"
-        )
+        is_silent = args[0].lower() in ('notify', 'loud', 'violent')
 
     if prev_message and is_group:
         try:
             bot.pinChatMessage(
-                chat.id, prev_message.message_id, disable_notification=is_silent
-            )
-            msg.reply_text(
-                f"I have pinned <a href='{message_link}'>this message</a>.",
-                parse_mode=ParseMode.HTML,
-                disable_web_page_preview=True,
+                chat.id,
+                prev_message.message_id,
+                disable_notification=is_silent,
             )
         except BadRequest as excp:
             if excp.message != "Chat_not_modified":
                 raise
-
         log_message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"MESSAGE-PINNED-SUCCESSFULLY\n"
+            f"#PINNED\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
         )
 
         return log_message
 
 
-@naocmd(command="pinned", filters=Filters.chat_type.groups)
+@bot_admin
+@can_pin
+@user_admin
+@loggable
+def unpin(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    chat = update.effective_chat
+    user = update.effective_user
+
+    try:
+        bot.unpinChatMessage(chat.id)
+    except BadRequest as excp:
+        if excp.message == "Chat_not_modified":
+            pass
+        else:
+            raise
+
+    log_message = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"#UNPINNED\n"
+        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
+    )
+
+    return log_message
+
+
 @bot_admin
 def pinned(update: Update, context: CallbackContext) -> str:
     bot = context.bot
@@ -370,358 +648,247 @@ def pinned(update: Update, context: CallbackContext) -> str:
         )
 
 
-@naocmd(command="unpin", can_disable=False)
-@bot_admin
-@can_pin
-@user_admin
-@loggable
-def unpin(update: Update, context: CallbackContext):
-    chat = update.effective_chat
-    user = update.effective_user
-    message = update.effective_message
-    unpinner = chat.get_member(user.id)
-
-    if (
-        not (unpinner.can_pin_messages or unpinner.status == "creator")
-        and user.id not in DRAGONS
-    ):
-        message.reply_text("You don't have the necessary rights to do that!")
-        return
-
-    try:
-        context.bot.unpinChatMessage(chat.id)
-    except BadRequest as excp:
-        if excp.message == "Chat_not_modified":
-            pass
-        elif excp.message == "Message to unpin not found":
-            message.reply_text(
-                "I can't see pined message, Maybe already unpined, or pin Message to old 🙂"
-            )
-        else:
-            raise
-
-    log_message = (
-        f"<b>{html.escape(chat.title)}:</b>\n"
-        f"MESSAGE-UNPINNED-SUCCESSFULLY\n"
-        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
-    )
-
-    return log_message
-
-
-@naocmd(command="invitelink", pass_args=True, filters=Filters.chat_type.groups)
 @bot_admin
 @user_admin
+@connection_status
 def invite(update: Update, context: CallbackContext):
-    user = update.effective_user
-    msg = update.effective_message
+    bot = context.bot
     chat = update.effective_chat
-    context.args
-
-    conn = connected(context.bot, update, chat, user.id, need_admin=True)
-    if conn:
-        chat = dispatcher.bot.getChat(conn)
-    else:
-        if msg.chat.type == "private":
-            msg.reply_text("This command is meant to use in chat not in PM")
-            return ""
-        chat = update.effective_chat
 
     if chat.username:
-        msg.reply_text(chat.username)
-    elif chat.type == chat.SUPERGROUP or chat.type == chat.CHANNEL:
-        bot_member = chat.get_member(context.bot.id)
+        update.effective_message.reply_text(f"https://t.me/{chat.username}")
+    elif chat.type in [chat.SUPERGROUP, chat.CHANNEL]:
+        bot_member = chat.get_member(bot.id)
         if bot_member.can_invite_users:
-            invitelink = context.bot.exportChatInviteLink(chat.id)
-            msg.reply_text(invitelink)
+            invitelink = bot.exportChatInviteLink(chat.id)
+            update.effective_message.reply_text(invitelink)
         else:
-            msg.reply_text(
-                "I don't have access to the invite link, try changing my permissions!"
+            update.effective_message.reply_text(
+                "I don't have access to the invite link, try changing my permissions!",
             )
     else:
-        msg.reply_text(
-            "I can only give you invite links for supergroups and channels, sorry!"
+        update.effective_message.reply_text(
+            "I can only give you invite links for supergroups and channels, sorry!",
         )
 
 
-@naocmd(command="admins", filters=Filters.chat_type.groups)
 @connection_status
-def adminlist(update: Update, context: CallbackContext):
-    administrators = update.effective_chat.get_administrators()
-    text = "Admins in <b>{}</b>:".format(update.effective_chat.title or "this chat")
-    for admin in administrators:
-        user = admin.user
-        status = admin.status
-        name = f"{(mention_html(user.id, user.first_name))}"
-        if status == "creator":
-            text += "\n 🦁 Creator:"
-            text += "\n • {} \n\n 🦊 Admin:".format(name)
-    for admin in administrators:
-        user = admin.user
-        status = admin.status
-        name = f"{(mention_html(user.id, user.first_name))}"
-        if status == "administrator":
-            text += "\n • {}".format(name)
-    update.effective_message.reply_text(text, parse_mode=ParseMode.HTML)
+def adminlist(update, context):
+    chat = update.effective_chat  # type: Optional[Chat] -> unused variable
+    user = update.effective_user  # type: Optional[User]
+    args = context.args  # -> unused variable
+    bot = context.bot
 
+    if update.effective_message.chat.type == "private":
+        send_message(update.effective_message, "This command only works in Groups.")
+        return
 
-@naocmd(command="title", pass_args=True, filters=Filters.chat_type.groups)
-@bot_admin
-@can_promote
-@user_admin
-def set_title(update: Update, context: CallbackContext):
-    args = context.args
     chat = update.effective_chat
-    message = update.effective_message
-
-    user_id, title = extract_user_and_text(message, args)
-    try:
-        user_member = chat.get_member(user_id)
-    except Exception:
-        return
-
-    if not user_id:
-        message.reply_text("You don't seem to be referring to a user.")
-        return
-
-    if user_member.status == "creator":
-        message.reply_text(
-            "This person CREATED the chat, how can i set custom title for him?"
-        )
-        return
-
-    if not user_member.status == "administrator":
-        message.reply_text(
-            "Can't set title for non-admins!\nPromote them first to set custom title!"
-        )
-        return
-
-    if user_id == context.bot.id:
-        message.reply_text(
-            "I can't set my own title myself! Get the one who made me admin to do it for me."
-        )
-        return
-
-    if not title:
-        message.reply_text("Setting blank title doesn't do anything!")
-        return
-
-    if len(title) > 16:
-        message.reply_text(
-            "The title length is longer than 16 characters.\nTruncating it to 16 characters."
-        )
+    chat_id = update.effective_chat.id
+    chat_name = update.effective_message.chat.title  # -> unused variable
 
     try:
-        context.bot.set_chat_administrator_custom_title(chat.id, user_id, title)
-        message.reply_text(
-            "Sucessfully set title for <b>{}</b> to <code>{}</code>!".format(
-                user_member.user.first_name or user_id, title[:16]
-            ),
+        msg = update.effective_message.reply_text(
+            "Fetching group admins...",
             parse_mode=ParseMode.HTML,
         )
-
     except BadRequest:
-        message.reply_text("I can't set custom title for admins that I didn't promote!")
-
-
-@naocmd(command="setgpic", filters=Filters.chat_type.groups)
-@bot_admin
-@user_admin
-def setchatpic(update: Update, context: CallbackContext):
-    chat = update.effective_chat
-    msg = update.effective_message
-    user = update.effective_user
-
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
-        msg.reply_text("You are missing right to change group info!")
-        return
-
-    if msg.reply_to_message:
-        if msg.reply_to_message.photo:
-            pic_id = msg.reply_to_message.photo[-1].file_id
-        elif msg.reply_to_message.document:
-            pic_id = msg.reply_to_message.document.file_id
-        else:
-            msg.reply_text("You can only set some photo as chat pic!")
-            return
-        dlmsg = msg.reply_text("Just a sec...")
-        tpic = context.bot.get_file(pic_id)
-        tpic.download("gpic.png")
-        try:
-            with open("gpic.png", "rb") as chatp:
-                context.bot.set_chat_photo(int(chat.id), photo=chatp)
-                msg.reply_text("Successfully set new chatpic!")
-        except BadRequest as excp:
-            msg.reply_text(f"Error! {excp.message}")
-        finally:
-            dlmsg.delete()
-            if os.path.isfile("gpic.png"):
-                os.remove("gpic.png")
-    else:
-        msg.reply_text("Reply to some photo or file to set new chat pic!")
-
-
-@naocmd(command="delgpic", filters=Filters.chat_type.groups)
-@bot_admin
-@user_admin
-def rmchatpic(update: Update, context: CallbackContext):
-    chat = update.effective_chat
-    msg = update.effective_message
-    user = update.effective_user
-
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
-        msg.reply_text("You don't have enough rights to delete group photo")
-        return
-    try:
-        context.bot.delete_chat_photo(int(chat.id))
-        msg.reply_text("Successfully deleted chat's profile photo!")
-    except BadRequest as excp:
-        msg.reply_text(f"Error! {excp.message}.")
-        return
-
-
-@naocmd(command="setgtitle", filters=Filters.chat_type.groups)
-@bot_admin
-@user_admin
-def setchat_title(update: Update, context: CallbackContext):
-    chat = update.effective_chat
-    msg = update.effective_message
-    user = update.effective_user
-    args = context.args
-
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
-        msg.reply_text("You don't have enough rights to change chat info!")
-        return
-
-    title = " ".join(args)
-    if not title:
-        msg.reply_text("Enter some text to set new title in your chat!")
-        return
-
-    try:
-        context.bot.set_chat_title(int(chat.id), str(title))
-        msg.reply_text(
-            f"Successfully set <b>{title}</b> as new chat title!",
+        msg = update.effective_message.reply_text(
+            "Fetching group admins...",
+            quote=False,
             parse_mode=ParseMode.HTML,
         )
-    except BadRequest as excp:
-        msg.reply_text(f"Error! {excp.message}.")
+
+    administrators = bot.getChatAdministrators(chat_id)
+    text = "Admins in <b>{}</b>:".format(html.escape(update.effective_chat.title))
+
+    for admin in administrators:
+        user = admin.user
+        status = admin.status
+        custom_title = admin.custom_title
+
+        if user.first_name == "":
+            name = "☠ Deleted Account"
+        else:
+            name = "{}".format(
+                mention_html(
+                    user.id,
+                    html.escape(user.first_name + " " + (user.last_name or "")),
+                ),
+            )
+
+        if user.is_bot:
+            administrators.remove(admin)
+            continue
+
+        # if user.username:
+        #    name = escape_markdown("@" + user.username)
+        if status == "creator":
+            text += "\n 🌏 Creator:"
+            text += "\n<code> • </code>{}\n".format(name)
+
+            if custom_title:
+                text += f"<code> ┗━ {html.escape(custom_title)}</code>\n"
+
+    text += "\n🌟 Admins:"
+
+    custom_admin_list = {}
+    normal_admin_list = []
+
+    for admin in administrators:
+        user = admin.user
+        status = admin.status
+        custom_title = admin.custom_title
+
+        if user.first_name == "":
+            name = "☠ Deleted Account"
+        else:
+            name = "{}".format(
+                mention_html(
+                    user.id,
+                    html.escape(user.first_name + " " + (user.last_name or "")),
+                ),
+            )
+        # if user.username:
+        #    name = escape_markdown("@" + user.username)
+        if status == "administrator":
+            if custom_title:
+                try:
+                    custom_admin_list[custom_title].append(name)
+                except KeyError:
+                    custom_admin_list.update({custom_title: [name]})
+            else:
+                normal_admin_list.append(name)
+
+    for admin in normal_admin_list:
+        text += "\n<code> • </code>{}".format(admin)
+
+    for admin_group in custom_admin_list.copy():
+        if len(custom_admin_list[admin_group]) == 1:
+            text += "\n<code> • </code>{} | <code>{}</code>".format(
+                custom_admin_list[admin_group][0],
+                html.escape(admin_group),
+            )
+            custom_admin_list.pop(admin_group)
+
+    text += "\n"
+    for admin_group, value in custom_admin_list.items():
+        text += "\n🚨 <code>{}</code>".format(admin_group)
+        for admin in value:
+            text += "\n<code> • </code>{}".format(admin)
+        text += "\n"
+
+    try:
+        msg.edit_text(text, parse_mode=ParseMode.HTML)
+    except BadRequest:  # if original message is deleted
         return
 
-
-@naocmd(command="setsticker", filters=Filters.chat_type.groups)
-@bot_admin
-@user_admin
-def set_sticker(update: Update, context: CallbackContext):
-    msg = update.effective_message
-    chat = update.effective_chat
-    user = update.effective_user
-
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
-        return msg.reply_text("You're missing rights to change chat info!")
-
-    if msg.reply_to_message:
-        if not msg.reply_to_message.sticker:
-            return msg.reply_text(
-                "You need to reply to some sticker to set chat sticker set!"
-            )
-        stkr = msg.reply_to_message.sticker.set_name
-        try:
-            context.bot.set_chat_sticker_set(chat.id, stkr)
-            msg.reply_text(f"Successfully set new group stickers in {chat.title}!")
-        except BadRequest as excp:
-            if excp.message == "Participants_too_few":
-                return msg.reply_text(
-                    "Sorry, due to telegram restrictions chat needs to have minimum 100 members before they can have group stickers!"
-                )
-            msg.reply_text(f"Error! {excp.message}.")
-    else:
-        msg.reply_text("You need to reply to some sticker to set chat sticker set!")
-
-
-@naocmd(command="setdesc", filters=Filters.chat_type.groups)
-@bot_admin
-@user_admin
-def set_desc(update: Update, context: CallbackContext):
-    msg = update.effective_message
-    chat = update.effective_chat
-    user = update.effective_user
-
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
-        return msg.reply_text("You're missing rights to change chat info!")
-
-    tesc = msg.text.split(None, 1)
-    if len(tesc) >= 2:
-        desc = tesc[1]
-    else:
-        return msg.reply_text("Setting empty description won't do anything!")
-    try:
-        if len(desc) > 255:
-            return msg.reply_text("Description must needs to be under 255 characters!")
-        context.bot.set_chat_description(chat.id, desc)
-        msg.reply_text(f"Successfully updated chat description in {chat.title}!")
-    except BadRequest as excp:
-        msg.reply_text(f"Error! {excp.message}.")
-
-
-@naocmd(command="admincache", filters=Filters.chat_type.groups)
-@user_admin
-def refresh_admin(update: Update, _):
-    try:
-        ADMIN_CACHE.pop(update.effective_chat.id)
-    except KeyError:
-        pass
-
-    update.effective_message.reply_text("Admins cache refreshed!")
-
-
-def __chat_settings__(chat_id, user_id):
-    return "You are *admin*: `{}`".format(
-        dispatcher.bot.get_chat_member(chat_id, user_id).status
-        in ("administrator", "creator")
-    )
-
-__mod_name__ = "Admins"
 
 __help__ = """
-*──「 Admin List: 」──*
-✪ /admins: Shows all admins of the chat.
-✪ /admincache: Update the admin cache, to take into account new admins/admin permissions.
-
-*──「 Mutes: 」──*
-✪ /mute: mute a user
-✪ /unmute: unmutes a user
-✪ /tmute [entity] : temporarily mutes a user for the time interval.
-✪ /unmuteall: Unmute all muted members
-
-*──「 Kick/Ban: 」──*
-✪ /ban: bans a user
-✪ /tban [entity] : temporarily bans a user for the time interval.
-✪ /unban: unbans a user
-✪ /unbanall: Unban all banned members
-✪ /banme: Bans you
-✪ /punch: kicks a user
-✪ /kickme: Kicks you
-
-*──「 Promote/Demote: 」──*
-✪ /promote (user) (?admin's title): Promotes the user to admin.
-✪ /demote (user): Demotes the user from admin.
-✪ /fullpromote: Promote a member with max rights
-
-*──「 Cleaner/Purges: 」──*
-✪ /purge: deletes all messages from the message you replied to
-✪ /del: deletes the message replied to
-✪ /zombies: counts the number of deleted account in your group
-✪ /kickthefools: Kick inactive members from group (one week)
-
-*──「 Others: 」──*
-✪ /invitelink: Get chat's invitr link
-✪ /settitle [entity] [title]: sets a custom title for an admin. If no [title] provided defaults to "Admin"
-✪ /setgtitle [text] set group title
-✪ /setgpic: reply to an image to set as group photo
-✪ /setdesc: Set group description
-✪ /setsticker: Set group sticker
-
-*Note:* Sometimes, you promote or demote an admin manually, and Alina doesn't realise it immediately. This is because to avoid spamming telegram servers, admin status is cached locally.
-This means that you sometimes have to wait a few minutes for admin rights to update. If you want to update them immediately, you can use the /admincache command; that'll force Alina to check who the admins are again.
+*User Commands*:
+  • `/admins`*:* list of admins in the chat
+  • `/pinned`*:* to get the current pinned message.
+*The Following Commands are Admins only:* 
+  • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
+  • `/unpin`*:* unpins the currently pinned message
+  • `/invitelink`*:* gets invitelink
+  • `/promote`*:* promotes the user replied to
+  • `/fullpromote`*:* promotes the user replied to with full rights
+  • `/demote`*:* demotes the user replied to
+  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
+  • `/admincache`*:* force refresh the admins list
+  • `/del`*:* deletes the message you replied to
+  • `/purge`*:* deletes all messages between this and the replied to message.
+  • `/purge <integer X>`*:* deletes the replied message, and X messages following it if replied to a message.
+  • `/setgtitle <text>`*:* set group title
+  • `/setgpic`*:* reply to an image to set as group photo
+  • `/setdesc`*:* Set group description
+  • `/setsticker`*:* Set group sticker
+*Log Channel*:
+  • `/logchannel`*:* get log channel info
+  • `/setlog`*:* set the log channel.
+  • `/unsetlog`*:* unset the log channel.
+*Setting the log channel is done by*:
+ ➩ adding the bot to the desired channel (as an admin!)
+ ➩ sending `/setlog` in the channel
+ ➩ forwarding the `/setlog` to the group
+ 
+*Rules*:
+  • `/rules`*:* get the rules for this chat.
+  • `/setrules <your rules here>`*:* set the rules for this chat.
+  • `/clearrules`*:* clear the rules for this chat.
 """
+
+SET_DESC_HANDLER = CommandHandler("setdesc", set_desc, filters=Filters.chat_type.groups, run_async=True)
+SET_STICKER_HANDLER = CommandHandler("setsticker", set_sticker, filters=Filters.chat_type.groups, run_async=True)
+SETCHATPIC_HANDLER = CommandHandler("setgpic", setchatpic, filters=Filters.chat_type.groups, run_async=True)
+RMCHATPIC_HANDLER = CommandHandler("delgpic", rmchatpic, filters=Filters.chat_type.groups, run_async=True)
+SETCHAT_TITLE_HANDLER = CommandHandler("setgtitle", setchat_title, filters=Filters.chat_type.groups, run_async=True)
+
+ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
+
+PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.chat_type.groups, run_async=True)
+UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.chat_type.groups, run_async=True)
+PINNED_HANDLER = CommandHandler("pinned", pinned, filters=Filters.chat_type.groups, run_async=True)
+
+INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite, run_async=True)
+
+PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote, run_async=True)
+FULLPROMOTE_HANDLER = DisableAbleCommandHandler("fullpromote", fullpromote, run_async=True)
+LOW_PROMOTE_HANDLER = DisableAbleCommandHandler("lowpromote", lowpromote, run_async=True)
+DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote, run_async=True)
+
+SET_TITLE_HANDLER = CommandHandler("title", set_title, run_async=True)
+ADMIN_REFRESH_HANDLER = CommandHandler("admincache", refresh_admin, filters=Filters.chat_type.groups, run_async=True)
+
+dispatcher.add_handler(SET_DESC_HANDLER)
+dispatcher.add_handler(SET_STICKER_HANDLER)
+dispatcher.add_handler(SETCHATPIC_HANDLER)
+dispatcher.add_handler(RMCHATPIC_HANDLER)
+dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
+dispatcher.add_handler(ADMINLIST_HANDLER)
+dispatcher.add_handler(PIN_HANDLER)
+dispatcher.add_handler(UNPIN_HANDLER)
+dispatcher.add_handler(PINNED_HANDLER)
+dispatcher.add_handler(INVITE_HANDLER)
+dispatcher.add_handler(PROMOTE_HANDLER)
+dispatcher.add_handler(FULLPROMOTE_HANDLER)
+dispatcher.add_handler(LOW_PROMOTE_HANDLER)
+dispatcher.add_handler(DEMOTE_HANDLER)
+dispatcher.add_handler(SET_TITLE_HANDLER)
+dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
+
+__mod_name__ = "Admins"
+__command_list__ = [
+    "setdesc"
+    "setsticker"
+    "setgpic"
+    "delgpic"
+    "setgtitle"
+    "adminlist",
+    "admins", 
+    "invitelink", 
+    "promote", 
+    "fullpromote",
+    "lowpromote",
+    "demote", 
+    "admincache"
+]
+__handlers__ = [
+    SET_DESC_HANDLER,
+    SET_STICKER_HANDLER,
+    SETCHATPIC_HANDLER,
+    RMCHATPIC_HANDLER,
+    SETCHAT_TITLE_HANDLER,
+    ADMINLIST_HANDLER,
+    PIN_HANDLER,
+    UNPIN_HANDLER,
+    PINNED_HANDLER,
+    INVITE_HANDLER,
+    PROMOTE_HANDLER,
+    FULLPROMOTE_HANDLER,
+    LOW_PROMOTE_HANDLER,
+    DEMOTE_HANDLER,
+    SET_TITLE_HANDLER,
+    ADMIN_REFRESH_HANDLER,
+]
