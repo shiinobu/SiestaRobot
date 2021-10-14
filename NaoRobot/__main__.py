@@ -87,7 +87,7 @@ buttons = [
     [
         InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="nao_"),
         InlineKeyboardButton(
-            text="ꜱᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
+            text="sᴏᴜʀᴄᴇ​", url=f"https://github.com/KennedyProject/NaoRobot"
         ),
     ],
     [
@@ -368,9 +368,9 @@ def nao_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Source", url="https://github.com/KennedyProject/NaoRobot"
+                    InlineKeyboardButton(text="Owner", url="https://t.me/xgothboi"
                     ),
-                    InlineKeyboardButton(text="Dev", url="https://t.mr/xgothboi")
+                    InlineKeyboardButton(text="Basic help", callback_data="nao_basichelp")
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_back")
@@ -385,6 +385,157 @@ def nao_about_callback(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
+        )
+
+
+    elif query.data == "nao_basichelp":
+        query.message.edit_text(
+            text=f"*Here's basic Help regarding* *How to use Me?*"
+            f"\n\n• Firstly Add {dispatcher.bot.first_name} to your group by pressing [here](http://t.me/{dispatcher.bot.username}?startgroup=true)\n"
+            f"\n• After adding promote me manually with full rights for faster experience.\n"
+            f"\n• Than send `/admincache` in that chat to refresh admin list in My database.\n"
+            f"\n\n*All done now use below given button's to know about use!*\n"
+            f"",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Admins", callback_data="nao_admin"),
+                    InlineKeyboardButton(text="Notes", callback_data="nao_notes"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Support", callback_data="nao_support"),
+                    InlineKeyboardButton(text="Credits", callback_data="nao_credit"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Musicplayer", callback_data="nao_music"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
+                 
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "nao_admin":
+        query.message.edit_text(
+            text=f"*Let's make your group bit effective now*"
+            f"\nCongragulations, NaoRobot now ready to manage your group."
+            f"\n\n*Admin Tools*"
+            f"\nBasic Admin tools help you to protect and powerup your group."
+            f"\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
+            f"\n\n*Welcome*"
+            f"\nLets set a welcome message to welcome new users coming to your group."
+            f"send `/setwelcome [message]` to set a welcome message!",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp")]]
+            ),
+        )
+
+    elif query.data == "nao_notes":
+        query.message.edit_text(
+            text=f"<b> Setting up notes</b>"
+            f"\nYou can save message/media/audio or anything as notes"
+            f"\nto get a note simply use # at the beginning of a word"
+            f"\n\nYou can also set buttons for notes and filters (refer help menu)",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp")]]
+            ),
+        )
+    elif query.data == "nao_support":
+        query.message.edit_text(
+            text="* NaoRobot support chats*"
+            "\nJoin My Support Group/Channel",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Support", url="t.me/Kenbotsupport"),
+                    InlineKeyboardButton(text="Updates", url="https://t.me/KennedyProject"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp"),
+                 
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "nao_music":
+        query.message.edit_text(
+            text="* Here is Musicplayer help menu*",
+            "\n*• First Add me as admin with full right."
+            "\n*• Then type /play or /userbotjoin for inviting @naoex_helper to your group.\n*• Now you can play music, enjoy!\n\n If you need any help or wanna report problem. You can report to my support group.",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Admins", callback_data="nao_mhsicadmin"),
+                    InlineKeyboardButton(text="All Member", callback_data="nao_musicmember"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp"),
+                 
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "nao_credit":
+        query.message.edit_text(
+            text=f"<b> Credis for NaoRobot</b>\n"
+            f"\nHere Developers Making The NaoRobot",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Sena", url="t.me/xgothboi"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp"),
+                 
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "nao_musicadmin":
+        query.message.edit_text(
+            text="Here is the musicplayer command only for admin group"
+            f"\n • /reload - for refresh the adminlist",
+            "\n • /userbotjoin - for inviting @naoex_helper to your group",
+            "\n • /userbotleave - for kicking the assistant from your group",
+            "\n • /skip - skipping the music to the next queue",
+            "\n • /pause or /resume - pause to paused the track and resume to resuming playing",
+            "\n • /end - for stopped playback music",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_music"),
+                 
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "nao_musicmember":
+        query.message.edit_text(
+            text="Here is the musicplayer command for any members group"
+            f"\n • /play <title> - for playing music",
+            "\n • /ytp <title> - for playing music dorect from youtube",
+            "\n • /playlist - to see the queue of playback",
+            "\n • /song or /music <title> - for download audio music from youtube",
+            "\n • /video or /vsong <title> - for download music video from youtube",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_music"),
+                 
+                 ]
+                ]
+            ),
         )
 
 
