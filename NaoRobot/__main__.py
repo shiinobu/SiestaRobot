@@ -475,9 +475,7 @@ def nao_about_callback(update, context):
                 ]
             ),
         )
-def nao_music_callback(update, context):
-    query = update.callback_query
-    if query.data == "nao_music":
+    elif query.data == "nao_music":
         query.message.edit_text(
             text="""* Here is Musicplayer help menu*
                  \n*• First Add me as admin with full right.
@@ -872,10 +870,6 @@ def main():
         nao_about_callback, pattern=r"nao_", run_async=True
     )
 
-    nao_music_callback_handler = CallbackQueryHandler(
-        nao_about_callback, pattern=r"nao_music", run_async=True
-    )
-
     source_callback_handler = CallbackQueryHandler(
         Source_about_callback, pattern=r"source_", run_async=True
     )
@@ -885,12 +879,11 @@ def main():
         Filters.status_update.migrate, migrate_chats, run_async=True
     )
 
-    # dispatcher.add_handler(test_handler)
+    dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(source_callback_handler)
-    dispatcher.add_handler(nao_music_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
