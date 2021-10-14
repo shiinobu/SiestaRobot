@@ -1,22 +1,3 @@
-
-Awesome-RJ
-/
-CutiepiiRobot
-Public
-Code
-Issues
-1
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-CutiepiiRobot/Cutiepii_Robot/modules/gogoanime.py
-@Awesome-RJ
-Awesome-RJ revert
- 2 contributors
-127 lines (112 sloc)  4.05 KB
 """
 MIT License
 Copyright (C) 2021 Awesome-RJ
