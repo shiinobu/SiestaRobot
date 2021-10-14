@@ -96,7 +96,7 @@ buttons = [
             text="➕️ Add Nao To Your Group ➕️", url="t.me/naoex_bot?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="Basic", callback_data="nao_basichelp"),
+        InlineKeyboardButton(text="Basic", callback_data="nao_"),
         InlineKeyboardButton(
             text="Try inline!​​", switch_inline_query_current_chat=""
         ),
