@@ -33,6 +33,7 @@ from NaoRobot.utils.functions import test_speedtest
 from NaoRobot.utils.pastebin import paste
 
 keywords_list = [
+    "alive",
     "image",
     "wall",
     "tmdb",
