@@ -1,5 +1,5 @@
 # By @TroJanzHEX
-# Improved by DaisyX
+# Improved by TeamDaisyX
 
 from pyrogram import filters
 from pyrogram.types import (
@@ -56,12 +56,12 @@ from NaoRobot.ex_plugins.ImageEditor.edit_5 import (  # pylint:disable=import-er
     scanlineglitch_4,
     scanlineglitch_5,
 )
-from NaoRobot import pbot as Client
+from NaoRobot import pbot
 
 lel = 00000000
 # pylint:disable=import-error
-@Client.on_message(filters.command(["edit", "editor"]))
-async def photo(client: Client, message: Message):
+@pbot.on_message(filters.command(["edit", "editor"]))
+async def photo(client: pbot, message: Message):
     try:
         if not message.reply_to_message.photo:
             await client.send_message(message.chat.id, "Reply to an image man!ㅤㅤ")
@@ -126,8 +126,8 @@ async def photo(client: Client, message: Message):
                 return
 
 
-@Client.on_callback_query()
-async def cb_handler(client: Client, query: CallbackQuery):
+@pbot.on_callback_query()
+async def cb_handler(client: pbot, query: CallbackQuery):
     user_id = query.from_user.id
     if lel == user_id:
         if query.data == "removebg":
@@ -450,11 +450,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await removebg_sticker(client, query.message)
 
 
-__mod_name__ = "Image Editor"
+__mod_name__ = "Img Editor​"
 __help__ = """
-<b> IMAGE EDITOR </b>
-Nao Tomori Robot have some advanced image editing tools inbuilt
+ IMAGE EDITOR 
+NaoRobot have some advanced image editing tools inbuilt
 Bright, Circle, RemBG, Blur, Border, Flip, Glitch, Sticker maker and more
-
 - /edit [reply to image]: Open the image editor
+- /rmbg [REPLY]: Revove BG of replied image/sticker.
+ Special credits to TroJanzHEX 
 """
