@@ -81,8 +81,8 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 ───「 [Nao Tomori](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) 」───
-*Hello ! {},*
-*I'm A  Anime themed group management bot*
+*Hello ! {}, I'm group management bot*
+*Maintained by @xgothboi*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 • *Uptime:* `{}`
 • `{}` *users, across* `{}` *chats.*
