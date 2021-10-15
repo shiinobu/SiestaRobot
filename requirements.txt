@@ -85,6 +85,4 @@ tzlocal==2.0
 pendulum
 fuzzysearch
 img2pdf
-py-Ultroid==2021.10.11.1
-git+https://github.com/Awesome-RJ/GoGoAnimeAPI.git
 multicolorcaptcha
