@@ -6,6 +6,7 @@ import time
 import re
 import sys
 import traceback
+import platform
 import NaoRobot.modules.sql.users_sql as sql
 from sys import argv
 from typing import Optional
@@ -52,6 +53,29 @@ from telegram.ext import (
 )
 from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
+
+from platform import python_version as pythver
+from telethon import events, Button
+from telegram import __version__ as telever
+from telethon import __version__ as tlhver
+from pyrogram import __version__ as pyrover
+from NaoRobot.events import register
+from NaoRobot import telethn as tbot
+
+
+@register(pattern=("/alive"))
+async def awake(event):
+  ken = event.sender.first_name
+  TEXT = f"**Hi {ken}, I'm Nao Tomori.** \n\n"
+  TEXT += "🌼 **I'm Working Properly** \n\n"
+  TEXT += "🌼 **My Master : [Sena](https://t.me/xgothboi)** \n\n"
+  TEXT += f"🌼 **Library Version :** `{telever}`\n\n"
+  TEXT += f"🌼 **Python Version :** `{pythver}` \n\n"
+  TEXT += f"🌼 **Telethon Version :** `{tlhver}` \n\n"
+  TEXT += f"🌼 **Pyrogram Version :** `{pyrover}` \n\n"
+  TEXT += "**Thanks For Adding Me Here ❤️**"
+  BUTTON = [[Button.url("Help", "https://t.me/naoex_bot?start=help"), Button.url("Support", "https://t.me/kenbotsupport")]]
+  await tbot.send_file(event.chat_id, PHOTO, caption=TEXT,  buttons=BUTTON)
 
 
 def get_readable_time(seconds: int) -> str:
