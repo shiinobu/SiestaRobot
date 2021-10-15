@@ -105,8 +105,7 @@ def ReTrieveFile(input_file_name):
         "X-API-Key": REM_BG_API_KEY,
     }
     files = {
-        "image_file": (input_file_name, open(input_file_name, "rb")),
-    }
+        "image_file": (input_file_name, os.open(input_file_name, "rb"))
     r = requests.post(
         "https://api.remove.bg/v1.0/removebg",
         headers=headers,
