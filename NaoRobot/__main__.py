@@ -63,6 +63,8 @@ from NaoRobot.events import register
 from NaoRobot import telethn as tbot
 
 
+PHOTO = "https://telegra.ph/file/f2a2b4937a55d250fd918.jpg"
+
 @register(pattern=("/alive"))
 async def awake(event):
   ken = event.sender.first_name
