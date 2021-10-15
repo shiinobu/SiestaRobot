@@ -87,6 +87,7 @@ PM_START_TEXT = """
 • *Uptime:* `{}`
 • `{}` *users, across* `{}` *chats.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
+*Maintained by [Muhammad Sena ❤️](https://t.me/xgothboi)*
 *Hit the /help or tap on button to se available command on me.*
 """
 
@@ -440,7 +441,7 @@ def nao_about_callback(update, context):
             f"\n\nYou can also set buttons for notes and filters (refer help menu)",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_basichelp")]]
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_")]]
             ),
         )
     elif query.data == "nao_support":
@@ -486,22 +487,26 @@ def Source_about_callback(update, context):
     if query.data == "source_":
         query.message.edit_text(
             text="๏›› This advance command for Musicplayer."
-            "\n\n๏ Command for admins only"
-            "\n • `/reload` - For refreshing the adminlist"
-            "\n • `/userbotjoin` - For inviting the assistant to your groups"
-            "\n • `/userbotleave` - Use this if you want the assistant leaving your groups"
-            "\n • `/pause` - To pause the playback"
-            "\n • `/resume` - To resuming the playback You've paused"
-            "\n • `/skip` - To skipping the player"
-            "\n • `/end` - For end the playback"
-            "\n\n๏ Command for all members"
-            "\n • `/play` or /ytp <query> - Playing music via YouTube"
-            "\n • `/player` - to open pannel settings of the Musicplayer"
-            "\n • `/playlist` - to show the playlist on your group",
+            "\n\n๏ Command for admins only."
+            "\n • `/reload` - For refreshing the adminlist."
+            "\n • `/userbotjoin` - For inviting the assistant to your groups."
+            "\n • `/userbotleave` - Use this if you want the assistant leaving your groups."
+            "\n • `/pause` - To pause the playback."
+            "\n • `/resume` - To resuming the playback You've paused."
+            "\n • `/skip` - To skipping the player."
+            "\n • `/end` - For end the playback."
+            "\n • `/musicplayer <on/off>` - Toggle for turn ON or turn OFF the musicplayer."
+            "\n\n๏ Command for all members."
+            "\n • `/play` or `/ytp` <query> - Playing music via YouTube."
+            "\n • `/player` - to open pannel settings of the Musicplayer."
+            "\n • `/playlist` - to show the playlist on your group.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
+                 [
+                    InlineKeyboardButton(text="Musicplayer source", url="https://github.com/KennedyProject/KennedyXMusic")
+                 ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_")
                  ]
