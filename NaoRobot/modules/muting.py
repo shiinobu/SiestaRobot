@@ -97,7 +97,7 @@ def mute(update: Update, context: CallbackContext) -> str:
             f"<code> </code><b>• Muted User:</b> {mention_html(member.user.id, member.user.first_name)}"
             )
         if reason:
-            msg += f"<code> </code><b>• Reason:</b> {html.escape(reason)}"
+            msg += f"\n<code> </code><b>• Reason:</b> {html.escape(reason)}"
 
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
@@ -220,7 +220,7 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
         f"<b>Time:</b> {time_val}"
     )
     if reason:
-        log += f"<b>Reason:</b> {reason}"
+        log += f"\n<b>Reason:</b> {reason}"
 
     try:
         if member.can_send_messages is None or member.can_send_messages:
