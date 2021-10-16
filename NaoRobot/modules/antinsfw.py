@@ -1,4 +1,3 @@
-
 from os import remove
 
 from pyrogram import filters
@@ -158,12 +157,12 @@ async def nsfw_enable_disable(_, message):
     status = message.text.split(None, 1)[1].strip()
     status = status.lower()
     chat_id = message.chat.id
-    if status == ("enable", "on"):
+    if status == "on":
         nsfw_on(chat_id)
         await message.reply_text(
             "Enabled AntiNSFW System. I will Delete Messages Containing Inappropriate Content."
         )
-    elif status == ("disable", "off"):
+    elif status == "off":
         nsfw_off(chat_id)
         await message.reply_text("Disabled AntiNSFW System.")
     else:
