@@ -1,15 +1,15 @@
 {
-      "name": "Asuna Robot",
+      "name": "NaoRobot",
       "description": "A Powerful  Telegram group management bot.",
       "keywords": [
          "telegram",
          "advance",
          "group",
          "manager",
-         "Asuna"
+         "naorobot"
       ],
     
-   "logo":    "https://telegra.ph/file/4977514f30ff13c11363b.jpg",  
+   "logo":    "https://telegra.ph/file/dee0471d704e41891fc1b.jpg",  
    "repository": "https://github.com/KennedyProject/https://github.com/KennedyProject/NaoRobot",
    "addons": [
           {
@@ -54,8 +54,8 @@
          "value": "1606221784"
      },
 
-      "REDIS_URL": {
-         "description": "Get REDIS_URL from  https://app.redislabs.com, used for run your bot modules.",
+      "SESSION_STRING": {
+         "description": "Fill with telethon string session.",
          "required": true,
          "value": "" 
       },
@@ -84,7 +84,7 @@
       "SUPPORT_CHAT": {
          "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to masha support than consider you made an enemy.",
          "required": true,
-         "value": "AsunaRobotSupport"
+         "value": "kenbotsupport"
       },
       "MONGO_DB_URI": {
          "description": "Required for database connections.",
@@ -102,12 +102,12 @@
      "EVENT_LOGS": {
          "description": "Event logs channel to note down important bot level events, recommend to make this public. ex: '-123456'",
          "required": true,
-         "value": "@AsunaLogUpdate"
+         "value": "@kenbotsupport"
       },
       "JOIN_LOGGER": {
          "description": "A channel where bot will print who added it to what group, useful during debugging or spam handling.",
          "required": true,
-         "value": "@AsunaLogUpdate"
+         "value": "@kenbotsupport"
       },      
       "CASH_API_KEY": {
          "description": "Required for currency converter. Get yours from https://www.alphavantage.co/support/#api-key",
@@ -184,8 +184,28 @@
          "required": false,
          "value": ""
       },
-      "No_LOAD": {
+      "NO_LOAD": {
          "description": "Dont load these modules cause they shit, space separation",
+         "required": false,
+         "value": "rss"
+      }, 
+      "PHONE_NUMBER": {
+         "description": "Fill with your phone number",
+         "required": false,
+         "value": "rss"
+      }, 
+      "USERBOT_PREFIX": {
+         "description": "Keep it on default",
+         "required": false,
+         "value": "."
+      }, 
+      "USERBOT_ID": {
+         "description": "Your id",
+         "required": true,
+         "value": "1974570"
+      }, 
+      "USERBOT_USERNAME": {
+         "description": "Fill with your username without use @",
          "required": false,
          "value": "rss"
       }, 
