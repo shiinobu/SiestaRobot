@@ -451,6 +451,7 @@ def stats(update, context):
                         "\n*Bot statistics*:\n"
                         + "\n".join(mod.__stats__() for mod in STATS)
                     )
+                )
                 + "╘══「 by [Kennedy](https://github.com/KennedyProject) | [Github](https://github.com/KennedyProject) 」\n"
             ),
             parse_mode=ParseMode.MARKDOWN,
