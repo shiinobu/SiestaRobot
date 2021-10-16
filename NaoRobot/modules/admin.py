@@ -480,7 +480,7 @@ def refresh_admin(update, _):
     except KeyError:
         pass
 
-    update.effective_message.reply_text("Admins cache refreshed!")
+    update.effective_message.reply_text("✅ Admins cache refreshed!")
 
 
 @connection_status
@@ -554,32 +554,53 @@ def set_title(update: Update, context: CallbackContext):
 @user_admin
 @loggable
 def pin(update: Update, context: CallbackContext) -> str:
-    bot = context.bot
-    args = context.args
-
+    bot, args = context.bot, context.args
     user = update.effective_user
     chat = update.effective_chat
+    msg = update.effective_message
+    msg_id = msg.reply_to_message.message_id if msg.reply_to_message else msg.message_id
 
-    is_group = chat.type not in ('private', 'channel')
+    if msg.chat.username:
+        # If chat has a username, use this format
+        link_chat_id = msg.chat.username
+        message_link = f"https://t.me/{link_chat_id}/{msg_id}"
+    elif (str(msg.chat.id)).startswith("-100"):
+        # If chat does not have a username, use this
+        link_chat_id = (str(msg.chat.id)).replace("-100", "")
+        message_link = f"https://t.me/c/{link_chat_id}/{msg_id}"
+
+    is_group = chat.type not in ("private", "channel")
     prev_message = update.effective_message.reply_to_message
+
+    if prev_message is None:
+        msg.reply_text("Reply a message to pin it!")
+        return
 
     is_silent = True
     if len(args) >= 1:
-        is_silent = args[0].lower() in ('notify', 'loud', 'violent')
+        is_silent = (
+            args[0].lower() != "notify"
+            or args[0].lower() == "loud"
+            or args[0].lower() == "violent"
+        )
 
     if prev_message and is_group:
         try:
             bot.pinChatMessage(
-                chat.id,
-                prev_message.message_id,
-                disable_notification=is_silent,
+                chat.id, prev_message.message_id, disable_notification=is_silent
+            )
+            msg.reply_text(
+                f"I have pinned <a href='{message_link}'>this message</a>.",
+                parse_mode=ParseMode.HTML,
+                disable_web_page_preview=True,
             )
         except BadRequest as excp:
             if excp.message != "Chat_not_modified":
                 raise
+
         log_message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#PINNED\n"
+            f"MESSAGE-PINNED-SUCCESSFULLY\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
         )
 
