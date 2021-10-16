@@ -1,10 +1,18 @@
 from os import remove
 from pyrogram import filters
 
-from NaoRobot import DRAGONS, BOT_USERNAME, arq, pgram
+from NaoRobot import DRAGONS, BOT_USERNAME, arq, pbot
 from NaoRobot.utils.errors import capture_err
 from NaoRobot.utils.permissions import adminsOnly
 from NaoRobot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
+
+
+__nod_name__ = "Anti-NSFW"
+__help__ = """ This is feature of NaoRobot for deleting porn.
+
+• `/antinsfw <on/off>` - to enable and disable this features.
+The command can be disable or enable only for admins.
+"""
 
 
 async def get_file_id_from_message(message):
@@ -40,7 +48,7 @@ async def get_file_id_from_message(message):
     return file_id
 
 
-@pgram.on_message(
+@pbot.on_message(
     (
         filters.document
         | filters.photo
@@ -60,7 +68,7 @@ async def detect_nsfw(_, message):
     file_id = await get_file_id_from_message(message)
     if not file_id:
         return
-    file = await pgram.download_media(file_id)
+    file = await pbot.download_media(file_id)
     try:
         results = await arq.nsfw_scan(file=file)
     except Exception:
@@ -94,7 +102,7 @@ Use `/antinsfw off` to turn off.
     )
 
 
-@pgram.on_message(filters.command(["nsfwscan", f"nsfwscan@{BOT_USERNAME}"]))
+@pbot.on_message(filters.command(["nsfwscan", f"nsfwscan@{BOT_USERNAME}"]))
 @capture_err
 async def nsfw_scan_command(_, message):
     if not message.reply_to_message:
@@ -118,7 +126,7 @@ async def nsfw_scan_command(_, message):
     file_id = await get_file_id_from_message(reply)
     if not file_id:
         return await m.edit("Something wrong happened.")
-    file = await pgram.download_media(file_id)
+    file = await pbot.download_media(file_id)
     try:
         results = await arq.nsfw_scan(file=file)
     except Exception:
@@ -139,7 +147,7 @@ async def nsfw_scan_command(_, message):
     )
 
 
-@pgram.on_message(filters.command(["antinsfw", f"antinsfw@{BOT_USERNAME}"]) & ~filters.private)
+@pbot.on_message(filters.command(["antinsfw", f"antinsfw@{BOT_USERNAME}"]) & ~filters.private)
 @adminsOnly("can_change_info")
 async def nsfw_enable_disable(_, message):
     if len(message.command) != 2:
