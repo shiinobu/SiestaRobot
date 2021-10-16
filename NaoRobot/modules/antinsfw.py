@@ -3,6 +3,7 @@ from os import remove
 
 from pyrogram import filters
 
+from NaoRobot import BOT_USERNAME as bn
 from NaoRobot import pbot, arq
 from NaoRobot.utils.errors import capture_err
 from NaoRobot.utils.permissions import adminsOnly
@@ -146,7 +147,7 @@ async def nsfw_scan_command(_, message):
     )
 
 
-@pbot.on_message(filters.command("antinsfw") & ~filters.private)
+@pbot.on_message(filters.command(["antinsfw", f"antinsfw@{bn}"]) & ~filters.private)
 @adminsOnly("can_change_info")
 async def nsfw_enable_disable(_, message):
     if len(message.command) != 2:
