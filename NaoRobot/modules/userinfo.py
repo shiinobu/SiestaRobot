@@ -426,14 +426,14 @@ def stats(update, context):
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
     botuptime = get_readable_time((time.time() - StartTime))
     status = "*╒════「 System statistics 」*\n\n"
-    status += "*ϟ System Start time:* " + str(uptime) + "\n\n"
+    status += "*ϟ System Start time:*` " + str(uptime) + "`\n\n"
     uname = platform.uname()
-    status += "*⍟ System:* " + str(uname.system) + "\n"
-    status += "*⍟ Release:* " + escape_markdown(str(uname.release)) + "\n"
-    status += "*⍟ Machine:* " + escape_markdown(str(uname.machine)) + "\n"
-    status += "*⍟ Python Version:* " + python_version() + "\n"
-    status += "*⍟ Python-Telegram-Bot:* " + str(ptbver) + "\n"
-    status += "*⍟ Uptime:* " + str(botuptime) + "\n"
+    status += "*⍟ System:*` " + str(uname.system) + "`\n"
+    status += "*⍟ Release:*` " + escape_markdown(str(uname.release)) + "`\n"
+    status += "*⍟ Machine:*` " + escape_markdown(str(uname.machine)) + "`\n"
+    status += "*⍟ Python Version:*` " + python_version() + "`\n"
+    status += "*⍟ Python-Telegram-Bot:*` " + str(ptbver) + "`\n"
+    status += "*⍟ Uptime:*` " + str(botuptime) + "`\n"
     try:
         update.effective_message.reply_text(
             status
