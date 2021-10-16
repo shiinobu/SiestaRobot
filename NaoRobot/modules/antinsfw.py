@@ -12,7 +12,7 @@ from NaoRobot.utils.filter_groups import nsfw_detect_group
 __mod_name__ = "Anti-NSFW​"
 __help__ = """
 /nsfwscan - Manually Scan An Image/Sticker/Document.
-/antinsfw [ENABLE | DISABLE] - Turn This Module On/Off
+/antinsfw [on | off] - Turn This Module On/Off
 """
 
 
