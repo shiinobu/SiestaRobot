@@ -644,7 +644,7 @@ def unpin(update: Update, context: CallbackContext):
                 "__Unpinned the last pinned message.__"
             )
             pass
-        elif excp.message == "Message to unpin not found":
+        excp.message == "Message to unpin not found":
             msg.reply_text(
                 "I can't see pined message, Maybe already unpined, or pin Message to old 🙂"
             )
