@@ -639,14 +639,13 @@ def unpin(update: Update, context: CallbackContext):
 
     try:
         context.bot.unpinChatMessage(chat.id)
-    except BadRequest as excp:
             msg.reply_text(
                 "__Unpinned the last pinned message.__"
             )
-            pass
-        excp.message == "Message to unpin not found":
-            msg.reply_text(
-                "I can't see pined message, Maybe already unpined, or pin Message to old 🙂"
+    except BadRequest as excp:
+        if excp.message == "Message to unpin not found":
+           msg.reply_text(
+                "I can't see pinned message, Maybe already unpined, or pin Message to old 🙂"
             )
         else:
             raise
