@@ -593,9 +593,6 @@ def pin(update: Update, context: CallbackContext) -> str:
                 f"I have pinned <a href='{message_link}'>this message</a>.",
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="See Pinned", url=f"https://t.me/c/{link_chat_id}/{msg_id}")]]
-                ),
             )
         except BadRequest as excp:
             if excp.message != "Chat_not_modified":
