@@ -80,9 +80,9 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-───「 [Nao Tomori](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) 」───
+───「 [Emiko Shuzune](https://telegra.ph/file/5ff1cb39902809148f07f.jpg) 」───
 *Hello ! {}, I'm group management bot*
-*Maintained by @xgothboi*
+*Maintained by @excrybaby*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 • *Uptime:* `{}`
 • `{}` *users, across* `{}` *chats.*
@@ -93,7 +93,7 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ Add Nao To Your Group ➕️", url="t.me/naoex_bot?startgroup=true"),
+            text="➕️ Add Emiko To Your Group ➕️", url="t.me/EmikoRobot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(text="Basic", callback_data="nao_"),
@@ -110,10 +110,10 @@ buttons = [
 HELP_STRINGS = """
 Click on the button bellow to get description about specifics command."""
 
-nao_IMG = "https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg"
+nao_IMG = "https://telegra.ph/file/5ff1cb39902809148f07f.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @xgothboi \
+ You can support the project by contacting @excrybaby \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -370,15 +370,15 @@ def nao_about_callback(update, context):
     query = update.callback_query
     if query.data == "nao_":
         query.message.edit_text(
-            text="๏ I'm *NaoRobot*, a powerful group management bot built to help you manage your group easily."
+            text="๏ I'm *Emiko*, a powerful group management bot built to help you manage your group easily."
             "\n• I can restrict users."
             "\n• I can greet users with customizable welcome messages and even set a group's rules."
             "\n• I have an advanced anti-flood system."
             "\n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
             "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
             "\n• I check for admins' permissions before executing any command and more stuffs"
-            "\n\n_naorobot's licensed under the GNU General Public License v3.0_"
-            "\n\n Click on button bellow to get basic help for NaoRobot.",
+            "\n\n_Emiko's licensed under the GNU General Public License v3.0_"
+            "\n\n Click on button bellow to get basic help for EmikoRobot.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -418,7 +418,7 @@ def nao_about_callback(update, context):
     elif query.data == "nao_admin":
         query.message.edit_text(
             text=f"*๏ Let's make your group bit effective now*"
-            "\nCongragulations, NaoRobot now ready to manage your group."
+            "\nCongragulations, EmikoRobot now ready to manage your group."
             "\n\n*Admin Tools*"
             "\nBasic Admin tools help you to protect and powerup your group."
             "\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
@@ -445,13 +445,13 @@ def nao_about_callback(update, context):
         )
     elif query.data == "nao_support":
         query.message.edit_text(
-            text="*๏ NaoRobot support chats*"
+            text="*๏ Emiko support chats*"
             "\nJoin My Support Group/Channel for see or report a problem on NaoRobot.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Support", url="t.me/Kenbotsupport"),
+                    InlineKeyboardButton(text="Support", url="t.me/emikosupport"),
                     InlineKeyboardButton(text="Updates", url="https://t.me/KennedyProject"),
                  ],
                  [
@@ -465,13 +465,13 @@ def nao_about_callback(update, context):
 
     elif query.data == "nao_credit":
         query.message.edit_text(
-            text=f"<b>๏ Credis for NaoRobot</b>\n"
-            f"\nHere Developers Making The NaoRobot",
+            text=f"<b>๏ Credis for Emiko</b>\n"
+            f"\nHere Developers Making The EmikoRobot",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Sena", url="t.me/xgothboi"),
+                    InlineKeyboardButton(text="Sena", url="t.me/excrybaby"),
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
