@@ -640,7 +640,6 @@ def unpin(update: Update, context: CallbackContext):
     try:
         context.bot.unpinChatMessage(chat.id)
     except BadRequest as excp:
-        if excp.message == "Chat_not_modified":
             msg.reply_text(
                 "__Unpinned the last pinned message.__"
             )
@@ -654,7 +653,7 @@ def unpin(update: Update, context: CallbackContext):
 
     if prev_message and is_group:
         try:
-            bot.upinChatMessage(
+            context.bot.upinChatMessage(
                 chat.id, prev_message.message_id
             )
             msg.reply_text(
