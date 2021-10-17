@@ -236,12 +236,6 @@ except BaseException:
     sys.exit(1)
 
 ubot2 = Client(SESSION_NAME, API_ID, API_HASH)
-    app2 = Client(
-        "userbot",
-        PHONE_NUMBER,
-        API_ID,
-        API_HASH,
-    )
 try:
     ubot2.start()
 except BaseException:
