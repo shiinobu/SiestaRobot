@@ -640,7 +640,7 @@ def unpin(update: Update, context: CallbackContext) -> str:
     if prev_message and is_group:
         try:
             bot.unpinChatMessage(
-                chat.id, prev_message.message_id, disable_notification=is_silent
+                chat.id, prev_message.message_id
             )
             msg.reply_text(
                 f"I have unpinned<a href='{message_link}'>this message</a>.",
@@ -683,12 +683,12 @@ def pinned(update: Update, context: CallbackContext) -> str:
             message_link = f"https://t.me/c/{link_chat_id}/{pinned_id}"
 
         msg.reply_text(
-            f'Tap on button bellow to see pinned chat on {html.escape(chat.title)}.',
+            f'🔽 Pinned on {html.escape(chat.title)}.',
             reply_to_message_id=msg_id,
             parse_mode=ParseMode.HTML,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="See Pinned", url=f"https://t.me/{link_chat_id}/{pinned_id}")]]
+                [[InlineKeyboardButton(text="👉 Go to message", url=f"https://t.me/{link_chat_id}/{pinned_id}")]]
             ),
         )
 
