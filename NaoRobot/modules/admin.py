@@ -639,7 +639,7 @@ def unpin(update: Update, context: CallbackContext):
 
     if prev_message and is_group:
         try:
-            bot.unpinChatMessage(
+            context.bot.unpinChatMessage(
                 chat.id, prev_message.message_id
             )
             msg.reply_text(
