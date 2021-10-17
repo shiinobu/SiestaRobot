@@ -91,7 +91,7 @@ async def inline_help_func(__HELP__):
             input_message_content=InputTextMessageContent(
                 "**__Click A Button To Get Started.__**"
             ),
-            thumb_url="https://hamker.me/cy00x5x.png",
+            thumb_url="https://telegra.ph/file/1b8f08dba704a5eb2bb09.jpg",
             reply_markup=buttons,
         ),
     ]
@@ -104,14 +104,14 @@ async def alive_function(answers):
     bot_state = "Dead" if not await app.get_me() else "Alive"
     ubot_state = "Dead" if not await app2.get_me() else "Alive"
     buttons.add(
-        InlineKeyboardButton("Help", url="https://t.me/naoex_bot?start=help"),
+        InlineKeyboardButton("Main bot", url="https://t.me/EmiexRobot"),
         InlineKeyboardButton(
             "Go Inline!", switch_inline_query_current_chat=""
         ),
     )
 
     msg = f"""
-**[Nao Tomori ❤️](https://t.me/kenbotsupport):**
+**[Emiko Robot ❤️](https://t.me/emikosupport):**
 **MainBot:** `{bot_state}`
 **UserBot:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
@@ -124,7 +124,7 @@ async def alive_function(answers):
         InlineQueryResultArticle(
             title="Alive",
             description="Check Bot's Stats",
-            thumb_url="https://telegra.ph/file/cf5049a3b5043c0263cd7.jpg",
+            thumb_url="https://telegra.ph/file/1b8f08dba704a5eb2bb09.jpg",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
             ),
