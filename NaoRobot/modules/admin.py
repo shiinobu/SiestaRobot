@@ -649,7 +649,7 @@ def unpin(update: Update, context: CallbackContext) -> str:
             )
         except BadRequest as excp:
             if excp.message == "Chat_not_modified":
-            pass
+                pass
             else:
                 raise
 
