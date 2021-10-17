@@ -639,9 +639,9 @@ def unpin(update: Update, context: CallbackContext):
 
     try:
         context.bot.unpinChatMessage(chat.id)
-            msg.reply_text(
-                "__Unpinned the last pinned message.__"
-            )
+        msg.reply_text(
+            "__Unpinned the last pinned message.__"
+        )
     except BadRequest as excp:
         if excp.message == "Message to unpin not found":
            msg.reply_text(
