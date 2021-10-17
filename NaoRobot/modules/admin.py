@@ -647,19 +647,19 @@ def unpin(update: Update, context: CallbackContext) -> str:
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
-    except BadRequest as excp:
-        if excp.message == "Chat_not_modified":
+        except BadRequest as excp:
+            if excp.message == "Chat_not_modified":
             pass
-        else:
-            raise
+            else:
+                raise
 
-    log_message = (
-        f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#UNPINNED\n"
-        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
-    )
+        log_message = (
+            f"<b>{html.escape(chat.title)}:</b>\n"
+            f"#UNPINNED\n"
+            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
+        )
 
-    return log_message
+        return log_message
 
 
 @bot_admin
