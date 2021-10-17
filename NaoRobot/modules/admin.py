@@ -637,22 +637,9 @@ def unpin(update: Update, context: CallbackContext):
     is_group = chat.type not in ("private", "channel")
     prev_message = update.effective_message.reply_to_message
 
-    try:
-        context.bot.unpinChatMessage(chat.id)
-        msg.reply_text(
-            "__Unpinned the last pinned message.__"
-        )
-    except BadRequest as excp:
-        if excp.message == "Message to unpin not found":
-           msg.reply_text(
-                "I can't see pinned message, Maybe already unpined, or pin Message to old 🙂"
-            )
-        else:
-            raise
-
     if prev_message and is_group:
         try:
-            context.bot.upinChatMessage(
+            bot.upinChatMessage(
                 chat.id, prev_message.message_id
             )
             msg.reply_text(
@@ -663,6 +650,20 @@ def unpin(update: Update, context: CallbackContext):
         except BadRequest as excp:
             if excp.message != "Chat_not_modified":
                 raise
+
+    if not prev_message and is_group:
+        try:
+            bot.unpinChatMessage(chat.id)
+            msg.reply_text(
+                "Unpinned the last pinned message."
+            )
+        except BadRequest as excp:
+            if excp.message == "Message to unpin not found":
+               msg.reply_text(
+                   "I can't see pinned message, Maybe already unpined, or pin Message to old 🙂"
+               )
+           else:
+               raise
 
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
