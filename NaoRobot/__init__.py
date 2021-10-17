@@ -235,6 +235,19 @@ except BaseException:
     print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
     sys.exit(1)
 
+ubot2 = Client(SESSION_NAME, API_ID, API_HASH)
+    app2 = Client(
+        "userbot",
+        PHONE_NUMBER,
+        API_ID,
+        API_HASH,
+    )
+try:
+    ubot2.start()
+except BaseException:
+    print("Userbot Error ! Have you added a SESSION_NAME in deploying??")
+    sys.exit(1)
+
 pbot = Client(
     ":memory:",
     api_id=API_ID,
