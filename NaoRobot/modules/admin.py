@@ -662,8 +662,8 @@ def unpin(update: Update, context: CallbackContext):
                msg.reply_text(
                    "I can't see pinned message, Maybe already unpined, or pin Message to old 🙂"
                )
-           else:
-               raise
+            else:
+                raise
 
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
