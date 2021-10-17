@@ -611,12 +611,19 @@ def pin(update: Update, context: CallbackContext) -> str:
 @can_pin
 @user_admin
 @loggable
-def unpin(update: Update, context: CallbackContext) -> str:
-    bot, args = context.bot, context.args
-    user = update.effective_user
+def unpin(update: Update, context: CallbackContext):
     chat = update.effective_chat
+    user = update.effective_user
     msg = update.effective_message
     msg_id = msg.reply_to_message.message_id if msg.reply_to_message else msg.message_id
+    unpinner = chat.get_member(user.id)
+
+    if (
+        not (unpinner.can_pin_messages or unpinner.status == "creator")
+        and user.id not in DRAGONS
+    ):
+        message.reply_text("You don't have the necessary rights to do that!")
+        return
 
     if msg.chat.username:
         # If chat has a username, use this format
@@ -634,12 +641,12 @@ def unpin(update: Update, context: CallbackContext) -> str:
         context.bot.unpinChatMessage(chat.id)
     except BadRequest as excp:
         if excp.message == "Chat_not_modified":
-           message.reply_text(
-               "Unpinned the last pinned message.__"
+            msg.reply_text(
+                "__Unpinned the last pinned message.__"
             )
             pass
         elif excp.message == "Message to unpin not found":
-            message.reply_text(
+            msg.reply_text(
                 "I can't see pined message, Maybe already unpined, or pin Message to old 🙂"
             )
         else:
@@ -647,7 +654,7 @@ def unpin(update: Update, context: CallbackContext) -> str:
 
     if prev_message and is_group:
         try:
-            bot.unpinChatMessage(
+            bot.upinChatMessage(
                 chat.id, prev_message.message_id
             )
             msg.reply_text(
@@ -655,14 +662,17 @@ def unpin(update: Update, context: CallbackContext) -> str:
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
+        except BadRequest as excp:
+            if excp.message != "Chat_not_modified":
+                raise
 
-        log_message = (
-            f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#UNPINNED\n"
-            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
-        )
+    log_message = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"MESSAGE-UNPINNED-SUCCESSFULLY\n"
+        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
+    )
 
-        return log_message
+    return log_message
 
 
 @bot_admin
