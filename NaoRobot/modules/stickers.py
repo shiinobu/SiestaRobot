@@ -94,7 +94,7 @@ def kang(update, context):
         elif msg.reply_to_message.sticker and msg.reply_to_message.sticker.emoji:
             sticker_emoji = msg.reply_to_message.sticker.emoji
         else:
-            sticker_emoji = "🙂"
+            sticker_emoji = "☁️"
 
         adding_process = msg.reply_text(
             "<b>Your sticker will be added in few seconds, please wait...</b>",
@@ -293,7 +293,7 @@ def kang(update, context):
                 png_sticker = urlemoji[1]
                 sticker_emoji = urlemoji[2]
             except IndexError:
-                sticker_emoji = "🙃"
+                sticker_emoji = "✨"
             urllib.urlretrieve(png_sticker, kangsticker)
             im = Image.open(kangsticker)
             maxsize = (512, 512)
@@ -465,14 +465,14 @@ def makepack_internal(
                 reply_markup=keyboard,
                 parse_mode=ParseMode.HTML,
             )
-        elif e.message == "Peer_id_invalid" or "bot was blocked by the user":
+        elif e.message in ("Peer_id_invalid", "bot was blocked by the user"):
             msg.reply_text(
-                f"{context.bot.first_name} was blocked by you.",
+                "Contact me in PM first.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Unblock", url=f"t.me/{context.bot.username}"
+                                text="Start", url=f"t.me/{context.bot.username}"
                             )
                         ]
                     ]
@@ -585,8 +585,10 @@ __help__ = """
 •  `/stickerid`*:* reply to a sticker to me to tell you its file ID.
 •  `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
 •  `/kang`*:* reply to a sticker to add it to your pack.
-•  /delsticker*:* Reply to your anime exist sticker to your pack to delete it.
-• `/stickers`*:* Find stickers for given term on combot sticker catalogue
+•  `/delsticker`*:* Reply to your anime exist sticker to your pack to delete it.
+•  `/stickers`*:* Find stickers for given term on combot sticker catalogue
+•  `/tiny`*:* To make small sticker
+•  `kamuii <1-8> *:* To deepefying stiker
 """
 
 __mod_name__ = "Stickers"
