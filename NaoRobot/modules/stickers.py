@@ -94,7 +94,7 @@ def kang(update, context):
         elif msg.reply_to_message.sticker and msg.reply_to_message.sticker.emoji:
             sticker_emoji = msg.reply_to_message.sticker.emoji
         else:
-            sticker_emoji = "☁️"
+            sticker_emoji = "🙂"
 
         adding_process = msg.reply_text(
             "<b>Your sticker will be added in few seconds, please wait...</b>",
@@ -166,6 +166,10 @@ def kang(update, context):
                     adding_process.delete()
                 elif e.message == "Sticker_png_dimensions":
                     im.save(kangsticker, "PNG")
+                    adding_process = msg.reply_text(
+                        "<b>Your sticker will be added in few seconds, please wait...</b>",
+                        parse_mode=ParseMode.HTML,
+                    )
                     context.bot.add_sticker_to_set(
                         user_id=user.id,
                         name=packname,
@@ -293,7 +297,7 @@ def kang(update, context):
                 png_sticker = urlemoji[1]
                 sticker_emoji = urlemoji[2]
             except IndexError:
-                sticker_emoji = "✨"
+                sticker_emoji = "🙃"
             urllib.urlretrieve(png_sticker, kangsticker)
             im = Image.open(kangsticker)
             maxsize = (512, 512)
@@ -465,14 +469,14 @@ def makepack_internal(
                 reply_markup=keyboard,
                 parse_mode=ParseMode.HTML,
             )
-        elif e.message == ("Peer_id_invalid" or "bot was blocked by the user"):
+        elif e.message == "Peer_id_invalid" or "bot was blocked by the user":
             msg.reply_text(
-                "Contact me in PM first.",
+                f"{context.bot.first_name} was blocked by you.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Start", url=f"t.me/{context.bot.username}"
+                                text="Unblock", url=f"t.me/{context.bot.username}"
                             )
                         ]
                     ]
@@ -569,11 +573,10 @@ def getsticker(update: Update, context: CallbackContext):
 
 
 def delsticker(update, context):
-    bot = context.bot
     msg = update.effective_message
     if msg.reply_to_message and msg.reply_to_message.sticker:
         file_id = msg.reply_to_message.sticker.file_id
-        bot.delete_sticker_from_set(file_id)
+        context.bot.delete_sticker_from_set(file_id)
         msg.reply_text("Deleted!")
     else:
         update.effective_message.reply_text(
