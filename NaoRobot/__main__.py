@@ -81,11 +81,10 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 ───「 [Emiko Robot](https://telegra.ph/file/5ff1cb39902809148f07f.jpg) 」───
-*Hello ! {}, I'm group management bot*
-*Maintained by @exgothboi*
+*Hello {}!*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-• *Uptime:* `{}`
-• `{}` *users, across* `{}` *chats.*
+*I'm a very advanced and faster management bot with many extra features for helping you in groups*
+*Maintained by @exgothboi*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 *Hit the /help or tap on button to se available command on me.*
 """
