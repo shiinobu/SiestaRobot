@@ -446,7 +446,7 @@ def nao_about_callback(update, context):
     elif query.data == "nao_support":
         query.message.edit_text(
             text="*๏ Emiko support chats*"
-            "\nJoin My Support Group/Channel for see or report a problem on NaoRobot.",
+            "\nJoin My Support Group/Channel for see or report a problem on Emiko.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -844,7 +844,7 @@ def main():
     dispatcher.add_error_handler(error_callback)
 
     if WEBHOOK:
-        LOGGER.info("[NaoRobot] Using webhooks.")
+        LOGGER.info("Using webhooks.")
         updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
 
         if CERT_PATH:
