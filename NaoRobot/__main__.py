@@ -81,11 +81,10 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 ───「 [Emiko Robot](https://telegra.ph/file/5ff1cb39902809148f07f.jpg) 」───
-*Hello ! {}, I'm group management bot*
-*Maintained by @exgothboi*
+*Hello {} !
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-• *Uptime:* `{}`
-• `{}` *users, across* `{}` *chats.*
+*I'm a powerfull and more efficient management bot. I can save filter system, warning system and more features for help your group.*
+*Maintained by @exgothboi*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 *Hit the /help or tap on button to se available command on me.*
 """
@@ -93,7 +92,7 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ Add Emiko To Your Group ➕️", url="t.me/EmikoRobot?startgroup=true"),
+            text="➕️ Add Emiko To Your Group ➕️", url="t.me/EmiexRobot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(text="Basic", callback_data="nao_"),
@@ -218,10 +217,7 @@ def start(update: Update, context: CallbackContext):
             first_name = update.effective_user.first_name
             update.effective_message.reply_text(
                 PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),                        
+                    escape_markdown(first_name),                        
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
@@ -406,9 +402,6 @@ def nao_about_callback(update, context):
         query.message.edit_text(
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
@@ -517,9 +510,6 @@ def Source_about_callback(update, context):
         query.message.edit_text(
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
