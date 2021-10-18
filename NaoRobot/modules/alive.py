@@ -17,7 +17,7 @@ async def awake(event):
   ken = event.sender.first_name
   TEXT = f"**Hi {ken}, I'm Emiko Robot.** \n\n"
   TEXT += "⚪ **I'm Working Properly** \n\n"
-  TEXT += "⚪ **My Master : [No Name](https://t.me/ubu)** \n\n"
+  TEXT += f"⚪ **My Master : [No Name](https://t.me/{ubu})** \n\n"
   TEXT += f"⚪ **Library Version :** `{telever}`\n\n"
   TEXT += f"⚪ **Python Version :** `3.9.7` \n\n"
   TEXT += f"⚪ **Telethon Version :** `{tlhver}` \n\n"
