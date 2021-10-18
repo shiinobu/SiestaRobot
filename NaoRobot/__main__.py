@@ -80,9 +80,9 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-───「 [Emiko Shuzune](https://telegra.ph/file/5ff1cb39902809148f07f.jpg) 」───
+───「 [Emiko Robot](https://telegra.ph/file/5ff1cb39902809148f07f.jpg) 」───
 *Hello ! {}, I'm group management bot*
-*Maintained by @excrybaby*
+*Maintained by @exgothboi*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 • *Uptime:* `{}`
 • `{}` *users, across* `{}` *chats.*
@@ -113,7 +113,7 @@ Click on the button bellow to get description about specifics command."""
 nao_IMG = "https://telegra.ph/file/5ff1cb39902809148f07f.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @excrybaby \
+ You can support the project by contacting @exgothboi \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -471,7 +471,7 @@ def nao_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Sena", url="t.me/excrybaby"),
+                    InlineKeyboardButton(text="Sena", url="t.me/exgothboi"),
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
