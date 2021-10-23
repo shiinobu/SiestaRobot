@@ -847,7 +847,7 @@ def adminlist(update, context):
         return
 
 
-__help__ = ["""
+__help__ = """
 *User Commands*:
   • `/admins`*:* list of admins in the chat
   • `/pinned`*:* to get the current pinned message.
@@ -880,7 +880,9 @@ __help__ = ["""
   • `/rules`*:* get the rules for this chat.
   • `/setrules <your rules here>`*:* set the rules for this chat.
   • `/clearrules`*:* clear the rules for this chat.
-""", [
+"""
+buttons = [
+    [
          InlineKeyboardButton(text="Warns", callback_data="warns_help"),
          InlineKeyboardButton(text="Promote", callback_data="promote_help"),
          InlineKeyboardButton(text="Set Group", callback_data="group_help")
