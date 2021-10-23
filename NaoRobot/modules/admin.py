@@ -888,7 +888,7 @@ __help__ = ["""
     [
          InlineKeyboardButton(text="Purge", callback_data="purge_help"),
          InlineKeyboardButton(text="Ban", callback_data="ban_help"),
-         InlineKeyboardButton(text="Mute" callback_data="mute_help")
+         InlineKeyboardButton(text="Mute" callback_data="mute_help"),
     ],
 ]
 
