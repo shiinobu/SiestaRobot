@@ -84,6 +84,7 @@ if ENV:
     API_ID = os.environ.get("API_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
     SESSION_STRING = os.environ.get("SESSION_STRING", None)
+    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DB_URI = os.environ.get("DATABASE_URL")
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
@@ -194,7 +195,7 @@ else:
     USERBOT_NAME = Config.USERBOT_NAME
     USERBOT_USERNAME = Config.USERBOT_USERNAME
     USERBOT_ID = Config.USERBOT_ID
-    WELCOME_DELAY_KICK_SEC = WELCOME_DELAY_KICK_SEC
+    STRING_SESSION = Config.STRING_SESSION
     LASTFM_API_KEY = Config.LASTFM_API_KEY
     CF_API_KEY = Config.CF_API_KEY
 
@@ -230,12 +231,26 @@ aiohttpsession = ClientSession()
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-ubot = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
+ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
     ubot.start()
 except BaseException:
     print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
     sys.exit(1)
+
+if not HEROKU:
+    ubot2 = Client(
+        "userbot",
+        phone_number=PHONE_NUMBER,
+        api_id=API_ID,
+        api_hash=API_HASH,
+    )
+else:
+    ubot2 = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
+
+print("[INFO]: STARTING USERBOT CLIENT")
+app2.start()
+
 
 pbot = Client(
     ":memory:",
