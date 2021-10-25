@@ -239,7 +239,7 @@ except BaseException:
     sys.exit(1)
 
 
-try:
+if:
     ubot2 = Client(
         "userbot",
         phone_number=PHONE_NUMBER,
