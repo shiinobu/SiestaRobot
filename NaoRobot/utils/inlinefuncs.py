@@ -22,7 +22,7 @@ from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
 from search_engine_parser import GoogleSearch
 
 from NaoRobot import (BOT_USERNAME, LOGGER, DRAGONS, USERBOT_ID,
-                 USERBOT_NAME, USERBOT_USERNAME, pbot as app, ubot as app2, arq)
+                 USERBOT_NAME, USERBOT_USERNAME, pbot as app, ubot2, arq)
 from NaoRobot.services.keyboard import Ikb
 from NaoRobot.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
@@ -104,7 +104,7 @@ async def inline_help_func(__HELP__):
 async def alive_function(answers):
     buttons = InlineKeyboard(row_width=2)
     bot_state = "Dead" if not await app.get_me() else "Alive"
-    ubot_state = "Dead" if not await app2.get_me() else "Alive"
+    ubot_state = "Dead" if not await ubot2.get_me() else "Alive"
     buttons.add(
         InlineKeyboardButton("Main bot", url="https://t.me/EmiexRobot"),
         InlineKeyboardButton(
@@ -386,7 +386,7 @@ async def tg_search_func(answers, text, user_id):
 
         return answers
     text = text[0:-1]
-    async for message in app2.search_global(text, limit=49):
+    async for message in ubot2.search_global(text, limit=49):
         buttons = InlineKeyboard(row_width=2)
         buttons.add(
             InlineKeyboardButton(
@@ -429,7 +429,7 @@ async def music_inline_func(answers, query):
     try:
         messages = [
             m
-            async for m in app2.search_messages(
+            async for m in ubot2.search_messages(
                 chat_id, query, filter="audio", limit=100
             )
         ]
