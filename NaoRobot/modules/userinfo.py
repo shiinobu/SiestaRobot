@@ -315,8 +315,8 @@ def info(update: Update, context: CallbackContext):
     elif user.id in WOLVES:
         text += "\n\nThe Disaster level of this person is 'Wolf'."
         disaster_level_present = True
-    elif user.id == 1482952149:
-         text += "\n\nCo-Owner Of A Bot. Queen Of @xgothboi. Bot Name Inspired From 'Charlotte'."
+    elif user.id == 1829047705:
+         text += "\n\nOwner Of A Bot. Queen Of @xxskfi. Bot Name Inspired From 'Charlotte'."
          disaster_level_present = True
 
     if disaster_level_present:
@@ -366,6 +366,7 @@ def info(update: Update, context: CallbackContext):
 
     rep.delete()
 
+
 def about_me(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
@@ -387,7 +388,6 @@ def about_me(update: Update, context: CallbackContext):
         )
     else:
         update.effective_message.reply_text("There isnt one, use /setme to set one.")
-
 
 
 def set_about_me(update: Update, context: CallbackContext):
@@ -438,7 +438,7 @@ def stats(update, context):
             status
             + "\n*Bot statistics*:\n"
             + "\n".join([mod.__stats__() for mod in STATS])
-            + "\n\n╘═══「 by [Kennedy](https://t.me/xgothboi) | [Github](https://github.com/KennedyProject) 」\n",
+            + "\n\n╘═══「 by [Kennedy](https://t.me/xxskfi) | [Github](https://github.com/KennedyProject) 」\n",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
