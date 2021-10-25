@@ -23,6 +23,7 @@ captchadb = db.captcha
 solved_captcha_db = db.solved_captcha
 captcha_cachedb = db.captcha_cache
 antiservicedb = db.antiservice
+pmpermitdb = db.pmpermit
 welcomedb = db.welcome_text
 blacklist_filtersdb = db.blacklistFilters
 pipesdb = db.pipes
@@ -492,7 +493,7 @@ async def antiservice_off(chat_id: int):
 
 
 async def is_pmpermit_approved(user_id: int) -> bool:
-    user = await pmpermitdb.find_one({"user_id": user_id})
+    user = pmpermitdb.find_one({"user_id": user_id})
     if not user:
         return False
     return True
@@ -502,14 +503,14 @@ async def approve_pmpermit(user_id: int):
     is_pmpermit = await is_pmpermit_approved(user_id)
     if is_pmpermit:
         return
-    return await pmpermitdb.insert_one({"user_id": user_id})
+    return pmpermitdb.insert_one({"user_id": user_id})
 
 
 async def disapprove_pmpermit(user_id: int):
     is_pmpermit = await is_pmpermit_approved(user_id)
     if not is_pmpermit:
         return
-    return await pmpermitdb.delete_one({"user_id": user_id})
+    return pmpermitdb.delete_one({"user_id": user_id})
 
 
 async def get_welcome(chat_id: int) -> str:
