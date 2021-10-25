@@ -31,4 +31,7 @@ Link To File:
  File Or Text To Telegraph:
  - /tm : Get Telegraph Link Of Replied Media
  - /txt: Get Telegraph Link of Replied Text
+
+ Tagger
+ - /tagall : for tag everyone at least 100 member first.
 """
