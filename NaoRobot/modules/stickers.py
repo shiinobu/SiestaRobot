@@ -583,7 +583,6 @@ def delsticker(update, context):
             "Please reply to sticker message to del sticker"
         )
 
-
 __help__ = """
 •  `/stickerid`*:* reply to a sticker to me to tell you its file ID.
 •  `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
@@ -591,7 +590,7 @@ __help__ = """
 •  `/delsticker`*:* Reply to your anime exist sticker to your pack to delete it.
 •  `/stickers`*:* Find stickers for given term on combot sticker catalogue
 •  `/tiny`*:* To make small sticker
-•  `kamuii <1-8> *:* To deepefying stiker
+•  `/kamuii <1-8> *:* To deepefying stiker
 """
 
 __mod_name__ = "Stickers"
