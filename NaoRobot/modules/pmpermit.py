@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.raw.functions.messages import DeleteHistory
 
-from NaoRobot import BOT_ID, DEV_USERS, USERBOT_ID, USERBOT_PREFIX, pbot, ubot2, eor
+from NaoRobot import BOT_ID, USERBOT_ID, USERBOT_PREFIX, pbot, ubot2, eor
 from NaoRobot.ex_plugins.errors import capture_err
 from NaoRobot.ex_plugins.dbfunctions import (approve_pmpermit, disapprove_pmpermit,
                                    is_pmpermit_approved)
@@ -17,7 +17,7 @@ flood = {}
     & ~filters.me
     & ~filters.bot
     & ~filters.via_bot
-    & ~filters.user(DEV_USERS)
+    & ~filters.user(USERBOT_ID)
 )
 @capture_err
 async def pmpermit_func(_, message):
@@ -45,7 +45,7 @@ async def pmpermit_func(_, message):
 
 @ubot2.on_message(
     filters.command("approve", prefixes=USERBOT_PREFIX)
-    & filters.user(DEV_USERS)
+    & filters.user(USERBOT_ID)
     & ~filters.via_bot
 )
 @capture_err
@@ -61,7 +61,7 @@ async def pm_approve(_, message):
 
 @ubot2.on_message(
     filters.command("disapprove", prefixes=USERBOT_PREFIX)
-    & filters.user(DEV_USERS)
+    & filters.user(USERBOT_ID)
     & ~filters.via_bot
 )
 async def pm_disapprove(_, message):
@@ -83,7 +83,7 @@ async def pm_disapprove(_, message):
 
 @ubot2.on_message(
     filters.command("block", prefixes=USERBOT_PREFIX)
-    & filters.user(DEV_USERS)
+    & filters.user(USERBOT_ID)
     & ~filters.via_bot
 ) 
 @capture_err
@@ -98,7 +98,7 @@ async def block_user_func(_, message):
 
 @ubot2.on_message(
     filters.command("unblock", prefixes=USERBOT_PREFIX)
-    & filters.user(DEV_USERS)
+    & filters.user(USERBOT_ID)
     & ~filters.via_bot
 )
 async def unblock_user_func(_, message):
