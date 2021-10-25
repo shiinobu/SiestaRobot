@@ -238,13 +238,13 @@ except BaseException:
     print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
     sys.exit(1)
 
-if not HEROKU:
-    ubot2 = Client(
-        "userbot",
-        phone_number=PHONE_NUMBER,
-        api_id=API_ID,
-        api_hash=API_HASH,
-    )
+
+ubot2 = Client(
+    "userbot",
+    phone_number=PHONE_NUMBER,
+    api_id=API_ID,
+    api_hash=API_HASH,
+)
 else:
     ubot2 = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 
