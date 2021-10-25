@@ -43,6 +43,8 @@ keywords_list = [
     "search",
     "ping",
     "webss",
+    "fakegen",
+    "gsearch",
     "paste",
     "tr",
     "ud",
