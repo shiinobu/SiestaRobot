@@ -38,6 +38,3 @@ async def _(event):
 
 
 __mod_name__ = "Tagger"
-__help__ = """
-- /tagall : Tag everyone in a chat
-"""
