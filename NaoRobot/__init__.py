@@ -242,7 +242,7 @@ except BaseException:
 ubot2 = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 try:
     ubot2.start()
-excelt BaseException:
+except BaseException:
     print("STRINGMU SALAH KONTOL")
     sys.exit(1)
 
