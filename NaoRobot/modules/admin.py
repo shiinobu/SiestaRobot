@@ -896,6 +896,15 @@ __help__ = """
   • `/zombies`*:* searches deleted accounts
   • `/zombies clean`*:* removes deleted accounts from the group.
   • `/snipe <chatid> <string>`*:* Make me send a message to a specific chat.
+
+• `/cmds`*:* check the current status of disabled commands
+
+*Admins only:*
+• `/enable <cmd name>`*:* enable that command
+• `/disable <cmd name>`*:* disable that command
+• `/enablemodule <module name>`*:* enable all commands in that module
+• `/disablemodule <module name>`*:* disable all commands in that module
+• `/listcmds`*:* list all possible toggleable commands
 """
 
 SET_DESC_HANDLER = CommandHandler("setdesc", set_desc, filters=Filters.chat_type.groups, run_async=True)
