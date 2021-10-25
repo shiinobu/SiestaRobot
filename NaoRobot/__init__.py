@@ -239,20 +239,12 @@ except BaseException:
     sys.exit(1)
 
 
-if:
-    ubot2 = Client(
-        "userbot",
-        phone_number=PHONE_NUMBER,
-        api_id=API_ID,
-        api_hash=API_HASH,
-    )
+ubot2 = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 try:
     ubot2.start()
-    print("[INFO]: STARTING USERBOT CLIENT")
-
-else:
-    ubot2 = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
-
+excelt BaseException:
+    print("STRINGMU SALAH KONTOL")
+    sys.exit(1)
 
 pbot = Client(
     ":memory:",
