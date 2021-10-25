@@ -246,11 +246,12 @@ if:
         api_id=API_ID,
         api_hash=API_HASH,
     )
+try:
+    ubot2.start()
+    print("[INFO]: STARTING USERBOT CLIENT")
+
 else:
     ubot2 = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
-
-print("[INFO]: STARTING USERBOT CLIENT")
-app2.start()
 
 
 pbot = Client(
