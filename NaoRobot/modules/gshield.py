@@ -314,17 +314,5 @@ async def del_profanity(event):
                     dev = await event.respond(final)
                     await asyncio.sleep(10)
                     await dev.delete()
-#
 
-__help__ = """
-<b> Group Guardian: </b>
-✪ NaoRobot can protect your group from NSFW senders, Slag word users and also can force members to use English
-<b>Commmands</b>
- - /gshield <i>on/off</i> - Enable|Disable Porn cleaning
- - /globalmode <i>on/off</i> - Enable|Disable English only mode
- - /profanity <i>on/off</i> - Enable|Disable slag word cleaning
- 
-Note: Special credits goes to Julia project and Friday Userbot
- 
-"""
 __mod_name__ = "Shield"
