@@ -3,6 +3,7 @@ APAKAH = (
     "Iya",
     "Mungkin saja",
     "Tidak mungkin",
+    "Tanya aja sama mamak kau",
     "Mungkin iya",
     "mungkin tidak",
     "Benar sekali",
