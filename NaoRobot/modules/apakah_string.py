@@ -1,6 +1,6 @@
 APAKAH = (
-    "Tidak"
-    "Iya"
+    "Tidak",
+    "Iya",
     "Mungkin saja",
     "Tidak mungkin",
     "Mungkin iya",
