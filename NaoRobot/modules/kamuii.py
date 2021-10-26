@@ -1,7 +1,7 @@
 import os
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from NaoRobot import ubot
+from NaoRobot import ubot2 as ubot
 from NaoRobot.events import register
 from NaoRobot import telethn as tbot, TEMP_DOWNLOAD_DIRECTORY
 
