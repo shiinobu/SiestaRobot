@@ -1,9 +1,11 @@
 APAKAH = (
+    "Tidak"
+    "Iya"
     "Mungkin saja",
     "Tidak mungkin",
     "Mungkin iya",
-    "Tidak, itu salah",
     "mungkin tidak",
     "Benar sekali",
     "Tidak tahu",
+    "Tidak, itu salah",
 )
