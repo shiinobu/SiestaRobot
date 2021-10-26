@@ -4,7 +4,7 @@ from time import time
 from pyrogram import filters
 from pyrogram.types import Message
 
-from NaoRobot import BOT_ID, DRAGONS, USERBOT_PREFIX, ubot as app2
+from NaoRobot import BOT_ID, DRAGONS, USERBOT_PREFIX, ubot2 as app2
 from NaoRobot.services.sections import bold, section, w
 
 tasks = {}
