@@ -1,17 +1,17 @@
 import html
 import random
-import NaoRobot.modules.spillgame_string as spill_string
+import NaoRobot.modules.apakah_string as apakah_string
 from NaoRobot import dispatcher
 from telegram import ParseMode, Update, Bot
 from NaoRobot.modules.disable import DisableAbleCommandHandler
 from telegram.ext import CallbackContext, run_async
 
 
-def spill(update: Update, context: CallbackContext):
+def apakah(update: Update, context: CallbackContext):
     args = context.args
-    update.effective_message.reply_text(random.choice(spill_string.SPILL))
+    update.effective_message.reply_text(random.choice(apakah_string.APAKAH))
 
 
-SPILL_HANDLER = DisableAbleCommandHandler("spill", spill, run_async=True)
+APAKAH_HANDLER = DisableAbleCommandHandler("apakah", apakah, run_async=True)
 
-dispatcher.add_handler(SPILL_HANDLER)
+dispatcher.add_handler(APAKAH_HANDLER)
