@@ -1,6 +1,6 @@
 import html
 import random
-import NaoRobot.modules.apakah_string as apakah_string
+import NaoRobot.modules import apakah_string
 from NaoRobot import dispatcher
 from telegram import ParseMode, Update, Bot
 from NaoRobot.modules.disable import DisableAbleCommandHandler
