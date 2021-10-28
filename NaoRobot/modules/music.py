@@ -127,7 +127,7 @@ async def ytmusic(client, message: Message):
                 await pablo.edit(
                     f"❌ **Mau ngerusak ya yahaha papale papale**"
                 )
-                is_downloading = True
+                is_downloading = False
                 return
             ytdl_data = ytdl.extract_info(url, download=True)
 
@@ -209,7 +209,7 @@ async def ytmusic(client, message: Message):
                 await pablo.edit(
                     f"❌ **Mau ngerusak ya yahaha papale papale**"
                 )
-                is_downloading = True
+                is_downloading = False
                 return
             ytdl_data = ytdl.extract_info(mo, download=True)
     except Exception as e:
