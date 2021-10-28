@@ -120,7 +120,17 @@ async def ytmusic(client, message: Message):
     }
     try:
         with YoutubeDL(opts) as ytdl:
+            infoo = ytdl.extract_info(url, False)
+            duration = round(infoo["duration"] / 60)
+
+            if duration > 120:
+                await pablo.edit(
+                    f"❌ **Mau ngerusak ya yahaha papale papale**"
+                )
+                is_downloading = True
+                return
             ytdl_data = ytdl.extract_info(url, download=True)
+
     except Exception as e:
         await event.edit(event, f"**Failed To Download** \n**Error :** `{str(e)}`")
         return
@@ -193,6 +203,14 @@ async def ytmusic(client, message: Message):
     }
     try:
         with YoutubeDL(opts) as ytdl:
+            infoo = ytdl.extract_info(url, False)
+            duration = round(infoo["duration"] / 60)
+            if duration > 180:
+                await pablo.edit(
+                    f"❌ **Mau ngerusak ya yahaha papale papale**"
+                )
+                is_downloading = True
+                return
             ytdl_data = ytdl.extract_info(mo, download=True)
     except Exception as e:
         await pablo.edit(f"**Failed To Download** \n**Error :** `{str(e)}`")
