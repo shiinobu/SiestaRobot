@@ -61,7 +61,7 @@ def download_youtube_audio(url: str):
         }
     ) as ydl:
         info_dict = ydl.extract_info(url, download=False)
-        if int(float(info_dict["duration"])) > 600:
+        if int(float(info_dict["duration"])) > 180:
             is_downloading = False
             return []
         ydl.process_info(info_dict)
@@ -120,10 +120,10 @@ async def ytmusic(client, message: Message):
     }
     try:
         with YoutubeDL(opts) as ytdl:
-            infoo = ytdl.extract_info(url, False)
+            infoo = ytdl.extract_info(url, True)
             duration = round(infoo["duration"] / 60)
 
-            if duration > 120:
+            if duration > 180:
                 await pablo.edit(
                     f"❌ **Mau ngerusak ya yahaha papale papale**"
                 )
