@@ -120,7 +120,7 @@ async def ytmusic(client, message: Message):
     }
     try:
         with YoutubeDL(opts) as ytdl:
-            infoo = ytdl.extract_info(url, True)
+            infoo = ytdl.extract_info(url, False)
             duration = round(infoo["duration"] / 60)
 
             if duration > 180:
