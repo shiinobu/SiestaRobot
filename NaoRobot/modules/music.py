@@ -1,13 +1,18 @@
+from __future__ import unicode_literals
 import asyncio
+import math
 import io
 import os
 import time
 import requests
 import wget
+import yt_dlp
+from urllib.parse import urlparse
 from pyrogram import filters
 from pyrogram.types import Message
 from tswift import Song
 from yt_dlp import YoutubeDL
+from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 from NaoRobot.utils.pluginhelper import get_text, progress
 from NaoRobot import pbot, arq
