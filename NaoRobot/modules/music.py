@@ -125,7 +125,7 @@ async def ytmusic(client, message: Message):
 
             if duration > 180:
                 await pablo.edit(
-                    f"❌ **Mau ngerusak ya yahaha papale papale**"
+                    f"❌ **durasinya kelamaan gabisa tot:v**"
                 )
                 is_downloading = False
                 return
@@ -207,7 +207,7 @@ async def ytmusic(client, message: Message):
             duration = round(infoo["duration"] / 60)
             if duration > 180:
                 await pablo.edit(
-                    f"❌ **Mau ngerusak ya yahaha papale papale**"
+                    f"❌ **durasinya kelamaan gabisa tot:v**"
                 )
                 is_downloading = False
                 return
