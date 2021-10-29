@@ -20,7 +20,7 @@ async def _(fry):
         await fry.edit("`this file not supported`")
         return
     if reply_message.sender.bot:
-        await fry.edit("`Reply to a asticker`")
+        await fry.edit("`Reply to a asticker to destroy`")
         return
     chat = "@image_deepfrybot"
     message_id_to_reply = fry.message.reply_to_msg_id
