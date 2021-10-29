@@ -17,10 +17,10 @@ async def _(fry):
         return
     reply_message = await fry.get_reply_message()
     if not reply_message.media:
-        await fry.edit("`Gambar tidak di dukung`")
+        await fry.edit("`this file not supported`")
         return
     if reply_message.sender.bot:
-        await fry.edit("`Mohon Balas Di Sticker`")
+        await fry.edit("`Reply to a asticker`")
         return
     chat = "@image_deepfrybot"
     message_id_to_reply = fry.message.reply_to_msg_id
@@ -39,10 +39,10 @@ async def _(fry):
             """ - don't spam notif - """
             await ubot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await fry.reply("`Mohon Unblock` @image_deepfrybot`...`")
+            await fry.reply(f"`Error, tell the problem on @{SUPPORT_CHAT}`")
             return
         if response.text.startswith("Forward"):
-            await fry.edit("`Mohon Matikan Setelan Forward Privasi...`")
+            await fry.edit(f"`Error, tell the problem on @{SUPPORT_CHAT}`")
         else:
             downloaded_file_name = await ubot.download_media(
                 response.media,
