@@ -47,7 +47,7 @@ TgCrypto
 Pyrogram
 PyDictionary
 yt_dlp
-youtube_search_python
+youtube_search_python==1.4.6
 youtube_search
 lyrics_extractor
 asyncio
