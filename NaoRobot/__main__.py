@@ -92,7 +92,7 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ Add Emiko To Your Group ➕️", url="t.me/EmikoRobot?startgroup=true"),
+            text="➕️ Add Emiko To Your Group ➕️", url="t.me/EmiexRobot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(text="Basic", callback_data="nao_"),
