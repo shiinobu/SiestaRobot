@@ -67,14 +67,14 @@ async def hmm(_, message):
         if not Escobar:
             await lel.edit("Emiko AI Was Not Activated In This Chat")
             return
-        await lel.edit(f"Emiko AI Deactivated Actived by {message.from_user.mention()} for users in {message.chat.title}")
+        await lel.edit(f"Emiko AI Deactivated by {message.from_user.mention()} for users in {message.chat.title}")
 
     elif status == "EN" or status == "en" or status == "english":
         if not chat_id in en_chats:
             en_chats.append(chat_id)
             await message.reply_text(f"English AI chat Enabled by {message.from_user.mention()}")
             return
-        await message.reply_text("AI Chat Is Already Disabled.")
+        await message.reply_text(f"English AI Chat Disabled by {message.from_user.mention()}")
         message.continue_propagation()
     else:
         await message.reply_text("I only recognize `/chatbot on` and `chatbot off` only")
