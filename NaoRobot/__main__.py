@@ -84,7 +84,7 @@ PM_START_TEXT = """
 *Hello {}!*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 *I'm a very advanced and faster management bot with many extra features for helping you in groups*
-*Maintained by @exgothboi*
+*Maintained by @xxskfi*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 *Hit the /help or tap on button to se available command on me.*
 """
@@ -95,7 +95,7 @@ buttons = [
             text="➕️ Add Emiko To Your Group ➕️", url="t.me/EmiexRobot?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="Basic", callback_data="nao_"),
+        InlineKeyboardButton(text="About", callback_data="nao_"),
         InlineKeyboardButton(
             text="Try inline!​​", switch_inline_query_current_chat=""
         ),
@@ -112,7 +112,7 @@ Click on the button bellow to get description about specifics command."""
 nao_IMG = "https://telegra.ph/file/5ff1cb39902809148f07f.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @exgothboi \
+ You can support the project by contacting @xxskfi \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -470,7 +470,7 @@ def nao_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Sena", url="t.me/exgothboi"),
+                    InlineKeyboardButton(text="Sena", url="t.me/xxskfi"),
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
