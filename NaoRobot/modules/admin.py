@@ -854,15 +854,11 @@ You Just Need To Give Commands To Bot And But Will Work for You. Click On Bellow
 buttons = [
     [
         InlineKeyboardButton(text="Groups", callback_data="help_group")
-        InlineKeyboardButton(
-            text="Promote", callback_data="help_promote"
-        )
         InlineKeyboardButton(text="Purge", callback_data="help_purge"),
     ],
     [
         InlineKeyboardButton(text="Ban", callback_data="help_ban")
-        InlineKeyboardButton(text="Muting", callback_data="help_mute")
-        InlineKeyboardButton(text="Warn", callback_data="help_warn"),
+        InlineKeyboardButton(text="Muting", callback_data="help_mute"),
     ],
 ]
 
