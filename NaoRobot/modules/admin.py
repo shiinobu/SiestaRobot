@@ -845,33 +845,9 @@ def adminlist(update, context):
         msg.edit_text(text, parse_mode=ParseMode.HTML)
     except BadRequest:  # if original message is deleted
         return
-
-KONTOL_ADMIN = """
-Admins Play Major Roles To Manage A Group, We Have Created Some Hack Command In Our Bot So It Will Help To Manage Group Easily Via Bot.
-You Just Need To Give Commands To Bot And But Will Work for You. Click On Bellow Buttons & Get Detailed Information.
- • `/admins`: list of admins in the chat"""
-
-buttons = [
-    [
-        InlineKeyboardButton(text="Groups", callback_data="help_group"),
-    ],
-]
-
-
-@Client.on.callback_query("admin_help")
-def markdown_help(update: Update, context: CallbackContext):
-    bot = context.bot
-    query = update.callback_query
-        query.message.edit_text(
-        text=KONTOL_ADMIN,
-        pharse_mode=PharseMode.MARKDOWN,
-        reply_markup=buttons,
-    )
   
-__help__ = "callback_data=help_module(admin_help)"
+__help__ = """
 
-
-"""
 *User Commands*:
   • `/admins`*:* list of admins in the chat
   • `/pinned`*:* to get the current pinned message.
@@ -891,6 +867,7 @@ __help__ = "callback_data=help_module(admin_help)"
   • `/setgpic`*:* reply to an image to set as group photo
   • `/setdesc`*:* Set group description
   • `/setsticker`*:* Set group sticker
+
 *Log Channel*:
   • `/logchannel`*:* get log channel info
   • `/setlog`*:* set the log channel.
