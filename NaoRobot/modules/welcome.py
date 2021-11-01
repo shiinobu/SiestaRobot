@@ -238,13 +238,6 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                 )
                 continue
 
-            # Welcome yourself
-            if new_mem.id == bot.id:
-                update.effective_message.reply_text(
-                    "Thanks for adding me here❤️\n\nPromote me as admin with full rights, so i can work with full power.",
-                    reply_to_message_id=reply,
-                )
-                continue
             buttons = sql.get_welc_buttons(chat.id)
             keyb = build_keyboard(buttons)
 
