@@ -176,7 +176,7 @@ async def ytmusic(client, message: Message):
     pablo = await client.send_message(
         message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
     )
-    search = YoutubeSearch(f"{urlissed}", max_results=1).to_dict()
+    search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
     mi = search.result()
     mio = mi["search_result"]
     mo = mio[0]["link"]
@@ -208,14 +208,6 @@ async def ytmusic(client, message: Message):
     }
     try:
         with YoutubeDL(opts) as ytdl:
-            infoo = ytdl.extract_info(url, False)
-            duration = round(infoo["duration"] / 60)
-            if duration > 180:
-                await pablo.edit(
-                    f"❌ **durasinya kelamaan gabisa tot:v**"
-                )
-                is_downloading = False
-                return
             ytdl_data = ytdl.extract_info(mo, download=True)
     except Exception as e:
         await pablo.edit(f"**Failed To Download** \n**Error :** `{str(e)}`")
