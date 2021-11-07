@@ -166,10 +166,6 @@ def kang(update, context):
                     adding_process.delete()
                 elif e.message == "Sticker_png_dimensions":
                     im.save(kangsticker, "PNG")
-                    adding_process = msg.reply_text(
-                        "<b>Your sticker will be added in few seconds, please wait...</b>",
-                        parse_mode=ParseMode.HTML,
-                    )
                     context.bot.add_sticker_to_set(
                         user_id=user.id,
                         name=packname,
