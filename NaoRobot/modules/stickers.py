@@ -96,11 +96,6 @@ def kang(update, context):
         else:
             sticker_emoji = "🙂"
 
-        adding_process = msg.reply_text(
-            "<b>Your sticker will be added in few seconds, please wait...</b>",
-            parse_mode=ParseMode.HTML,
-        )
-
         if not is_animated:
             try:
                 im = Image.open(kangsticker)
@@ -139,7 +134,7 @@ def kang(update, context):
                         ]
                     ]
                 )
-                adding_process.edit_text(
+                await msg.reply_text(
                     f"<b>Your sticker has been added!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
@@ -163,7 +158,7 @@ def kang(update, context):
                         packnum,
                         png_sticker=open("kangsticker.png", "rb"),
                     )
-                    adding_process.delete()
+                    
                 elif e.message == "Sticker_png_dimensions":
                     im.save(kangsticker, "PNG")
                     context.bot.add_sticker_to_set(
@@ -181,7 +176,7 @@ def kang(update, context):
                             ]
                         ]
                     )
-                    adding_process.edit_text(
+                    await msg.reply_text(
                         f"<b>Your sticker has been added!</b>"
                         f"\nEmoji Is : {sticker_emoji}",
                         reply_markup=edited_keyboard,
@@ -247,7 +242,7 @@ def kang(update, context):
                         ]
                     ]
                 )
-                adding_process.edit_text(
+                await msg.reply_text(
                     f"<b>Your sticker has been added!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
@@ -265,7 +260,7 @@ def kang(update, context):
                         packnum,
                         tgs_sticker=open("kangsticker.tgs", "rb"),
                     )
-                    adding_process.delete()
+                    
                 elif e.message == "Invalid sticker emojis":
                     msg.reply_text("Invalid emoji(s).")
                 elif e.message == "Internal Server Error: sticker set not found (500)":
@@ -278,7 +273,7 @@ def kang(update, context):
                             ]
                         ]
                     )
-                    adding_process.edit_text(
+                    await msg.reply_text(
                         f"<b>Your sticker has been added!</b>"
                         f"\nEmoji Is : {sticker_emoji}",
                         reply_markup=edited_keyboard,
@@ -331,7 +326,7 @@ def kang(update, context):
                     ]
                 ]
             )
-            adding_process.edit_text(
+            await msg.reply_text(
                 f"<b>Your sticker has been added!</b>" f"\nEmoji Is : {sticker_emoji}",
                 reply_markup=edited_keyboard,
                 parse_mode=ParseMode.HTML,
@@ -352,7 +347,7 @@ def kang(update, context):
                     packnum,
                     png_sticker=open("kangsticker.png", "rb"),
                 )
-                adding_process.delete()
+                
             elif e.message == "Sticker_png_dimensions":
                 im.save(kangsticker, "PNG")
                 context.bot.add_sticker_to_set(
@@ -370,7 +365,7 @@ def kang(update, context):
                         ]
                     ]
                 )
-                adding_process.edit_text(
+                await msg.reply_text(
                     f"<b>Your sticker has been added!</b>"
                     f"\nEmoji Is : {sticker_emoji}",
                     reply_markup=edited_keyboard,
