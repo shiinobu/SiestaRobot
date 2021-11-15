@@ -1,17 +1,31 @@
-import html
+import os
+import io
+import requests
+import shutil 
 import random
-import NaoRobot.modules.apakah_string as apakontol_string
-from NaoRobot import dispatcher
-from telegram import ParseMode, Update, Bot
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from telegram.ext import CallbackContext, run_async
+import re
+import time
+from requests import get
+from NaoRobot.events import register
+from NaoRobot import telethn
+
+APAKAH_STRING = ["Iya", 
+                 "Tidak", 
+                 "Mungkin", 
+                 "Mungkin Tidak", 
+                 "Bisa jadi", 
+                 "Mungkin Tidak",
+                 "Tidak Mungkin",
+                 "Pala bapak kau pecah",
+                 "Apakah kamu yakin?",
+                 "Tanya aja sama mamak au tu pler"
+                 ]
 
 
-def apakah(update: Update, context: CallbackContext):
-    args = context.args
-    update.effective_message.reply_text(random.choice(apakontol_string.APAKAH))
-
-
-APAKAH_HANDLER = DisableAbleCommandHandler("apakah", apakah, run_async=True)
-
-dispatcher.add_handler(APAKAH_HANDLER)
+@register(pattern="^/apakah ?(.*)")
+async def apakah(event):
+    quew = event.pattern_match.group(1)
+    if not quew:
+        await event.reply('Berikan pertanyaan yang spesifik...')
+        return
+    await event.reply(random.choice(APAKAH_STRING))
