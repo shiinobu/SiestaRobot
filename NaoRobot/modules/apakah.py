@@ -1,11 +1,4 @@
-import os
-import io
-import requests
-import shutil 
 import random
-import re
-import time
-from requests import get
 from NaoRobot.events import register
 from NaoRobot import telethn
 
@@ -16,8 +9,9 @@ APAKAH_STRING = ["Iya",
                  "Bisa jadi", 
                  "Mungkin Tidak",
                  "Tidak Mungkin",
+                 "YNTKTS",
                  "Pala bapak kau pecah",
-                 "Apakah kamu yakin?",
+                 "Apa iya?",
                  "Tanya aja sama mamak au tu pler"
                  ]
 
@@ -26,6 +20,6 @@ APAKAH_STRING = ["Iya",
 async def apakah(event):
     quew = event.pattern_match.group(1)
     if not quew:
-        await event.reply('Berikan pertanyaan yang spesifik...')
+        await event.reply('Berikan saya pertanyaan 😐')
         return
     await event.reply(random.choice(APAKAH_STRING))
