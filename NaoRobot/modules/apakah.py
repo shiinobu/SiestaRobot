@@ -29,3 +29,8 @@ async def apakah(event):
         await event.reply('Berikan pertanyaan yang spesifik...')
         return
     await event.reply(random.choice(APAKAH_STRING))
+
+
+@register(pattern="^/proklamasi ?(.*)")
+async def apak(event):
+    await event.reply("_       PROKLAMASI        _\n\n  __Hari ini pada tanggal 15 November 2021, Sena dan Sarah dengan penuh perasaan telah resmi berpacaran.__\n  __Hal-hal mengenai penyempurnaan dan kemesraan akan diselenggarakan dalam tempo yang selama lamanya.__")
