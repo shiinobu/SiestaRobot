@@ -574,9 +574,11 @@ def delsticker(update, context):
             "Please reply to sticker message to del sticker"
         )
 
+__mod_name__ = "Stickers"
 
 __help__ = """
 *Help menu for stickers tools*
+
 •  `/stickerid`*:* reply to a sticker to me to tell you its file ID.
 •  `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
 •  `/kang`*:* reply to a sticker to add it to your pack.
@@ -586,7 +588,7 @@ __help__ = """
 •  `/kamuii <1-8> *:* To deepefying stiker
 """
 
-__mod_name__ = "Stickers"
+
 STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid, run_async=True)
 GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker, run_async=True)
 KANG_HANDLER = DisableAbleCommandHandler("kang", kang, pass_args=True, run_async=True)
