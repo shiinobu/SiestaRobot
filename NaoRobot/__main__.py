@@ -233,7 +233,7 @@ def start(update: Update, context: CallbackContext):
                                 {
                                     InlineKeyboardButton(
                                         text="Support Chat​",
-                                        url="https://t.me/kenbotsupport",
+                                        url=f"https://t.me/{SUPPORT_CHAT}",
                                     )
                                 }
                             ]
