@@ -386,7 +386,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton(
             "Demote", callback_data="demote_({})".format(member.user.id))
-    ]))
+    ]])
 
     bot.sendMessage(
         chat.id,
