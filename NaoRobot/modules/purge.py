@@ -1,3 +1,4 @@
+import asyncio
 import time
 from telethon import events
 
@@ -48,8 +49,9 @@ async def purge_messages(event):
         pass
     time_ = time.perf_counter() - start
     text = f"Purged Successfully in {time_:0.2f} Second(s)"
+    await asyncio.sleep(5)
     await event.respond(text, parse_mode="markdown")
-
+    await text.delete()
 
 async def delete_messages(event):
     if event.from_id is None:
