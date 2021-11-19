@@ -62,3 +62,15 @@ async def boobs(client, message):
     await client.send_photo(message.chat.id, pic_loc, caption="**Sange boleh, Goblok jangan**")
     os.remove(pic_loc)
     await a.delete()
+
+
+__mod_name = "Random - api"
+
+__help__ = """
+Random api for fun
+
+- `/ptl` - check it yourself.
+- `/wibu` - check it yourself.
+- `/hilih` - change all Vocal to I.
+- `/boobs` - danger modules, don't use in groups.
+"""
