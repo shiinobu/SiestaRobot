@@ -853,8 +853,9 @@ def adminlist(update, context):
         return
 
 
-@user_admin_no_reply
 @bot_admin
+@can_promote
+@user_admin
 @loggable
 def button(update: Update, context: CallbackContext) -> str:
     query: Optional[CallbackQuery] = update.callback_query
