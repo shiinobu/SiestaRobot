@@ -1,5 +1,5 @@
-from telethon.functions.account import UpdateProfileRequest
-from telethon.functions.photos import DeletePhotosRequest, UploadProfilePhotoRequest
+from telethon.tl.functions.account import UpdateProfileRequest
+from telethon.tl.functions.photos import DeletePhotosRequest, UploadProfilePhotoRequest
 from NaoRobot import ubot2
 from NaoRobot.events import register
 
