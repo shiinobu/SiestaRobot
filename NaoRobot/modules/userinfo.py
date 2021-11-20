@@ -431,7 +431,7 @@ def stats(update: Update, context: CallbackContext):
             [
                 [
                     InlineKeyboardButton(
-                        "Owner", url=https://t.me/excrybaby"
+                        "Owner", url="https://t.me/excrybaby"
                     )
                 ]
             ]
