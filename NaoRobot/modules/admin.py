@@ -225,7 +225,7 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     bot.sendMessage(
         chat.id,
-        f"Sucessfully promoted <b>{user_member.user.first_name or user_id}</b>!",
+        f"Promoting a user in\n<b>{chat.title}</b>\nUser: {mention_html(user_member.user.id, user_member.user.first_name)}\nAdmin: {mention_html(user.id, user.first_name)}",
         parse_mode=ParseMode.HTML,
     )
 
@@ -302,7 +302,7 @@ def lowpromote(update: Update, context: CallbackContext) -> str:
 
     bot.sendMessage(
         chat.id,
-        f"Sucessfully promoted <b>{user_member.user.first_name or user_id}</b> with low rights!",
+        f"Lowpromoting a user in\n<b>{chat.title}<b>\nUser: {mention_html(user_member.user.id, user_member.user.first_name)}\nAdmin: {mention_html(user.id, user.first_name)}",
         parse_mode=ParseMode.HTML,
     )
 
@@ -390,7 +390,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
 
     bot.sendMessage(
         chat.id,
-        f"{mention_html(user.id, user.first_name)} promoting <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b> succesfully with full rights!",
+        f"Fullpromoting a user in\n<b>{chat.title}</b>\n<b>User: {mention_html(user_member.user.id, user_member.user.first_name)}</b>\n<b>Promoter: {mention_html(user.id, user.first_name)}</b>",
         parse_mode=ParseMode.HTML,
     )
 
@@ -458,7 +458,7 @@ def demote(update: Update, context: CallbackContext) -> str:
 
         bot.sendMessage(
             chat.id,
-            f"Sucessfully demoted <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>!",
+            f"Sucessfully demoted a admins in\n<b>{chat.title}</b>\nUser: <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>\nAdmin: {mention_html(user.id, user.first_name)}",
             parse_mode=ParseMode.HTML,
         )
 
@@ -595,7 +595,7 @@ def pin(update: Update, context: CallbackContext) -> str:
                 chat.id, prev_message.message_id, disable_notification=is_silent
             )
             msg.reply_text(
-                f"I have pinned <a href='{message_link}'>this message</a>.",
+                f"I have pinned a message.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
