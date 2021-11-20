@@ -3,12 +3,11 @@ from telethon.tl.functions.photos import DeletePhotosRequest, UploadProfilePhoto
 from NaoRobot import ubot2
 from NaoRobot.events import register
 
-
 @register(pattern="^/grab ?(.*)")
 async def gpoto(e):
     kontol = e.pattern_match.group(0)
     a = await e.reply("`Getting this person pfp`")
-    if ult:
+    if kontol:
         pass
     elif e.is_reply:
         gs = await e.get_reply_message()
