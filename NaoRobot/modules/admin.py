@@ -458,7 +458,7 @@ def demote(update: Update, context: CallbackContext) -> str:
 
         bot.sendMessage(
             chat.id,
-            f"Sucessfully demoted a admins in\n<b>{chat.title}</b>\nUser: <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>\nAdmin: {mention_html(user.id, user.first_name)}",
+            f"Sucessfully demoted a admins in <b>{chat.title}</b>\n\nAdmin: <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>\nDemoter: {mention_html(user.id, user.first_name)}",
             parse_mode=ParseMode.HTML,
         )
 
