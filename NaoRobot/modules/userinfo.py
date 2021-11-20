@@ -354,14 +354,37 @@ def info(update: Update, context: CallbackContext):
             message.reply_document(
                 document=open(f"{user.id}.png", "rb"),
                 caption=(text),
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "Health", url="https://t.me/KennedyProject/44"),
+                            InlineKeyboardButton(
+                                "Disaster", url="https://t.me/KennedyProject/43")
+                        ],
+                    ]
+                ),
                 parse_mode=ParseMode.HTML,
+                disable_web_page_preview=True
             )
 
             os.remove(f"{user.id}.png")
         # Incase user don't have profile pic, send normal text
         except IndexError:
             message.reply_text(
-                text, parse_mode=ParseMode.HTML,
+                text, 
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "Health", url="https://t.me/KennedyProject/44"),
+                            InlineKeyboardButton(
+                                "Disaster", url="https://t.me/KennedyProject/43")
+                        ],
+                    ]
+                ),
+                parse_mode=ParseMode.HTML,
+                disable_web_page_preview=True
             )
 
     else:
