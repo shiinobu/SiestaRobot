@@ -450,19 +450,10 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
-    stats = "卍 Stats Of <b><a href='https://t.me/EmiexRobot'>Emiko Robot</a>:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
+    stats = "╔═━「 <b>Stats Of <a href='https://t.me/EmiexRobot'>Emiko Robot</a>: 」</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(
         result,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "Sena - ex", url="https://t.me/excrybaby"
-                    )
-                ]
-            ]
-        ), 
         parse_mode=ParseMode.HTML, 
         disable_web_page_preview=True
    )
