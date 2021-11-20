@@ -391,7 +391,6 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     bot.sendMessage(
         chat.id,
         f"{mention_html(user.id, user.first_name)} promoting <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b> succesfully with full rights!",
-        reply_markup=keyboard,
         parse_mode=ParseMode.HTML,
     )
 
@@ -459,7 +458,7 @@ def demote(update: Update, context: CallbackContext) -> str:
 
         bot.sendMessage(
             chat.id,
-            f"Sucessfully demoted <b>{user_member.user.first_name or user_id}</b>!",
+            f"Sucessfully demoted <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>!",
             parse_mode=ParseMode.HTML,
         )
 
@@ -597,6 +596,14 @@ def pin(update: Update, context: CallbackContext) -> str:
             )
             msg.reply_text(
                 f"I have pinned <a href='{message_link}'>this message</a>.",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "👉 Go to message", url=f"{message_link}")
+                        ]
+                    ]
+                ), 
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
