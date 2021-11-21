@@ -82,7 +82,7 @@ def ban(update: Update, context: CallbackContext) -> str:
             message.reply_text("I can't act against our own.")
         elif user_id in DRAGONS:
             message.reply_text(
-                "Fighting this Bersekser here will put user lives at risk."
+                "Fighting this Prince here will put user lives at risk."
             )
         elif user_id in DEMONS:
             message.reply_text(
@@ -303,7 +303,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             except BadRequest:
                 pass
             chat.unban_member(user_id)
-            query.message.edit_text("Yep, this user can join!")
+            query.message.edit_text(f"<b>Yep, {mention_html(member.user.id, member.user.first_name)} user can join!</b>")
             bot.answer_callback_query(query.id, text="Unbanned!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
@@ -434,7 +434,7 @@ def unban(update: Update, context: CallbackContext) -> str:
         return log_message
 
     chat.unban_member(user_id)
-    message.reply_text("Yep, this user can join!")
+    message.reply_text(f"<b>Yep, {mention_html(member.user.id, html.escape(member.user.first_name))} can join!</b>")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
@@ -481,7 +481,7 @@ def selfunban(update: Update, context: CallbackContext) -> str:
         return
 
     chat.unban_member(user.id)
-    message.reply_text("Yep, I have unbanned you.")
+    message.reply_text(f"Yep, I have unbanned {mention_html(member.user.id, html.escape(member.user.first_name))}.")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
