@@ -54,11 +54,11 @@ def report_setting(update: Update, context: CallbackContext):
             elif args[0] in ("no", "off"):
                 sql.set_chat_setting(chat.id, False)
                 msg.reply_text(
-                    "Turned off reporting! No admins will be notified on /report or @admin.",
+                    f"Turned off reporting in {chat.title}!\nNo admins will be notified on /report or @admin.",
                 )
         else:
             msg.reply_text(
-                f"This group's current setting is: `{sql.chat_should_report(chat.id)}`",
+                f"Current report setting is: `{sql.chat_should_report(chat.id)}`.\n\nTo change this setting, try this command again, with one of the following args: yes/no/on/off",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -91,7 +91,7 @@ def report(update: Update, context: CallbackContext) -> str:
             return ""
 
         if reported_user.id in REPORT_IMMUNE_USERS:
-            message.reply_text("Uh? You reporting a disaster?")
+            message.reply_text("Uh? You reporting a Kingdom Asosiation?")
             return ""
 
         if chat.username and chat.type == Chat.SUPERGROUP:
@@ -229,7 +229,7 @@ def buttons(update: Update, context: CallbackContext):
         try:
             bot.kickChatMember(splitter[0], splitter[2])
             bot.unbanChatMember(splitter[0], splitter[2])
-            query.answer("✅ Succesfully kicked")
+            query.edit("✅ Succesfully kicked")
             return ""
         except Exception as err:
             query.answer("🛑 Failed to Kick")
@@ -241,7 +241,7 @@ def buttons(update: Update, context: CallbackContext):
     elif splitter[1] == "banned":
         try:
             bot.kickChatMember(splitter[0], splitter[2])
-            query.answer("✅  Succesfully Banned")
+            query.edit("✅  Succesfully Banned")
             return ""
         except Exception as err:
             bot.sendMessage(
@@ -253,7 +253,7 @@ def buttons(update: Update, context: CallbackContext):
     elif splitter[1] == "delete":
         try:
             bot.deleteMessage(splitter[0], splitter[3])
-            query.answer("✅ Message Deleted")
+            query.edit("✅ Message Deleted")
             return ""
         except Exception as err:
             bot.sendMessage(
