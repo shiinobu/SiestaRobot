@@ -80,12 +80,12 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello {} Emiko is here!*
-____________________________
-❂ *I'm an anime theme bot designed to help you managing group.*
-❂ *Maintained by [sena-ex](https://t.me/excrybaby)* ✨
-____________________________
-*Hit the /help to see available command.*
+Hello {} Emiko is here!
+───────────────────────
+❂ I'm an anime theme bot designed to help you managing group.
+❂ Maintained by <a href='https://t.me/excrybaby'>sena-ex</a> ✨
+───────────────────────
+Hit the /help to see available command.
 """
 
 buttons = [
@@ -213,15 +213,10 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            first_name = update.effective_user.first_name
             update.effective_message.reply_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),                        
+                PM_START_TEXT.format(                        
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode=ParseMode.HTML,
                 timeout=60,
                 disable_web_page_preview=True,
             )
@@ -400,16 +395,10 @@ def nao_about_callback(update, context):
             ),
         )
     elif query.data == "nao_back":
-        first_name = update.effective_user.first_name
-        uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
                 PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode=ParseMode.HTML,
                 timeout=60,
                 disable_web_page_preview=True,
         )
@@ -512,15 +501,10 @@ def Source_about_callback(update, context):
             ),
         )
     elif query.data == "source_back":
-        first_name = update.effective_user.first_name
         query.message.edit_text(
                 PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode=ParseMode.HTML,
                 timeout=60,
                 disable_web_page_preview=True,
         )
