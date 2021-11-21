@@ -303,7 +303,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             except BadRequest:
                 pass
             chat.unban_member(user_id)
-            query.message.edit_text(f"<b>Yep, {mention_html(member.user.id, member.user.first_name)} user can join!</b>")
+            query.message.edit_text(f"Yep, {mention_html(member.user.id, member.user.first_name)} user can join!")
             bot.answer_callback_query(query.id, text="Unbanned!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
@@ -434,7 +434,7 @@ def unban(update: Update, context: CallbackContext) -> str:
         return log_message
 
     chat.unban_member(user_id)
-    message.reply_text(f"<b>Yep, {mention_html(member.user.id, html.escape(member.user.first_name))} can join!</b>")
+    message.reply_text(f"Yep, {mention_html(member.user.id, html.escape(member.user.first_name))} can join!")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
