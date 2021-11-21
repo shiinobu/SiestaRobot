@@ -585,7 +585,7 @@ __help__ = """
 •  `/delsticker`*:* Reply to your anime exist sticker to your pack to delete it.
 •  `/stickers`*:* Find stickers for given term on combot sticker catalogue
 •  `/tiny`*:* To make small sticker
-•  `/kamuii <1-8> *:* To deepefying stiker
+•  `/kamuii <1-8>` *:* To deepefying stiker
 """
 
 
