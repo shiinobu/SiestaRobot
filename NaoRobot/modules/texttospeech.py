@@ -35,13 +35,15 @@ async def _(event):
         previous_message = await event.get_reply_message()
         text = previous_message.message
         lan = input_str
+    elif None in input_str:
+        lan, text = input_str.split(None)
     else:
         await event.reply(
             "Invalid Syntax\nFormat `/tts lang text`\nFor eg: `/tts en hello`"
         )
         return
-    text = text.strip() 
-    lan = input_str
+    text = text.strip()
+    lan = lan.strip()
     try:
         tts = gTTS(text, tld="com", lang=lan)
         tts.save("k.mp3")
