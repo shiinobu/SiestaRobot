@@ -83,7 +83,7 @@ PM_START_TEXT = """
 Hello {} Emiko is here!
 ───────────────────────
 ❂ I'm an anime theme bot designed to help you managing group.
-❂ Maintained by <a href='https://t.me/excrybaby'>sena-ex</a> ✨
+❂ Maintained by @excrybaby ✨
 ───────────────────────
 Hit the /help to see available command.
 """
@@ -216,7 +216,7 @@ def start(update: Update, context: CallbackContext):
             update.effective_message.reply_text(
                 PM_START_TEXT.format(                        
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.HTML,
+                parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=True,
             )
@@ -398,7 +398,7 @@ def nao_about_callback(update, context):
         query.message.edit_text(
                 PM_START_TEXT.format(
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.HTML,
+                parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=True,
         )
@@ -504,7 +504,7 @@ def Source_about_callback(update, context):
         query.message.edit_text(
                 PM_START_TEXT.format(
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.HTML,
+                parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=True,
         )
