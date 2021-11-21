@@ -768,7 +768,8 @@ __handlers__ = [
     DVA_HANDLER,
 ]
 
-__help__ = """
+"""
+__help__ = 
 *NSFW:*
 /addnsfw : Enable NSFW mode
 /rmnsfw : Disable NSFW mode
@@ -825,5 +826,6 @@ __help__ = """
  - /baka: Sends Random Baka Shout GIFs.
  - /dva: Sends Random D.VA source Images.
 """
+
 
 __mod_name__ = "Nsfw​"
