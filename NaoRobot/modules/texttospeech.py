@@ -40,8 +40,8 @@ async def _(event):
             "Invalid Syntax\nFormat `/tts lang text`\nFor eg: `/tts en hello`"
         )
         return
-    text = text.strip()
-    lan = lan.strip()
+    text = text.strip() 
+    lan = input_str
     try:
         tts = gTTS(text, tld="com", lang=lan)
         tts.save("k.mp3")
