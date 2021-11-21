@@ -80,14 +80,11 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-───「 [Emiko Robot](https://t.me/emiexrobot) 」───
-*Hello {}*!
-*I'm the management bot with anime theme.*
-➖➖➖➖➖➖➖➖➖➖➖➖➖
-*× Uptime:* `{}`
-*×* `{}` Users, Across `{}` Chats.
-➖➖➖➖➖➖➖➖➖➖➖➖➖
-Maintained by [sena-ex](https://t.me/excrybaby)
+*Hello {} Emiko is here!*
+____________________________
+❂ *I'm an anime theme bot designed to help you managing group.*
+❂ *Maintained by [sena-ex](https://t.me/excrybaby)* ✨
+____________________________
 *Hit the /help to see available command.*
 """
 
