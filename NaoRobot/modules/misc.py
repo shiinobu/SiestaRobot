@@ -191,10 +191,6 @@ __help__ = """
  • `/react`*:* Reacts with a random reaction 
  *Urban Dictonary:*
  • `/ud <word>`*:* Type the word or expression you want to search use
- *Last FM:*
- • `/setuser <username>`*:* sets your last.fm username.
- • `/clearuser`*:* removes your last.fm username from the bot's database.
- • `/lastfm`*:* returns what you're scrobbling on last.fm
  *Reverse:*
  • `/reverse`*:* Does a reverse image search of the media which it was replied to.
  *Wikipedia:*
@@ -210,9 +206,9 @@ __help__ = """
  Output: `1.0 USD = 75.505 INR`
 
 *Music Modules
-`/video` or `/vsong` <i>query</i>: download video from youtube
-`/music` or `/song` <i>query</i>: download song from yt servers. (API BASED)
-`/lyrics` <i>song name</i> : This plugin searches for song lyrics with song name.
+`/video` or `/vsong` (query): download video from youtube
+`/music` or `/song` (query): download song from yt servers. (API BASED)
+`/lyrics` (song name) : This plugin searches for song lyrics with song name.
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler(
