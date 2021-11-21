@@ -80,28 +80,30 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-───「 [Emiko Robot](https://telegra.ph/file/5ff1cb39902809148f07f.jpg) 」───
-*Hello {}!*
+───「 [Emiko Robot](https://t.me/emiexrobot) 」───
+*Hello {}*!
+*I'm the management bot with anime theme.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-*I'm a very advanced and faster management bot with many extra features for helping you in groups*
-*Maintained by @xxskfi*
+*× Uptime:* `{}`
+*×* `{}` Users, Across `{}` Chats.
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-*Hit the /help or tap on button to se available command on me.*
+Maintained by [sena-ex](https://t.me/excrybaby)
+*Hit the /help to see available command.*
 """
 
 buttons = [
     [
-        InlineKeyboardButton(
-            text="➕️ Add Emiko To Your Group ➕️", url="t.me/EmiexRobot?startgroup=true"),
+        InlineKeyboardButton(text="Help & Command", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="About", callback_data="nao_"),
+        InlineKeyboardButton(text="About Me", callback_data="nao_"),
         InlineKeyboardButton(
             text="Try inline!​​", switch_inline_query_current_chat=""
         ),
     ],
     [
-        InlineKeyboardButton(text="Help & Command ❓", callback_data="help_back"),
+        InlineKeyboardButton(
+            text="➗ Add Emiko To Your Group ➗", url="t.me/EmiexRobot?startgroup=new"),
     ],
 ]
 
@@ -112,7 +114,7 @@ Click on the button bellow to get description about specifics command."""
 nao_IMG = "https://telegra.ph/file/5ff1cb39902809148f07f.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @xxskfi \
+ You can support the project by contacting @excrybaby \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -197,7 +199,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="🔙 Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
                     ),
                 )
 
@@ -224,6 +226,7 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
+                disable_web_page_preview=True,
             )
     else:
         update.effective_message.reply_text(
@@ -324,7 +327,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="🔙 Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
                 ),
             )
 
@@ -394,7 +397,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Musicplayer", callback_data="source_"),
                  ],
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"),
+                    InlineKeyboardButton(text="Back", callback_data="nao_back"),
                  ]
                 ]
             ),
@@ -411,7 +414,7 @@ def nao_about_callback(update, context):
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=False,
+                disable_web_page_preview=True,
         )
 
     elif query.data == "nao_admin":
@@ -427,7 +430,7 @@ def nao_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_")]]
+                [[InlineKeyboardButton(text="Back", callback_data="nao_")]]
             ),
         )
 
@@ -439,7 +442,7 @@ def nao_about_callback(update, context):
             f"\n\nYou can also set buttons for notes and filters (refer help menu)",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_")]]
+                [[InlineKeyboardButton(text="Back", callback_data="nao_")]]
             ),
         )
     elif query.data == "nao_support":
@@ -454,7 +457,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Updates", url="https://t.me/KennedyProject"),
                  ],
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
+                    InlineKeyboardButton(text="Back", callback_data="nao_"),
                  
                  ]
                 ]
@@ -473,7 +476,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Sena", url="t.me/xxskfi"),
                  ],
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_"),
+                    InlineKeyboardButton(text="Back", callback_data="nao_"),
                  
                  ]
                 ]
@@ -506,7 +509,7 @@ def Source_about_callback(update, context):
                     InlineKeyboardButton(text="Musicplayer source", url="https://github.com/KennedyProject/KennedyXMusic")
                  ],
                  [
-                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_")
+                    InlineKeyboardButton(text="Back", callback_data="nao_")
                  ]
                 ]
             ),
@@ -522,7 +525,7 @@ def Source_about_callback(update, context):
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=False,
+                disable_web_page_preview=True,
         )
 
 def get_help(update: Update, context: CallbackContext):
@@ -576,7 +579,7 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
             ),
         )
 
@@ -648,7 +651,7 @@ def settings_button(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="🔙 Back",
+                                text="Back",
                                 callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
