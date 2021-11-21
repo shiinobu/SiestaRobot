@@ -23,6 +23,8 @@ async def _(event):
         previous_message = await event.get_reply_message()
         text = previous_message.message
         lan = input_str
+    elif "|" in input_str:
+        lan, text = input_str.split("|")
     else:
         await event.reply(
             "Invalid Syntax\nFormat `/tts lang | text`\nFor eg: `/tts en | hello`"
