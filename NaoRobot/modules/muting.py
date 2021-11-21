@@ -101,7 +101,7 @@ def mute(update: Update, context: CallbackContext) -> str:
 
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
-                "Unmute", callback_data="unmute_({})".format(member.user.id))
+                "🔄  Unmute", callback_data="unmute_({})".format(member.user.id))
         ]])
         bot.sendMessage(
             chat.id,
@@ -236,7 +236,7 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
 
             keyboard = InlineKeyboardMarkup([[
                 InlineKeyboardButton(
-                    "Unmute", callback_data="unmute_({})".format(member.user.id))
+                    "🔄  Unmute", callback_data="unmute_({})".format(member.user.id))
             ]])
             bot.sendMessage(chat.id, msg, reply_markup=keyboard, parse_mode=ParseMode.HTML)
 
