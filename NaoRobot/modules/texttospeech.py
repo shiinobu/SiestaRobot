@@ -13,7 +13,6 @@ from NaoRobot import telethn as tbot
 from NaoRobot.events import register
 
 
-
 @register(pattern="^/tts (.*)")
 async def _(event):
     if event.fwd_from:
@@ -23,10 +22,10 @@ async def _(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message
-        lan, text = input_str.split()
+        lan = input_str
     else:
         await event.reply(
-            "Invalid Syntax\nFormat `/tts lang text`\nFor eg: `/tts en hello`"
+            "Invalid Syntax\nFormat `/tts lang | text`\nFor eg: `/tts en | hello`"
         )
         return
     text = text.strip()
