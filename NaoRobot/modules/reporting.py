@@ -54,7 +54,7 @@ def report_setting(update: Update, context: CallbackContext):
             elif args[0] in ("no", "off"):
                 sql.set_chat_setting(chat.id, False)
                 msg.reply_text(
-                    f"Turned off reporting in {chat.title}!\nNo admins will be notified on /report or @admin.",
+                    f"Turned off reporting in {chat.title}!\n\nNo admins will be notified on `/report` or @admin.",
                 )
         else:
             msg.reply_text(
@@ -229,7 +229,7 @@ def buttons(update: Update, context: CallbackContext):
         try:
             bot.kickChatMember(splitter[0], splitter[2])
             bot.unbanChatMember(splitter[0], splitter[2])
-            query.edit("✅ Succesfully kicked")
+            query.aswer("✅ Succesfully kicked")
             return ""
         except Exception as err:
             query.answer("🛑 Failed to Kick")
@@ -241,7 +241,7 @@ def buttons(update: Update, context: CallbackContext):
     elif splitter[1] == "banned":
         try:
             bot.kickChatMember(splitter[0], splitter[2])
-            query.edit("✅  Succesfully Banned")
+            query.answer("✅  Succesfully Banned")
             return ""
         except Exception as err:
             bot.sendMessage(
@@ -253,7 +253,7 @@ def buttons(update: Update, context: CallbackContext):
     elif splitter[1] == "delete":
         try:
             bot.deleteMessage(splitter[0], splitter[3])
-            query.edit("✅ Message Deleted")
+            query.answer("✅ Message Deleted")
             return ""
         except Exception as err:
             bot.sendMessage(
