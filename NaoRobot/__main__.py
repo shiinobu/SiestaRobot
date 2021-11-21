@@ -82,10 +82,10 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 *Hello {} Emiko is here!*
 ____________________________
-❂ *I'm an anime theme bot designed to help you managing group.*
-❂ *Maintained by [sena-ex](https://t.me/excrybaby)* ✨
+❂ I'm an anime theme bot designed to help you managing group.
+❂ Maintained by @excrybaby ✨
 ____________________________
-*Hit the /help to see available command.*
+Hit the /help to see available command.
 """
 
 buttons = [
