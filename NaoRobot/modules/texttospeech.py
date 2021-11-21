@@ -13,17 +13,6 @@ from NaoRobot import telethn as tbot
 from NaoRobot.events import register
 
 
-async def is_register_admin(chat, user):
-    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
-        return isinstance(
-            (
-                await tbot(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
-            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
-        )
-    if isinstance(chat, types.InputPeerUser):
-        return True
-
 
 @register(pattern="^/tts (.*)")
 async def _(event):
@@ -34,9 +23,7 @@ async def _(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message
-        lan = input_str
-    elif None in input_str:
-        lan, text = input_str.split(None)
+        lan, text = input_str.split()
     else:
         await event.reply(
             "Invalid Syntax\nFormat `/tts lang text`\nFor eg: `/tts en hello`"
