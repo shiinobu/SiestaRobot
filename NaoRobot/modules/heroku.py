@@ -161,7 +161,7 @@ async def dyno_usage(dyno):
         "  » `Dyno hours quota remaining this month`:\n"
         f"      •  `{hours}`**h**  `{minutes}`**m**  "
         f"**|**  [`{percentage}`**%**]"
-        f"\n❂ **Dynos heroku `{day}` days left"
+        f"\n\n❂ `Dynos heroku {day} days left`"
     )
 
 
