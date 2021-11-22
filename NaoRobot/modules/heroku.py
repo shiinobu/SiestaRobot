@@ -136,6 +136,7 @@ async def dyno_usage(dyno):
     minutes_remaining = remaining_quota / 60
     hours = math.floor(minutes_remaining / 60)
     minutes = math.floor(minutes_remaining % 60)
+    day = math.floor(hours / 24)
 
     """ - Current - """
     App = result["apps"]
@@ -149,11 +150,10 @@ async def dyno_usage(dyno):
         AppPercentage = math.floor(App[0]["quota_used"] * 100 / quota)
     AppHours = math.floor(AppQuotaUsed / 60)
     AppMinutes = math.floor(AppQuotaUsed % 60)
-
     await asyncio.sleep(1.5)
 
     return await die.edit(
-        "📊 **Dyno Usage **:\n\n"
+        "❂ **Dyno Usage **:\n\n"
         f" » `Dyno usage for`  **{HEROKU_APP_NAME}**:\n"
         f"      •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
         f"**|**  [`{AppPercentage}`**%**]"
@@ -161,6 +161,7 @@ async def dyno_usage(dyno):
         "  » `Dyno hours quota remaining this month`:\n"
         f"      •  `{hours}`**h**  `{minutes}`**m**  "
         f"**|**  [`{percentage}`**%**]"
+        f"\n❂ **Dynos heroku `{day}` days left"
     )
 
 
