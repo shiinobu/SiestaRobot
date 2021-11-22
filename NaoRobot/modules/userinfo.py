@@ -149,7 +149,7 @@ def get_id(update: Update, context: CallbackContext):
             user2 = message.reply_to_message.forward_from
 
             msg.reply_text(
-                f"<b>Telegram ID:</b>,"
+                f"<b>Telegram ID:</b>\n"
                 f"• {html.escape(user2.first_name)} - <code>{user2.id}</code>.\n"
                 f"• {html.escape(user1.first_name)} - <code>{user1.id}</code>.",
                 parse_mode=ParseMode.HTML,
@@ -255,20 +255,20 @@ def info(update: Update, context: CallbackContext):
 
     text = (
         f"╔═━「<b> Appraisal results:</b> 」\n"
-        f"✥ ID: <code>{user.id}</code>\n"
-        f"✥ First Name: {html.escape(user.first_name)}"
+        f"✪ ID: <code>{user.id}</code>\n"
+        f"✪ First Name: {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n✥ Last Name: {html.escape(user.last_name)}"
+        text += f"\n✪ Last Name: {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\n✥ Username: @{html.escape(user.username)}"
+        text += f"\n✪ Username: @{html.escape(user.username)}"
 
-    text += f"\n✥ Userlink: {mention_html(user.id, 'link')}"
+    text += f"\n✪ Userlink: {mention_html(user.id, 'link')}"
 
     if chat.type != "private" and user_id != bot.id:
-        _stext = "\n✥ Presence: <code>{}</code>"
+        _stext = "\n✪ Presence: <code>{}</code>"
 
         afk_st = is_afk(user.id)
         if afk_st:
