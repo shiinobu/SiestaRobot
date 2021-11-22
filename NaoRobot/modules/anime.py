@@ -569,7 +569,8 @@ Get information about anime, manga and characters from AniList.
 ✪ /kayo <anime>: search an anime on animekayo.com
 
  「 Anime Quotes 」
-✪ /animequotes: for anime quotes randomly.
+✪ /animequotes: for anime quotes randomly as photos.
+✪ /quote: send quotes randomly as text
  """
 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
