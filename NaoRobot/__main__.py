@@ -80,10 +80,10 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello {} Emiko is here!*
+*Hello {}, Emiko is here!*
 ────────────────────────
-❂ I'm an anime theme bot designed to help you managing group.
-❂ Maintained by @excrybaby ✨
+✪ I'm an anime theme bot designed to help manage your telegram group with a lot features.
+✪ Maintained by @excrybaby ✨
 ────────────────────────
 Hit the /help to see available command.
 """
@@ -196,7 +196,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
                     ),
                 )
 
@@ -324,7 +324,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
                 ),
             )
 
@@ -394,7 +394,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Musicplayer", callback_data="source_"),
                  ],
                  [
-                    InlineKeyboardButton(text="Back", callback_data="nao_back"),
+                    InlineKeyboardButton(text="Go Back", callback_data="nao_back"),
                  ]
                 ]
             ),
@@ -427,7 +427,7 @@ def nao_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="nao_")]]
+                [[InlineKeyboardButton(text="Go Back", callback_data="nao_")]]
             ),
         )
 
@@ -439,7 +439,7 @@ def nao_about_callback(update, context):
             f"\n\nYou can also set buttons for notes and filters (refer help menu)",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="nao_")]]
+                [[InlineKeyboardButton(text="Go Back", callback_data="nao_")]]
             ),
         )
     elif query.data == "nao_support":
@@ -454,7 +454,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Updates", url="https://t.me/KennedyProject"),
                  ],
                  [
-                    InlineKeyboardButton(text="Back", callback_data="nao_"),
+                    InlineKeyboardButton(text="Go Back", callback_data="nao_"),
                  
                  ]
                 ]
@@ -473,7 +473,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Sena", url="t.me/xxskfi"),
                  ],
                  [
-                    InlineKeyboardButton(text="Back", callback_data="nao_"),
+                    InlineKeyboardButton(text="Go Back", callback_data="nao_"),
                  
                  ]
                 ]
@@ -495,18 +495,13 @@ def Source_about_callback(update, context):
             "\n • `/end` - For end the playback."
             "\n • `/musicplayer <on/off>` - Toggle for turn ON or turn OFF the musicplayer."
             "\n\n๏ Command for all members."
-            "\n • `/play` or `/ytp` <query> - Playing music via YouTube."
-            "\n • `/player` - to open pannel settings of the Musicplayer."
-            "\n • `/playlist` - to show the playlist on your group.",
+            "\n • `/play` or `/ytp` <query> - Playing music via YouTube.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Musicplayer source", url="https://github.com/KennedyProject/KennedyXMusic")
-                 ],
-                 [
-                    InlineKeyboardButton(text="Back", callback_data="nao_")
+                    InlineKeyboardButton(text="Go Back", callback_data="nao_")
                  ]
                 ]
             ),
@@ -576,7 +571,7 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
             ),
         )
 
@@ -648,7 +643,7 @@ def settings_button(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Back",
+                                text="Go Back",
                                 callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
