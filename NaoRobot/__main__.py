@@ -229,20 +229,9 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            f"<b>I'm started already!</b>\n<b>Haven't slept since:</b> <code>{uptime}</code>",
-                        reply_markup=InlineKeyboardMarkup(
-                            [
-                                {
-                                    InlineKeyboardButton(
-                                        text="Support Chat​",
-                                        url=f"https://t.me/{SUPPORT_CHAT}",
-                                    )
-                                }
-                            ]
-                        ),
-                        parse_mode=ParseMode.HTML,
-                        disable_web_page_preview=True
-                    )
+            f"<b>Hi I'm Emiko!</b>\n<b>Alive since:</b> <code>{uptime}</code>",
+            parse_mode=ParseMode.HTML
+       )
 
 
 def error_handler(update, context):
@@ -794,7 +783,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}", 
-                f"<b>Emiko Robot Started!</b>\n\nPython: v`3.9.7`\nTelegram Library: v`{telever}`"
+                f"<b>Emiko Robot Started!</b>\n\n<b>Python:</b> v<code>3.9.7</code>\n<b>Telegram Library:</b> v<code>{telever}</code>"
             )
         except Unauthorized:
             LOGGER.warning(
