@@ -395,7 +395,10 @@ def punchme(update: Update, context: CallbackContext):
 
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
     if res:
-        update.effective_message.reply_text("**punches you out of the group!!**")
+        update.effective_message.reply_text(
+            "<b>punches you out of the group!!</b>",
+            parse_mode=ParseMode.HTML
+        )
     else:
         update.effective_message.reply_text("Huh? I can't :/")
 
