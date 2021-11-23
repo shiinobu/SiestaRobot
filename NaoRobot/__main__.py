@@ -783,10 +783,11 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}", 
-                f"<b>Emiko Robot Started!<b>\n"
-                f"\n<b>Python:</b> <code>v3.9.7</code>"
-                f"\n<b>Telegram Library:</b> <code>v{telever}</code>",
-                parse_mode=ParseMode.HTML,
+                f"""<b>Emiko Robot Started!<b>
+
+<b>Python:</b> <code>v3.9.7</code>
+<b>Telegram Library:</b> <code>v{telever}</code>""",
+                parse_mode=ParseMode.HTML
             )
         except Unauthorized:
             LOGGER.warning(
