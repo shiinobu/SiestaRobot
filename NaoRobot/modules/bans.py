@@ -123,11 +123,10 @@ def ban(update: Update, context: CallbackContext) -> str:
 
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         reply = (
-            f"<code>❕</code><b>Ban Event</b>\n"
-            f"<code> </code><b>• User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
+            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Banned!"
         )
         if reason:
-            reply += f"\n<code> </code><b>• Reason:</b> {html.escape(reason)}"
+            reply += f"\nReason: {html.escape(reason)}"
 
         bot.sendMessage(
             chat.id,
@@ -182,7 +181,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("⚠️ User not found.")
         return log_message
 
     try:
@@ -221,20 +220,19 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         f"<b>Time:</b> {time_val}"
     )
     if reason:
-        log += "\n<b>Reason:</b> {}".format(reason)
+        log += "\nReason: {}".format(reason)
 
     try:
         chat.ban_member(user_id, until_date=bantime)
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
 
         reply_msg = (
-            f"<code>❕</code><b>Temp Banned</b>\n"
-            f"<code> </code><b>• User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}\n"
-            f"<code> </code><b>• Banned for: {time_val}</b>"
+            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Temp Banned"
+            f" for ({time_val})."
         )
 
         if reason:
-            reply_msg += f"\n<code> </code><b>• Reason:</b> {html.escape(reason)}"
+            reply_msg += f"\nReason: {html.escape(reason)}"
 
         bot.sendMessage(
             chat.id,
@@ -303,7 +301,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             except BadRequest:
                 pass
             chat.unban_member(user_id)
-            query.message.edit_text(f"Yep, The User can join!")
+            query.message.edit_text(f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] Unbanned.")
             bot.answer_callback_query(query.id, text="Unbanned!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
@@ -433,11 +431,11 @@ def unban(update: Update, context: CallbackContext) -> str:
         return log_message
 
     if is_user_in_chat(chat, user_id):
-        message.reply_text("Isn't this person already here??")
+        message.reply_text(f"⚠️ User not found.")
         return log_message
 
     chat.unban_member(user_id)
-    message.reply_text(f"Yep, The User can join!")
+    message.reply_text(f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Unbanned.")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
