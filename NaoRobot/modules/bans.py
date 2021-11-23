@@ -123,7 +123,7 @@ def ban(update: Update, context: CallbackContext) -> str:
 
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         reply = (
-            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Banned!"
+            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Banned."
         )
         if reason:
             reply += f"\nReason: {html.escape(reason)}"
@@ -227,7 +227,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
 
         reply_msg = (
-            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Temp Banned"
+            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Temporary Banned."
             f" for ({time_val})."
         )
 
@@ -291,7 +291,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             if not is_user_admin(chat, int(user.id)):
                 bot.answer_callback_query(
                     query.id,
-                    text="You don't have enough rights to unmute people",
+                    text="⚠️ You don't have enough rights to unmute people",
                     show_alert=True,
                 )
                 return ""
@@ -301,7 +301,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             except BadRequest:
                 pass
             chat.unban_member(user_id)
-            query.message.edit_text(f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] Unbanned.")
+            query.message.edit_text(f"{member.user.first_name} [{member.user.id}] Unbanned.")
             bot.answer_callback_query(query.id, text="Unbanned!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
@@ -314,7 +314,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
         if not is_user_admin(chat, int(user.id)):
             bot.answer_callback_query(
                 query.id,
-                text="You don't have enough rights to delete this message.",
+                text="⚠️ You don't have enough rights to delete this message.",
                 show_alert=True,
             )
             return ""
