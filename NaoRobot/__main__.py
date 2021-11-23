@@ -229,7 +229,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            f"<b>Hi I'm Emiko!</b>\n<b>Alive since:</b> <code>{uptime}</code>",
+            f"<b>Hi I'm Emiko robot!</b>\n<b>Started working since:</b> <code>{uptime}</code>",
             parse_mode=ParseMode.HTML
        )
 
@@ -783,8 +783,10 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}", 
-                f"**Emiko Robot Started!**\n\n**Python:** `v3.9.7`\n**Telegram Library:** `v{telever}`",
-                parse_mode=ParseMode.MARKDOWN,
+                f"<b>Emiko Robot Started!<b>\n"
+                "\n<b>Python:</b> <code>v3.9.7</code>"
+                "\n<b>Telegram Library:</b> <code>v{telever}</code>",
+                parse_mode=ParseMode.HTML,
             )
         except Unauthorized:
             LOGGER.warning(
