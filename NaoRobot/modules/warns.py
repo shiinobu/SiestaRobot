@@ -160,7 +160,7 @@ def button(update: Update, context: CallbackContext) -> str:
         res = sql.remove_warn(user_id, chat.id)
         if res:
             update.effective_message.edit_text(
-                "Warn removed by {}.".format(mention_html(user.id, user.first_name)),
+                f"{mention_html(user_member.user.id, user_member.user.first_name)} [<code>{(user_member.user.id}</code>] Warn removed.",
                 parse_mode=ParseMode.HTML,
             )
             user_member = chat.get_member(user_id)
@@ -233,7 +233,7 @@ def reset_warns(update: Update, context: CallbackContext) -> str:
             f"<b>User:</b> {mention_html(warned.id, warned.first_name)}"
         )
     else:
-        message.reply_text("No user has been designated!")
+        message.reply_text("⚠️ No user has been designated!")
     return ""
 
 
