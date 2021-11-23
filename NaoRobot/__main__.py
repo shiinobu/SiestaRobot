@@ -9,7 +9,9 @@ import traceback
 import NaoRobot.modules.sql.users_sql as sql
 from sys import argv
 from typing import Optional
-
+from telegram import __version__ as telever
+from telethon import __version__ as tlhver
+from pyrogram import __version__ as pyrover
 from NaoRobot import (
     ALLOW_EXCL,
     CERT_PATH,
@@ -790,7 +792,10 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Yes I'm alive!")
+            dispatcher.bot.sendMessage(
+                f"@{SUPPORT_CHAT}", 
+                f"<b>Emiko Robot Started!</b>\n\nPython: v`3.9.7`\nTelegram Library: v`{telever}`"
+            )
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
