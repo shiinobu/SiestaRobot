@@ -91,12 +91,12 @@ def warn(user: User,
         if soft_warn:  # punch
             chat.unban_member(user.id)
             reply = (
-                f"{mention_html(user.id, user.first_name)} [{user.id}] Kicked")
+                f"{mention_html(user.id, user.first_name)} [<code>{user.id}</code>] Kicked")
 
         else:  # ban
             chat.kick_member(user.id)
             reply = (
-                f"{mention_html(user.id, user.first_name)} [{user.id}] Banned")
+                f"{mention_html(user.id, user.first_name)} [<code>{user.id}</code>] Banned")
 
         for warn_reason in reasons:
             reply += f"\n - {html.escape(warn_reason)}"
@@ -117,8 +117,8 @@ def warn(user: User,
         ]])
 
         reply = (
-            f"{mention_html(user.id, user.first_name)} [{user.id}]\n"
-            f"<code> </code><b> Warned </b> ({num_warns} of {limit}).")
+            f"{mention_html(user.id, user.first_name)} [<code>{user.id}</code>]"
+            f" Warned ({num_warns} of {limit}).")
         if reason:
             reply += f"\nReason: {html.escape(reason)}"
 
@@ -253,7 +253,7 @@ def warns(update: Update, context: CallbackContext):
                 f"This user has {num_warns}/{limit} warns, for the following reasons:"
             )
             for reason in reasons:
-                text += f"\n • {reason}"
+                text += f"\n {reason}"
 
             msgs = split_message(text)
             for msg in msgs:
