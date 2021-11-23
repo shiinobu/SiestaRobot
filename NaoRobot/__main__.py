@@ -784,8 +784,8 @@ def main():
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}", 
                 f"<b>Emiko Robot Started!<b>\n"
-                "\n<b>Python:</b> <code>v3.9.7</code>"
-                "\n<b>Telegram Library:</b> <code>v{telever}</code>",
+                f"\n<b>Python:</b> <code>v3.9.7</code>"
+                f"\n<b>Telegram Library:</b> <code>v{telever}</code>",
                 parse_mode=ParseMode.HTML,
             )
         except Unauthorized:
