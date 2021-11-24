@@ -49,7 +49,7 @@ async def _(event):
                 os.remove(downloaded_file_name)
                 await h.edit(
                     "Here is [Your telegra.ph](https://telegra.ph{})."),
-                    link_preview=True,
+                    link_preview=True
                 )
         elif input_str == "xt":
             user_object = await tbot.get_entity(r_message.sender_id)
