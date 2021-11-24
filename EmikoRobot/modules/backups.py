@@ -16,7 +16,7 @@ import EmikoRobot.modules.sql.rules_sql as rulessql
 
 # from EmikoRobot.modules.sql import warns_sql as warnssql
 import EmikoRobot.modules.sql.blacklist_sql as blacklistsql
-from EmikkRobot.modules.sql import disable_sql as disabledsql
+from EmikoRobot.modules.sql import disable_sql as disabledsql
 
 # from EmikoRobot.modules.sql import cust_filters_sql as filtersql
 # import EmikoRobot.modules.sql.welcome_sql as welcsql
