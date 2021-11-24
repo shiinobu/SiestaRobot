@@ -1,8 +1,8 @@
 import ast
 import threading
 
-from NaoRobot import dispatcher
-from NaoRobot.modules.sql import BASE, SESSION
+from EmikoRobot import dispatcher
+from EmikoRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
 from telegram.error import BadRequest, Unauthorized
 
