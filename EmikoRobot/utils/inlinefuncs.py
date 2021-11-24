@@ -22,21 +22,21 @@ from pyrogram.types import (CallbackQuery,
                             InputTextMessageContent)
 from search_engine_parser import GoogleSearch
 
-from NaoRobot import (
+from EmikoRobot import (
     DEV_USERS,
     EVENT_LOGS, 
     BOT_USERNAME,
 )
-from NaoRobot import pbot as app 
-from NaoRobot import arq
-from NaoRobot.services.keyboard import Ikb
-from NaoRobot.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
-from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
-from NaoRobot.services.types import InlineQueryResultCachedDocument
-from NaoRobot.modules.info import get_chat_info, get_user_info
-from NaoRobot.modules.music import download_youtube_audio
-from NaoRobot.utils.functions import test_speedtest
-from NaoRobot.utils.pastebin import paste
+from EmikoRobot import pbot as app 
+from EmikoRobot import arq
+from EmikoRobot.services.keyboard import Ikb
+from EmikoRobot.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
+from EmikoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
+from EmikoRobot.services.types import InlineQueryResultCachedDocument
+from EmikoRobot.modules.info import get_chat_info, get_user_info
+from EmikoRobot.modules.music import download_youtube_audio
+from EmikoRobot.utils.functions import test_speedtest
+from EmikoRobot.utils.pastebin import paste
 
 MESSAGE_DUMP_CHAT = EVENT_LOGS
 
