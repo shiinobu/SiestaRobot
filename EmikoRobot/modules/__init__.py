@@ -1,4 +1,4 @@
-from NaoRobot import LOAD, NO_LOAD, LOGGER
+from EmikoRobot import LOAD, NO_LOAD, LOGGER
 import sys
 
 
