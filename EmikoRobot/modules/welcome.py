@@ -4,8 +4,8 @@ import re
 import time
 from functools import partial
 from io import BytesIO
-import NaoRobot.modules.sql.welcome_sql as sql
-from NaoRobot import (
+import EmikoRobot.modules.sql.welcome_sql as sql
+from EmikoRobot import (
     DEV_USERS,
     OWNER_ID,
     DRAGONS,
@@ -15,19 +15,19 @@ from NaoRobot import (
     LOGGER,
     dispatcher,
 )
-from NaoRobot.modules.helper_funcs.chat_status import (
+from EmikoRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     user_admin,
 )
-from NaoRobot.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from NaoRobot.modules.helper_funcs.msg_types import get_welcome_type
-from NaoRobot.modules.helper_funcs.handlers import MessageHandlerChecker
-from NaoRobot.modules.helper_funcs.string_handling import (
+from EmikoRobot.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from EmikoRobot.modules.helper_funcs.msg_types import get_welcome_type
+from EmikoRobot.modules.helper_funcs.handlers import MessageHandlerChecker
+from EmikoRobot.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
-from NaoRobot.modules.log_channel import loggable
-from NaoRobot.modules.sql.global_bans_sql import is_user_gbanned
+from EmikoRobot.modules.log_channel import loggable
+from EmikoRobot.modules.sql.global_bans_sql import is_user_gbanned
 from telegram import (
     ChatPermissions,
     InlineKeyboardButton,
@@ -1236,21 +1236,21 @@ def __chat_settings__(chat_id, _):
 
 __help__ = """
 *Admins only:*
-  • `/welcome <on/off>`*:* enable/disable welcome messages.
-  • `/welcome`*:* shows current welcome settings.
-  • `/welcome noformat`*:* shows current welcome settings, without the formatting - useful to recycle your welcome messages!
-  • `/goodbye`*:* same usage and args as `/welcome`.
-  • `/setwelcome <sometext>`*:* set a custom welcome message. If used replying to media, uses that media.
-  • `/setgoodbye <sometext>`*:* set a custom goodbye message. If used replying to media, uses that media.
-  • `/resetwelcome`*:* reset to the default welcome message.
-  • `/resetgoodbye`*:* reset to the default goodbye message.
-  • `/cleanwelcome <on/off>`*:* On new member, try to delete the previous welcome message to avoid spamming the chat.
-  • `/welcomemutehelp`*:* gives information about welcome mutes.
-  • `/cleanservice <on/off`*:* deletes telegrams welcome/left service messages.
+❂ /welcome <on/off>*:* enable/disable welcome messages.
+❂ /welcome*:* shows current welcome settings.
+❂ /welcome noformat*:* shows current welcome settings, without the formatting - useful to recycle your welcome messages!
+❂ /goodbye*:* same usage and args as `/welcome`.
+❂ /setwelcome <sometext>*:* set a custom welcome message. If used replying to media, uses that media.
+❂ /setgoodbye <sometext>*:* set a custom goodbye message. If used replying to media, uses that media.
+❂ /resetwelcome*:* reset to the default welcome message.
+❂ /resetgoodbye*:* reset to the default goodbye message.
+❂ /cleanwelcome <on/off>*:* On new member, try to delete the previous welcome message to avoid spamming the chat.
+❂ /welcomemutehelp*:* gives information about welcome mutes.
+❂ /cleanservice <on/off*:* deletes telegrams welcome/left service messages.
  *Example:*
 user joined chat, user left chat.
 *Welcome markdown:*
-  • `/welcomehelp`*:* view more formatting information for custom welcome/goodbye messages.
+❂ /welcomehelp*:* view more formatting information for custom welcome/goodbye messages.
 """
 
 NEW_MEM_HANDLER = MessageHandler(
