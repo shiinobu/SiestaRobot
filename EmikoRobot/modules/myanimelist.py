@@ -14,7 +14,7 @@ from telegram import (
 )
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 
-from NaoRobot import dispatcher
+from EmikoRobot import dispatcher
 
 jikan = Jikan()
 
