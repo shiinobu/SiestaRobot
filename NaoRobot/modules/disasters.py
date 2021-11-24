@@ -546,7 +546,7 @@ UNSUDO_HANDLER = CommandHandler(
     ("removesudo", "removeemperor"), removesudo, run_async=True
 )
 UNSUPPORT_HANDLER = CommandHandler(
-    ("removesupport", "removecaptain"), removesupport, run_async=True
+    ("removesupport", "removesoldier"), removesupport, run_async=True
 )
 UNTIGER_HANDLER = CommandHandler(("removetiger"), removetiger, run_async=True)
 UNWHITELIST_HANDLER = CommandHandler(
@@ -555,9 +555,9 @@ UNWHITELIST_HANDLER = CommandHandler(
 WHITELISTLIST_HANDLER = CommandHandler(
     ["whitelistlist", "trader"], whitelistlist, run_async=True
 )
-TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist, run_async=True)
+TIGERLIST_HANDLER = CommandHandler(["trader"], tigerlist, run_async=True)
 SUPPORTLIST_HANDLER = CommandHandler(
-    ["supportlist", "soldier"], supportlist, run_async=True
+    ["supportlist", "captain"], supportlist, run_async=True
 )
 SUDOLIST_HANDLER = CommandHandler(["sudolist", "emperor"], sudolist, run_async=True)
 DEVLIST_HANDLER = CommandHandler(["devlist", "kingdom"], devlist, run_async=True)
