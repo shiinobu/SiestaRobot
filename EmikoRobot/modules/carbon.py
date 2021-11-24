@@ -1,7 +1,7 @@
 from pyrogram import filters
-from NaoRobot import pbot
-from NaoRobot.utils.errors import capture_err
-from NaoRobot.utils.functions import make_carbon
+from EmikoRobot import pbot
+from EmikoRobot.utils.errors import capture_err
+from EmikoRobot.utils.functions import make_carbon
 
 
 @pbot.on_message(filters.command("carbon"))
