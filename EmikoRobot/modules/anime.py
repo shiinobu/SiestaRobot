@@ -5,8 +5,8 @@ import textwrap
 import bs4
 import jikanpy
 import requests
-from NaoRobot import DEV_USERS, OWNER_ID, DRAGONS, dispatcher
-from NaoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot import DEV_USERS, OWNER_ID, DRAGONS, dispatcher
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update)
 from telegram.ext import CallbackContext, CallbackQueryHandler
@@ -552,25 +552,21 @@ def kayo(update: Update, context: CallbackContext):
 
 
 __help__ = """
-──「 Help for the Anime module 」──
-
-Get information about anime, manga and characters from AniList.
-
  ──「 Anime search 」──                           
-✪ /anime <anime>: returns information about the anime.
-✪ /whatanime: returns source of anime when replied to photo or gif.                                                          
-✪ /character <character>: returns information about the character.
-✪ /manga <manga>: returns information about the manga.
-✪ /user <user>: returns information about a MyAnimeList user.
-✪ /upcoming: returns a list of new anime in the upcoming seasons.
-✪ /airing <anime>: returns anime airing info.
-✪ /whatanime <anime>: reply to gif or photo.
-✪ /kaizoku <anime>: search an anime on animekaizoku.com
-✪ /kayo <anime>: search an anime on animekayo.com
+❂ /anime <anime>: returns information about the anime.
+❂ /whatanime: returns source of anime when replied to photo or gif.                                                          
+❂ /character <character>: returns information about the character.
+❂ /manga <manga>: returns information about the manga.
+❂ /user <user>: returns information about a MyAnimeList user.
+❂ /upcoming: returns a list of new anime in the upcoming seasons.
+❂ /airing <anime>: returns anime airing info.
+❂ /whatanime <anime>: reply to gif or photo.
+❂ /kaizoku <anime>: search an anime on animekaizoku.com
+❂ /kayo <anime>: search an anime on animekayo.com
 
  「 Anime Quotes 」
-✪ /animequotes: for anime quotes randomly as photos.
-✪ /quote: send quotes randomly as text
+❂ /animequotes: for anime quotes randomly as photos.
+❂ /quote: send quotes randomly as text
  """
 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
