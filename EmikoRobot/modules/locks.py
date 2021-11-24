@@ -8,20 +8,20 @@ from telegram.utils.helpers import mention_html
 
 from alphabet_detector import AlphabetDetector
 
-import NaoRobot.modules.sql.locks_sql as sql
-from NaoRobot import dispatcher, DRAGONS, LOGGER
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.helper_funcs.chat_status import (
+import EmikoRobot.modules.sql.locks_sql as sql
+from EmikoRobot import dispatcher, DRAGONS, LOGGER
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot.modules.helper_funcs.chat_status import (
     can_delete,
     is_user_admin,
     user_not_admin,
     is_bot_admin,
     user_admin,
 )
-from NaoRobot.modules.log_channel import loggable
-from NaoRobot.modules.connection import connected
-from NaoRobot.modules.sql.approve_sql import is_approved
-from NaoRobot.modules.helper_funcs.alternate import send_message, typing_action
+from EmikoRobot.modules.log_channel import loggable
+from EmikoRobot.modules.connection import connected
+from EmikoRobot.modules.sql.approve_sql import is_approved
+from EmikoRobot.modules.helper_funcs.alternate import send_message, typing_action
 
 ad = AlphabetDetector()
 
@@ -571,12 +571,13 @@ You're in the right place!
 The locks module allows you to lock away some common items in the \
 telegram world; the bot will automatically delete them!
 
- • `/locktypes`*:* Lists all possible locktypes
+❂ /locktypes*:* Lists all possible locktypes
 
 *Admins only:*
- • `/lock <type>`*:* Lock items of a certain type (not available in private)
- • `/unlock <type>`*:* Unlock items of a certain type (not available in private)
- • `/locks`*:* The current list of locks in this chat.
+
+❂ /lock <type>*:* Lock items of a certain type (not available in private)
+❂ /unlock <type>*:* Unlock items of a certain type (not available in private)
+❂ /locks*:* The current list of locks in this chat.
 
 Locks can be used to restrict a group's users.
 eg:
@@ -585,8 +586,8 @@ non-admin users from sending stickers, etc.
 Locking bots will stop non-admins from adding bots to the chat.
 
 *Note:*
- • Unlocking permission *info* will allow members (non-admins) to change the group information, such as the description or the group name
- • Unlocking permission *pin* will allow members (non-admins) to pinned a message in a group
+❂ Unlocking permission *info* will allow members (non-admins) to change the group information, such as the description or the group name
+❂ Unlocking permission *pin* will allow members (non-admins) to pinned a message in a group
 """
 
 __mod_name__ = "Locks"
