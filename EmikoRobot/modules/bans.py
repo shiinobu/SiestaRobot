@@ -302,8 +302,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
                 pass
             chat.unban_member(user_id)
             query.message.edit_text(
-                f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Unbanned."
-                parse_mode=ParseMode.HTML
+                f"{member.user.first_name} [{member.user.id}] Unbanned."
             )
             bot.answer_callback_query(query.id, text="Unbanned!")
             return (
@@ -438,8 +437,7 @@ def unban(update: Update, context: CallbackContext) -> str:
 
     chat.unban_member(user_id)
     message.reply_text(
-        f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] Unbanned."
-        parse_mode=ParseMode.HTML
+        f"{member.user.first_name} [{member.user.id}] Unbanned."
     )
 
     log = (
