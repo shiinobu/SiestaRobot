@@ -18,7 +18,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
     
-from NaoRobot import (
+from EmikoRobot import (
     DEV_USERS,
     OWNER_ID,
     DRAGONS,
@@ -31,16 +31,16 @@ from NaoRobot import (
     StartTime,
     SUPPORT_CHAT,
 )
-from NaoRobot.__main__ import STATS, TOKEN, USER_INFO
-from NaoRobot.modules.sql import SESSION
-import NaoRobot.modules.sql.userinfo_sql as sql
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.sql.global_bans_sql import is_user_gbanned
-from NaoRobot.modules.sql.afk_sql import is_afk, set_afk
-from NaoRobot.modules.sql.users_sql import get_user_num_chats
-from NaoRobot.modules.helper_funcs.chat_status import sudo_plus
-from NaoRobot.modules.helper_funcs.extraction import extract_user
-from NaoRobot import telethn
+from EmikoRobot.modules.sqlTS, TOKEN, USER_INFO
+from EmikoRobot.modules.sql import SESSION
+import EmikoRobot.modules.sql.userinfo_sql as sql
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot.modules.sql.global_bans_sql import is_user_gbanned
+from EmikoRobot.modules.sql.afk_sql import is_afk, set_afk
+from EmikoRobot.modules.sql.users_sql import get_user_num_chats
+from EmikoRobot.modules.helper_funcs.chat_status import sudo_plus
+from EmikoRobot.modules.helper_funcs.extraction import extract_user
+from EmikoRobot import telethn
 
 def no_by_per(totalhp, percentage):
     """
