@@ -2,7 +2,7 @@ import os
 import cv2
 from PIL import Image
 from EmikoRobot.events import register
-from EmikiRobot import telethn as tbot
+from EmikoRobot import telethn as tbot
 
 
 @register(pattern="^/tiny ?(.*)")
