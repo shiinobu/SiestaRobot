@@ -5,10 +5,10 @@ import sys
 from contextlib import suppress
 from time import sleep
 
-import NaoRobot
+import EmikoRobot
 
-from NaoRobot import dispatcher
-from NaoRobot.modules.helper_funcs.chat_status import dev_plus
+from EmikoRobot import dispatcher
+from EmikoRobot.modules.helper_funcs.chat_status import dev_plus
 from telegram import TelegramError, Update
 from telegram.error import Unauthorized
 from telegram.ext import CallbackContext, CommandHandler
@@ -18,13 +18,13 @@ from telegram.ext import CallbackContext, CommandHandler
 def allow_groups(update: Update, context: CallbackContext):
     args = context.args
     if not args:
-        state = "Lockdown is " + "on" if not NaoRobot.ALLOW_CHATS else "off"
+        state = "Lockdown is " + "on" if not EmikooRobot.ALLOW_CHATS else "off"
         update.effective_message.reply_text(f"Current state: {state}")
         return
     if args[0].lower() in ["off", "no"]:
-        NaoRobot.ALLOW_CHATS = True
+        EmikooRobot.ALLOW_CHATS = True
     elif args[0].lower() in ["yes", "on"]:
-        NaoRobot.ALLOW_CHATS = False
+        EmikooRobot.ALLOW_CHATS = False
     else:
         update.effective_message.reply_text("Format: /lockdown Yes/No or Off/On")
         return
