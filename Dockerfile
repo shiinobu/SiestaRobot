@@ -64,12 +64,12 @@ RUN apt update && apt upgrade -y && \
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
 
-# Copy Python Requirements to /root/NaoRobot 
-RUN git clone -b shiken https://github.com/KennedyProject/NaoRobot /root/NaoRobot
-WORKDIR /root/NaoRobot
+# Copy Python Requirements to /root/EmikoRobot 
+RUN git clone -b shiken https://github.com/kennedy-ex/EmikoRobot /root/EmikoRobot
+WORKDIR /root/EmikoRobot
 
-#Copy config file to /root/NaoRobot/NaoRobot
-COPY ./NaoRobot/sample_config.py ./NaoRobot/config.py* /root/NaoRobot/NaoRobot/
+#Copy config file to /root/EmikoRobot/EmikoRobot
+COPY ./EmikoRobot/sample_config.py ./EmikoRobot/config.py* /root/EmikoRobot/EmikoRobot/
 
 ENV PATH="/home/bot/bin:$PATH"
 
@@ -77,4 +77,4 @@ ENV PATH="/home/bot/bin:$PATH"
 RUN pip3 install -U -r requirements.txt
 
 # Starting Worker
-CMD ["python3","-m","NaoRobot"]
+CMD ["python3","-m","EmikoRobot"]
