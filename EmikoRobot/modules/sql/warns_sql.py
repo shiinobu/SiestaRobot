@@ -1,6 +1,6 @@
 import threading
 
-from NaoRobot.modules.sql import BASE, SESSION
+from EmikoRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText, distinct, func
 from sqlalchemy.dialects import postgresql
 
