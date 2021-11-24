@@ -3,10 +3,10 @@ from pyrogram import filters
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 
-from NaoRobot import pbot as app, BOT_ID
-from NaoRobot.utils.errors import capture_err
-from NaoRobot.utils.permissions import adminsOnly
-from NaoRobot.ex_plugins.dbfunctions import (
+from EmikoRobot import pbot as app, BOT_ID
+from EmikoRobot.utils.errors import capture_err
+from EmikoRobot.utils.permissions import adminsOnly
+from EmikoRobot.ex_plugins.dbfunctions import (
     alpha_to_int,
     get_karma,
     get_karmas,
@@ -16,11 +16,11 @@ from NaoRobot.ex_plugins.dbfunctions import (
     karma_on,
     update_karma,
 )      
-from NaoRobot.utils.filter_groups import karma_negative_group, karma_positive_group
-from NaoRobot import arq
+from EmikoRobot.utils.filter_groups import karma_negative_group, karma_positive_group
+from EmikoRobot import arq
 
 regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|pro|cool|good|👍)$"
-regex_downvote = r"^(\-|\-\-|\-1|👎)$"
+regex_downvote = r"^(\-|\-\-|\-1|👎|noob|weak)$"
 
 
 
