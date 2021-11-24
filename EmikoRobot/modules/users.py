@@ -10,10 +10,10 @@ from telegram.ext import (
     MessageHandler,
 )
 
-import NaoRobot.modules.sql.users_sql as sql
-from NaoRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
-from NaoRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
-from NaoRobot.modules.sql.users_sql import get_all_users
+import EmikoRobot.modules.sql.users_sql as sql
+from EmikoRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
+from EmikoRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
+from EmikoRobot.modules.sql.users_sql import get_all_users
 
 USERS_GROUP = 4
 CHAT_GROUP = 5
