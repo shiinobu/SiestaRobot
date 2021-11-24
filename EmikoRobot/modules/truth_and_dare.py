@@ -1,9 +1,9 @@
 import html
 import random
-import NaoRobot.modules.truth_and_dare_string as truth_and_dare_string
-from NaoRobot import dispatcher
+import EmikoRobot.modules.truth_and_dare_string as truth_and_dare_string
+from EmikoRobot import dispatcher
 from telegram import ParseMode, Update, Bot
-from NaoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
 from telegram.ext import CallbackContext, run_async
 
 
