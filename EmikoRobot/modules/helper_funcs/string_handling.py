@@ -9,12 +9,15 @@ import emoji
 from telegram import MessageEntity
 from telegram.utils.helpers import escape_markdown
 
-# NOTE: the url \ escape may cause double escapes
-# match * (bold) (don't escape if in url)
-# match _ (italics) (don't escape if in url)
-# match ` (code)
-# match []() (markdown link)
-# else, escape *, _, `, and [
+"""
+ NOTE: the url \ escape may cause double escapes
+ match * (bold) (don't escape if in url)
+ match _ (italics) (don't escape if in url)
+ match ` (code)
+ match []() (markdown link)
+ else, escape *, _, `, and [
+"""
+
 MATCH_MD = re.compile(
     r"\*(.*?)\*|"
     r"_(.*?)_|"
