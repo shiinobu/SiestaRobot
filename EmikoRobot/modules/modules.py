@@ -1,8 +1,8 @@
 import importlib
 import collections
 
-from NaoRobot import dispatcher, telethn
-from NaoRobot.__main__ import (
+from EmikoRobot import dispatcher, telethn
+from EmikoRobot.__main__ import (
     CHAT_SETTINGS,
     DATA_EXPORT,
     DATA_IMPORT,
@@ -13,7 +13,7 @@ from NaoRobot.__main__ import (
     USER_INFO,
     USER_SETTINGS,
 )
-from NaoRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
+from EmikoRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, CommandHandler
 
