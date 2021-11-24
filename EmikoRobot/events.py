@@ -7,19 +7,19 @@ from pathlib import Path
 from telethon import events
 
 from pymongo import MongoClient
-from NaoRobot import MONGO_DB_URI
-from NaoRobot import telethn
+from EmikoRobot import MONGO_DB_URI
+from EmikoRobot import telethn
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
-db = client["naoxrobot"]
+db = client["emiexrobot"]
 gbanned = db.gban
 
 def register(**args):
     """ Registers a new message. """
     pattern = args.get("pattern", None)
 
-    r_pattern = r"^[/!]"
+    r_pattern = r"^[/!.]"
 
     if pattern is not None and not pattern.startswith("(?i)"):
         args["pattern"] = "(?i)" + pattern
@@ -145,7 +145,7 @@ def bot(**args):
     return decorator
 
 
-def NaoRobot(**args):
+def EmikoRobot(**args):
     pattern = args.get("pattern", None)
     disable_edited = args.get("disable_edited", False)
     ignore_unsafe = args.get("ignore_unsafe", False)
