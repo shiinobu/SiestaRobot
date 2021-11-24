@@ -31,7 +31,7 @@ from EmikoRobot import (
     StartTime,
     SUPPORT_CHAT,
 )
-from NaoRobot.__main__ import STATS, TOKEN, USER_INFO
+from EmikoRobot.__main__ import STATS, TOKEN, USER_INFO
 from EmikoRobot.modules.sql import SESSION
 import EmikoRobot.modules.sql.userinfo_sql as sql
 from EmikoRobot.modules.disable import DisableAbleCommandHandler
