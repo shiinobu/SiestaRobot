@@ -2,19 +2,14 @@ from os import remove
 
 from pyrogram import filters
 
-from NaoRobot import BOT_USERNAME as bn
-from NaoRobot import pbot, arq
-from NaoRobot.utils.errors import capture_err
-from NaoRobot.utils.permissions import adminsOnly
-from NaoRobot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
-from NaoRobot.utils.filter_groups import nsfw_detect_group
+from EmikoRobot import BOT_USERNAME as bn
+from EmikoRobot import pbot, arq
+from EmikoRobot.utils.errors import capture_err
+from EmikoRobot.utils.permissions import adminsOnly
+from EmikoRobot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
+from EmikoRobot.utils.filter_groups import nsfw_detect_group
 
 __mod_name__ = "Anti-NSFW​"
-__help__ = """
-/nsfwscan - Manually Scan An Image/Sticker/Document.
-/antinsfw [on | off] - Turn This Module On/Off
-"""
-
 
 async def get_file_id_from_message(message):
     file_id = None
