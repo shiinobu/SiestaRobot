@@ -20,8 +20,8 @@ SOFTWARE.
 from pyrogram import filters
 from pyrogram.types import Message
 
-from NaoRobot import pbot as app
-from NaoRobot.utils.errors import capture_err
+from EmikoRobot import pbot as app
+from EmikoRobot.utils.errors import capture_err
 
 __mod_name__ = "Webshot​"
 
