@@ -1,9 +1,9 @@
 from time import sleep
 
-import NaoRobot.modules.sql.global_bans_sql as gban_sql
-import NaoRobot.modules.sql.users_sql as user_sql
-from NaoRobot import DEV_USERS, OWNER_ID, dispatcher
-from NaoRobot.modules.helper_funcs.chat_status import dev_plus
+import EmikoRobot.modules.sql.global_bans_sql as gban_sql
+import EmikoRobot.modules.sql.users_sql as user_sql
+from EmikoRobot import DEV_USERS, OWNER_ID, dispatcher
+from EmikoRobot.modules.helper_funcs.chat_status import dev_plus
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
