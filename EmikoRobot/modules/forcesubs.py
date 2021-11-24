@@ -10,9 +10,9 @@ from pyrogram.errors.exceptions.bad_request_400 import (
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
 
-from NaoRobot import DRAGONS as SUDO_USERS
-from NaoRobot import pbot
-from NaoRobot.modules.sql import forceSubscribe_sql as sql
+from EmikoRobot import DRAGONS as SUDO_USERS
+from EmikoRobot import pbot
+from EmikoRobot.modules.sql import forceSubscribe_sql as sql
 
 logging.basicConfig(level=logging.INFO)
 
@@ -109,7 +109,7 @@ def _check_member(client, message):
                     )
                 except ChatAdminRequired:
                     sent_message.edit(
-                        "😕 **Nao is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
+                        "😕 **Emikoo is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
                     )
 
             except ChatAdminRequired:
@@ -179,20 +179,25 @@ def config(client, message):
 
 __help__ = """
 *Force Subscribe:*
-❍ Emiko can mute members who are not subscribed your channel until they subscribe
-❍ When enabled I will mute unsubscribed members and show them a unmute button. When they pressed the button I will unmute them
-*Setup*
+
+❂ Emiko can mute members who are not subscribed your channel until they subscribe
+❂ When enabled I will mute unsubscribed members and show them a unmute button. When they pressed the button I will unmute them
+❂*Setup*
 *Only creator*
-❍ Add me in your group as admin
-❍ Add me in your channel as admin 
+❂ Add me in your group as admin
+❂ Add me in your channel as admin 
  
 *Commmands*
- ❍ /fsub {channel username} - To turn on and setup the channel.
+❂ /fsub {channel username} - To turn on and setup the channel.
+
   💡Do this first...
- ❍ /fsub - To get the current settings.
- ❍ /fsub disable - To turn of ForceSubscribe..
+
+❂ /fsub - To get the current settings.
+❂ /fsub disable - To turn of ForceSubscribe..
+
   💡If you disable fsub, you need to set again for working.. /fsub {channel username} 
- ❍ /fsub clear - To unmute all members who muted by me.
+
+❂ /fsub clear - To unmute all members who muted by me.
 
 *Federation*
 Everything is fun, until a spammer starts entering your group, and you have to block it. Then you need to start banning more, and more, and it hurts.
