@@ -1,7 +1,7 @@
 from typing import List, Optional
 
-from NaoRobot import LOGGER
-from NaoRobot.modules.users import get_user_id
+from EmikoRobot import LOGGER
+from EmikoRobot.modules.users import get_user_id
 from telegram import Message, MessageEntity
 from telegram.error import BadRequest
 
