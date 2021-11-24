@@ -2,9 +2,9 @@ import sre_constants
 
 import regex
 import telegram
-from NaoRobot import LOGGER, dispatcher
-from NaoRobot.modules.disable import DisableAbleMessageHandler
-from NaoRobot.modules.helper_funcs.regex_helper import infinite_loop_check
+from EmikoRobot import LOGGER, dispatcher
+from EmikoRobot.modules.disable import DisableAbleMessageHandler
+from EmikoRobot.modules.helper_funcs.regex_helper import infinite_loop_check
 from telegram import Update
 from telegram.ext import CallbackContext, Filters, run_async
 
