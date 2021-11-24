@@ -86,7 +86,7 @@ async def variable(var):
             )
         heroku_var[variable] = value
     elif exe == "del":
-        m = await var.edit("`Getting information to deleting variable...`")
+        m = await var.reply("`Getting information to deleting variable...`")
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
