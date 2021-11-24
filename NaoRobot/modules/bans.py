@@ -62,7 +62,7 @@ def ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("⚠️ User not found.")
         return log_message
     try:
         member = chat.get_member(user_id)
@@ -77,25 +77,25 @@ def ban(update: Update, context: CallbackContext) -> str:
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
-            message.reply_text("Trying to put me against a Master huh?")
+            message.reply_text("Trying to put me against a King huh?")
         elif user_id in DEV_USERS:
-            message.reply_text("I can't act against our own.")
+            message.reply_text("I can't act against our Prince.")
         elif user_id in DRAGONS:
             message.reply_text(
-                "Fighting this Prince here will put user lives at risk."
+                "Fighting this Emperor here will put user lives at risk."
             )
         elif user_id in DEMONS:
             message.reply_text(
-                "Bring an order from Master Servant to fight a Assasin servant."
+                "Bring an order from Captain to fight a Assasin servant."
             )
         elif user_id in TIGERS:
             message.reply_text(
-                "Bring an order from Master Servant to fight a Lancer servant."
+                "Bring an order from Soldier to fight a Lancer servant."
             )
         elif user_id in WOLVES:
-            message.reply_text("Rider abilities make them ban immune!")
+            message.reply_text("Trader access make them ban immune!")
         else:
-            message.reply_text("This user has immunity and cannot be banned.")
+            message.reply_text("⚠️ Cannot banned admin.")
         return log_message
     if message.text.startswith("/s"):
         silent = True
