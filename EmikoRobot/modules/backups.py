@@ -5,7 +5,7 @@ from telegram import ParseMode, Message
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler
 
-from EmikoRobot.modules.sql.notes_sql as sql
+import EmikoRobot.modules.sql.notes_sql as sql
 from EmikoRobot import dispatcher, LOGGER, OWNER_ID, JOIN_LOGGER, SUPPORT_CHAT
 from EmikoRobot.__main__ import DATA_IMPORT
 from EmikoRobot.modules.helper_funcs.chat_status import user_admin
