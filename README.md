@@ -1,13 +1,13 @@
-<h2><p align="center">• Nao Robot •</p></h2>
+<h2><p align="center">• Emiko Robot •</p></h2>
 
 ```
-    NaoRobot Is A Modular Robot
+    Emiko Is A Modular Robot
         With Anime Theme
-    NaoRobot Running on python3
+    Emiko Running on python3
 ```
 
 <p align="center">
-  <img src="https://telegra.ph/file/2296b5f1262a3560754d4.jpg">
+  <img src="https://telegra.ph/file/5a180a318e09d49295c8e.jpg">
 </p>
 
 ## Requirement
@@ -41,6 +41,6 @@ This Bot is Created by KennedyProject, If your kanging this without fork at leas
 
 ## Contact me on telegram
 
-- [Kennedy](https://t.me/crybabyex)
-- [Support](https://t.me/kenbotsupport)
+- [sena-ex](https://t.me/excrybaby)
+- [Support](https://t.me/emikosupport)
 - [Channel](https://t.me/KennedyProject)
