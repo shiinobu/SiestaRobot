@@ -1,8 +1,12 @@
 <h2><p align="center">• Emiko Robot •</p></h2>
 
+<p align="center">Emiko Robot is a modular bot running on python3 with anime theme and have a lot features.</p>
+
 <p align="center">
   <img src="https://telegra.ph/file/5a180a318e09d49295c8e.jpg">
 </p>
+
+<h4><p align="center">Found me on telegram as <a href='https://t.me/EmiexRobot'>Emiko Robot</a> ✨</p></h4>
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-yellow.svg)](https://GitHub.com/kennedy-ex/EmikoRobot/graphs/commit-activity) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-red.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 
