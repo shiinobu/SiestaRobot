@@ -1,5 +1,5 @@
 import requests
-from EmikiRobot.events import register
+from EmikoRobot.events import register
 from EmikoRobot import telethn as tbot
 
 
