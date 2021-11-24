@@ -2,8 +2,8 @@ import asyncio
 import time
 from telethon import events
 
-from NaoRobot import telethn
-from NaoRobot.modules.helper_funcs.telethn.chatstatus import (
+from EmikoRobot import telethn
+from EmikoRobot.modules.helper_funcs.telethn.chatstatus import (
     can_delete_messages,
     user_is_admin,
 )
@@ -50,8 +50,6 @@ async def purge_messages(event):
     time_ = time.perf_counter() - start
     text = f"Purged Successfully in {time_:0.2f} Second(s)"
     await event.respond(text, parse_mode="markdown")
-    await asyncio.sleep(5)
-    await text.delete()
 
 async def delete_messages(event):
     if event.from_id is None:
