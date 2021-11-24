@@ -13,8 +13,8 @@ from telegram import TelegramError, Update
 from telegram.ext import CallbackContext
 from telegram.utils.helpers import mention_html
 
-from NaoRobot import dispatcher
-from NaoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot import dispatcher
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
@@ -579,13 +579,14 @@ __mod_name__ = "Stickers"
 __help__ = """
 *Help menu for stickers tools*
 
-•  `/stickerid`*:* reply to a sticker to me to tell you its file ID.
-•  `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
-•  `/kang`*:* reply to a sticker to add it to your pack.
-•  `/delsticker`*:* Reply to your anime exist sticker to your pack to delete it.
-•  `/stickers`*:* Find stickers for given term on combot sticker catalogue
-•  `/tiny`*:* To make small sticker
-•  `/kamuii <1-8>` *:* To deepefying stiker
+❂ /stickerid*:* reply to a sticker to me to tell you its file ID.
+❂ /getsticker*:* reply to a sticker to me to upload its raw PNG file.
+❂ /kang*:* reply to a sticker to add it to your pack.
+❂ /delsticker*:* Reply to your anime exist sticker to your pack to delete it.
+❂ /stickers*:* Find stickers for given term on combot sticker catalogue
+❂ /tiny*:* To make small sticker
+❂ /kamuii <1-8> *:* To deepefying stiker
+❂ /mmf <reply with text>*:* To draw a text for sticker or pohots
 """
 
 
