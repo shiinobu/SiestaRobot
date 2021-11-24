@@ -1,13 +1,13 @@
 import aiohttp
 from pyrogram import filters
-from NaoRobot import pbot
-from NaoRobot.utils.errors import capture_err
+from EmikoRobot import pbot, BOT_USERNAME
+from EmikoRobot.utils.errors import capture_err
 
 
 __mod_name__ = "Github"
 
 
-@pbot.on_message(filters.command(["github", "git"]))
+@pbot.on_message(filters.command(["github", "git", f"git@{BOT_USERNAME}"]))
 @capture_err
 async def github(_, message):
     if len(message.command) != 2:
