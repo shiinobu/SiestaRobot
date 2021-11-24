@@ -1,36 +1,44 @@
 import asyncio
 import os
 import sys
-import socket
-import aiohttp
-from random import randint
-from time import time
 from html import escape
 from re import sub as re_sub
 from sys import version as pyver
 from time import ctime, time
-
+import socket
+import aiohttp
+from random import randint
+from time import time
 from fuzzysearch import find_near_matches
 from motor import version as mongover
 from pykeyboard import InlineKeyboard
 from pyrogram import __version__ as pyrover
 from pyrogram import filters
 from pyrogram.raw.functions import Ping
-from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
-                            InlineQueryResultArticle, InlineQueryResultPhoto,
+from pyrogram.types import (CallbackQuery, 
+                            InlineKeyboardButton,
+                            InlineQueryResultArticle,
+                            InlineQueryResultPhoto,
                             InputTextMessageContent)
 from search_engine_parser import GoogleSearch
 
-from NaoRobot import (BOT_USERNAME, LOGGER, DRAGONS, USERBOT_ID,
-                 USERBOT_NAME, USERBOT_USERNAME, pbot as app, ubot2, arq)
+from NaoRobot import (
+    DEV_USERS,
+    EVENT_LOGS, 
+    BOT_USERNAME,
+)
+from NaoRobot import pbot as app 
+from NaoRobot import arq
 from NaoRobot.services.keyboard import Ikb
 from NaoRobot.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
 from NaoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from NaoRobot.services.types import InlineQueryResultCachedDocument
-from NaoRobot.modules.info import get_user_info, get_chat_info
+from NaoRobot.modules.info import get_chat_info, get_user_info
 from NaoRobot.modules.music import download_youtube_audio
 from NaoRobot.utils.functions import test_speedtest
 from NaoRobot.utils.pastebin import paste
+
+MESSAGE_DUMP_CHAT = EVENT_LOGS
 
 keywords_list = [
     "alive",
@@ -120,7 +128,7 @@ async def alive_function(answers):
 **Pyrogram:** `{pyrover}`
 **MongoDB:** `{mongover}`
 **Platform:** `{sys.platform}`
-**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/{USERBOT_USERNAME})
+**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/excrybaby)
 """
     answers.append(
         InlineQueryResultArticle(
@@ -364,8 +372,8 @@ async def lyrics_func(answers, text):
 
 
 async def tg_search_func(answers, text, user_id):
-    if user_id not in DRAGONS:
-        msg = "**ERROR**\n__THIS FEATURE IS ONLY FOR SUDO USERS__"
+    if user_id not in DEV_USERS:
+        msg = "**ERROR**\n__THIS FEATURE IS ONLY FOR DEV USERS__"
         answers.append(
             InlineQueryResultArticle(
                 title="ERROR",
@@ -569,8 +577,8 @@ __{data.answer}__"""
 async def speedtest_init(query):
     answers = []
     user_id = query.from_user.id
-    if user_id not in DRAGONS:
-        msg = "**ERROR**\n__THIS FEATURE IS ONLY FOR SUDO USERS__"
+    if user_id not in DEV_USERS:
+        msg = "**ERROR**\n__THIS FEATURE IS ONLY FOR DEV USERS__"
         answers.append(
             InlineQueryResultArticle(
                 title="ERROR",
@@ -599,7 +607,7 @@ async def speedtest_init(query):
 
 @app.on_callback_query(filters.regex("test_speedtest"))
 async def test_speedtest_cq(_, cq):
-    if cq.from_user.id not in DRAGONS:
+    if cq.from_user.id not in DEV_USERS:
         return await cq.answer("This Isn't For You!")
     inline_message_id = cq.inline_message_id
     await app.edit_inline_text(inline_message_id, "**Testing**")
@@ -614,40 +622,6 @@ async def test_speedtest_cq(_, cq):
 **Longitude:** `{info['lon']}`
 """
     await app.edit_inline_text(inline_message_id, msg)
-
-
-async def pmpermit_func(answers, user_id, victim):
-    if user_id != USERBOT_ID:
-        return
-    caption = f"Hi, I'm {USERBOT_NAME}, What are you here for?, You'll be blocked if you send more than 5 messages."
-    buttons = InlineKeyboard(row_width=2)
-    buttons.add(
-        InlineKeyboardButton(
-            text="To Scam You", callback_data="pmpermit to_scam_you a"
-        ),
-        InlineKeyboardButton(
-            text="For promotion",
-            callback_data="pmpermit to_scam_you a",
-        ),
-        InlineKeyboardButton(
-            text="Approve me", callback_data="pmpermit approve_me a"
-        ),
-        InlineKeyboardButton(
-            text="Approve", callback_data=f"pmpermit approve {victim}"
-        ),
-        InlineKeyboardButton(
-            text="Block & Delete",
-            callback_data=f"pmpermit block {victim}",
-        ),
-    )
-    answers.append(
-        InlineQueryResultArticle(
-            title="do_not_click_here",
-            reply_markup=buttons,
-            input_message_content=InputTextMessageContent(caption),
-        )
-    )
-    return answers
 
 
 async def ping_func(answers):
@@ -689,7 +663,7 @@ async def yt_music_func(answers, url):
         thumbnail,
     ) = music
     m = await app.send_audio(
-        LOGGER,
+        MESSAGE_DUMP_CHAT,
         audio,
         title=title,
         duration=duration,
@@ -912,7 +886,7 @@ async def execute_code(query):
 
 
 async def task_inline_func(user_id):
-    if user_id not in DRAGONS:
+    if user_id not in DEV_USERS:
         return
 
     tasks = all_tasks()
@@ -940,7 +914,7 @@ async def task_inline_func(user_id):
 async def cancel_task_button(_, query: CallbackQuery):
     user_id = query.from_user.id
 
-    if user_id not in DRAGONS:
+    if user_id not in DEV_USERS:
         return await query.answer("This is not for you.")
 
     task_id = int(query.data.split("_")[-1])
