@@ -12,7 +12,7 @@ from EmikoRobot.modules.helper_funcs.chat_status import user_admin
 from EmikoRobot.modules.helper_funcs.alternate import typing_action
 
 # from EmikoRobot.modules.rules import get_rules
-import EmikooRobot.modules.sql.rules_sql as rulessql
+import EmikoRobot.modules.sql.rules_sql as rulessql
 
 # from EmikoRobot.modules.sql import warns_sql as warnssql
 import EmikoRobot.modules.sql.blacklist_sql as blacklistsql
