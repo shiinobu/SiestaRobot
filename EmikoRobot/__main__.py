@@ -82,7 +82,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello {}, Emiko is here!*
+*Hello {} !*
 ────────────────────────
 ✪ I'm an anime theme bot designed to help manage your telegram group with a lot features.
 ✪ Maintained by @excrybaby ✨
@@ -95,7 +95,7 @@ buttons = [
         InlineKeyboardButton(text="Help & Command", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="About Me", callback_data="nao_"),
+        InlineKeyboardButton(text="About Emiko", callback_data="nao_"),
         InlineKeyboardButton(
             text="Try inline!​​", switch_inline_query_current_chat=""
         ),
