@@ -71,12 +71,7 @@ if ENV:
         raise Exception("Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get("INFOPIC", True))
-    USERBOT_PREFIX = os.environ.get("USERBOT_PREFIX", "$")
-    USERBOT_NAME = os.environ.get("USERBOT_NAME", None)
-    USERBOT_USERNAME = os.environ.get("USERBOT_USERNAME", None)
-    USERBOT_ID = os.environ.get("USERBOT_ID", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
-    PHONE_NUMBER = os.environ.get("PHONE_NUMBER", None)
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
@@ -178,8 +173,6 @@ else:
     HEROKU_APP_NAME = Config.HEROKU_APP_NAME
     DEL_CMDS = Config.DEL_CMDS
     STRICT_GBAN = Config.STRICT_GBAN
-    USERBOT_PREFIX = Config.USERBOT_PREFIX
-    PHONE_NUMBER = Config.PHONE_NUMBER
     WORKERS = Config.WORKERS
     REM_BG_API_KEY = Config.REM_BG_API_KEY
     BAN_STICKER = Config.BAN_STICKER
@@ -193,9 +186,6 @@ else:
     SESSION_STRING = Config.SESSION_STRING
     INFOPIC = Config.INFOPIC
     BOT_USERNAME = Config.BOT_USERNAME
-    USERBOT_NAME = Config.USERBOT_NAME
-    USERBOT_USERNAME = Config.USERBOT_USERNAME
-    USERBOT_ID = Config.USERBOT_ID
     STRING_SESSION = Config.STRING_SESSION
     LASTFM_API_KEY = Config.LASTFM_API_KEY
     CF_API_KEY = Config.CF_API_KEY
