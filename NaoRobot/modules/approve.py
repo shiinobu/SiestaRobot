@@ -1,11 +1,11 @@
 import html
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot import dispatcher, DRAGONS
-from NaoRobot.modules.helper_funcs.extraction import extract_user
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot import dispatcher, DRAGONS
+from EmikoRobot.modules.helper_funcs.extraction import extract_user
 from telegram.ext import CallbackContext, CallbackQueryHandler
-import NaoRobot.modules.sql.approve_sql as sql
-from NaoRobot.modules.helper_funcs.chat_status import user_admin
-from NaoRobot.modules.log_channel import loggable
+import EmikoRobot.modules.sql.approve_sql as sql
+from EmikoRobot.modules.helper_funcs.chat_status import user_admin
+from EmikoRobot.modules.log_channel import loggable
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
@@ -199,11 +199,11 @@ Maybe not enough to make them admin, but you might be ok with locks, blacklists,
 That's what approvals are for - approve of trustworthy users to allow them to send
 
 *Admin commands:*
-- `/approval`*:* Check a user's approval status in this chat.
-- `/approve`*:* Approve of a user. Locks, blacklists, and antiflood won't apply to them anymore.
-- `/unapprove`*:* Unapprove of a user. They will now be subject to locks, blacklists, and antiflood again.
-- `/approved`*:* List all approved users.
-- `/unapproveall`*:* Unapprove *ALL* users in a chat. This cannot be undone.
+❂ /approval*:* Check a user's approval status in this chat.
+❂ /approve*:* Approve of a user. Locks, blacklists, and antiflood won't apply to them anymore.
+❂ /unapprove*:* Unapprove of a user. They will now be subject to locks, blacklists, and antiflood again.
+❂ /approved*:* List all approved users.
+❂ /unapproveall*:* Unapprove *ALL* users in a chat. This cannot be undone.
 """
 
 APPROVE = DisableAbleCommandHandler("approve", approve, run_async=True)
