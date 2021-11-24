@@ -14,8 +14,8 @@ from tswift import Song
 from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
-from NaoRobot.utils.pluginhelper import get_text, progress
-from NaoRobot import pbot, arq
+from EmikoRobot.utils.pluginhelper import get_text, progress
+from EmikoRobot import pbot, arq
 
 async def lyrics_func(answers, text):
     song = await arq.lyrics(text)
