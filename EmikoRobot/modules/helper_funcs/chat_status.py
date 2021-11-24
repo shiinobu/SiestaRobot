@@ -403,6 +403,6 @@ def connection_status(func):
 
 
 # Workaround for circular import with connection.py
-from NaoRobot.modules import connection
+from EmikoRobot.modules import connection
 
 connected = connection.connected
