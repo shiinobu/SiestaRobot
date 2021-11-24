@@ -9,17 +9,17 @@ from better_profanity import profanity
 from google_trans_new import google_translator
 from telethon import events
 from telethon.tl.types import ChatBannedRights
-from NaoRobot.confing import get_int_key, get_str_key
-from NaoRobot.services.telethonbasics import is_admin
-from NaoRobot.events import register
+from EmikoRobot.confing import get_int_key, get_str_key
+from EmikoRobot.services.telethonbasics import is_admin
+from EmikoRobot.events import register
 from pymongo import MongoClient
-from NaoRobot.modules.sql.nsfw_watch_sql import (
+from EmikoRobot.modules.sql.nsfw_watch_sql import (
     add_nsfwatch,
     get_all_nsfw_enabled_chat,
     is_nsfwatch_indb,
     rmnsfwatch,
 )
-from NaoRobot import telethn as tbot, MONGO_DB_URI, BOT_ID
+from EmikoRobot import telethn as tbot, MONGO_DB_URI, BOT_ID
 
 translator = google_translator()
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
@@ -113,7 +113,7 @@ approved_users = db.approve
 spammers = db.spammer
 globalchat = db.globchat
 
-CMD_STARTERS = "/"
+CMD_STARTERS = ["/", "!", "."]
 profanity.load_censor_words_from_file("./profanity_wordlist.txt")
 
 
