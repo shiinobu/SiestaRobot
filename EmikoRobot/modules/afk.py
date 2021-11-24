@@ -1,13 +1,13 @@
 
 import random, html
 
-from NaoRobot import dispatcher
-from NaoRobot.modules.disable import (
+from EmikoRobot import dispatcher
+from EmikoRobot.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from NaoRobot.modules.sql import afk_sql as sql
-from NaoRobot.modules.users import get_user_id
+from EmikoRobot.modules.sql import afk_sql as sql
+from EmikoRobot.modules.users import get_user_id
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -142,7 +142,6 @@ def check_afk(update, context, user_id, fst_name, userc_id):
                 html.escape(fst_name), html.escape(user.reason)
             )
             update.effective_message.reply_text(res, parse_mode="html")
-
 
 
 AFK_HANDLER = DisableAbleCommandHandler("afk", afk, run_async=True)
