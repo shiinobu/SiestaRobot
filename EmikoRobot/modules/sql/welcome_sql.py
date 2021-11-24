@@ -2,8 +2,8 @@ import random
 import threading
 from typing import Union
 
-from NaoRobot.modules.helper_funcs.msg_types import Types
-from NaoRobot.modules.sql import BASE, SESSION
+from EmikoRobot.modules.helper_funcs.msg_types import Types
+from EmikoRobot.modules.sql import BASE, SESSION
 from sqlalchemy import BigInteger, Boolean, Column, Integer, String, UnicodeText
 
 DEFAULT_WELCOME_MESSAGES = [
