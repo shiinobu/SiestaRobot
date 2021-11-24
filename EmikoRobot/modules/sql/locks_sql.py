@@ -3,7 +3,7 @@ import threading
 
 from sqlalchemy import Column, String, Boolean
 
-from NaoRobot.modules.sql import SESSION, BASE
+from EmikoRobot.modules.sql import SESSION, BASE
 
 
 class Permissions(BASE):
