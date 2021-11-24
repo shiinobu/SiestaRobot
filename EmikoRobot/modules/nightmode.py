@@ -1,5 +1,5 @@
 import os
-from NaoRobot.modules.sql.night_mode_sql import (
+from EmikoRobot.modules.sql.night_mode_sql import (
     add_nightmode,
     rmnightmode,
     get_all_chat_id,
@@ -8,8 +8,8 @@ from NaoRobot.modules.sql.night_mode_sql import (
 from telethon.tl.types import ChatBannedRights
 from apscheduler.schedulers.asyncio import AsyncIOScheduler 
 from telethon import functions
-from NaoRobot.events import register
-from NaoRobot import telethn as tbot, OWNER_ID
+from EmikoRobot.events import register
+from EmikoRobot import telethn as tbot, OWNER_ID
 from telethon import Button, custom, events
 
 hehes = ChatBannedRights(
@@ -131,7 +131,7 @@ async def job_close():
     for pro in chats:
         try:
             await tbot.send_message(
-              int(pro.chat_id), "12:00 Am, Group Is Closing Till 6 Am. Night Mode Started ! \n**Powered By @naoex_bot**"
+              int(pro.chat_id), "12:00 Am, Group Is Closing Till 6 Am. Night Mode Started ! \n**Powered By @emiexrobot**"
             )
             await tbot(
             functions.messages.EditChatDefaultBannedRightsRequest(
@@ -153,7 +153,7 @@ async def job_open():
     for pro in chats:
         try:
             await tbot.send_message(
-              int(pro.chat_id), "06:00 Am, Group Is Opening.\n**Powered By @naoex_bot**"
+              int(pro.chat_id), "06:00 Am, Group Is Opening.\n**Powered By @emiexrobot**"
             )
             await tbot(
             functions.messages.EditChatDefaultBannedRightsRequest(
