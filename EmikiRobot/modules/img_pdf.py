@@ -26,9 +26,9 @@ from PIL import Image
 from pyrogram import filters
 from pyrogram.types import Message
 
-from NaoRobot import pbot as app
-from NaoRobot.utils.errors import capture_err
-from NaoRobot.services.sections import section
+from EmikoRobot import pbot as app
+from EmikoRobot.utils.errors import capture_err
+from EmikoRobot.services.sections import section
 
 
 async def convert(
