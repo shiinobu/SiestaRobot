@@ -3,7 +3,7 @@ import json
 import os
 from typing import Optional
 
-from NaoRobot import (
+from EmikoRobot import (
     DEV_USERS,
     OWNER_ID,
     DRAGONS,
@@ -13,18 +13,18 @@ from NaoRobot import (
     WOLVES,
     dispatcher,
 )
-from NaoRobot.modules.helper_funcs.chat_status import (
+from EmikoRobot.modules.helper_funcs.chat_status import (
     dev_plus,
     sudo_plus,
     whitelist_plus,
 )
-from NaoRobot.modules.helper_funcs.extraction import extract_user
-from NaoRobot.modules.log_channel import gloggable
+from EmikoRobot.modules.helper_funcs.extraction import extract_user
+from EmikoRobot.modules.log_channel import gloggable
 from telegram import ParseMode, TelegramError, Update
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.utils.helpers import mention_html
 
-ELEVATED_USERS_FILE = os.path.join(os.getcwd(), "NaoRobot/elevated_users.json")
+ELEVATED_USERS_FILE = os.path.join(os.getcwd(), "EmikoRobot/elevated_users.json")
 
 
 def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
