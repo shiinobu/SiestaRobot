@@ -301,7 +301,10 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             except BadRequest:
                 pass
             chat.unban_member(user_id)
-            query.message.edit_text(f"{member.user.first_name} [{member.user.id}] Unbanned.")
+            query.message.edit_text(
+                f"{mention_html(user.id, user.first_name)} [<code>{member.user.id}</code>] Unbanned."
+                parse_mode=ParseMode.HTML
+            )
             bot.answer_callback_query(query.id, text="Unbanned!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
@@ -363,7 +366,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         bot.sendMessage(
             chat.id,
             f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code> Kicked.",
-            parse_mode=ParseMode.HTML,
+            parse_mode=ParseMode.HTML
         )
         log = (
             f"<b>{html.escape(chat.title)}:</b>\n"
@@ -434,7 +437,10 @@ def unban(update: Update, context: CallbackContext) -> str:
         return log_message
 
     chat.unban_member(user_id)
-    message.reply_text(f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Unbanned.")
+    message.reply_text(
+        f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Unbanned."
+        parse_mode=ParseMode.HTML
+    )
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
