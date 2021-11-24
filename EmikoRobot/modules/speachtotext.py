@@ -10,9 +10,9 @@ from telethon.tl import functions
 from telethon.tl import types
 from telethon.tl.types import *
 
-from NaoRobot import *
-from NaoRobot.events import register
-from NaoRobot import telethn as tbot
+from EmikoRobot import *
+from EmikoRobot.events import register
+from EmikoRobot import telethn as tbot
 
 
 async def is_register_admin(chat, user):
@@ -31,13 +31,6 @@ async def is_register_admin(chat, user):
 async def _(event):
     if event.fwd_from:
         return
-    if event.is_group:
-        if not (await is_register_admin(event.input_chat, event.message.sender_id)):
-            await event.reply(
-                "🚨 Need Admin Pewer.. You can't use this command.. But you can use in my pm"
-            )
-            return
-
     start = datetime.now()
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
