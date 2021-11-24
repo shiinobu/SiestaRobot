@@ -11,7 +11,7 @@ from telegram import InputMediaPhoto, TelegramError
 from telegram import Update
 from telegram.ext import CallbackContext, run_async
 
-from EmikiRobot import dispatcher
+from EmikoRobot import dispatcher
 from EmikoRobot.modules.disable import DisableAbleCommandHandler
 
 opener = urllib.request.build_opener()
