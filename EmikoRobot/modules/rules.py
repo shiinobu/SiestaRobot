@@ -1,9 +1,9 @@
 from typing import Optional
 
-import NaoRobot.modules.sql.rules_sql as sql
-from NaoRobot import dispatcher
-from NaoRobot.modules.helper_funcs.chat_status import user_admin
-from NaoRobot.modules.helper_funcs.string_handling import markdown_parser
+import EmikoRobot.modules.sql.rules_sql as sql
+from EmikoRobot import dispatcher
+from EmikoRobot.modules.helper_funcs.chat_status import user_admin
+from EmikoRobot.modules.helper_funcs.string_handling import markdown_parser
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
