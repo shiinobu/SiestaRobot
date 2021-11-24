@@ -6,7 +6,7 @@ import random
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext, CommandHandler
 
-from NaoRobot import dispatcher, DEV_USERS, OWNER_ID
+from EmikoRobot import dispatcher, DEV_USERS, OWNER_ID
 
 
 class ErrorsDict(dict):
