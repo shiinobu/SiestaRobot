@@ -4,14 +4,14 @@ import nekos
 import requests
 from PIL import Image
 from telegram import ParseMode
-from NaoRobot import dispatcher, updater
-import NaoRobot.modules.sql.nsfw_sql as sql
-from NaoRobot.modules.log_channel import gloggable
+from EmikoRobot import dispatcher, updater
+import EmikoRobot.modules.sql.nsfw_sql as sql
+from EmikoRobot.modules.log_channel import gloggable
 from telegram import Message, Chat, Update, Bot, MessageEntity
 from telegram.error import BadRequest, RetryAfter, Unauthorized
 from telegram.ext import CommandHandler, run_async, CallbackContext
-from NaoRobot.modules.helper_funcs.filters import CustomFilters
-from NaoRobot.modules.helper_funcs.chat_status import user_admin
+from EmikoRobot.modules.helper_funcs.filters import CustomFilters
+from EmikoRobot.modules.helper_funcs.chat_status import user_admin
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
 @user_admin
@@ -771,60 +771,60 @@ __handlers__ = [
 """
 __help__ = 
 *NSFW:*
-/addnsfw : Enable NSFW mode
-/rmnsfw : Disable NSFW mode
+❂ /addnsfw : Enable NSFW mode
+❂ /rmnsfw : Disable NSFW mode
  
 *Available commands:*  
- - /neko: Sends Random SFW Neko source Images.
- - /feet: Sends Random Anime Feet Images.
- - /yuri: Sends Random Yuri source Images.
- - /trap: Sends Random Trap source Images.
- - /futanari: Sends Random Futanari source Images.
- - /hololewd: Sends Random Holo Lewds.
- - /lewdkemo: Sends Random Kemo Lewds.
- - /sologif: Sends Random Solo GIFs.
- - /cumgif: Sends Random Cum GIFs.
- - /erokemo: Sends Random Ero-Kemo Images.
- - /lesbian: Sends Random Les Source Images.
- - /lewdk: Sends Random Kitsune Lewds.
- - /ngif: Sends Random Neko GIFs.
- - /tickle: Sends Random Tickle GIFs.
- - /lewd: Sends Random Lewds.
- - /feed: Sends Random Feeding GIFs.
- - /eroyuri: Sends Random Ero-Yuri source Images.
- - /eron: Sends Random Ero-Neko source Images.
- - /cum: Sends Random Cum Images.
- - /bjgif: Sends Random Blow Job GIFs.
- - /bj: Sends Random Blow Job source Images.
- - /nekonsfw: Sends Random NSFW Neko source Images.
- - /solo: Sends Random NSFW Neko GIFs.
- - /kemonomimi: Sends Random KemonoMimi source Images.
- - /avatarlewd: Sends Random Avater Lewd Stickers.
- - /gasm: Sends Random Orgasm Stickers.
- - /poke: Sends Random Poke GIFs.
- - /anal: Sends Random Anal GIFs.
- - /hentai: Sends Random Hentai source Images.
- - /avatar: Sends Random Avatar Stickers.
- - /erofeet: Sends Random Ero-Feet source Images.
- - /holo: Sends Random Holo source Images.
- - /tits: Sends Random Tits source Images.
- - /pussygif: Sends Random Pussy GIFs.
- - /holoero: Sends Random Ero-Holo source Images.
- - /pussy: Sends Random Pussy source Images.
- - /hentaigif: Sends Random Hentai GIFs.
- - /classic: Sends Random Classic Hentai GIFs.
- - /kuni: Sends Random Pussy Lick GIFs.
- - /waifu: Sends Random Waifu Stickers.
- - /kiss: Sends Random Kissing GIFs.
- - /femdom: Sends Random Femdom source Images.
- - /cuddle: Sends Random Cuddle GIFs.
- - /erok: Sends Random Ero-Kitsune source Images.
- - /foxgirl: Sends Random FoxGirl source Images.
- - /titsgif: Sends Random Tits GIFs.
- - /ero: Sends Random Ero source Images.
- - /smug: Sends Random Smug GIFs.
- - /baka: Sends Random Baka Shout GIFs.
- - /dva: Sends Random D.VA source Images.
+❂ /neko: Sends Random SFW Neko source Images.
+❂ /feet: Sends Random Anime Feet Images.
+❂ /yuri: Sends Random Yuri source Images.
+❂ /trap: Sends Random Trap source Images.
+❂ /futanari: Sends Random Futanari source Images.
+❂ /hololewd: Sends Random Holo Lewds.
+❂ /lewdkemo: Sends Random Kemo Lewds.
+❂ /sologif: Sends Random Solo GIFs.
+❂ /cumgif: Sends Random Cum GIFs.
+❂ /erokemo: Sends Random Ero-Kemo Images.
+❂ /lesbian: Sends Random Les Source Images.
+❂ /lewdk: Sends Random Kitsune Lewds.
+❂ /ngif: Sends Random Neko GIFs.
+❂ /tickle: Sends Random Tickle GIFs.
+❂ /lewd: Sends Random Lewds.
+❂ /feed: Sends Random Feeding GIFs.
+❂ /eroyuri: Sends Random Ero-Yuri source Images.
+❂ /eron: Sends Random Ero-Neko source Images.
+❂ /cum: Sends Random Cum Images.
+❂ /bjgif: Sends Random Blow Job GIFs.
+❂ /bj: Sends Random Blow Job source Images.
+❂ /nekonsfw: Sends Random NSFW Neko source Images.
+❂ /solo: Sends Random NSFW Neko GIFs.
+❂ /kemonomimi: Sends Random KemonoMimi source Images.
+❂ /avatarlewd: Sends Random Avater Lewd Stickers.
+❂ /gasm: Sends Random Orgasm Stickers.
+❂ /poke: Sends Random Poke GIFs.
+❂ /anal: Sends Random Anal GIFs.
+❂ /hentai: Sends Random Hentai source Images.
+❂ /avatar: Sends Random Avatar Stickers.
+❂ /erofeet: Sends Random Ero-Feet source Images.
+❂ /holo: Sends Random Holo source Images.
+❂ /tits: Sends Random Tits source Images.
+❂ /pussygif: Sends Random Pussy GIFs.
+❂ /holoero: Sends Random Ero-Holo source Images.
+❂ /pussy: Sends Random Pussy source Images.
+❂ /hentaigif: Sends Random Hentai GIFs.
+❂ /classic: Sends Random Classic Hentai GIFs.
+❂ /kuni: Sends Random Pussy Lick GIFs.
+❂ /waifu: Sends Random Waifu Stickers.
+❂ /kiss: Sends Random Kissing GIFs.
+❂ /femdom: Sends Random Femdom source Images.
+❂ /cuddle: Sends Random Cuddle GIFs.
+❂ /erok: Sends Random Ero-Kitsune source Images.
+❂ /foxgirl: Sends Random FoxGirl source Images.
+❂ /titsgif: Sends Random Tits GIFs.
+❂ /ero: Sends Random Ero source Images.
+❂ /smug: Sends Random Smug GIFs.
+❂ /baka: Sends Random Baka Shout GIFs.
+❂ /dva: Sends Random D.VA source Images.
 """
 
 
