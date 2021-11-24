@@ -1,5 +1,5 @@
-from NaoRobot.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
-from NaoRobot import DRAGONS
+from EmikoRobot.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
+from EmikoRobot import DRAGONS
 from telethon.tl.types import ChannelParticipantsAdmins
 
 
