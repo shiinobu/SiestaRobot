@@ -26,6 +26,7 @@ from EmikoRobot import (
     DEV_USERS,
     EVENT_LOGS, 
     BOT_USERNAME,
+    ubot2,
 )
 from EmikoRobot import pbot as app 
 from EmikoRobot import arq
