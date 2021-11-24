@@ -1,9 +1,9 @@
 import html
 
-from NaoRobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
-from NaoRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from NaoRobot.modules.log_channel import loggable
-from NaoRobot.modules.sql import reporting_sql as sql
+from EmikoRobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
+from EmikoRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from EmikoRobot.modules.log_channel import loggable
+from EmikoRobot.modules.sql import reporting_sql as sql
 from telegram import Chat, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
@@ -265,14 +265,14 @@ def buttons(update: Update, context: CallbackContext):
 
 
 __help__ = """
- • `/report <reason>`*:* reply to a message to report it to admins.
- • `@admin`*:* reply to a message to report it to admins.
+❂ /report <reason>*:* reply to a message to report it to admins.
+❂ @admin*:* reply to a message to report it to admins.
 *NOTE:* Neither of these will get triggered if used by admins.
 
 *Admins only:*
- • `/reports <on/off>`*:* change report setting, or view current status.
-   • If done in pm, toggles your status.
-   • If in group, toggles that groups's status.
+❂ /reports <on/off>*:* change report setting, or view current status.
+❂ If done in pm, toggles your status.
+❂ If in group, toggles that groups's status.
 """
 
 SETTING_HANDLER = CommandHandler("reports", report_setting, run_async=True)
