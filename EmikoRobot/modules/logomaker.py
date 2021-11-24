@@ -3,8 +3,8 @@ import random
 import glob
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
-from NaoRobot.events import register
-from NaoRobot import telethn as tbot, ubot2 as ubot
+from EmikoRobot.events import register
+from EmikoRobot import telethn as tbot, ubot2
 
 
 def mediainfo(media):
@@ -62,24 +62,24 @@ async def logo_gen(event):
                 bg_ = await temp.download_media()
     else:
         pics = []
-        async for i in ubot.iter_messages(
+        async for i in ubot2.iter_messages(
             "@KenLogopack", filter=InputMessagesFilterPhotos
         ):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
-        fpath_ = glob.glob("./NaoRobot/resources/fonts/*")
+        fpath_ = glob.glob("./EmikoRobot/resources/fonts/*")
         font_ = random.choice(fpath_)
     if not bg_:
         pics = []
-        async for i in ubot.iter_messages(
+        async for i in ubot2.iter_messages(
             "@KenLogopack", filter=InputMessagesFilterPhotos
         ):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
     if not font_:
-        fpath_ = glob.glob("./NaoRobot/resources/fonts/*")
+        fpath_ = glob.glob("./EmikoRobot/resources/fonts/*")
         font_ = random.choice(fpath_)
     if len(name) <= 8:
         fnt_size = 120
@@ -106,7 +106,7 @@ async def logo_gen(event):
     y = (image_height - h) / 2
     draw.text((x, y), name, font=font, fill="white",
               stroke_width=strke, stroke_fill="black")
-    flnme = f"naobot.png"
+    flnme = f"logo.png"
     img.save(flnme, "png")
     await xx.edit("`Uploading`")
     if os.path.exists(flnme):
@@ -121,7 +121,7 @@ async def logo_gen(event):
     if os.path.exists(bg_):
         os.remove(bg_) 
     if os.path.exists(font_):
-        if not font_.startswith("./NaoRobot/resources/fonts"):
+        if not font_.startswith("./EmikoRobot/resources/fonts"):
             os.remove(font_)
 
 
@@ -145,24 +145,24 @@ async def logo_(event):
                 bg_ = await temp.download_media()
     else:
         pics = []
-        async for i in ubot.iter_messages(
-            "@naopacklogos", filter=InputMessagesFilterPhotos
+        async for i in ubot2.iter_messages(
+            "@kenlogopack", filter=InputMessagesFilterPhotos
         ):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
-        fpath_ = glob.glob("./NaoRobot/resources/fonts/*")
+        fpath_ = glob.glob("./EmikoRobot/resources/fonts/*")
         font_ = random.choice(fpath_)
     if not bg_:
         pics = []
-        async for i in ubot.iter_messages(
-            "@naopacklogos", filter=InputMessagesFilterPhotos
+        async for i in ubot2.iter_messages(
+            "@kenlogopack", filter=InputMessagesFilterPhotos
         ):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
     if not font_:
-        fpath_ = glob.glob("./NaoRobot/resources/fonts/*")
+        fpath_ = glob.glob("./EmikoRobot/resources/fonts/*")
         font_ = random.choice(fpath_)
     if len(name) <= 8:
         fnt_size = 105
@@ -189,7 +189,7 @@ async def logo_(event):
     y = (image_height - h) / 2
     draw.text((x, y), name, font=font, fill="white",
               stroke_width=strke, stroke_fill="black")
-    flnme = f"naobot.png"
+    flnme = f"logo.png"
     img.save(flnme, "png")
     await xx.edit("`Uploading`")
     if os.path.exists(flnme):
@@ -204,7 +204,7 @@ async def logo_(event):
     if os.path.exists(bg_):
         os.remove(bg_) 
     if os.path.exists(font_):
-        if not font_.startswith("./NaoRobot/resources/fonts"):
+        if not font_.startswith("./EmikoRobot/resources/fonts"):
             os.remove(font_)
 
 
@@ -212,8 +212,10 @@ __mod_name__ = "Logomaker"
 
 __help__ = """ This is help menu for logomaker
 
- • `/logo` <text/name> - Create a logo with random view.
- • `/wlogo` <text/name> - Create a logo with wide view only.
+❂ /logo <text/name> - Create a logo with random view.
+❂ /wlogo <text/name> - Create a logo with wide view only.
+
  Image Editor :
- • `edit` <reply> - to edit image.
+
+❂  /edit <reply photo> - to edit image.
 """
