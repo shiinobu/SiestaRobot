@@ -2,6 +2,7 @@ from datetime import datetime
 from functools import wraps
 from telegram.ext import CallbackContext
 from EmikoRobot.modules.helper_funcs.misc import is_module_loaded
+
 FILENAME = __name__.rsplit(".", 1)[-1]
 
 if is_module_loaded(FILENAME):
@@ -196,9 +197,9 @@ if is_module_loaded(FILENAME):
 
 *Setting the log channel is done by*:
 
- ➩ adding the bot to the desired channel (as an admin!)
- ➩ sending /setlog in the channel
- ➩ forwarding the /setlog to the group
+➩ adding the bot to the desired channel (as an admin!)
+➩ sending /setlog in the channel
+➩ forwarding the /setlog to the group
 """
 
     __mod_name__ = "Log Channel​"
