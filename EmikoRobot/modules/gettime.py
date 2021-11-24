@@ -2,8 +2,8 @@ import datetime
 from typing import List
 
 import requests
-from NaoRobot import TIME_API_KEY, dispatcher
-from NaoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot import TIME_API_KEY, dispatcher
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext
 
