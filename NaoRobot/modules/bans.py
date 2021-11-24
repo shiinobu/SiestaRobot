@@ -228,7 +228,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
 
         reply_msg = (
             f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Temporary Banned"
-            f" for ({`time_val}`)."
+            f" for (`{time_val}`)."
         )
 
         if reason:
