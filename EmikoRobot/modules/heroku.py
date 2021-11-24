@@ -154,14 +154,14 @@ async def dyno_usage(dyno):
 
     return await die.edit(
         "❂ **Dyno Usage **:\n\n"
-        f" » `Dyno usage for`  **{HEROKU_APP_NAME}**:\n"
+        f" » Dyno usage for **{HEROKU_APP_NAME}**:\n"
         f"      •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
         f"**|**  [`{AppPercentage}`**%**]"
         "\n\n"
-        "  » `Dyno hours quota remaining this month`:\n"
+        "  » Dyno hours quota remaining this month:\n"
         f"      •  `{hours}`**h**  `{minutes}`**m**  "
         f"**|**  [`{percentage}`**%**]"
-        f"\n\n  » `Dynos heroku {day} days left`"
+        f"\n\n  » Dynos heroku {day} days left"
     )
 
 
