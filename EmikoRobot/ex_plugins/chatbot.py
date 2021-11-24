@@ -1,4 +1,4 @@
-from NaoRobot.mongo import client as db_x
+from EmikoRobot.mongo import client as db_x
 
 lydia = db_x["CHATBOT"]
 
