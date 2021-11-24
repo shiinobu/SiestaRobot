@@ -4,7 +4,7 @@ from typing import Union
 
 from sqlalchemy import Column, String, Boolean, UnicodeText, Integer
 
-from NaoRobot.modules.sql import SESSION, BASE
+from EmikoRobot.modules.sql import SESSION, BASE
 
 
 class ChatAccessConnectionSettings(BASE):
