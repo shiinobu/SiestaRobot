@@ -227,12 +227,12 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
 
         reply_msg = (
-            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Temporary Banned."
-            f" for ({time_val})."
+            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] Temporary Banned"
+            f" for ({`time_val}`)."
         )
 
         if reason:
-            reply_msg += f"\nReason: {html.escape(reason)}"
+            reply_msg += f"\nReason: `{html.escape(reason)}`"
 
         bot.sendMessage(
             chat.id,
@@ -255,7 +255,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         if excp.message == "Reply message not found":
             # Do not reply
             message.reply_text(
-                f"Banned! User will be banned for {time_val}.", quote=False
+                f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code>] banned for {time_val}.", quote=False
             )
             return log
         else:
@@ -338,7 +338,7 @@ def punch(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("⚠️ User not found")
         return log_message
 
     try:
@@ -347,7 +347,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         if excp.message != "User not found":
             raise
 
-        message.reply_text("I can't seem to find this user.")
+        message.reply_text("⚠️ I can't seem to find this user.")
         return log_message
     if user_id == bot.id:
         message.reply_text("Yeahhh I'm not gonna do that.")
@@ -362,7 +362,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         bot.sendMessage(
             chat.id,
-            f"One kicked! {mention_html(member.user.id, html.escape(member.user.first_name))}.",
+            f"{mention_html(member.user.id, html.escape(member.user.first_name))} [<code>{member.user.id}</code> Kicked.",
             parse_mode=ParseMode.HTML,
         )
         log = (
@@ -377,7 +377,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         return log
 
     else:
-        message.reply_text("Well damn, I can't punch that user.")
+        message.reply_text("⚠️ Well damn, I can't punch that user.")
 
     return log_message
 
@@ -394,8 +394,7 @@ def punchme(update: Update, context: CallbackContext):
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
     if res:
         update.effective_message.reply_text(
-            "<b>punches you out of the group!!</b>",
-            parse_mode=ParseMode.HTML
+            "punches you out of the group!!",
         )
     else:
         update.effective_message.reply_text("Huh? I can't :/")
@@ -416,7 +415,7 @@ def unban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("⚠️ User not found.")
         return log_message
 
     try:
@@ -501,7 +500,7 @@ def banme(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text("Yeahhh.. not gonna ban an admin.")
+        update.effective_message.reply_text("⚠️ I cannot banned admin.")
         return
 
     res = update.effective_chat.ban_member(user_id)
