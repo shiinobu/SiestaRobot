@@ -1,4 +1,4 @@
-from NaoRobot.modules.disable import (
+from EmikoRobot.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
@@ -9,11 +9,11 @@ from telegram.ext import (
     InlineQueryHandler,
 )
 from telegram.ext.filters import BaseFilter
-from NaoRobot import dispatcher as d, LOGGER
+from EmikoRobot import dispatcher as d, LOGGER
 from typing import Optional, Union, List
 
 
-class NaoHandler:
+class EmikoHandler:
     def __init__(self, d):
         self._dispatcher = d
 
@@ -54,7 +54,7 @@ class NaoHandler:
                         group,
                     )
                 LOGGER.debug(
-                    f"[NAOCMD] Loaded handler {command} for function {func.__name__} in group {group}"
+                    f"[EMIKOCMD] Loaded handler {command} for function {func.__name__} in group {group}"
                 )
             except TypeError:
                 if can_disable:
@@ -81,7 +81,7 @@ class NaoHandler:
                         )
                     )
                 LOGGER.debug(
-                    f"[NAOCMD] Loaded handler {command} for function {func.__name__}"
+                    f"[EMIKOCMD] Loaded handler {command} for function {func.__name__}"
                 )
 
             return func
@@ -110,7 +110,7 @@ class NaoHandler:
                         MessageHandler(pattern, func, run_async=run_async), group
                     )
                 LOGGER.debug(
-                    f"[NAOMSG] Loaded filter pattern {pattern} for function {func.__name__} in group {group}"
+                    f"[EMIKOMSG] Loaded filter pattern {pattern} for function {func.__name__} in group {group}"
                 )
             except TypeError:
                 if can_disable:
@@ -124,7 +124,7 @@ class NaoHandler:
                         MessageHandler(pattern, func, run_async=run_async)
                     )
                 LOGGER.debug(
-                    f"[NAOMSG] Loaded filter pattern {pattern} for function {func.__name__}"
+                    f"[EMIKOMSG] Loaded filter pattern {pattern} for function {func.__name__}"
                 )
 
             return func
@@ -139,7 +139,7 @@ class NaoHandler:
                 )
             )
             LOGGER.debug(
-                f"[NAOCALLBACK] Loaded callbackquery handler with pattern {pattern} for function {func.__name__}"
+                f"[EMIKOCALLBACK] Loaded callbackquery handler with pattern {pattern} for function {func.__name__}"
             )
             return func
 
@@ -165,14 +165,14 @@ class NaoHandler:
                 )
             )
             LOGGER.debug(
-                f"[NAOINLINE] Loaded inlinequery handler with pattern {pattern} for function {func.__name__} | PASSES USER DATA: {pass_user_data} | PASSES CHAT DATA: {pass_chat_data} | CHAT TYPES: {chat_types}"
+                f"[EMIKOINLINE] Loaded inlinequery handler with pattern {pattern} for function {func.__name__} | PASSES USER DATA: {pass_user_data} | PASSES CHAT DATA: {pass_chat_data} | CHAT TYPES: {chat_types}"
             )
             return func
 
         return _inlinequery
 
 
-naocmd = NaoHandler(d).command
-naomsg = NaoHandler(d).message
-naocallback = NaoHandler(d).callbackquery
-naoinline = NaoHandler(d).inlinequery
+emikocmd = EmikoHandler(d).command
+emikomsg = EmikoHandler(d).message
+emikocallback = EmikoHandler(d).callbackquery
+emikoinline = EmikoHandler(d).inlinequery
