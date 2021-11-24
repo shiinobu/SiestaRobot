@@ -6,7 +6,7 @@ from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights, ChannelParticipantsAdmins
 
-from NaoRobot import telethn, OWNER_ID, DEV_USERS, DRAGONS, DEMONS
+from EmikoRobot import telethn, OWNER_ID, DEV_USERS, DRAGONS, DEMONS
 
 # =================== CONSTANT ===================
 
@@ -49,7 +49,7 @@ async def is_administrator(user_id: int, message):
 
 
 
-@telethn.on(events.NewMessage(pattern="^[!/]zombies ?(.*)"))
+@telethn.on(events.NewMessage(pattern="^/zombies ?(.*)"))
 async def zombies(event):
     """ For .zombies command, list all the zombies in a chat. """
 
