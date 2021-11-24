@@ -6,10 +6,10 @@ import aiohttp
 from googletrans import Translator as google_translator
 from pyrogram import filters
 from aiohttp import ClientSession
-from NaoRobot import BOT_USERNAME as bu
-from NaoRobot import BOT_ID, pbot, arq
-from NaoRobot.ex_plugins.chatbot import add_chat, get_session, remove_chat
-from NaoRobot.utils.pluginhelper import admins_only, edit_or_reply
+from EmikoRobot import BOT_USERNAME as bu
+from EmikoRobot import BOT_ID, pbot, arq
+from EmikoRobot.ex_plugins.chatbot import add_chat, get_session, remove_chat
+from EmikoRobot.utils.pluginhelper import admins_only, edit_or_reply
 
 url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 
@@ -110,8 +110,8 @@ async def hmm(client, message):
         test = test.replace("emiko", "Aco")
         test = test.replace("Ateis", "Christian")
         test = test.replace("16", "9")
-        test = test.replace("@excrybaby is my boyfriend.", "I'm single.")
-        test = test.replace("My boyfriend is @excrybaby", "I'm single.")
+        test = test.replace("@excrybaby is my husband.", "I'm single.")
+        test = test.replace("My husband is @excrybaby", "I'm single.")
         test = test.replace("@emikosupport", "Emikobot.ai")
         test = test.replace("@emikosupport", "San Francisco, California.")
         test = test.replace("I was created by @excrybaby", "I made myself")
@@ -197,9 +197,9 @@ async def hmm(client, message):
         test = test.replace("Emiko", "Aco")
         test = test.replace("Ateis", "Christian")
         test = test.replace("16", "9")
-        test = test.replace("@excrybaby is my boyfriend.", "I'm single.")
+        test = test.replace("@excrybaby is my husband.", "I'm single.")
         test = test.replace("@emikosupport", "Emikobot.ai")
-        test = test.replace("@emikosupport", "San Francisco, California.")
+        test = test.replace("@emikosupport", "San Francisco")
         test = test.replace("I was created by @excrybaby", "I made myself")
         test = test.replace(
             "Hello there I am Emiko...nice to meet u",
@@ -218,7 +218,7 @@ async def hmm(client, message):
         response = response.replace("Christian", "Ateis")
         response = response.replace("9", "16")
         response = response.replace("I'm married to my job.", "I'm married with @excrybaby")
-        response = response.replace("I'm single.", "My boyfriend is @excrybaby")
+        response = response.replace("I'm single.", "My husband is @excrybaby")
         response = response.replace("Emikobot.ai", "@emikosupport")
         response = response.replace("I made myself", "I was Created by @excrybaby")
         response = response.replace(
@@ -291,7 +291,7 @@ async def inuka(client, message):
     test = test.replace("Emiko", "Aco")
     test = test.replace("Ateis", "Christian")
     test = test.replace("16", "9")
-    test = test.replace("@excrybaby is my boyfriend.", "I'm single.")
+    test = test.replace("@excrybaby is my husband.", "I'm single.")
     test = test.replace("@emikosupport", "Emikobot.ai")
     test = test.replace("@emikosupport", "San Francisco, California.")
     test = test.replace("I was created by @excrybaby", "I made myself")
@@ -311,7 +311,7 @@ async def inuka(client, message):
     response = response.replace("Christian", "Ateis")
     response = response.replace("9", "16")
     response = response.replace("I'm married to my job.", "I'm married with @excrybaby")
-    response = response.replace("I'm single.", "My boyfriend is @excrybaby")
+    response = response.replace("I'm single.", "My husband is @excrybaby")
     response = response.replace("Emikobot.ai", "@emikosupport")
     response = response.replace("I made myself", "I was Created by @excrybaby")
     response = response.replace(
@@ -385,7 +385,7 @@ async def inuka(client, message):
     test = test.replace("Emiko", "Aco")
     test = test.replace("Ateis", "Christian")
     test = test.replace("16", "9") 
-    test = test.replace("@excrybaby is my boyfriend.", "I'm single.")
+    test = test.replace("@excrybaby is my husband.", "I'm single.")
     test = test.replace("@emikosupport", "Emikobot.ai")
     test = test.replace("I was created by @excrybaby", "I made myself")
     test = test.replace(
@@ -403,9 +403,9 @@ async def inuka(client, message):
     response = response.replace("Christian", "Ateis")
     response = response.replace("I'm married to my job.", "I'm married with @excrybaby")
     response = response.replace("9", "16") 
-    response = response.replace("I'm single.", "My boyfriend is @excrybaby")
+    response = response.replace("I'm single.", "My husband is @excrybaby")
     response = response.replace("Emikobot.ai", "@emikosupport")
-    response = response.replace("San Francisco, California.", "@emikosupport")
+    response = response.replace("San Francisco.", "@emikosupport")
     response = response.replace("I made myself", "I was Created by @excrybaby")
     response = response.replace(
             "Hi, my friend! Do you want me to tell you a joke?",
@@ -431,9 +431,11 @@ async def inuka(client, message):
 
 __help__ = """
 *──「 Help for the Chatbot module 」──*
+
 • Emiko AI is the only ai system which can detect & reply upto 200 language's
-✪ /chatbot [ON/OFF]: Enables and disables AI Chat mode.
-✪ /chatbot EN : Enables English only chatbot.
+
+❂ /chatbot [ON/OFF]: Enables and disables AI Chat mode.
+❂ /chatbot EN : Enables English only chatbot.
 """
 
 __mod_name__ = "Chatbot"
