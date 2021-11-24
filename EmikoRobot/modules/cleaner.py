@@ -1,14 +1,14 @@
 import html
 
-from NaoRobot import ALLOW_EXCL, CustomCommandHandler, dispatcher
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.helper_funcs.chat_status import (
+from EmikoRobot import ALLOW_EXCL, CustomCommandHandler, dispatcher
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot.modules.helper_funcs.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,
     user_admin,
 )
-from NaoRobot.modules.sql import cleaner_sql as sql
+from EmikoRobot.modules.sql import cleaner_sql as sql
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
@@ -215,15 +215,17 @@ def bluetext_ignore_list(update: Update, context: CallbackContext):
 
 
 __help__ = """
-Blue text cleaner removed any made up commands that people send in your chat.
- • `/cleanblue <on/off/yes/no>`*:* clean commands after sending
- • `/ignoreblue <word>`*:* prevent auto cleaning of the command
- • `/unignoreblue <word>`*:* remove prevent auto cleaning of the command
- • `/listblue`*:* list currently whitelisted commands
+ Blue text cleaner removed any made up commands that people send in your chat.
+
+❂ • /cleanblue <on/off/yes/no>*:* clean commands after sending
+❂ • /ignoreblue <word>*:* prevent auto cleaning of the command
+❂ • /unignoreblue <word>*:* remove prevent auto cleaning of the command
+❂ • /listblue*:* list currently whitelisted commands
 
  *Following are Disasters only commands, admins cannot use these:*
- • `/gignoreblue <word>`*:* globally ignorea bluetext cleaning of saved word across Saitama.
- • `/ungignoreblue <word>`*:* remove said command from global cleaning list
+
+❂ • /gignoreblue <word>*:* globally ignorea bluetext cleaning of saved word across Saitama.
+❂ • /ungignoreblue <word>*:* remove said command from global cleaning list
 """
 
 SET_CLEAN_BLUE_TEXT_HANDLER = CommandHandler(
