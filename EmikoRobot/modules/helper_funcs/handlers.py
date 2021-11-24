@@ -1,6 +1,6 @@
-import NaoRobot.modules.sql.blacklistusers_sql as sql
-from NaoRobot import ALLOW_EXCL
-from NaoRobot import DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES
+import EmikoRobot.modules.sql.blacklistusers_sql as sql
+from EmikoRobot import ALLOW_EXCL
+from EmikoRobot import DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES
 
 from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
