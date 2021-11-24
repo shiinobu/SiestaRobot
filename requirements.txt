@@ -46,7 +46,7 @@ pygithub
 TgCrypto
 Pyrogram
 PyDictionary
-yt_dlp
+yt-dlp
 youtube_search_python==1.5.2
 youtube_search
 lyrics_extractor
