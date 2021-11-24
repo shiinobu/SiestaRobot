@@ -10,7 +10,7 @@
 
 ```
 - Python 3.8 or higher
-- Python-Telegram-Bot 13.7
+- Python-Telegram-Bot 
 - MongoDB
 - Bot Token
 - Sqlalchemy Database
@@ -24,13 +24,11 @@
 
 ```
 This Bot is Created by KennedyProject, If your kanging this without fork at least give a credit to get a smile of my hard work. 
-👤 YoneRobot
-👤 SaitamaRobot 
-👤 TheRealPhoenixBot
-👤 DaisyX 
-👤 WilliamButcherBot
-👤 CutiepiiRobot
-👤 AsunaRobot
+- YoneRobot
+- SaitamaRobot 
+- TheRealPhoenixBot
+- DaisyX 
+- WilliamButcherBot
 ```
 
 ### Owner
