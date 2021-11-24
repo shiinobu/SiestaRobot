@@ -1,7 +1,7 @@
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from NaoRobot import telethn as tbot
-from NaoRobot.events import register
-from NaoRobot import ubot2 as ubot
+from EmikoRobot import telethn as tbot
+from EmikoRobot.events import register
+from EmikoRobot import ubot2 as ubot
 from asyncio.exceptions import TimeoutError
 
 
