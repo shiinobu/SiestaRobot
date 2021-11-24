@@ -14,10 +14,10 @@ from telegram.utils.helpers import mention_html
 from typing import Optional, List
 from telegram import TelegramError
 
-import NaoRobot.modules.sql.users_sql as sql
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.helper_funcs.filters import CustomFilters
-from NaoRobot import (
+import EmikoRobot.modules.sql.users_sql as sql
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot.modules.helper_funcs.filters import CustomFilters
+from EmikoRobot import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
@@ -27,7 +27,7 @@ from NaoRobot import (
     WOLVES,
     dispatcher,
 )
-from NaoRobot.modules.helper_funcs.chat_status import (
+from EmikoRobot.modules.helper_funcs.chat_status import (
     user_admin_no_reply,
     bot_admin,
     can_restrict,
@@ -40,9 +40,9 @@ from NaoRobot.modules.helper_funcs.chat_status import (
     can_delete,
     dev_plus,
 )
-from NaoRobot.modules.helper_funcs.extraction import extract_user_and_text
-from NaoRobot.modules.helper_funcs.string_handling import extract_time
-from NaoRobot.modules.log_channel import gloggable, loggable
+from EmikoRobot.modules.helper_funcs.extraction import extract_user_and_text
+from EmikoRobot.modules.helper_funcs.string_handling import extract_time
+from EmikoRobot.modules.log_channel import gloggable, loggable
 
 
 
@@ -544,22 +544,21 @@ def snipe(update: Update, context: CallbackContext):
 __help__ = """
 *User Commands:*
 
-  • /kickme*:* kicks the user who issued the command
+❂ /kickme*:* kicks the user who issued the command
 
 *Admins only:*
 
-  • /ban <userhandle>*:* bans a user. (via handle, or reply)
-  banme
-  • /sban <userhandle>*:* Silently ban a user. Deletes command, Replied message and doesn't reply. (via handle, or reply)
-  • /tban <userhandle> x(m/h/d)*:* bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-  • /unban <userhandle>*:* unbans a user. (via handle, or reply)
-  • /kick <userhandle>*:* kicks a user out of the group, (via handle, or reply)
-  • /mute <userhandle>*:* silences a user. Can also be used as a reply, muting the replied to user.
-  • /tmute <userhandle> x(m/h/d)*:* mutes a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-  • /unmute <userhandle>*:* unmutes a user. Can also be used as a reply, muting the replied to user.
-  • /zombies*:* searches deleted accounts
-  • /zombies clean*:* removes deleted accounts from the group.
-  • /snipe <chatid> <string>*:* Make me send a message to a specific chat.
+❂ /ban <userhandle>*:* bans a user. (via handle, or reply)
+❂ /sban <userhandle>*:* Silently ban a user. Deletes command, Replied message and doesn't reply. (via handle, or reply)
+❂ /tban <userhandle> x(m/h/d)*:* bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
+❂ /unban <userhandle>*:* unbans a user. (via handle, or reply)
+❂ /kick <userhandle>*:* kicks a user out of the group, (via handle, or reply)
+❂ /mute <userhandle>*:* silences a user. Can also be used as a reply, muting the replied to user.
+❂ /tmute <userhandle> x(m/h/d)*:* mutes a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
+❂ /unmute <userhandle>*:* unmutes a user. Can also be used as a reply, muting the replied to user.
+❂ /zombies*:* searches deleted accounts
+❂ /zombies clean*:* removes deleted accounts from the group.
+❂ /snipe <chatid> <string>*:* Make me send a message to a specific chat.
 """
 
 
