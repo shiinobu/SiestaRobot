@@ -1,17 +1,17 @@
 import html
 from typing import Optional
 
-import NaoRobot.modules.sql.blsticker_sql as sql
-from NaoRobot import LOGGER, dispatcher
-from NaoRobot.modules.connection import connected
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.helper_funcs.alternate import send_message
-from NaoRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from NaoRobot.modules.helper_funcs.misc import split_message
-from NaoRobot.modules.helper_funcs.string_handling import extract_time
+import EmikoRobot.modules.sql.blsticker_sql as sql
+from EmikoRobot import LOGGER, dispatcher
+from EmikoRobot.modules.connection import connected
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot.modules.helper_funcs.alternate import send_message
+from EmikoRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from EmikoRobot.modules.helper_funcs.misc import split_message
+from EmikoRobot.modules.helper_funcs.string_handling import extract_time
 
-from NaoRobot.modules.log_channel import loggable
-from NaoRobot.modules.warns import warn
+from EmikoRobot.modules.log_channel import loggable
+from EmikoRobot.modules.warns import warn
 from telegram import Chat, Message, ParseMode, Update, User, ChatPermissions
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandler
