@@ -1,8 +1,8 @@
 import traceback
 
-from NaoRobot import pbot as app
-from NaoRobot.utils.pluginhelper import fetch
-from NaoRobot.utils.inlinefuncs import *
+from EmikoRobot import pbot as app
+from EmikoRobot.utils.pluginhelper import fetch
+from EmikoRobot.utils.inlinefuncs import *
 
 __MODULE__ = "Inline"
 __HELP__ = """See inline for help related to inline"""
@@ -194,15 +194,6 @@ async def inline_query_handler(client, query):
             return await client.answer_inline_query(
                 query.id, results=answerss, cache_time=2
             )
-
-        elif text.split()[0] == "pmpermit":
-            user_id = query.from_user.id
-            victim = text.split()[1]
-            answerss = await pmpermit_func(answers, user_id, victim)
-            await client.answer_inline_query(
-                query.id, results=answerss, cache_time=2
-            )
-
         elif text.split()[0] == "gh":
             if len(text.split()) < 2:
                 return await client.answer_inline_query(
