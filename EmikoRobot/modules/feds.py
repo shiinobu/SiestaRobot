@@ -7,8 +7,8 @@ import time
 import uuid
 from io import BytesIO
 
-import NaoRobot.modules.sql.feds_sql as sql
-from NaoRobot import (
+import EmikoRobot.modules.sql.feds_sql as sql
+from EmikoRobot import (
     EVENT_LOGS,
     LOGGER,
     SUPPORT_CHAT,
@@ -18,15 +18,15 @@ from NaoRobot import (
     WOLVES,
     dispatcher,
 )
-from NaoRobot.modules.disable import DisableAbleCommandHandler
-from NaoRobot.modules.helper_funcs.alternate import send_message
-from NaoRobot.modules.helper_funcs.chat_status import is_user_admin
-from NaoRobot.modules.helper_funcs.extraction import (
+from EmikoRobot.modules.disable import DisableAbleCommandHandler
+from EmikoRobot.modules.helper_funcs.alternate import send_message
+from EmikoRobot.modules.helper_funcs.chat_status import is_user_admin
+from EmikoRobot.modules.helper_funcs.extraction import (
     extract_unt_fedban,
     extract_user,
     extract_user_fban,
 )
-from NaoRobot.modules.helper_funcs.string_handling import markdown_parser
+from EmikoRobot.modules.helper_funcs.string_handling import markdown_parser
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -2396,9 +2396,10 @@ def fed_admin_help(update: Update, context: CallbackContext):
 def fed_user_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
         """*🎩 Any user:*
- • `/fbanstat`*:* Shows if you/or the user you are replying to or their username is fbanned somewhere or not
- • `/fednotif <on/off>`*:* Federation settings not in PM when there are users who are fbaned/unfbanned
- • `/frules`*:* See Federation regulations\n""",
+
+❂ /fbanstat*:* Shows if you/or the user you are replying to or their username is fbanned somewhere or not
+❂ /fednotif <on/off>*:* Federation settings not in PM when there are users who are fbaned/unfbanned
+❂ /frules*:* See Federation regulations\n""",
         parse_mode=ParseMode.MARKDOWN,
     )
 
