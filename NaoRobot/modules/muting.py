@@ -36,7 +36,7 @@ from telegram.utils.helpers import mention_html
 def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
     
     if not user_id:
-        reply = "You don't seem to be referring to a user or the ID specified is incorrect.."
+        reply = "⚠️ User not found"
         return reply
 
     try:
@@ -93,11 +93,10 @@ def mute(update: Update, context: CallbackContext) -> str:
         chat_permissions = ChatPermissions(can_send_messages=False)
         bot.restrict_chat_member(chat.id, user_id, chat_permissions)    
         msg = (
-            f"<code>🗣️</code><b>Mute Event</b>\n"
-            f"<code> </code><b>• Muted User:</b> {mention_html(member.user.id, member.user.first_name)}"
+            f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] 🔇 Muted."
             )
         if reason:
-            msg += f"\n<code> </code><b>• Reason:</b> {html.escape(reason)}"
+            msg += f"\nReason: {html.escape(reason)}"
 
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
@@ -164,8 +163,8 @@ def unmute(update: Update, context: CallbackContext) -> str:
             pass
         bot.sendMessage(
         chat.id,
-        "{} was unmuted by {} in <b>{}</b>\n<b>Reason</b>: <code>{}</code>".format(
-            mention_html(member.user.id, member.user.first_name), mention_html(user.id, user.first_name), message.chat.title, reason
+        "{} [<code>{}</code>] {} 🔊 Unmuted.\nReason: <code>{}</code>".format(
+            mention_html(member.user.id, member.user.first_name), member.user.id, reason
         ),
         parse_mode=ParseMode.HTML,
         )
@@ -229,9 +228,8 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
                 chat.id, user_id, chat_permissions, until_date=mutetime,
             )     
             msg = (
-                f"<code>🗣️</code><b>Time Mute Event</b>\n"
-                f"<code> </code><b>• Muted User:</b> {mention_html(member.user.id, member.user.first_name)}\n"
-                f"<code> </code><b>• User will be Muted for:</b> {time_val}\n"
+                f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>]"
+                f" Muted for: (<code>{time_val}</code>)\n"
             )
 
             keyboard = InlineKeyboardMarkup([[
@@ -285,7 +283,7 @@ def button(update: Update, context: CallbackContext) -> str:
         unmuted = bot.restrict_chat_member(chat.id, int(user_id), chat_permissions)
         if unmuted:
         	update.effective_message.edit_text(
-        	    f"Admin {mention_html(user.id, user.first_name)} Unmuted {mention_html(member.user.id, member.user.first_name)}!",
+        	    f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] 🔊 Was unmuted.",
         	    parse_mode=ParseMode.HTML,
         	)
         	query.answer("Unmuted!")
@@ -297,7 +295,7 @@ def button(update: Update, context: CallbackContext) -> str:
                 )
     else:
         update.effective_message.edit_text(
-            "This user is not muted or has left the group!"
+            "⚠️ This user is not muted or has left the group!"
         )
         return ""
             
