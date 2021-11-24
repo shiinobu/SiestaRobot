@@ -258,7 +258,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                 else:
                     text = cust_welcome
 
-                if cust_welcome == sql.DEFAULT_WELCOME:
+                if cust_welcome == sql.DEFAULT_WELCOME_MESSAGES:
                     cust_welcome = random.choice(sql.DEFAULT_WELCOME_MESSAGES).format(
                         first=escape_markdown(first_name)
                     )
@@ -631,7 +631,7 @@ def left_member(update: Update, context: CallbackContext):  # sourcery no-metric
                 left_mem.first_name or "PersonWithNoName"
             )  # edge case of empty name - occurs for some bugs.
             if cust_goodbye:
-                if cust_goodbye == sql.DEFAULT_GOODBYE:
+                if cust_goodbye == sql.DEFAULT_GOODBYE_MESSAGES:
                     cust_goodbye = random.choice(sql.DEFAULT_GOODBYE_MESSAGES).format(
                         first=escape_markdown(first_name)
                     )
@@ -702,7 +702,7 @@ def welcome(update: Update, context: CallbackContext):
                 keyb = build_keyboard(buttons)
                 keyboard = InlineKeyboardMarkup(keyb)
 
-                send(update, welcome_m, keyboard, sql.DEFAULT_WELCOME)
+                send(update, welcome_m, keyboard, random.choice(sql.DEFAULT_WELCOME_MESSAGES))
         else:
             buttons = sql.get_welc_buttons(chat.id)
             if noformat:
@@ -764,7 +764,7 @@ def goodbye(update: Update, context: CallbackContext):
                 keyb = build_keyboard(buttons)
                 keyboard = InlineKeyboardMarkup(keyb)
 
-                send(update, goodbye_m, keyboard, sql.DEFAULT_GOODBYE)
+                send(update, goodbye_m, keyboard, random.choice(sql.DEFAULT_GOODBYE_MESSAGES))
 
         elif noformat:
             ENUM_FUNC_MAP[goodbye_type](chat.id, goodbye_m)
@@ -820,7 +820,7 @@ def reset_welcome(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
 
-    sql.set_custom_welcome(chat.id, None, sql.DEFAULT_WELCOME, sql.Types.TEXT)
+    sql.set_custom_welcome(chat.id, None, random.choice(sql.DEFAULT_WELCOME_MESSAGES), sql.Types.TEXT)
     update.effective_message.reply_text(
         "Successfully reset welcome message to default!"
     )
@@ -861,7 +861,7 @@ def reset_goodbye(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
 
-    sql.set_custom_gdbye(chat.id, sql.DEFAULT_GOODBYE, sql.Types.TEXT)
+    sql.set_custom_gdbye(chat.id, random.choice(sql.DEFAULT_GOODBYE_MESSAGES), sql.Types.TEXT)
     update.effective_message.reply_text(
         "Successfully reset goodbye message to default!"
     )
