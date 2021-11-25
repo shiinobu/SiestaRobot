@@ -22,16 +22,3 @@ async def awake(event):
   TEXT += "**Thanks For Adding Me Here ❤️**"
   BUTTON = [[Button.url("Help", "https://t.me/EmiexRobot?start=help"), Button.url("Support", "https://t.me/emikosupport")]]
   await tbot.send_file(event.chat_id, PHOTO, caption=TEXT,  buttons=BUTTON)
-
-
-@register(pattern=("/repo"))
-async def source(event):
-   TEXT = "✨ **Hey I'm Emiko Robot** \n\n"
-   TEXT += "**Owner repo : [sena-ex](https://t.me/excrybaby)** \n"
-   TEXT += f"**Python Version :** `{kontol()}`\n"
-   TEXT += f"**Library Version :** `{telever}` \n"
-   TEXT += f"**Telethon Version :** `{tlhver}` \n"
-   TEXT += f"**Pyrogram Version :** `{pyrover}` \n"
-   BUTTON = [[Button.url("Repo", "https://github.com/kennedy-ex/emikorobot"), Button.url("Support", "https://t.me/emikosupport")]]
-   await event.reply(TEXT,  buttons=BUTTON, link_preview=False)
-
