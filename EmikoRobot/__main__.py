@@ -103,6 +103,9 @@ buttons = [
         InlineKeyboardButton(
             text="Source Code", url="https://github.com/kennedy-ex/emikorobot"
         ),
+        InlineKeyboardButton(
+            text="Support Chat", url=f"https://t.me/{SUPPORT_CHAT}"
+        ),
     ],
     [
         InlineKeyboardButton(
@@ -482,15 +485,14 @@ def Source_about_callback(update, context):
             text="๏›› This advance command for Musicplayer."
             "\n\n๏ Command for admins only."
             "\n • `/reload` - For refreshing the adminlist."
-            "\n • `/userbotjoin` - For inviting the assistant to your groups."
-            "\n • `/userbotleave` - Use this if you want the assistant leaving your groups."
             "\n • `/pause` - To pause the playback."
             "\n • `/resume` - To resuming the playback You've paused."
             "\n • `/skip` - To skipping the player."
             "\n • `/end` - For end the playback."
             "\n • `/musicplayer <on/off>` - Toggle for turn ON or turn OFF the musicplayer."
             "\n\n๏ Command for all members."
-            "\n • `/play` or `/ytp` <query> - Playing music via YouTube.",
+            "\n • `/play` <query /reply audio> - Playing music via YouTube."
+            "\n • `/playlist` - To olaying a playlist of groups or your personal playlist",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
