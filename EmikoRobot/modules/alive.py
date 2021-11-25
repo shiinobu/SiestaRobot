@@ -26,13 +26,12 @@ async def awake(event):
 
 @register(pattern=("/repo"))
 async def source(event):
-   TEXT = f"**Hi [{event.sender.first_name}](tg://user?id={event.sender.id}).** \n\n"
-   TEXT += "**Here is The source of Emiko Robot** \n\n"
-   TEXT += "**Owner repo : [sena-ex](https://t.me/excrybaby)** \n\n"
-   TEXT += f"**Python Version :** `{kontol()}`\n\n"
-   TEXT += f"**Library Version :** `{telever}` \n\n"
-   TEXT += f"**Telethon Version :** `{tlhver}` \n\n"
-   TEXT += f"**Pyrogram Version :** `{pyrover}` \n\n"
+   TEXT = "✨ **Here is The source of Emiko Robot** \n\n"
+   TEXT += "**Owner repo : [sena-ex](https://t.me/excrybaby)** \n"
+   TEXT += f"**Python Version :** `{kontol()}`\n"
+   TEXT += f"**Library Version :** `{telever}` \n"
+   TEXT += f"**Telethon Version :** `{tlhver}` \n"
+   TEXT += f"**Pyrogram Version :** `{pyrover}` \n"
    BUTTON = [[Button.url("Repo", "https://github.com/kennedy-ex/emikorobot"), Button.url("Support", "https://t.me/emikosupport")]]
    await event.reply(TEXT,  buttons=BUTTON, link_preview=False)
 
