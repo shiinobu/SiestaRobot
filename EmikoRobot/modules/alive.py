@@ -26,7 +26,7 @@ async def awake(event):
 
 @register(pattern=("/repo"))
 async def source(event):
-   TEXT = "✨ **Here is The source of Emiko Robot** \n\n"
+   TEXT = "✨ **Hey I'm Emiko Robot** \n\n"
    TEXT += "**Owner repo : [sena-ex](https://t.me/excrybaby)** \n"
    TEXT += f"**Python Version :** `{kontol()}`\n"
    TEXT += f"**Library Version :** `{telever}` \n"
