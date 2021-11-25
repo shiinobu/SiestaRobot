@@ -34,5 +34,5 @@ async def source(event):
    TEXT += f"**Telethon Version :** `{tlhver}` \n\n"
    TEXT += f"**Pyrogram Version :** `{pyrover}` \n\n"
    BUTTON = [[Button.url("Repo", "https://github.com/kennedy-ex/emikorobot"), Button.url("Support", "https://t.me/emikosupport")]]
-   await tbot.send_message(event.chat_id, TEXT,  buttons=BUTTON)
+   await tbot.reply_text(TEXT,  buttons=BUTTON, disable_web_page_preview=True)
 
