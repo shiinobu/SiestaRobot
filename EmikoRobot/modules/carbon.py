@@ -27,15 +27,15 @@ async def carbon_func(_, message):
 @pbot.on_message(filters.command("repo"))
 async def repo(_, message):
     await message.reply_text(
-        f"""✨ Hey I'm Emiko Robot 
+        f"""✨ **Hey I'm Emiko Robot** 
 
-Owner repo : [sena-ex](https://t.me/excrybaby)
-Python Version : {y()}
-Library Version : {o} 
-Telethon Version : {s} 
-Pyrogram Version : {z}
+**Owner repo : [sena-ex](https://t.me/excrybaby)**
+**Python Version :** `{y()}`
+**Library Version :** `{o}`
+**Telethon Version :** `{s}`
+**Pyrogram Version :** `{z}`
 
-Create your own with click button bellow.
+**Create your own with click button bellow.**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
