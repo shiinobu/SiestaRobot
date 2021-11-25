@@ -1,26 +1,24 @@
-<h2><p align="center">• Emiko Robot •</p></h2>
-
-<p align="center">Emiko Robot is a modular bot running on python3 with anime theme and have a lot features.</p>
+<h2><p align="center">- Emiko Robot -</p></h2>
 
 <p align="center">
   <img src="https://telegra.ph/file/5a180a318e09d49295c8e.jpg">
 </p>
 
-<h4><p align="center">Found me on telegram as <a href='https://t.me/EmiexRobot'>Emiko Robot</a> ✨</p></h4>
+<p align="center">Emiko Robot is a modular bot running on python3 with anime theme and have a lot features.</p>
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-yellow.svg)](https://GitHub.com/kennedy-ex/EmikoRobot/graphs/commit-activity) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-red.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
-
-## Requirement
-
-```
-- Python 3.8 or higher
-- Python-Telegram-Bot 13.8.1
-- MongoDB
-- Bot Token
-- Sqlalchemy Database
-```
-
-# Deploy
+<p align="center">
+<a href="https://t.me/EmikoSupport"> <img src="https://img.shields.io/badge/Support-Chat-blue?&logo=telegram" alt="Support Chat" /> </a>
+<a href="https://t.me/KennedyProject"> <img src="https://img.shields.io/badge/Update-Channel-blue?&logo=telegram" alt="Update Channel" /> </a><br>
+<a href="https://t.me/emiexrobot"> <img src="https://img.shields.io/badge/Emiko-Robot-blue?&logo=telegram" alt="Emiko on Telegram" /> </a><br>
+<a href="https://python-telegram-bot.org"> <img src="https://img.shields.io/badge/PTB-13.8.1-brightgreen?&style=flat-round&logo=github" alt="Python Telegram Bot" /> </a>
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a><br>
+<a href="https://docs.telethon.dev"> <img src="https://img.shields.io/badge/Telethon-1.23.0-brightgreen?&style=flat-round&logo=github" alt="Telethon" /> </a>
+<a href="https://docs.python.org"> <img src="https://img.shields.io/badge/Python-3.9.7-brightgreen?&style=flat-round&logo=python" alt="Python" /> </a><br>
+<a href="https://github.com/kennedy-ex"> <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" alt="Open Source" /> </a>
+<a href="https://GitHub.com/kennedy-ex/EmikoRobot"> <img src="https://img.shields.io/badge/Maintained-Yes-brightgreen.svg" alt="Maintenance" /> </a><br>
+<a href="https://github.com/kennedy-ex/EmikoRobot/blob/main/LICENSE"> <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License" /> </a>
+<a href="https://makeapullrequest.com"> <img src="https://img.shields.io/badge/PRs-Welcome-blue.svg?style=flat-round" alt="PRs" /> </a>
+</p>
 
 ### Easiest Way To Deploy On Heroku 
 
@@ -38,5 +36,3 @@ This Bot is Created by KennedyProject, If your kanging this without fork at leas
 
 ### Owner
 - [sena-ex](https://t.me/excrybaby)
-- [Support](https://t.me/emikosupport)
-- [Channel](https://t.me/KennedyProject)
