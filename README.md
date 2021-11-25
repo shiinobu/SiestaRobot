@@ -14,7 +14,7 @@
 
 ```
 - Python 3.8 or higher
-- Python-Telegram-Bot 
+- Python-Telegram-Bot 13.8.1
 - MongoDB
 - Bot Token
 - Sqlalchemy Database
