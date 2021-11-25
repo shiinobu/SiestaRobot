@@ -9,9 +9,8 @@ import traceback
 import EmikoRobot.modules.sql.users_sql as sql
 from sys import argv
 from typing import Optional
-from telegram import __version__ as telever
-from telethon import __version__ as tlhver
-from pyrogram import __version__ as pyrover
+from telegram import __version__ as peler
+from platform import python_version as memek
 from EmikoRobot import (
     ALLOW_EXCL,
     CERT_PATH,
@@ -95,7 +94,7 @@ buttons = [
         InlineKeyboardButton(text="Help & Command", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="About Emiko", callback_data="nao_"),
+        InlineKeyboardButton(text="About Emiko", callback_data="emiko_"),
         InlineKeyboardButton(
             text="Try inline!​​", switch_inline_query_current_chat=""
         ),
@@ -110,7 +109,7 @@ buttons = [
 HELP_STRINGS = """
 Click on the button bellow to get description about specifics command."""
 
-nao_IMG = "https://telegra.ph/file/5ff1cb39902809148f07f.jpg"
+EMI_IMG = "https://telegra.ph/file/5ff1cb39902809148f07f.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
  You can support the project by contacting @excrybaby \
@@ -356,9 +355,9 @@ def help_button(update, context):
         pass
 
 
-def nao_about_callback(update, context):
+def emiko_about_callback(update, context):
     query = update.callback_query
-    if query.data == "nao_":
+    if query.data == "emiko_":
         query.message.edit_text(
             text="๏ I'm *Emiko*, a powerful group management bot built to help you manage your group easily."
             "\n• I can restrict users."
@@ -374,23 +373,23 @@ def nao_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Admins", callback_data="nao_admin"),
-                    InlineKeyboardButton(text="Notes", callback_data="nao_notes"),
+                    InlineKeyboardButton(text="Admins", callback_data="emiko_admin"),
+                    InlineKeyboardButton(text="Notes", callback_data="emiko_notes"),
                  ],
                  [
-                    InlineKeyboardButton(text="Support", callback_data="nao_support"),
-                    InlineKeyboardButton(text="Credits", callback_data="nao_credit"),
+                    InlineKeyboardButton(text="Support", callback_data="emiko_support"),
+                    InlineKeyboardButton(text="Credits", callback_data="emiko_credit"),
                  ],
                  [
                     InlineKeyboardButton(text="Musicplayer", callback_data="source_"),
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="nao_back"),
+                    InlineKeyboardButton(text="Go Back", callback_data="emiko_back"),
                  ]
                 ]
             ),
         )
-    elif query.data == "nao_back":
+    elif query.data == "emiko_back":
         first_name = update.effective_user.first_name
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
@@ -405,7 +404,7 @@ def nao_about_callback(update, context):
                 disable_web_page_preview=True,
         )
 
-    elif query.data == "nao_admin":
+    elif query.data == "emiko_admin":
         query.message.edit_text(
             text=f"*๏ Let's make your group bit effective now*"
             "\nCongragulations, EmikoRobot now ready to manage your group."
@@ -418,11 +417,11 @@ def nao_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="nao_")]]
+                [[InlineKeyboardButton(text="Go Back", callback_data="emiko_")]]
             ),
         )
 
-    elif query.data == "nao_notes":
+    elif query.data == "emiko_notes":
         query.message.edit_text(
             text=f"<b>๏ Setting up notes</b>"
             f"\nYou can save message/media/audio or anything as notes"
@@ -430,10 +429,10 @@ def nao_about_callback(update, context):
             f"\n\nYou can also set buttons for notes and filters (refer help menu)",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="nao_")]]
+                [[InlineKeyboardButton(text="Go Back", callback_data="emiko_")]]
             ),
         )
-    elif query.data == "nao_support":
+    elif query.data == "emiko_support":
         query.message.edit_text(
             text="*๏ Emiko support chats*"
             "\nJoin My Support Group/Channel for see or report a problem on Emiko.",
@@ -445,7 +444,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Updates", url="https://t.me/KennedyProject"),
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="nao_"),
+                    InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
                  
                  ]
                 ]
@@ -453,7 +452,7 @@ def nao_about_callback(update, context):
         )
 
 
-    elif query.data == "nao_credit":
+    elif query.data == "emiko_credit":
         query.message.edit_text(
             text=f"<b>๏ Credis for Emiko</b>\n"
             f"\nHere Developers Making The EmikoRobot",
@@ -464,7 +463,7 @@ def nao_about_callback(update, context):
                     InlineKeyboardButton(text="Sena", url="t.me/xxskfi"),
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="nao_"),
+                    InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
                  
                  ]
                 ]
@@ -492,7 +491,7 @@ def Source_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="nao_")
+                    InlineKeyboardButton(text="Go Back", callback_data="emiko_")
                  ]
                 ]
             ),
@@ -785,8 +784,8 @@ def main():
                 f"@{SUPPORT_CHAT}", 
                 f"""**Emiko Robot Started!**
 
-**Python:** `v3.9.7`
-**Telegram Library:** `v{telever}`""",
+**Python:** `{memek()}`
+**Telegram Library:** `v{peler}`""",
                 parse_mode=ParseMode.MARKDOWN
             )
         except Unauthorized:
@@ -810,7 +809,7 @@ def main():
     )
 
     about_callback_handler = CallbackQueryHandler(
-        nao_about_callback, pattern=r"nao_", run_async=True
+        emiko_about_callback, pattern=r"emiko_", run_async=True
     )
 
     source_callback_handler = CallbackQueryHandler(
