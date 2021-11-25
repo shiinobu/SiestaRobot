@@ -206,7 +206,7 @@ async def hmm(client, message):
             "Hi, my friend! Do you want me to tell you a joke?")
         test = test.replace("@excrybaby is my owner", "Have the control right.")
         test = test.replace(
-            "Hi, My name is Anos Nice to meet you.",
+            "Hi, My name is Emiko Nice to meet you.",
             "Hi, my friend, what can I do for you today?")
         response = await lunaQuery(
             test, message.from_user.id if message.from_user else 0
