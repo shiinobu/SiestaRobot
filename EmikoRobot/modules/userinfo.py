@@ -284,7 +284,7 @@ def info(update: Update, context: CallbackContext):
                     text += _stext.format("Admin")
     if user_id not in [bot.id, 777000, 1087968824]:
         userhp = hpmanager(user)
-        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]. [<a href='https://t.me/KennedyProject/44'>?</a>]"
+        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     try:
         spamwtc = sw.get_ban(int(user.id))
@@ -318,11 +318,6 @@ def info(update: Update, context: CallbackContext):
     elif user.id == 1829047705:
          text += "\n\nOwner Of A Bot. Queen Of @excrybaby. Bot Name Inspired From 'JoJo'."
          disaster_level_present = True
-
-    if disaster_level_present:
-        text += ' [<a href="https://t.me/KennedyProject/43">?</a>]'.format(
-            bot.username,
-        )
 
     try:
         user_member = chat.get_member(user.id)
