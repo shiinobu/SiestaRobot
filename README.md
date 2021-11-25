@@ -1,4 +1,4 @@
-<h2><p align="center">- Emiko Robot -</p></h2>
+<h2><p align="center">✨ Emiko Robot ✨</p></h2>
 
 <p align="center">
   <img src="https://telegra.ph/file/5a180a318e09d49295c8e.jpg">
