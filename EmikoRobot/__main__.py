@@ -101,6 +101,11 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
+            text="Source Code", url="https://github.com/kennedy-ex/emikorobot"
+        ),
+    ],
+    [
+        InlineKeyboardButton(
             text="➗ Add Emiko To Your Group ➗", url="t.me/EmiexRobot?startgroup=new"),
     ],
 ]
