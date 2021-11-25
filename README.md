@@ -1,4 +1,3 @@
-<a href="https://t.me/emiexrobot"> <img src="https://img.shields.io/badge/Emiko-Robot-blue?&logo=telegram" alt="Emiko on Telegram" /> </a><br>
 <p align="center">
   <img src="https://telegra.ph/file/5a180a318e09d49295c8e.jpg">
 </p>
@@ -8,8 +7,7 @@
 <p align="center">Emiko Robot is a modular bot running on python3 with anime theme and have a lot features.</p>
 
 <p align="center">
-<a href="https://www.codacy.com/gh/kennedy-ex/emikorobot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kennedy-ex/emikorobot&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/63ed7098eee74e45956a3c4d0512078b"/></a>
-<a href="https://github.com/kennedy-ex/emikorobot"><img src="https://www.codefactor.io/repository/github/kennedy-ex/emikorobot/badge" alt="CodeFactor" /></a> <br />
+<a href="https://t.me/emiexrobot"> <img src="https://img.shields.io/badge/Emiko-Robot-blue?&logo=telegram" alt="Emiko on Telegram" /> </a><br>
 <a href="https://python-telegram-bot.org"> <img src="https://img.shields.io/badge/PTB-13.8.1-white?&style=flat-round&logo=github" alt="Python Telegram Bot" /> </a>
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a><br>
 <a href="https://docs.telethon.dev"> <img src="https://img.shields.io/badge/Telethon-1.23.0-red?&style=flat-round&logo=github" alt="Telethon" /> </a>
