@@ -82,9 +82,10 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 *Hello {} !*
+✪ I'm an anime-theme management bot [✨](https://telegra.ph/file/a78cb2df40e26695db96a.jpg)
 ────────────────────────
-✪ I'm an anime theme bot designed to help manage your telegram group with a lot features.
-✪ Maintained by @excrybaby ✨
+× *Uptime:* `{}`
+× `{}` Users, across `{}`
 ────────────────────────
 Hit the /help to see available command.
 """
@@ -232,7 +233,7 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=True,
+                disable_web_page_preview=False,
             )
     else:
         update.effective_message.reply_text(
@@ -409,7 +410,7 @@ def emiko_about_callback(update, context):
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=True,
+                disable_web_page_preview=False,
         )
 
     elif query.data == "emiko_admin":
@@ -514,7 +515,7 @@ def Source_about_callback(update, context):
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=True,
+                disable_web_page_preview=False,
         )
 
 def get_help(update: Update, context: CallbackContext):
