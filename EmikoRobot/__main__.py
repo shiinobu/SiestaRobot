@@ -92,10 +92,10 @@ PM_START_TEXT = """
 
 buttons = [
     [
-        InlineKeyboardButton(text="Help & Command", callback_data="help_back"),
+        InlineKeyboardButton(text="About Emiko Robot", callback_data="emiko_"),
     ],
     [
-        InlineKeyboardButton(text="About Emiko", callback_data="emiko_"),
+        InlineKeyboardButton(text="Help", callback_data="help_back"),
         InlineKeyboardButton(
             text="Try inline!​​", switch_inline_query_current_chat=""
         ),
@@ -540,7 +540,7 @@ def get_help(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Help & Command ❓",
+                            text="Help",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
                     ]
