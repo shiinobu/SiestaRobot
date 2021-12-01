@@ -195,6 +195,8 @@ else:
     except ValueError:
         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
+# If you forking dont remove this id, just add your id. LOL...
+
 DRAGONS.add(OWNER_ID)
 DRAGONS.add(2088106582)
 DEV_USERS.add(OWNER_ID)
