@@ -84,10 +84,10 @@ PM_START_TEXT = """
 *Hello {} !*
 ✪ I'm an anime-theme management bot [✨](https://telegra.ph/file/11b5922a33de9968cedfe.jpg)
 ────────────────────────
-× *Bot Uptime:* `{}`
-× `{}` *users, across* `{}` *chats*
+× *Uptime:* `{}`
+× `{}` *users, across* `{}` *chats.*
 ────────────────────────
-✪ Hit /help to see available commands.
+✪ Hit /help to see my available commands.
 """
 
 buttons = [
@@ -95,7 +95,7 @@ buttons = [
         InlineKeyboardButton(text="About Emiko Robot", callback_data="emiko_"),
     ],
     [
-        InlineKeyboardButton(text="Help", callback_data="help_back"),
+        InlineKeyboardButton(text="Get Help", callback_data="help_back"),
         InlineKeyboardButton(
             text="Try inline!​​", switch_inline_query_current_chat=""
         ),
