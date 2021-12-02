@@ -254,7 +254,7 @@ class Welcome(BASE):
 
 class WelcomeButtons(BASE):
     __tablename__ = "welcome_urls"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
     chat_id = Column(String(14), primary_key=True)
     name = Column(UnicodeText, nullable=False)
     url = Column(UnicodeText, nullable=False)
@@ -269,7 +269,7 @@ class WelcomeButtons(BASE):
 
 class GoodbyeButtons(BASE):
     __tablename__ = "leave_urls"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
     chat_id = Column(String(14), primary_key=True)
     name = Column(UnicodeText, nullable=False)
     url = Column(UnicodeText, nullable=False)
@@ -294,7 +294,7 @@ class WelcomeMute(BASE):
 
 class WelcomeMuteUsers(BASE):
     __tablename__ = "human_checks"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(BigInteger, primary_key=True)
     chat_id = Column(String(14), primary_key=True)
     human_check = Column(Boolean)
 
