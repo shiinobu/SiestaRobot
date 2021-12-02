@@ -4,6 +4,7 @@ from EmikoRobot import dispatcher
 from EmikoRobot.modules.sql import BASE, SESSION
 from sqlalchemy import (
     Column,
+    BigInteger,
     ForeignKey,
     Integer,
     String,
