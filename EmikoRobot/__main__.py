@@ -456,19 +456,27 @@ def emiko_about_callback(update, context):
     elif query.data == "emiko_credit":
         query.message.edit_text(
             text=f"<b>๏ Credis for Emiko</b>\n"
-            f"\nHere Developers Making The EmikoRobot",
-            parse_mode=ParseMode.HTML,
+            f"\nHere Developers Making The EmikoRobot"
+            "\n\n[sena-ex](https://github.com/kennedy-ex)"
+            "\n[TheHamkerCat](https://github.com/thehamkercat)"
+            "\n[Feri](https://github.com/feriexp)"
+            "\n[riz-ex](https://github.com/riz-ex)"
+            "\n[Inuka Asith](https://github.com/inukaasith)"
+            "\n[QueenArzo](https://github.com/queenarzoo)"  
+            "\n[kittu](https://github.com/noob-kittu)"
+            "\n[Paul-Larsen](https://github.com/paulsonoflars)"
+            "\n[Kaizoku](https://github.com/animekaizoku)"
+            "\n[TheGhostHunter](https://github.com/huntingbots)",
+            parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Sena", url="t.me/xxskfi"),
-                 ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
                  
                  ]
                 ]
             ),
+            disable_web_page_prewiew=True
         )
 
 def Source_about_callback(update, context):
