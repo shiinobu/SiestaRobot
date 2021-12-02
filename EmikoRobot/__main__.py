@@ -476,7 +476,6 @@ def emiko_about_callback(update, context):
                  ]
                 ]
             ),
-            disable_web_page_prewiew=True
         )
 
 def Source_about_callback(update, context):
