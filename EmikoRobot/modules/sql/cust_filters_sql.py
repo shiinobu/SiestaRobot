@@ -1,6 +1,6 @@
 import threading
 
-from sqlalchemy import Column, String, UnicodeText, Boolean, Integer, distinct, func
+from sqlalchemy import Column, BigInteger, String, UnicodeText, Boolean, Integer, distinct, func
 
 from EmikoRobot.modules.helper_funcs.msg_types import Types
 from EmikoRobot.modules.sql import BASE, SESSION
