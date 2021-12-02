@@ -455,8 +455,8 @@ def emiko_about_callback(update, context):
 
     elif query.data == "emiko_credit":
         query.message.edit_text(
-            text=f"<b>๏ Credis for Emiko</b>\n"
-            f"\nHere Developers Making The EmikoRobot"
+            text=f"๏ Credis for Emiko\n"
+            "\nHere Developers Making The EmikoRobot"
             "\n\n[sena-ex](https://github.com/kennedy-ex)"
             "\n[TheHamkerCat](https://github.com/thehamkercat)"
             "\n[Feri](https://github.com/feriexp)"
