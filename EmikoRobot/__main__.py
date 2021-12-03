@@ -456,23 +456,32 @@ def emiko_about_callback(update, context):
     elif query.data == "emiko_credit":
         query.message.edit_text(
             text=f"๏ Credis for Emiko\n"
-            "\nHere Developers Making The EmikoRobot"
-            "\n\n[sena-ex](https://github.com/kennedy-ex)"
-            "\n[TheHamkerCat](https://github.com/thehamkercat)"
-            "\n[Feri](https://github.com/feriexp)"
-            "\n[riz-ex](https://github.com/riz-ex)"
-            "\n[Inuka Asith](https://github.com/inukaasith)"
-            "\n[QueenArzo](https://github.com/queenarzoo)"  
-            "\n[kittu](https://github.com/noob-kittu)"
-            "\n[Paul-Larsen](https://github.com/paulsonoflars)"
-            "\n[Kaizoku](https://github.com/animekaizoku)"
-            "\n[TheGhostHunter](https://github.com/huntingbots)",
+            "\nHere Developers Making And Give Inspiration For Made The EmikoRobot"
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
+                    InlineKeyboardButton(text="sena-ex", url="https://github.com/kennedy-ex"),
+                    InlineKeyboardButton(text="TheHamkerCat", url="https://github.com/TheHamkerCat"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Feri", url="https://github.com/FeriEXP"),
+                    InlineKeyboardButton(text="riz-ex", url="https://github.com/riz-ex"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Anime Kaizoku", url="https://github.com/animekaizoku"),
+                    InlineKeyboardButton(text="TheGhost Hunter", url="https://github.com/HuntingBots"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Inuka Asith", url="https://github.com/inukaasith"),
+                    InlineKeyboardButton(text="Noob-Kittu", url="https://github.com/noob-kittu"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Queen Arzoo", url="https://github.com/QueenArzoo"),
+                    InlineKeyboardButton(text="Paul Larsen", url="https://github.com/PaulSonOfLars"),
+                 ],
+                 [
                     InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
-                 
                  ]
                 ]
             ),
