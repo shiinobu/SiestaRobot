@@ -37,3 +37,11 @@ This Bot is Created by KennedyProject, If your kanging this without fork at leas
 <a href="https://t.me/EmikoSupport"> <img src="https://img.shields.io/badge/Support-Chat-blue?&logo=telegram" alt="Support Chat" /> </a><br>
 <a href="https://t.me/KennedyProject"> <img src="https://img.shields.io/badge/Update-Channel-blue?&logo=telegram" alt="Update Channel" /> </a><br>
 </p>
+
+## Credit 
+
+• [Sena](https://github.com/kennedy-ex)
+
+• [Arya](https://github.com/Aryazakaria01)
+
+• [Kyy](https://github.com/zxcskyy)
