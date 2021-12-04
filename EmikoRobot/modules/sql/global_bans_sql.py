@@ -1,7 +1,7 @@
 import threading
-
+from sqlalchemy.sql.sqltypes import BigInteger
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, BigInteger, Integer, String, UnicodeText
+from sqlalchemy import Boolean, Column, String, UnicodeText
 
 
 class GloballyBannedUsers(BASE):
