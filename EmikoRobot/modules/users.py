@@ -162,7 +162,7 @@ def __user_info__(user_id):
 
 
 def __stats__():
-    return f"• {sql.num_users()} users, across {sql.num_chats()} chats"
+    return f"× {sql.num_users()} users, across {sql.num_chats()} chats"
 
 
 def __migrate__(old_chat_id, new_chat_id):
