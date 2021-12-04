@@ -444,7 +444,7 @@ def __chat_settings__(chat_id, user_id):
 
 
 def __stats__():
-    return "• {} blacklist triggers, across {} chats.".format(
+    return "× {} blacklist triggers, across {} chats.".format(
         sql.num_blacklist_filters(),
         sql.num_blacklist_filter_chats(),
     )
@@ -467,7 +467,7 @@ Admin only:
 
 Blacklist sticker is used to stop certain stickers. Whenever a sticker is sent, the message will be deleted immediately.
 *NOTE:* Blacklist stickers do not affect the group admin
-❂ • /blsticker*:* See current blacklisted sticker
+❂ /blsticker*:* See current blacklisted sticker
 *Only admin:*
 ❂ /addblsticker <sticker link>*:* Add the sticker trigger to the black list. Can be added via reply sticker
 ❂ /unblsticker <sticker link>*:* Remove triggers from blacklist. The same newline logic applies here, so you can delete multiple triggers at once
