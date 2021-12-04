@@ -2,8 +2,8 @@ import threading
 
 from sqlalchemy import Column, String, UnicodeText, Integer, func, distinct
 from sqlalchemy.sql.sqltypes import BigInteger
-from EmikoRobot.modules.sql import BASE, SESSION
 
+from EmikoRobot.modules.sql import BASE, SESSION
 
 class Approvals(BASE):
     __tablename__ = "approval"
