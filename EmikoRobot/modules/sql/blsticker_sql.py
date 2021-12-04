@@ -1,7 +1,7 @@
 import threading
-
+from sqlalchemy.sql.sqltypes import BigInteger
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Column, Integer, String, UnicodeText, distinct, func
+from sqlalchemy import Column, String, UnicodeText, distinct, func
 
 
 class StickersFilters(BASE):
@@ -27,7 +27,7 @@ class StickersFilters(BASE):
 class StickerSettings(BASE):
     __tablename__ = "blsticker_settings"
     chat_id = Column(String(14), primary_key=True)
-    blacklist_type = Column(Integer, default=1)
+    blacklist_type = Column(BigInteger, default=1)
     value = Column(UnicodeText, default="0")
 
     def __init__(self, chat_id, blacklist_type=1, value="0"):
