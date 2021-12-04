@@ -2,8 +2,8 @@ import threading
 import time
 from typing import Union
 
-from sqlalchemy import Column, BigInteger, String, Boolean, UnicodeText, Integer
-
+from sqlalchemy import Column, String, Boolean, UnicodeText
+from sqlalchemy.sql.sqltypes import BigInteger
 from EmikoRobot.modules.sql import SESSION, BASE
 
 
@@ -38,7 +38,7 @@ class ConnectionHistory(BASE):
     user_id = Column(BigInteger, primary_key=True)
     chat_id = Column(String(14), primary_key=True)
     chat_name = Column(UnicodeText)
-    conn_time = Column(Integer)
+    conn_time = Column(BigInteger)
 
     def __init__(self, user_id, chat_id, chat_name, conn_time):
         self.user_id = user_id
