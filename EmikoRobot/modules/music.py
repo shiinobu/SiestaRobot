@@ -127,8 +127,9 @@ async def ytmusic(client, message: Message):
         with YoutubeDL(opts) as ytdl:
             infoo = ytdl.extract_info(url, False)
             duration = round(infoo["duration"] / 60)
-
-            if duration > 180:
+            LIMIT = "180"          
+ 
+            if duration > LIMIT:
                 await pablo.edit(
                     f"❌ **durasinya kelamaan gabisa tot:v**"
                 )
