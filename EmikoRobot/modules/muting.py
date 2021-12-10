@@ -93,7 +93,7 @@ def mute(update: Update, context: CallbackContext) -> str:
         chat_permissions = ChatPermissions(can_send_messages=False)
         bot.restrict_chat_member(chat.id, user_id, chat_permissions)    
         msg = (
-            f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] 🔇 Muted."
+            f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] Is now 🔇 Muted."
             )
         if reason:
             msg += f"\nReason: {html.escape(reason)}"
@@ -163,7 +163,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
             pass
         bot.sendMessage(
         chat.id,
-        "{} [<code>{}</code>] {} 🔊 Unmuted.\nReason: <code>{}</code>".format(
+        "{} [<code>{}</code>] {} Was 🔊 Unmuted.\n\nReason: <code>{}</code>".format(
             mention_html(member.user.id, member.user.first_name), member.user.id, reason
         ),
         parse_mode=ParseMode.HTML,
@@ -219,7 +219,7 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
         f"<b>Time:</b> {time_val}"
     )
     if reason:
-        log += f"\n<b>Reason:</b> {reason}"
+        log += f"\n\n<b>Reason:</b> {reason}"
 
     try:
         if member.can_send_messages is None or member.can_send_messages:
@@ -228,8 +228,8 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
                 chat.id, user_id, chat_permissions, until_date=mutetime,
             )     
             msg = (
-                f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>]"
-                f" Muted for: (<code>{time_val}</code>)\n"
+                f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] Is now 🔇 Muted"
+                f"\n\nMuted for: (<code>{time_val}</code>)\n"
             )
 
             keyboard = InlineKeyboardMarkup([[
@@ -283,7 +283,7 @@ def button(update: Update, context: CallbackContext) -> str:
         unmuted = bot.restrict_chat_member(chat.id, int(user_id), chat_permissions)
         if unmuted:
         	update.effective_message.edit_text(
-        	    f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] 🔊 Was unmuted.",
+        	    f"{mention_html(member.user.id, member.user.first_name)} [<code>{member.user.id}</code>] Now can 🔊 speak again.",
         	    parse_mode=ParseMode.HTML,
         	)
         	query.answer("Unmuted!")
