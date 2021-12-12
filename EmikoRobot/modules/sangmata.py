@@ -90,9 +90,9 @@ async def quotess(qotli):
             else:
                 await qotli.delete()
                 await ubot.forward_messages(qotli.chat_id, response.message)
-                await ubot.send_read_acknowledge(qotli.chat_id)
+                await tbot.send_read_acknowledge(qotli.chat_id)
                 """ - cleanup chat after completed - """
-                await qotli.client.delete_messages(conv.chat_id,
-                                                   [msg.id, response.id])
+                await ubot.delete_messages(conv.chat_id,
+                                              [msg.id, response.id])
     except TimeoutError:
         await qotli.edit()
