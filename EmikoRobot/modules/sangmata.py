@@ -64,14 +64,14 @@ async def quotess(qotli):
     if qotli.fwd_from:
         return
     if not qotli.reply_to_msg_id:
-        return await qotli.edit("```Mohon Balas Ke Pesan```")
+        return await tbot.reply("```Mohon Balas Ke Pesan```")
     reply_message = await qotli.get_reply_message()
     if not reply_message.text:
-        return await qotli.edit("```Mohon Balas Ke Pesan```")
+        return await tbot.reply("```Mohon Balas Ke Pesan```")
     chat = "@QuotLyBot"
-    if reply_message.sender.ubot:
-        return await qotli.edit("```Mohon Balas Ke Pesan```")
-    await qotli.edit("```Sedang Memproses Sticker, Mohon Menunggu```")
+    if reply_message.sender.tbot:
+        return await tbot.reply("```Mohon Balas Ke Pesan```")
+    await tbot.reply("```Sedang Memproses Sticker, Mohon Menunggu```")
     try:
         async with ubot.conversation(chat) as conv:
             try:
@@ -89,7 +89,7 @@ async def quotess(qotli):
                 await qotli.edit("```Mohon Menonaktifkan Pengaturan Privasi Forward Anda```")
             else:
                 await qotli.delete()
-                await ubot.forward_messages(qotli.chat_id, response.message)
+                await tbot.send_message(qotli.chat_id, response.message)
                 await tbot.send_read_acknowledge(qotli.chat_id)
                 """ - cleanup chat after completed - """
                 await ubot.delete_messages(conv.chat_id,
