@@ -75,10 +75,7 @@ async def quotess(qotli):
     try:
         async with ubot.conversation(chat) as conv:
             try:
-                response = conv.wait_event(
-                    events.NewMessage(
-                        incoming=True,
-                        from_users=1031952739))
+                response = await conv.get_response()
                 msg = await ubot.forward_messages(chat, reply_message)
                 response = await response
                 """ - don't spam notif - """
