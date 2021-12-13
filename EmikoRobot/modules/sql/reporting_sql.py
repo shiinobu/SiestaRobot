@@ -2,8 +2,7 @@ import threading
 from typing import Union
 
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, String
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import Boolean, Column, String, BigInteger
 
 
 class ReportingUserSettings(BASE):
