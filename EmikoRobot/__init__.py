@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 import sys
@@ -6,6 +7,7 @@ import asyncio
 import time
 import spamwatch
 import telegram.ext as tg
+
 from inspect import getfullargspec
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
@@ -241,7 +243,7 @@ pbot = Client(
 )
 apps = []
 apps.append(pbot)
-
+loop = asyncio.get_event_loop()
 
 async def get_entity(client, entity):
     entity_client = client
