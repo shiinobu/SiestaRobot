@@ -59,6 +59,20 @@ def ban(update: Update, context: CallbackContext) -> str:
     log_message = ""
     bot = context.bot
     args = context.args
+    reason = ""
+    if message.reply_to_message and message.reply_to_message.sender_chat:
+        r = bot.ban_chat_sender_chat(chat_id=chat.id, sender_chat_id=message.reply_to_message.sender_chat.id)
+        if r:
+            message.reply_text("Channel {} was banned successfully from {}".format(
+                html.escape(message.reply_to_message.sender_chat.title),
+                html.escape(chat.title)
+            ),
+                parse_mode="html"
+            )
+        else:
+            message.reply_text("Failed to ban channel")
+        return
+
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
@@ -408,14 +422,26 @@ def punchme(update: Update, context: CallbackContext):
 @user_admin
 @user_can_ban
 @loggable
-def unban(update: Update, context: CallbackContext) -> str:
+def unban(update: Update, context: CallbackContext) -> Optional[str]:
     message = update.effective_message
     user = update.effective_user
     chat = update.effective_chat
     log_message = ""
     bot, args = context.bot, context.args
-    user_id, reason = extract_user_and_text(message, args)
+    if message.reply_to_message and message.reply_to_message.sender_chat:
+        r = bot.unban_chat_sender_chat(chat_id=chat.id, sender_chat_id=message.reply_to_message.sender_chat.id)
+        if r:
+            message.reply_text("Channel {} was unbanned successfully from {}".format(
+                html.escape(message.reply_to_message.sender_chat.title),
+                html.escape(chat.title)
+            ),
+                parse_mode="html"
+            )
+        else:
+            message.reply_text("Failed to unban channel")
+        return
 
+    user_id, reason = extract_user_and_text(message, args)
     if not user_id:
         message.reply_text("⚠️ User not found.")
         return log_message
