@@ -1,11 +1,9 @@
 import ast
 import threading
-
 from EmikoRobot import dispatcher
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, String, UnicodeText
+from sqlalchemy import Boolean, Column, String, UnicodeText, Integer, BigInteger
 from telegram.error import BadRequest, Unauthorized
-from sqlalchemy.sql.sqltypes import BigInteger
 
 
 class Federations(BASE):
@@ -46,7 +44,7 @@ class BansF(BASE):
     last_name = Column(UnicodeText)
     user_name = Column(UnicodeText)
     reason = Column(UnicodeText, default="")
-    time = Column(BigInteger, default=0)
+    time = Column(Integer, default=0)
 
     def __init__(self, fed_id, user_id, first_name, last_name, user_name, reason, time):
         self.fed_id = fed_id
