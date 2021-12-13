@@ -4,8 +4,7 @@ from typing import Union
 
 from EmikoRobot.modules.helper_funcs.msg_types import Types
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, String, UnicodeText
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import Boolean, Column, String, UnicodeText, Integer, BigInteger
 
 
 DEFAULT_WELCOME_MESSAGES = [
@@ -235,12 +234,12 @@ class Welcome(BASE):
         UnicodeText,
         default=random.choice(DEFAULT_WELCOME_MESSAGES),
     )
-    welcome_type = Column(BigInteger, default=Types.TEXT.value)
+    welcome_type = Column(Integer, default=Types.TEXT.value)
 
     custom_leave = Column(UnicodeText, default=random.choice(DEFAULT_GOODBYE_MESSAGES))
-    leave_type = Column(BigInteger, default=Types.TEXT.value)
+    leave_type = Column(Integer, default=Types.TEXT.value)
 
-    clean_welcome = Column(BigInteger)
+    clean_welcome = Column(Integer)
 
     def __init__(self, chat_id, should_welcome=True, should_goodbye=True):
         self.chat_id = chat_id
@@ -256,7 +255,7 @@ class Welcome(BASE):
 
 class WelcomeButtons(BASE):
     __tablename__ = "welcome_urls"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     chat_id = Column(String(14), primary_key=True)
     name = Column(UnicodeText, nullable=False)
     url = Column(UnicodeText, nullable=False)
@@ -271,7 +270,7 @@ class WelcomeButtons(BASE):
 
 class GoodbyeButtons(BASE):
     __tablename__ = "leave_urls"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     chat_id = Column(String(14), primary_key=True)
     name = Column(UnicodeText, nullable=False)
     url = Column(UnicodeText, nullable=False)
