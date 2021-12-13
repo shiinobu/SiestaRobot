@@ -6,12 +6,12 @@ from sqlalchemy import (
     Column,
     ForeignKey,
     Integer,
+    BigInteger,
     String,
     UnicodeText,
     UniqueConstraint,
     func,
 )
-from sqlalchemy.sql.sqltypes import BigInteger
 
 
 class Users(BASE):
@@ -42,7 +42,7 @@ class Chats(BASE):
 
 class ChatMembers(BASE):
     __tablename__ = "chat_members"
-    priv_chat_id = Column(BigInteger, primary_key=True)
+    priv_chat_id = Column(Integer, primary_key=True)
     # NOTE: Use dual primary key instead of private primary key?
     chat = Column(
         String(14),
@@ -50,7 +50,7 @@ class ChatMembers(BASE):
         nullable=False,
     )
     user = Column(
-        BigInteger,
+        Integer,
         ForeignKey("users.user_id", onupdate="CASCADE", ondelete="CASCADE"),
         nullable=False,
     )
