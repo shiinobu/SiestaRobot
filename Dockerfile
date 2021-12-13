@@ -1,11 +1,9 @@
-# We're using Debian Slim Buster image
-FROM python:3.9.7-slim-buster
+FROM python:3.10.1-slim-buster
 
 ENV PIP_NO_CACHE_DIR 1
 
 RUN sed -i.bak 's/us-west-2\.ec2\.//' /etc/apt/sources.list
 
-# Installing Required Packages
 RUN apt update && apt upgrade -y && \
     apt install --no-install-recommends -y \
     debian-keyring \
@@ -61,20 +59,15 @@ RUN apt update && apt upgrade -y && \
     libopus-dev \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
-# Pypi package Repo upgrade
+RUN apt-get install -y ffmpeg python3-pip curl
 RUN pip3 install --upgrade pip setuptools
-
-# Copy Python Requirements to /root/EmikoRobot 
-RUN git clone -b shiken https://github.com/kennedy-ex/EmikoRobot /root/EmikoRobot
-WORKDIR /root/EmikoRobot
-
-#Copy config file to /root/EmikoRobot/EmikoRobot
-COPY ./EmikoRobot/sample_config.py ./EmikoRobot/config.py* /root/EmikoRobot/EmikoRobot/
 
 ENV PATH="/home/bot/bin:$PATH"
 
-# Install requirements
+RUN mkdir /EmikoRobot/
+COPY . /EmikoRobot
+WORKDIR /EmikoRobot
+
 RUN pip3 install -U -r requirements.txt
 
-# Starting Worker
-CMD ["python3","-m","EmikoRobot"]
+CMD ["python3", "-m", "EmikoRobot"]
