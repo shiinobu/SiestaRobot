@@ -1,7 +1,7 @@
 import threading
 
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, String, UnicodeText, distinct, func, BigInteger
+from sqlalchemy import Boolean, Column, String, Integer, UnicodeText, distinct, func, BigInteger
 from sqlalchemy.dialects import postgresql
 
 
