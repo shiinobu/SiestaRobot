@@ -33,7 +33,7 @@ This Bot is Created by KennedyProject, If your kanging this without fork at leas
 
 ### Support
 <p>
-<a href="https://t.me/saint_foire"> <img src="https://img.shields.io/badge/Vain-X-green?style=for-the-badge&logo=telegram" alt="Vain on Telegram" /> </a><br>
+<a href="https://t.me/saint_foire"> <img src="https://img.shields.io/badge/Vain-User-green?style=for-the-badge&logo=telegram" alt="Vain on Telegram" /> </a><br>
 <a href="https://t.me/machinaxsupport"> <img src="https://img.shields.io/badge/Support-Chat-green?style=for-the-badge&logo=telegram" alt="Support Chat" /> </a><br>
 <a href="https://t.me/machinaxupdate"> <img src="https://img.shields.io/badge/Update-Channel-green?style=for-the-badge&logo=telegram" alt="Update Channel" /> </a><br>
 </p>
