@@ -37,9 +37,9 @@ async def _(event):
 
     webevent = await event.reply("searching........")
     match = event.pattern_match.group(1)
-    page = re.findall(r"page=\d+", match)
+    page = re.findall(r"https://www.google.com/search?q={}&num={}", match)
     try:
-        page = page[0]
+        page = page[4]
         page = page.replace("page=", "")
         match = match.replace("page=" + page[0], "")
     except IndexError:
