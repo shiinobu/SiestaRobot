@@ -229,7 +229,7 @@ def buttons(update: Update, context: CallbackContext):
         try:
             bot.kickChatMember(splitter[0], splitter[2])
             bot.unbanChatMember(splitter[0], splitter[2])
-            query.aswer("✅ Succesfully kicked")
+            query.answer("✅ Succesfully kicked")
             return ""
         except Exception as err:
             query.answer("🛑 Failed to Kick")
