@@ -136,7 +136,7 @@
             "required": true
         },
 
-      "SW": {
+      "SW_API": {
          "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
          "required": false,
          "value": ""
