@@ -9,7 +9,7 @@ from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
 from alphabet_detector import AlphabetDetector
-from EmikoRobot import dispatcher, DRAGONS, LOGGER, REDIS
+from EmikoRobot import dispatcher, DRAGONS, LOGGER
 from EmikoRobot.modules.disable import DisableAbleCommandHandler
 from EmikoRobot.modules.helper_funcs.chat_status import (
     can_delete,
@@ -18,6 +18,7 @@ from EmikoRobot.modules.helper_funcs.chat_status import (
     is_bot_admin,
     user_admin,
 )
+from EmikoRobot.modules.sql.approve_sql import is_approved
 from EmikoRobot.modules.log_channel import loggable
 from EmikoRobot.modules.connection import connected
 from EmikoRobot.modules.helper_funcs.alternate import send_message, typing_action
@@ -341,12 +342,7 @@ def del_lockables(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user
     message = update.effective_message  # type: Optional[Message]
-
-    chat_id = str(chat.id)[1:]
-    approve_list = list(REDIS.sunion(f"approve_list_{chat_id}"))
-    is_user_approved = mention_html(user.id, user.first_name)
-
-    if is_user_approved in approve_list:
+    if is_approved(chat.id, user.id):
         return
     for lockable, filter in LOCK_TYPES.items():
         if lockable == "rtl":
