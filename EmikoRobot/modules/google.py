@@ -46,7 +46,7 @@ async def _(event):
         page = 1
     search_args = (str(match), int(page))
     gsearch = GoogleSearch()
-    gresults = await gsearch.async_search(*search_args*)
+    gresults = await gsearch.async_search(*search_args)
     msg = ""
     for i in range(len(gresults["links"])):
         try:
