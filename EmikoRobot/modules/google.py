@@ -10,7 +10,7 @@ from urllib.parse import urlencode
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image
-from search_engine_parser import GoogleSearch
+from search_engine_parser.core.engines.google import GoogleSearch
 
 import bs4
 import html2text
@@ -46,7 +46,7 @@ async def _(event):
         page = 1
     search_args = (str(match), int(page))
     gsearch = GoogleSearch()
-    gresults = await gsearch.async_search(search_args)
+    gresults = await gsearch.async_search(*search_args*)
     msg = ""
     for i in range(len(gresults["links"])):
         try:
