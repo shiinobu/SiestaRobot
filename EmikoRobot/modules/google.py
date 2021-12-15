@@ -10,7 +10,7 @@ from urllib.parse import urlencode
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image
-from search_engine_parser.core.engines.google import GoogleSearch
+from search_engine_parser.core.engines.google import Search as GoogleSearch
 
 import bs4
 import html2text
