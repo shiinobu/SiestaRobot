@@ -37,16 +37,16 @@ async def _(event):
 
     webevent = await event.reply("searching........")
     match = event.pattern_match.group(1)
-    page = re.findall("page=\d+", match)
+    page = re.findall(r"page=\d+", match)
     try:
-        page = page[4]
+        page = page[0]
         page = page.replace("page=", "")
         match = match.replace("page=" + page[0], "")
     except IndexError:
         page = 1
     search_args = (str(match), int(page))
     gsearch = GoogleSearch()
-    gresults = await gsearch.async_search(*search_args)
+    gresults = await gsearch.async_search(search_args)
     msg = ""
     for i in range(len(gresults["links"])):
         try:
