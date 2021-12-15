@@ -16,7 +16,6 @@ from EmikoRobot import (
     CERT_PATH,
     DONATION_LINK,
     LOGGER,
-    REDIS,
     OWNER_ID,
     PORT,
     SUPPORT_CHAT,
