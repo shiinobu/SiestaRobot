@@ -57,7 +57,6 @@ async def quotly_func(client, message: Message):
             await asyncio.sleep(2)
             second = await bot.forward_messages(chat, reply_message)
             response = await response
-    else:
         await m.edit(
             "Incorrect argument, check quotly module in help section."
         )
