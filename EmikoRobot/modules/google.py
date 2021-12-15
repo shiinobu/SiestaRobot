@@ -37,7 +37,7 @@ async def _(event):
 
     webevent = await event.reply("searching........")
     match = event.pattern_match.group(1)
-    page = re.findall(r"https://www.google.com/search?q={}&num={}", match)
+    page = re.findall("page=\d+", match)
     try:
         page = page[4]
         page = page.replace("page=", "")
