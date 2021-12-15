@@ -32,10 +32,6 @@ def isArgInt(message: Message) -> list:
     except ValueError:
         return [False, 0]
 
-
-@app2.on_message(
-    filters.command("q", prefixes=USERBOT_PREFIX) & filters.user(SUDOERS)
-)
 @app.on_message(filters.command("q") & ~filters.private)
 @capture_err
 async def quotly_func(client, message: Message):
