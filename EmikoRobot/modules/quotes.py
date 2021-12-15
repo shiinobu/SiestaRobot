@@ -44,19 +44,39 @@ async def quotly_func(client, message: Message):
         return await message.reply_text(
             "Replied message has no text, can't quote it."
         )
-    warna = event.pattern_match.group(1)
-    chat = "@QuotLyBot"
     m = await message.reply_text("Quoting Messages Please wait....")
-    async with bot.conversation(chat) as conv:
-        try:
-            response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=1031952739)
+    if len(message.command) < 2:
+        messages = [message.reply_to_message]
+
+    elif len(message.command) == 2:
+        arg = isArgInt(message)
+        if arg[0]:
+            if arg[1] < 2 or arg[1] > 10:
+                return await m.edit("Argument must be between 2-10.")
+            count = arg[1]
+            messages = await client.get_messages(
+                message.chat.id,
+                [
+                    i
+                    for i in range(
+                        message.reply_to_message.message_id,
+                        message.reply_to_message.message_id + count,
+                    )
+                ],
+                replies=0,
             )
-            first = await conv.send_message(f"/qcolor {warna}")
-            ok = await conv.get_response()
-            await asyncio.sleep(2)
-            second = await bot.forward_messages(chat, reply_message)
-            response = await response
+        else:
+            if getArg(message) != "r":
+                return await m.edit(
+                    "Incorrect Argument, Pass **'r'** or **'INT'**, **EX:** __/q 2__"
+                )
+            reply_message = await client.get_messages(
+                message.chat.id,
+                message.reply_to_message.message_id,
+                replies=1,
+            )
+            messages = [reply_message]
+    else:
         await m.edit(
             "Incorrect argument, check quotly module in help section."
         )
