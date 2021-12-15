@@ -11,7 +11,7 @@ from EmikoRobot import BOT_ID, pbot, arq
 from EmikoRobot.ex_plugins.chatbot import add_chat, get_session, remove_chat
 from EmikoRobot.utils.pluginhelper import admins_only, edit_or_reply
 
-url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
+url = " http://thearq.tech/"
 
 translator = google_translator()
 
