@@ -23,6 +23,8 @@ psutil
 aiohttp
 Pillow
 CurrencyConverter
+google_images_download
+google-api-python-client
 googletrans
 google-trans-new
 jikanpy
