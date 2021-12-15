@@ -131,7 +131,7 @@ def get_userid_by_name(username):
 
 def get_name_by_userid(user_id):
     try:
-        return SESSION.query(Users).get(Users.user_id == BigInteger(user_id)).first()
+        return SESSION.query(Users).get(Users.user_id == int(user_id)).first()
     finally:
         SESSION.close()
 
@@ -160,7 +160,7 @@ def get_all_users():
 def get_user_num_chats(user_id):
     try:
         return (
-            SESSION.query(ChatMembers).filter(ChatMembers.user == BigInteger(user_id)).count()
+            SESSION.query(ChatMembers).filter(ChatMembers.user == int(user_id)).count()
         )
     finally:
         SESSION.close()
@@ -169,7 +169,7 @@ def get_user_num_chats(user_id):
 def get_user_com_chats(user_id):
     try:
         chat_members = (
-            SESSION.query(ChatMembers).filter(ChatMembers.user == BigInteger(user_id)).all()
+            SESSION.query(ChatMembers).filter(ChatMembers.user == int(user_id)).all()
         )
         return [i.chat for i in chat_members]
     finally:
