@@ -14,6 +14,7 @@ from EmikoRobot import (
     sw,
     LOGGER,
     dispatcher,
+    JOIN_LOGGER,
 )
 from EmikoRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
