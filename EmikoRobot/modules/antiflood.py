@@ -202,6 +202,7 @@ def set_flood(update, context) -> str:
                     "Antiflood must be either 0 (disabled) or number greater than 3!",
                 )
                 return ""
+
             else:
                 sql.set_flood(chat_id, amount)
                 if conn:
@@ -317,7 +318,7 @@ def set_flood_mode(update, context):
         elif args[0].lower() == "tban":
             if len(args) == 1:
                 teks = """It looks like you tried to set time value for antiflood but you didn't specified time; Try, `/setfloodmode tban <timevalue>`.
-    Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."""
+Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."""
                 send_message(update.effective_message, teks, parse_mode="markdown")
                 return
             settypeflood = "tban for {}".format(args[1])
@@ -327,7 +328,7 @@ def set_flood_mode(update, context):
                 teks = (
                     update.effective_message,
                     """It looks like you tried to set time value for antiflood but you didn't specified time; Try, `/setfloodmode tmute <timevalue>`.
-    Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.""",
+Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.""",
                 )
                 send_message(update.effective_message, teks, parse_mode="markdown")
                 return
@@ -408,14 +409,15 @@ FLOOD_BAN_HANDLER = MessageHandler(
     run_async=True,
 )
 SET_FLOOD_HANDLER = CommandHandler(
-    "setflood", set_flood, filters=Filters.chat_type.group, run_async=True
+    "setflood", set_flood, filters=Filters.chat_type.groups, run_async=True
 )
 SET_FLOOD_MODE_HANDLER = CommandHandler(
     "setfloodmode",
     set_flood_mode,
     pass_args=True,
+    filters=Filters.chat_type.groups,
     run_async=True,
-)  # , filters=Filters.chat_type.group)
+)
 FLOOD_QUERY_HANDLER = CallbackQueryHandler(
     flood_button, pattern=r"unmute_flooder", run_async=True
 )
