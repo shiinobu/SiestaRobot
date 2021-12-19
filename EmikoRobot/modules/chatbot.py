@@ -27,7 +27,7 @@ def extract_emojis(s):
 
 async def fetch(url):
     try:
-        async with aiohttp.Timeout(10.0):
+        async with aiohttp.Timeout(1.0):
             async with aiohttp.ClientSession() as session:
                 async with session.get(url) as resp:
                     try:
