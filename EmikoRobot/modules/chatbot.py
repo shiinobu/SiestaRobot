@@ -3,7 +3,7 @@
 import emoji
 import re
 import aiohttp
-from google_trans_new import google_translator
+from googletrans import Translator
 from pyrogram import filters
 from aiohttp import ClientSession
 from EmikoRobot import BOT_USERNAME as bu
@@ -13,7 +13,7 @@ from EmikoRobot.utils.pluginhelper import admins_only, edit_or_reply
 
 url = "https://thearq.tech"
 
-translator = google_translator()
+translator = Translator()
 
 
 async def lunaQuery(query: str, user_id: int):
