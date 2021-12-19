@@ -25,8 +25,8 @@ Pillow
 CurrencyConverter
 google_images_download
 google-api-python-client
-googletrans
-google-trans-new
+googletrans==4.0.0-rc1
+google-trans-new==1.1.9
 jikanpy
 speedtest-cli
 coffeehouse
@@ -48,7 +48,7 @@ TgCrypto
 Pyrogram
 PyDictionary
 git+https://github.com/Sorrybabe/downloader
-youtube_search_python
+youtube_search_python==1.4.9
 youtube_search
 lyrics_extractor
 asyncio
