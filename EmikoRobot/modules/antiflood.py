@@ -196,35 +196,34 @@ def set_flood(update, context) -> str:
                     )
                 )
 
-            elif amount <= 3:
+            if amount <= 3:
                 send_message(
                     update.effective_message,
                     "Antiflood must be either 0 (disabled) or number greater than 3!",
                 )
                 return ""
-            else:
-                sql.set_flood(chat_id, amount)
-                if conn:
-                    text = message.reply_text(
-                        "Anti-flood has been set to {} in chat: {}".format(
-                            amount,
-                            chat_name,
-                        ),
-                    )
-                else:
-                    text = message.reply_text(
-                        "Successfully updated anti-flood limit to {}!".format(amount),
-                    )
-                return (
-                    "<b>{}:</b>"
-                    "\n#SETFLOOD"
-                    "\n<b>Admin:</b> {}"
-                    "\nSet antiflood to <code>{}</code>.".format(
-                        html.escape(chat_name),
-                        mention_html(user.id, html.escape(user.first_name)),
+            sql.set_flood(chat_id, amount)
+            if conn:
+                text = message.reply_text(
+                    "Anti-flood has been set to {} in chat: {}".format(
                         amount,
-                    )
+                        chat_name,
+                    ),
                 )
+            else:
+                text = message.reply_text(
+                    "Successfully updated anti-flood limit to {}!".format(amount),
+                )
+            return (
+                "<b>{}:</b>"
+                "\n#SETFLOOD"
+                "\n<b>Admin:</b> {}"
+                "\nSet antiflood to <code>{}</code>.".format(
+                    html.escape(chat_name),
+                    mention_html(user.id, html.escape(user.first_name)),
+                    amount,
+                )
+            )
 
         else:
             message.reply_text("Invalid argument please use a number, 'off' or 'no'")
@@ -361,31 +360,30 @@ def set_flood_mode(update, context):
                 mention_html(user.id, html.escape(user.first_name)),
             )
         )
+    getmode, getvalue = sql.get_flood_setting(chat.id)
+    if getmode == 1:
+        settypeflood = "ban"
+    elif getmode == 2:
+        settypeflood = "kick"
+    elif getmode == 3:
+        settypeflood = "mute"
+    elif getmode == 4:
+        settypeflood = "tban for {}".format(getvalue)
+    elif getmode == 5:
+        settypeflood = "tmute for {}".format(getvalue)
+    if conn:
+        text = msg.reply_text(
+            "Sending more messages than flood limit will result in {} in {}.".format(
+                settypeflood,
+                chat_name,
+            ),
+        )
     else:
-        getmode, getvalue = sql.get_flood_setting(chat.id)
-        if getmode == 1:
-            settypeflood = "ban"
-        elif getmode == 2:
-            settypeflood = "kick"
-        elif getmode == 3:
-            settypeflood = "mute"
-        elif getmode == 4:
-            settypeflood = "tban for {}".format(getvalue)
-        elif getmode == 5:
-            settypeflood = "tmute for {}".format(getvalue)
-        if conn:
-            text = msg.reply_text(
-                "Sending more messages than flood limit will result in {} in {}.".format(
-                    settypeflood,
-                    chat_name,
-                ),
-            )
-        else:
-            text = msg.reply_text(
-                "Sending more message than flood limit will result in {}.".format(
-                    settypeflood,
-                ),
-            )
+        text = msg.reply_text(
+            "Sending more message than flood limit will result in {}.".format(
+                settypeflood,
+            ),
+        )
     return ""
 
 
@@ -397,8 +395,7 @@ def __chat_settings__(chat_id, user_id):
     limit = sql.get_flood_limit(chat_id)
     if limit == 0:
         return "Not enforcing to flood control."
-    else:
-        return "Antiflood has been set to`{}`.".format(limit)
+    return "Antiflood has been set to`{}`.".format(limit)
 
 __mod_name__ = "Anti-Flood"
 
@@ -408,7 +405,7 @@ FLOOD_BAN_HANDLER = MessageHandler(
     run_async=True,
 )
 SET_FLOOD_HANDLER = CommandHandler(
-    "setflood", set_flood, filters=Filters.chat_type.group, run_async=True
+    "setflood", set_flood, filters=Filters.chat_type.groups, run_async=True
 )
 SET_FLOOD_MODE_HANDLER = CommandHandler(
     "setfloodmode",
