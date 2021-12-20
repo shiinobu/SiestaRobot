@@ -191,7 +191,6 @@ earth_ani = [
 ]
 
 
-@user_admin
 def blockanimation(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("⬜")
@@ -201,7 +200,6 @@ def blockanimation(update: Update, context: CallbackContext):
     msg.edit_text("🟥")
 
 
-@user_admin
 def clockanimation(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message
@@ -214,7 +212,6 @@ def clockanimation(update: Update, context: CallbackContext):
     msg.edit_text("🕚")
 
 
-@user_admin
 def earthanimation(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message
@@ -227,7 +224,6 @@ def earthanimation(update: Update, context: CallbackContext):
     msg.edit_text("🌍")
 
 
-@user_admin
 def moonanimation(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("🌚")
@@ -237,7 +233,6 @@ def moonanimation(update: Update, context: CallbackContext):
     msg.edit_text("🌙")
 
 
-@user_admin
 def bombs(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("💣")
@@ -247,7 +242,6 @@ def bombs(update: Update, context: CallbackContext):
     msg.edit_text("RIP PLOX...")
 
 
-@user_admin
 def hack(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("Target selected")
@@ -257,7 +251,6 @@ def hack(update: Update, context: CallbackContext):
     msg.edit_text("successful hacked all data send on my Database")
 
 
-@user_admin
 def love(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("❣️")
