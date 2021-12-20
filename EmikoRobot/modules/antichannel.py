@@ -1,13 +1,15 @@
+import html
+
 from telegram.ext.filters import Filters
-from tg_bot.modules.helper_funcs.decorators import kigcmd, kigmsg
 from telegram import Update, message
 from telegram.ext import CallbackContext
-from EmikoRobot.modules.helper_funcs.anonymous import user_admin, AdminPerms
-import html
+
+from EmikoRobot.modules.helper_funcs.decorators import emikocmd, emikomsg
+from EmikoRobot.modules.helper_funcs.channel_mode import user_admin, AdminPerms
 from EmikoRobot.modules.sql.antichannel_sql import antichannel_status, disable_antichannel, enable_antichannel
 
 
-@kigcmd(command="antichannelmode", group=100)
+@emikocmd(command="antichannelmode", group=100)
 @user_admin(AdminPerms.CAN_RESTRICT_MEMBERS)
 def set_antichannel(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -28,7 +30,7 @@ def set_antichannel(update: Update, context: CallbackContext):
         "Antichannel setting is currently {} in {}".format(antichannel_status(chat.id), html.escape(chat.title)))
 
 
-@kigmsg(Filters.chat_type.groups, group=110)
+@emikomsg(Filters.chat_type.groups, group=110)
 def eliminate_channel(update: Update, context: CallbackContext):
     message = update.effective_message
     chat = update.effective_chat
