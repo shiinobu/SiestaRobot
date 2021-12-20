@@ -332,9 +332,7 @@ __help__ = """
 ❂ /love *:* Animation For Love ❤️
 ❂ /hack *:* Animation For Hacking
 ❂ /moon *:* Animation For Moon 🌕
-❂ /clock *:* Animation For Clock 🕐
 ❂ /block *:* Animation For Block 🟦
-❂ /earth *:* Animation For Earth 🌎
 ❂ /bombs *:* Animation For Bomb 💣
 ❂ /kill *:* Animation For Kill 🔪
 
