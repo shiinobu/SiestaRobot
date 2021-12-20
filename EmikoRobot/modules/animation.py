@@ -260,7 +260,6 @@ def love(update: Update, context: CallbackContext):
     msg.edit_text("True Love💞")
 
 
-@user_admin
 def kill(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("🔫")
