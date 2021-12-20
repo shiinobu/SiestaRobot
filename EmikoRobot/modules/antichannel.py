@@ -42,12 +42,15 @@ def eliminate_channel(update: Update, context: CallbackContext):
 __help__ = """
 ──「 Anti-Channels 」──
 
+    ⚠️ WARNING ⚠️
+
+*IF YOU USE THIS MODE, THE RESULT IS IN THE GROUP FOREVER YOU CAN'T CHAT USING THE CHANNEL*
+
 Anti Channel Mode is a mode to automatically ban users who chat using Channels. 
 This command can only be used by *Admins*.
 
 ❂ /antichannelmode <'on'/'yes'> *:* enables anti-channel-mode
 ❂ /antichannelmode <'off'/'no'> *:* disabled anti-channel-mode
-❂ /unban <userhandle> *:* unban channels *(only via reply chat)*
 """
 
 __mod_name__ = "Anti-Channel"
