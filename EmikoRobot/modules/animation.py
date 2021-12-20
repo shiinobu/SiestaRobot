@@ -203,6 +203,9 @@ def blockanimation(update: Update, context: CallbackContext):
 def clockanimation(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("🕙")
+    reply_text = (
+        msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
+    )
     for x in range(EDIT_TIMES):
         msg.edit_text(clock_ani[x % 11])
         time.sleep(EDIT_SLEEP)
@@ -212,6 +215,9 @@ def clockanimation(update: Update, context: CallbackContext):
 def earthanimation(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("🌍")
+    reply_text = (
+        msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
+    )
     for x in range(EDIT_TIMES):
         msg.edit_text(earth_ani[x % 18])
         time.sleep(EDIT_SLEEP)
