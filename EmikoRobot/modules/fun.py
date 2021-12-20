@@ -329,9 +329,14 @@ __help__ = """
 ❂ /8ball*:* predicts using 8ball method
 
 - Animation
-❂ /love 
-❂ /hack 
-❂ /bombs 
+❂ /love *:* Animation For Love ❤️
+❂ /hack *:* Animation For Hacking
+❂ /moon *:* Animation For Moon 🌕
+❂ /clock *:* Animation For Clock 🕐
+❂ /block *:* Animation For Block 🟦
+❂ /earth *:* Animation For Earth 🌎
+❂ /bombs *:* Animation For Bomb 💣
+❂ /kill *:* Animation For Kill 🔪
 
 - Shippering
 ❂ /couples - get couples of today
