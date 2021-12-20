@@ -6,7 +6,7 @@ from telegram.ext import CallbackContext
 from telegram.inline.inlinekeyboardbutton import InlineKeyboardButton
 from telegram.inline.inlinekeyboardmarkup import InlineKeyboardMarkup
 
-from EmikoRobot import DEV_USERS, SUDO_USERS, dispatcher
+from EmikoRobot import DRAGONS, DEV_USERS, dispatcher
 from EmikoRobot.modules.helper_funcs.decorators import emikocallback
 
 
@@ -50,7 +50,7 @@ def user_admin(permission: AdminPerms):
                 user_id = message.from_user.id
                 chat_id = message.chat.id
                 mem = context.bot.get_chat_member(chat_id=chat_id, user_id=user_id)
-                if getattr(mem, permission.value) is True or mem.status == "creator" or user_id in SUDO_USERS:
+                if getattr(mem, permission.value) is True or mem.status == "creator" or user_id in DEV_USERS:
                     return func(update, context, *args, **kwargs)
                 else:
                     return message.reply_text(f"You lack the permission: `{permission.name}`",
@@ -76,7 +76,7 @@ def anon_callback_handler1(upd: Update, _: CallbackContext):
         callback.answer("You're aren't admin.")
         dispatcher.bot.delete_message(chat_id, anon_callback_messages.pop((chat_id, message_id), None))
         dispatcher.bot.send_message(chat_id, "You lack the permissions required for this command")
-    elif getattr(mem, perm) is True or mem.status == "creator" or mem.user.id in DEV_USERS:
+    elif getattr(mem, perm) is True or mem.status == "creator" or mem.user.id in DRAGONS:
         cb = anon_callbacks.pop((chat_id, message_id), None)
         if cb:
             message_id = anon_callback_messages.pop((chat_id, message_id), None)
