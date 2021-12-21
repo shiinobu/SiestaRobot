@@ -2,7 +2,8 @@ import ast
 import threading
 from EmikoRobot import dispatcher
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, String, UnicodeText, Integer, BigInteger
+from sqlalchemy import Boolean, Column, String, UnicodeText, Integer
+from sqlalchemy.sql.sqltypes import BigInteger
 from telegram.error import BadRequest, Unauthorized
 
 
