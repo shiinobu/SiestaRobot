@@ -1,6 +1,7 @@
 import threading
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Column, UnicodeText, BigInteger
+from sqlalchemy import Column, UnicodeText
+from sqlalchemy.sql.sqltypes import BigInteger
 
 
 class UserInfo(BASE):
