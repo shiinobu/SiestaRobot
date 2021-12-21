@@ -4,7 +4,8 @@ from typing import Union
 
 from EmikoRobot.modules.helper_funcs.msg_types import Types
 from EmikoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, String, UnicodeText, Integer, BigInteger
+from sqlalchemy import Boolean, Column, String, UnicodeText, Integer
+from sqlalchemy.sql.sqltypes import BigInteger
 
 
 DEFAULT_WELCOME_MESSAGES = [
