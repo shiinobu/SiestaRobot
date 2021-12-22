@@ -87,3 +87,4 @@ fuzzysearch
 img2pdf
 multicolorcaptcha
 git+https://github.com/python-telegram-bot/ptbcontrib.git
+git+https://github.com/TotallyNotChase/glitch-this.git
