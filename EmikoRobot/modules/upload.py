@@ -11,7 +11,7 @@ from EmikoRobot import telethn as bot
 from EmikoRobot.modules.urluploader import download_file
 from EmikoRobot.utils.uputils import humanbytes, progress
 
-DOWNLOADPATH = "resources/Downloads"
+DOWNLOADPATH = "/Users/Fy/Downloads/Telegram_Desktop/Upload"
 
 
 def get_date_in_two_weeks():
