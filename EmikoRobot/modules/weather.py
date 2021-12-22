@@ -32,7 +32,7 @@ async def _(event):
         return
 
     sample_url = (
-        "https://api.openweathermap.org/data/2.5/weather?q={}&APPID={}&units=metric"
+        "https://api.openweathermap.org/data/2.5/weather?q={}&APPID={}"
     )
     input_str = event.pattern_match.group(1)
     async with aiohttp.ClientSession() as session:
