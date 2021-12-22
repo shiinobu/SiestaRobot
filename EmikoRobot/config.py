@@ -68,6 +68,7 @@ class Config(object):
     BL_CHATS = []  # List of groups that you want blacklisted.
     SPAMMERS = None
     REM_BG_API_KEY = "xYCR1ZyK3ZsofjH7Y6hPcyzC"
+    OPENWEATHERMAP_ID = "887da2c60d9f13fe78b0f9d0c5cbaade"
 
 
 class Production(Config):
