@@ -120,7 +120,7 @@
          "value": "-xyz"
      }, 
 
-      "API_OPENWEATHER": {
+      "OPENWEATHERMAP_ID": {
         "description": "Get your own APPID from https://api.openweathermap.org/data/2.5/weather",
         "value": "",
         "required": false
