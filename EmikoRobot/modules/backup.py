@@ -17,8 +17,16 @@ import EmikoRobot.modules.sql.notes_sql as sql
 
 # from Emiko.modules.rules import get_rules
 import EmikoRobot.modules.sql.rules_sql as rulessql
-from EmikoRobot import JOIN_LOGGER, LOGGER, OWNER_ID, SUPPORT_CHAT, dispatcher
-from EmikoRobot.__main__ import DATA_IMPORT
+
+from EmikoRobot import (
+	JOIN_LOGGER, 
+	LOGGER, 
+	OWNER_ID, 
+	SUPPORT_CHAT, 
+	dispatcher,
+	DATA_IMPORT,
+)
+
 from EmikoRobot.modules.connection import connected
 from EmikoRobot.modules.helper_funcs.alternate import typing_action
 from EmikoRobot.modules.helper_funcs.chat_status import user_admin
