@@ -32,6 +32,7 @@ def isArgInt(message: Message) -> bool:
     except ValueError:
         return [False, 0]
 
+
 @app.on_message(filters.command("q"))
 @capture_err
 async def quotly_func(client, message: Message):
@@ -39,7 +40,7 @@ async def quotly_func(client, message: Message):
         return await message.reply_text("Reply to a message to quote it.")
     if not message.reply_to_message.text:
         return await message.reply_text("Replied message has no text, can't quote it.")
-    m = await message.reply_text("Quoting Messages Please Wait ...")
+    m = await message.reply_text("Quoting Messages Please wait....")
     if len(message.command) < 2:
         messages = [message.reply_to_message]
 
@@ -48,13 +49,9 @@ async def quotly_func(client, message: Message):
         if arg[0]:
             if arg[1] < 2 or arg[1] > 10:
                 return await m.edit("Argument must be between 2-10.")
-
             count = arg[1]
-
-            # Fetching 5 extra messages so tha twe can ignore media
-            # messages and still end up with correct offset
             messages = await client.get_messages(
-                    message.chat.id,
+                message.chat.id,
                 [
                     i
                     for i in range(
@@ -63,7 +60,7 @@ async def quotly_func(client, message: Message):
                     )
                 ],
                 replies=0,
-           )
+            )
         else:
             if getArg(message) != "r":
                 return await m.edit(
@@ -91,7 +88,7 @@ async def quotly_func(client, message: Message):
         await m.edit(
             "Something wrong happened while quoting messages,"
             + " This error usually happens when there's a "
-            + " message containing something other than text,"
+            + " message containing something other than text."
         )
         e = format_exc()
         print(e)
