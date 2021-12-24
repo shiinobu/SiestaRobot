@@ -79,9 +79,6 @@ async def quotly_func(client, message: Message):
         await m.edit("Incorrect argument, check quotly module in help section.")
         return
     try:
-        if not message:
-            return await m.edit("Something went wrong.")
-
         sticker = await quotify(messages)
         if not sticker[0]:
             await message.reply_text(sticker[1])
@@ -95,7 +92,6 @@ async def quotly_func(client, message: Message):
             "Something wrong happened while quoting messages,"
             + " This error usually happens when there's a "
             + " message containing something other than text,"
-            + " or one of the messages in-between are deleted."
         )
         e = format_exc()
         print(e)
