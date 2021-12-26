@@ -36,6 +36,7 @@ def eliminate_channel(update: Update, context: CallbackContext):
     if not antichannel_status(chat.id):
         return
     if message.sender_chat and message.sender_chat.type == "channel" and not message.is_automatic_forward:
+        message.delete()
         sender_chat = message.sender_chat
         bot.ban_chat_sender_chat(sender_chat_id=sender_chat.id, chat_id=chat.id)
         
