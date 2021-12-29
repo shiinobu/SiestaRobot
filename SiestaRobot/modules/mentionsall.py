@@ -7,9 +7,9 @@ from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.errors import UserNotParticipantError
 
-from SiestaRobot import telethn as Client
+from SiestaRobot import API_HASH, API_ID, telethn as Client
 
-client = TelegramClient('client', Client)
+client = TelegramClient('client', API_ID, API_HASH)
 spam_chats = []
 
 @Client.on(events.NewMessage(pattern="^/all ?(.*)"))
