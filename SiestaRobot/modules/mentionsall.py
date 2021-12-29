@@ -9,6 +9,8 @@ from telethon.errors import UserNotParticipantError
 
 from SiestaRobot import telethn as Client
 
+spam_chats = []
+
 @Client.on(events.NewMessage(pattern="^/all ?(.*)"))
 async def mentionall(event):
   chat_id = event.chat_id
@@ -17,7 +19,7 @@ async def mentionall(event):
   
   is_admin = False
   try:
-    partici_ = await event.client(GetParticipantRequest(
+    partici_ = await client(GetParticipantRequest(
       event.chat_id,
       event.sender_id
     ))
@@ -50,7 +52,7 @@ async def mentionall(event):
   else:
     return await event.respond("Reply to a message or give me some text to mention others!")
   
-  spam_chats.append(chat_id)
+  Spam = spam_chats.append(chat_id)
   usrnum = 0
   usrtxt = ''
   async for usr in client.iter_participants(chat_id):
