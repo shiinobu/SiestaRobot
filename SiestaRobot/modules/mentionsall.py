@@ -7,9 +7,8 @@ from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.errors import UserNotParticipantError
 
-from SiestaRobot import API_HASH, API_ID, telethn as Client
+from SiestaRobot import telethn as Client
 
-client = TelegramClient('client', API_ID, API_HASH)
 spam_chats = []
 
 @Client.on(events.NewMessage(pattern="^/all ?(.*)"))
@@ -20,7 +19,7 @@ async def mentionall(event):
   
   is_admin = False
   try:
-    partici_ = await client(GetParticipantRequest(
+    partici_ = await Client(GetParticipantRequest(
       event.chat_id,
       event.sender_id
     ))
@@ -56,7 +55,7 @@ async def mentionall(event):
   Spam = spam_chats.append(chat_id)
   usrnum = 0
   usrtxt = ''
-  async for usr in client.iter_participants(chat_id):
+  async for usr in Client.iter_participants(chat_id):
     if not chat_id in spam_chats:
       break
     usrnum += 1
@@ -64,7 +63,7 @@ async def mentionall(event):
     if usrnum == 10:
       if mode == "text_on_cmd":
         txt = f"{usrtxt}\n\n{msg}"
-        await client.send_message(chat_id, txt)
+        await Client.send_message(chat_id, txt)
       elif mode == "text_on_reply":
         await msg.reply(usrtxt)
       await asyncio.sleep(2)
