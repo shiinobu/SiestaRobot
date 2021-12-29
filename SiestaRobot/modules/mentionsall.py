@@ -9,6 +9,7 @@ from telethon.errors import UserNotParticipantError
 
 from SiestaRobot import telethn as Client
 
+client = TelegramClient('client', Client)
 spam_chats = []
 
 @Client.on(events.NewMessage(pattern="^/all ?(.*)"))
