@@ -51,7 +51,7 @@ async def bug(cln: Client, msg: Message):
             )
             await cln.send_message(
                 chat_id=log,
-                text=bug_report,
+                msg=bug_report,
                 disable_web_page_preview=True,
             )
             await msg.reply_text(f"The bug was successfully reported to the support group")
