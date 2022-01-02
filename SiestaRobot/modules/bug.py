@@ -1,21 +1,21 @@
 import re
 import html
 
-from typing import Optional
+from typing import List
 from html import escape
 from datetime import datetime
 
 from pyrogram import Client
 
-from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
 from telegram import Message
 from telegram.ext import Filters
 
 from SiestaRobot import JOIN_LOGGER as log
 
+prefix: List[str] = ["/"]
 
-@Client.on_message(Filters.command("/bug"))
+@Client.on_message(Filters.command("bug"), prefix)
 async def bug (cln:Client, msg:Message):
     if len(msg.text.split()) > 1:
         try:
