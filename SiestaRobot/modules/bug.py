@@ -1,4 +1,5 @@
 import re
+import html
 
 from typing import Optional
 from html import escape
@@ -15,7 +16,6 @@ from telegram import (
 from telegram.ext import (
     CommandHandler,
     Filters,
-    run_async,
 )
 from SiestaRobot import (
     dispatcher,
@@ -23,17 +23,19 @@ from SiestaRobot import (
     JOIN_LOGGER as log,
 )
 
-async def bug (cln:Client, msg:Message, update: Update):
-    msg: Optional[Message] = update.effective_message
+from telegram.utils.helpers import mention_html
+
+@Client.on(Message)
+async def bug (cln:Client, msg:Message):
     if len(msg.text.split()) > 1:
         try:
             datetime_fmt = "%H:%M - %d-%m-%Y"
             bug_report = (
                 "<b>#BUG</b>\n"
-                f"User: {msg.from_user.mention}\n"
+                f"User: {msg.from_user.mention}{mention_html(user_member.user.id, user_member.user.first_name)}\n"
                 f"ID: <code>{msg.from_user.id}</code>\n\n"
                 "The content of the report:\n"
-                f"<code>{escape(msg.text.split(None, 1)[1])}</code>\n"
+                f"<code>{html.escape(msg.text.split(None, 1)[1])}</code>\n"
                 f"<b>Event Stamp</b>: <code>{datetime.utcnow().strftime(datetime_fmt)}</code>"
             )
             await cln.send_message(
@@ -49,6 +51,6 @@ async def bug (cln:Client, msg:Message, update: Update):
 
 __mod_name__ = "Bug"
 
-BUG_HANDLER = CommandHandler(["bug"], bug, filters=Filters.chat_type.groups, run_async=True)
+BUG_HANDLER = CommandHandler(["bug"], bug, Filters.command, run_async=True)
 
 dispatcher.add_handler(BUG_HANDLER)
