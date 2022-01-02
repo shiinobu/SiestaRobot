@@ -4,8 +4,9 @@ from typing import Optional
 from html import escape
 from datetime import datetime
 
+from telegram.error import BadRequest
+
 from telegram import (
-    BadRequest,
     Message,
     Update,
     Chat,
@@ -13,7 +14,6 @@ from telegram import (
 
 from telegram.ext import (
     CommandHandler,
-    CallbackContext,
     Filters,
     run_async,
 )
