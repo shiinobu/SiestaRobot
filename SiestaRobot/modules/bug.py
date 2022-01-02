@@ -1,23 +1,43 @@
-import re
 import html
+from re import match
 
-from typing import List
+from typing import Optional
 from html import escape
 from datetime import datetime
 
-from pyrogram import (
-    Client,
-    filters,
-)
-from pyrogram.types import Message
+from pyrogram import Client
 from pyrogram.errors import BadRequest
+from pyrogram.types import Message
 
+''' Not Use
+from telegram import (
+    CallbackQuery,
+    Chat,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+    ParseMode,
+    Update,
+    User,
+)
+from telegram.ext import (
+    CallbackContext,
+    CallbackQueryHandler,
+    CommandHandler,
+    DispatcherHandlerStop,
+    Filters,
+    MessageHandler,
+)
+
+from telegram.utils.helpers import mention_html
+from telegram.error import BadRequest
+'''
+
+from SiestaRobot.events import register
 from SiestaRobot import JOIN_LOGGER as log
 
-prefix: List[str] = ["/"]
-
-@Client.on_message(filters.command("bug", prefix))
-async def bug (cln:Client, msg:Message):
+@register(pattern="/bug ?(.*)")
+async def bug(cln: Client, msg: Message):
     if len(msg.text.split()) > 1:
         try:
             datetime_fmt = "%H:%M - %d-%m-%Y"
