@@ -1,5 +1,4 @@
 import re
-import telegram
 
 from typing import Optional
 from html import escape
