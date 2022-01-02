@@ -10,9 +10,11 @@ from telegram.ext import (
     Filters,
     run_async,
 )
-from SiestaRobot import dispatcher
-from SiestaRobot import telethn as Client
-from SiestaRobot.config import JOIN_LOGGER
+from SiestaRobot import (
+    dispatcher,
+    telethn as Client,
+    JOIN_LOGGER as log,
+)
 
 async def bug (cln:Client, msg:Message):
     if len(msg.text.split()) > 1:
@@ -27,7 +29,7 @@ async def bug (cln:Client, msg:Message):
                 f"<b>Event Stamp</b>: <code>{datetime.utcnow().strftime(datetime_fmt)}</code>"
             )
             await cln.send_message(
-                chat_id=JOIN_LOGGER,
+                chat_id=log,
                 text=bug_report,
                 disable_web_page_preview=True,
             )
