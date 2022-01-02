@@ -1,12 +1,20 @@
 import re
+import telegram
+
+from typing import Optional
 from html import escape
 from datetime import datetime
 
-from pyrogram.errors import BadRequest
-from pyrogram.types import Message
+from telegram import (
+    BadRequest,
+    Message,
+    Update,
+    Chat,
+)
 
 from telegram.ext import (
     CommandHandler,
+    CallbackContext,
     Filters,
     run_async,
 )
@@ -16,7 +24,8 @@ from SiestaRobot import (
     JOIN_LOGGER as log,
 )
 
-async def bug (cln:Client, msg:Message):
+async def bug (cln:Client, msg:Message, update: Update):
+    msg: Optional[Message] = update.effective_message
     if len(msg.text.split()) > 1:
         try:
             datetime_fmt = "%H:%M - %d-%m-%Y"
