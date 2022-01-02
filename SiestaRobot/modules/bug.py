@@ -5,25 +5,20 @@ from typing import Optional
 from html import escape
 from datetime import datetime
 
+from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
-
-from telegram import (
-    Message,
-    Update,
-    Chat,
-)
-
+from telegram import Message
 from telegram.ext import (
     CommandHandler,
     Filters,
 )
+
 from SiestaRobot import (
     dispatcher,
     telethn as Client,
     JOIN_LOGGER as log,
 )
 
-from telegram.utils.helpers import mention_html
 
 @Client.on(Message)
 async def bug (cln:Client, msg:Message):
@@ -32,7 +27,7 @@ async def bug (cln:Client, msg:Message):
             datetime_fmt = "%H:%M - %d-%m-%Y"
             bug_report = (
                 "<b>#BUG</b>\n"
-                f"User: {msg.from_user.mention}{mention_html(user_member.user.id, user_member.user.first_name)}\n"
+                f"User: {msg.from_user.mention}\n"
                 f"ID: <code>{msg.from_user.id}</code>\n\n"
                 "The content of the report:\n"
                 f"<code>{html.escape(msg.text.split(None, 1)[1])}</code>\n"
