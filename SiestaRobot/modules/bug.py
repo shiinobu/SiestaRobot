@@ -1,23 +1,18 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 import re
 from html import escape
 from datetime import datetime
 
-from pyrogram import (
-    Client,
-    Filters,
-)
 from pyrogram.errors import BadRequest
 from pyrogram.types import Message
 
 from telegram.ext import (
     CommandHandler,
+    Filters,
     run_async,
 )
 
-from SiestaRobot.config import BUG_LOG
+from SiestaRobot.config import JOIN_LOGGER
+from SiestaRobot import telethn as Client
 
 async def bug (cln:Client, msg:Message):
     if len(msg.text.split()) > 1:
@@ -32,7 +27,7 @@ async def bug (cln:Client, msg:Message):
                 f"<b>Event Stamp</b>: <code>{datetime.utcnow().strftime(datetime_fmt)}</code>"
             )
             await cln.send_message(
-                chat_id=BUG_LOG,
+                chat_id=JOIN_LOGGER,
                 text=bug_report,
                 disable_web_page_preview=True,
             )
