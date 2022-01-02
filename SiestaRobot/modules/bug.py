@@ -8,18 +8,14 @@ from datetime import datetime
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
 from telegram import Message
-from telegram.ext import (
-    CommandHandler,
-    Filters,
-)
+from telegram.ext import Filters
 
 from SiestaRobot import (
-    dispatcher,
     telethn as Client,
     JOIN_LOGGER as log,
 )
 
-
+@Client.on_message(Filters.command("/bug"))
 async def bug (cln:Client, msg:Message):
     if len(msg.text.split()) > 1:
         try:
@@ -44,7 +40,3 @@ async def bug (cln:Client, msg:Message):
         await msg.reply(f"No bug to report")
 
 __mod_name__ = "Bug"
-
-BUG_HANDLER = CommandHandler(["bug"], bug, Filters.command, run_async=True)
-
-dispatcher.add_handler(BUG_HANDLER)
