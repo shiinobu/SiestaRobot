@@ -5,17 +5,19 @@ from typing import List
 from html import escape
 from datetime import datetime
 
-from pyrogram import Client
+from pyrogram import (
+    Client,
+    filters,
+)
 
 from telegram.error import BadRequest
 from telegram import Message
-from telegram.ext import Filters
 
 from SiestaRobot import JOIN_LOGGER as log
 
 prefix: List[str] = ["/"]
 
-@Client.on_message(Filters.command("bug"), prefix)
+@Client.on_message(filters.command("bug"), prefix)
 async def bug (cln:Client, msg:Message):
     if len(msg.text.split()) > 1:
         try:
