@@ -5,15 +5,15 @@ from typing import Optional
 from html import escape
 from datetime import datetime
 
+from pyrogram import Client
+
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
 from telegram import Message
 from telegram.ext import Filters
 
-from SiestaRobot import (
-    telethn as Client,
-    JOIN_LOGGER as log,
-)
+from SiestaRobot import JOIN_LOGGER as log
+
 
 @Client.on_message(Filters.command("/bug"))
 async def bug (cln:Client, msg:Message):
