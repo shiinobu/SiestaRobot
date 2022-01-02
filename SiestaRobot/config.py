@@ -2,8 +2,6 @@
 import json
 import os
 
-from SiestaRobot import BUG_LOG
-
 
 def get_user_list(config, key):
     with open("{}/SiestaRobot/{}".format(os.getcwd(), config), "r") as json_file:

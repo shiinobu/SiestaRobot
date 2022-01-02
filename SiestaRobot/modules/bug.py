@@ -10,9 +10,9 @@ from telegram.ext import (
     Filters,
     run_async,
 )
-
-from SiestaRobot.config import JOIN_LOGGER
+from SiestaRobot import dispatcher
 from SiestaRobot import telethn as Client
+from SiestaRobot.config import JOIN_LOGGER
 
 async def bug (cln:Client, msg:Message):
     if len(msg.text.split()) > 1:
@@ -40,3 +40,5 @@ async def bug (cln:Client, msg:Message):
 __mod_name__ = "Bug"
 
 BUG_HANDLER = CommandHandler(["bug"], bug, filters=Filters.chat_type.groups, run_async=True)
+
+dispatcher.add_handler(BUG_HANDLER)
