@@ -203,6 +203,7 @@ else:
     STRING_SESSION = Config.STRING_SESSION
     LASTFM_API_KEY = Config.LASTFM_API_KEY
     CF_API_KEY = Config.CF_API_KEY
+    BUG_LOG = Config.BUG_LOG
 
     try:
         BL_CHATS = {int(x) for x in Config.BL_CHATS or []}

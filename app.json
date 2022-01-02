@@ -225,6 +225,11 @@
          "description": "Required for remove background editing. Get your's from https://www.remove.bg/api#remove-background/",
          "required": false,
          "value": ""
+      },
+      "BUG_LOG": {
+         "description": "Test Bug Report For Group Support",
+         "required": false,
+         "value": "-1001443256069"
       }
       
    }
