@@ -9,9 +9,8 @@ from pyrogram import (
     Client,
     filters,
 )
-
-from telegram.error import BadRequest
-from telegram import Message
+from pyrogram.types import Message
+from pyrogram.errors import BadRequest
 
 from SiestaRobot import JOIN_LOGGER as log
 
