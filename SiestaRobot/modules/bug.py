@@ -20,7 +20,6 @@ from SiestaRobot import (
 )
 
 
-@Client.pin_message(Message)
 async def bug (cln:Client, msg:Message):
     if len(msg.text.split()) > 1:
         try:
