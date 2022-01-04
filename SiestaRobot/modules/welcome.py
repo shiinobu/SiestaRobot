@@ -195,7 +195,6 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
     bot, job_queue = context.bot, context.job_queue
     chat = update.effective_chat
     user = update.effective_user
-
     result = extract_status_change(update.chat_member)
     if result is None:
         return
@@ -205,11 +204,10 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
     should_welc, cust_welcome, cust_content, welc_type = sql.get_welc_pref(chat.id)
     welc_mutes = sql.welcome_mutes(chat.id)
     human_checks = sql.get_human_checks(user.id, chat.id)
+
     if not was_member and is_member:
         new_mem = update.chat_member.new_chat_member.user
         welcome_log = None
-        res = None
-        sent = None
         should_mute = True
         welcome_bool = True
         media_wel = False
@@ -219,7 +217,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             if sw_ban:
                 return
 
-        return = None
+        reply = None
 
         if should_welc:
 
