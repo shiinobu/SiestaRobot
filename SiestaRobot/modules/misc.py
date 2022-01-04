@@ -182,6 +182,9 @@ def wall(update: Update, context: CallbackContext):
 
 
 __help__ = """
+──「 Misc 」──
+
+This is module help for misc, just use it.
 *Available commands:*
 
 ❂ /markdownhelp*:* quick summary of how markdown works in telegram - can only be called in private chats
@@ -198,10 +201,13 @@ __help__ = """
  `/cash 1 usd inr`
  Output: `1.0 USD = 75.505 INR`
 
-*Music Modules:*
-❂ /video or /vsong (query): download video from youtube
-❂ /music or /song (query): download song from yt servers. (API BASED)
-❂ /lyrics (song name) : This plugin searches for song lyrics with song name.
+──「 Bug / Problem 」──              
+
+This is module help for Bug Reporting, report all of yours gonna send to our support group.
+List command :
+
+❂ /bug <reason> - reporting bug
+
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler(
