@@ -35,7 +35,6 @@ from SiestaRobot.utils.pluginhelper import convert_seconds_to_minutes as time_co
 from SiestaRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from SiestaRobot.services.types import InlineQueryResultCachedDocument
 from SiestaRobot.modules.info import get_chat_info, get_user_info
-from SiestaRobot.modules.music import download_youtube_audio
 from SiestaRobot.utils.functions import test_speedtest
 from SiestaRobot.utils.pastebin import paste
 
@@ -432,51 +431,6 @@ async def tg_search_func(answers, text, user_id):
     return answers
 
 
-async def music_inline_func(answers, query):
-    chat_id = -1001445180719
-    group_invite = "https://t.me/joinchat/vSDE2DuGK4Y4Nzll"
-    try:
-        messages = [
-            m
-            async for m in ubot2.search_messages(
-                chat_id, query, filter="audio", limit=100
-            )
-        ]
-    except Exception as e:
-        print(e)
-        msg = f"You Need To Join Here With Your Bot And Userbot To Get Cached Music.\n{group_invite}"
-        answers.append(
-            InlineQueryResultArticle(
-                title="ERROR",
-                description="Click Here To Know More.",
-                input_message_content=InputTextMessageContent(
-                    msg, disable_web_page_preview=True
-                ),
-            )
-        )
-        return answers
-    messages_ids_and_duration = []
-    for f_ in messages:
-        messages_ids_and_duration.append(
-            {
-                "message_id": f_.message_id,
-                "duration": f_.audio.duration if f_.audio.duration else 0,
-            }
-        )
-    messages = list(
-        {v["duration"]: v for v in messages_ids_and_duration}.values()
-    )
-    messages_ids = [ff_["message_id"] for ff_ in messages]
-    messages = await app.get_messages(chat_id, messages_ids[0:48])
-    return [
-        InlineQueryResultCachedDocument(
-            file_id=message_.audio.file_id,
-            title=message_.audio.title,
-        )
-        for message_ in messages
-    ]
-
-
 async def paste_func(answers, text):
     start_time = time()
     url = await paste(text)
@@ -636,45 +590,6 @@ async def ping_func(answers):
             title=ping,
             input_message_content=InputTextMessageContent(f"__**{ping}**__"),
         )
-    )
-    return answers
-
-
-async def yt_music_func(answers, url):
-    if "http" not in url:
-        url = (await arq.youtube(url)).result[0]
-        url = f"https://youtube.com{url.url_suffix}"
-    loop = asyncio.get_running_loop()
-    music = await loop.run_in_executor(None, download_youtube_audio, url)
-    if not music:
-        msg = "**ERROR**\n__MUSIC TOO LONG__"
-        answers.append(
-            InlineQueryResultArticle(
-                title="ERROR",
-                description="MUSIC TOO LONG",
-                input_message_content=InputTextMessageContent(msg),
-            )
-        )
-        return answers
-    (
-        title,
-        performer,
-        duration,
-        audio,
-        thumbnail,
-    ) = music
-    m = await app.send_audio(
-        MESSAGE_DUMP_CHAT,
-        audio,
-        title=title,
-        duration=duration,
-        performer=performer,
-        thumb=thumbnail,
-    )
-    os.remove(audio)
-    os.remove(thumbnail)
-    answers.append(
-        InlineQueryResultCachedDocument(title=title, file_id=m.audio.file_id)
     )
     return answers
 
