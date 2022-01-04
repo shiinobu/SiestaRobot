@@ -229,11 +229,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                     chat.id,
                     f"Welcome to {html.escape(chat.title)} my king.", reply_to_message_id=reply
                 )
-                welcome_log = (
-                    f"{html.escape(chat.title)}\n"
-                    f"#USER_JOINED\n"
-                    f"My King just joined the chat"
-                )
+                return
 
             # Welcome Devs
             if new_mem.id in DEV_USERS:
@@ -242,6 +238,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                     "Whoa! The Prince just joined!",
                     reply_to_message_id=reply,
                 )
+                return
 
             # Welcome Sudos
             if new_mem.id in DRAGONS:
@@ -250,6 +247,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                     "Huh! Emperor just joined! Stay Alert!",
                     reply_to_message_id=reply,
                 )
+                return
 
             # Welcome Support
             if new_mem.id in DEMONS:
@@ -258,6 +256,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                     "Huh! Someone with Captain just joined!",
                     reply_to_message_id=reply,
                 )
+                return
 
             # Welcome WOLVES
             if new_mem.id in WOLVES:
@@ -266,7 +265,8 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                     "Oof! A Soldier Users just joined!",
                     reply_to_message_id=reply,
                 )
-                
+                return
+
             # Welcome yourselflog
             elif new_mem.id == bot.id:
                 creator = None
