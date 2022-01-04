@@ -1,63 +1,119 @@
-import html
-from re import match
+# Copyright (c) 2022 Shiinobu Project
 
-from typing import Optional
-from html import escape
 from datetime import datetime
 
-from pyrogram import Client
-from pyrogram.errors import BadRequest
-from pyrogram.types import Message
-
-''' Not Use
-from telegram import (
-    CallbackQuery,
-    Chat,
+from pyrogram import filters
+from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
+    CallbackQuery,
     Message,
-    ParseMode,
-    Update,
-    User,
-)
-from telegram.ext import (
-    CallbackContext,
-    CallbackQueryHandler,
-    CommandHandler,
-    DispatcherHandlerStop,
-    Filters,
-    MessageHandler,
 )
 
-from telegram.utils.helpers import mention_html
-from telegram.error import BadRequest
-'''
+from SiestaRobot import pbot as Client
+from SiestaRobot import (
+    OWNER_ID as owner,
+    SUPPORT_CHAT as log,
+)
+from SiestaRobot.utils.errors import capture_err
 
-from SiestaRobot.events import register
-from SiestaRobot import JOIN_LOGGER as log
 
-@register(pattern="/bug ?(.*)")
-async def bug(cln: Client, msg: Message):
-    if len(msg.text.split()) > 1:
+def content(msg: Message) -> [None, str]:
+    text_to_return = msg.text
+
+    if msg.text is None:
+        return None
+    if " " in text_to_return:
         try:
-            datetime_fmt = "%H:%M - %d-%m-%Y"
-            bug_report = (
-                "<b>#BUG</b>\n"
-                f"User: {msg.from_user.mention}\n"
-                f"ID: <code>{msg.from_user.id}</code>\n\n"
-                "The content of the report:\n"
-                f"<code>{html.escape(msg.text.split(None, 1)[1])}</code>\n"
-                f"<b>Event Stamp</b>: <code>{datetime.utcnow().strftime(datetime_fmt)}</code>"
-            )
-            await cln.send_message(
-                chat_id=log,
-                msg=bug_report,
-                disable_web_page_preview=True,
-            )
-            await msg.reply_text(f"The bug was successfully reported to the support group")
-        except BadRequest:
-            await msg.reply_text(f"The bug was failed reported to the support group")
+            return msg.text.split(None, 1)[1]
+        except IndexError:
+            return None
     else:
-        await msg.reply(f"No bug to report")
+        return None
+
+
+@Client.on_message(filters.command("bug"))
+@capture_err
+async def bug(_, msg: Message):
+    if msg.chat.username:
+        chat_username = (f"@{msg.chat.username}")
+    else:
+        chat_username = ("Private Group")
+
+
+    bugs = content(msg)
+    user_id = msg.from_user.id
+    mention = "["+msg.from_user.first_name+"](tg://user?id="+str(msg.from_user.id)+")"
+    datetimes_fmt = "%d-%m-%Y"
+    datetimes = datetime.utcnow().strftime(datetimes_fmt)
+
+    thumb = "https://telegra.ph/file/bd218d4af1c69c586ebb0.jpg"
+    
+    bug_report = f"""
+**#BUG**
+
+**From User : ** **{mention}**
+**User ID : ** **{user_id}**
+**Group : ** **{chat_username}**
+
+**Bug Report : ** **{bugs}**
+
+**Event Stamp : ** **{datetimes}**"""
+
+    
+    if msg.chat.type == "private":
+        await msg.reply_text("❎ <b>This command only works in groups.</b>")
+        return
+
+    if user_id == owner:
+        if bugs:
+            await msg.reply_text(
+                f"❎ <b>How can be owner bot reporting bug??</b>",
+            )
+            return
+        else:
+            await msg.reply_text(
+                f"❎ <b>No bug to Report!</b>",
+            )
+    else:
+        await msg.reply_text(
+            f"<b>Bug Report : {bugs}</b>\n\n"
+            "✅ <b>The bug was successfully reported to the support group!</b>",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "Close", callback_data=f"close_reply")
+                    ]
+                ]
+            )
+        )
+        await Client.send_photo(
+            log,
+            photo=thumb,
+            caption=f"{bug_report}",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "➡ View Bug", url=f"{msg.link}")
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "❌ Close", callback_data=f"close_send_photo")
+                    ]
+                ]
+            )
+        )
+    
+
+@Client.on_callback_query(filters.regex("close_reply"))
+async def close_reply(msg, CallbackQuery):
+    await CallbackQuery.message.delete()
+
+@Client.on_callback_query(filters.regex("close_send_photo"))
+async def close_send_photo(Client, CallbackQuery):
+    await CallbackQuery.message.delete()
+
 
 __mod_name__ = "Bug"
