@@ -1,5 +1,5 @@
 <h2 align="center">
-    ──「 Siesta Robot is a modular bot running on python3 with anime theme 」──
+    ──「 Siesta Robot is a modular bot with anime theme 」──
 </h2>
 
 <p align="center">
