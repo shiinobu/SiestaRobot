@@ -33,7 +33,9 @@ This Bot is Created by ShinobuProject, If your kanging this without fork at leas
 - WilliamButcherBot
 ```
 
-### Support
+<h2 align="center">
+    ──「 SUPPORT 」──
+</h2>
 
 <p align="center">
 <a href="https://t.me/saint_foire"> <img src="https://img.shields.io/badge/Vain-User-green?style=for-the-badge&logo=telegram" alt="Vain on Telegram" /> </a>
@@ -41,7 +43,9 @@ This Bot is Created by ShinobuProject, If your kanging this without fork at leas
 <a href="https://t.me/machinaxupdate"> <img src="https://img.shields.io/badge/Update-Channel-green?style=for-the-badge&logo=telegram" alt="Update Channel" /> </a>
 </p>
 
-## Credit 
+<h2 align="center">
+    ──「 CREDIT 」──
+</h2>
 
 <p align="center">
 <a href="https://github.com/shiinobu"> <img src="https://img.shields.io/badge/Vain-Github-magenta?style=for-the-badge&logo=github" alt="Vain Github" /> </a>
