@@ -1,7 +1,5 @@
-<p align="center"> <a href="https://t.me/Siestaxbot"> <img src="https://github.com/shiinobu/SiestaRobot/blob/siesta/SiestaRobot/resources/siesta-robot.svg" alt="Siesta on Telegram" /> </a></p>
-
 <h2 align="center">
-    ──「 Siesta Robot is a modular bot running on python3 with anime theme and have a lot features. 」──
+    ──「 Siesta Robot is a modular bot running on python3 with anime theme 」──
 </h2>
 
 <p align="center">
@@ -9,6 +7,7 @@
 </p>
 
 <p align="center">
+<a href="https://t.me/Siestaxbot"> <img src="https://github.com/shiinobu/SiestaRobot/blob/siesta/SiestaRobot/resources/siesta-robot.svg" alt="Siesta on Telegram" /> </a></br>
 <a href="https://github.com/shiinobu/SiestaRobot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-GPLv3-blueviolet?style=for-the-badge" alt="License" /> </a>
 <a href="https://makeapullrequest.com"> <img src="https://img.shields.io/badge/PRs-Welcome-yellow?style=for-the-badge" alt="PRs" /></a></br>
 <a href="https://www.python.org/"> <img src="https://img.shields.io/badge/Made%20With-Python-orange?style=for-the-badge&logo=python" alt="Python" /> </a>
