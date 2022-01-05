@@ -208,6 +208,13 @@ List command :
 
 ❂ /bug <reason> - reporting bug
 
+──「 Mention ALL 」──              
+
+This is module help for mention all, if u want to ping all member hahaha.
+List command :
+
+❂ /all <reason> - ping all member group
+
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler(
