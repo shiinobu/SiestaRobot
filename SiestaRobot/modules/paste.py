@@ -79,7 +79,7 @@ async def paste_func(_, message):
     return await m.edit(link)
 
 
-@natsunagicmd(command="spaste")
+@siestacmd(command="spaste")
 @typing_action
 def spacepaste(update, context):
     message = update.effective_message
