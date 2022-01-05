@@ -68,43 +68,49 @@ async def bug(_, msg: Message):
     if user_id == owner:
         if bugs:
             await msg.reply_text(
-                f"❎ <b>How can be owner bot reporting bug??</b>",
+                f"❎ <b>How can be owner bot reporting bug idiot??</b>",
             )
             return
         else:
             await msg.reply_text(
+                f"❎ <b>Owner noob!</b>",
+            )
+    elif user_id != owner:
+        if bugs:
+            await msg.reply_text(
+                f"<b>Bug Report : {bugs}</b>\n\n"
+                "✅ <b>The bug was successfully reported to the support group!</b>",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "Close", callback_data=f"close_reply")
+                        ]
+                    ]
+                )
+            )
+            await Client.send_photo(
+                log,
+                photo=thumb,
+                caption=f"{bug_report}",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "➡ View Bug", url=f"{msg.link}")
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                "❌ Close", callback_data=f"close_send_photo")
+                        ]
+                    ]
+                )
+            )
+        else:
+            await msg.reply_text(
                 f"❎ <b>No bug to Report!</b>",
             )
-    else:
-        await msg.reply_text(
-            f"<b>Bug Report : {bugs}</b>\n\n"
-            "✅ <b>The bug was successfully reported to the support group!</b>",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            "Close", callback_data=f"close_reply")
-                    ]
-                ]
-            )
-        )
-        await Client.send_photo(
-            log,
-            photo=thumb,
-            caption=f"{bug_report}",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            "➡ View Bug", url=f"{msg.link}")
-                    ],
-                    [
-                        InlineKeyboardButton(
-                            "❌ Close", callback_data=f"close_send_photo")
-                    ]
-                ]
-            )
-        )
+        
     
 
 @Client.on_callback_query(filters.regex("close_reply"))

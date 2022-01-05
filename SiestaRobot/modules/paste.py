@@ -1,16 +1,23 @@
 import asyncio
 import os
 import re
+import codecs
+import requests
+from io import BytesIO
 
 import aiofiles
 from pykeyboard import InlineKeyboard
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardButton, Message
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+from telegram.ext import CallbackContext
 
 from SiestaRobot import aiohttpsession as session
 from SiestaRobot import pbot as app
 from SiestaRobot.utils.errors import capture_err
+from SiestaRobot.modules.helper_funcs.decorators import siestacmd
 from SiestaRobot.utils.pastebin import paste
+from SiestaRobot.modules.helper_funcs.alternate import typing_action
 
 __mod_name__ = "Paste​"
 
@@ -70,3 +77,60 @@ async def paste_func(_, message):
         except Exception:
             pass
     return await m.edit(link)
+
+
+@siestacmd(command="spaste")
+@typing_action
+def spacepaste(update, context):
+    message = update.effective_message
+    bot, args = context.bot, context.args
+
+    if not message.reply_to_message.text:
+        file = bot.getFile(message.reply_to_message.document)
+        file.download("file.txt")
+        text = codecs.open("file.txt", "r+", encoding="utf-8")
+        paste_text = text.read()
+        print(paste_text)
+        os.remove("file.txt")
+
+    elif message.reply_to_message.text:
+        paste_text = message.reply_to_message.text
+    elif len(args) >= 1:
+        paste_text = message.text.split(None, 1)[1]
+
+    else:
+        message.reply_text(
+            "reply to any message or just do /paste <what you want to paste>"
+        )
+        return
+
+    extension = "txt"
+    url = "https://spaceb.in/api/v1/documents/"
+    try:
+        response = requests.post(
+            url, data={"content": paste_text, "extension": extension}
+        )
+    except Exception as e:
+        return {"error": str(e)}
+
+    response = response.json()
+    text = (
+        f"**Pasted to [Space.bin]('https://spaceb.in/{response['payload']['id']}')!!!**"
+    )
+    buttons = [
+        [
+            InlineKeyboardButton(
+                text="View Link", url=f"https://spaceb.in/{response['payload']['id']}"
+            ),
+            InlineKeyboardButton(
+                text="View Raw",
+                url=f"https://spaceb.in/api/v1/documents/{response['payload']['id']}/raw",
+            ),
+        ]
+    ]
+    message.reply_text(
+        text,
+        reply_markup=InlineKeyboardMarkup(buttons),
+        parse_mode=ParseMode.MARKDOWN,
+        disable_web_page_preview=True,
+    )
