@@ -8,7 +8,7 @@ from telegram.ext import (
     CallbackQueryHandler,
     InlineQueryHandler,
 )
-from telegram.ext.filters import BaseFilter
+from telegram.ext.filters import MessageFilter
 from SiestaRobot import dispatcher as d, LOGGER
 from typing import Optional, Union, List
 
@@ -20,13 +20,13 @@ class SiestaHandler:
     def command(
         self,
         command: str,
-        filters: Optional[BaseFilter] = None,
+        filters: Optional[MessageFilter] = None,
         admin_ok: bool = False,
         pass_args: bool = False,
         pass_chat_data: bool = False,
         run_async: bool = True,
         can_disable: bool = True,
-        group: Optional[Union[int]] = 40,
+        group: Optional[Union[int, str]] = 40,
     ):
         def _command(func):
             try:
@@ -93,7 +93,7 @@ class SiestaHandler:
         pattern: Optional[str] = None,
         can_disable: bool = True,
         run_async: bool = True,
-        group: Optional[Union[int]] = 60,
+        group: Optional[Union[int, str]] = 60,
         friendly=None,
     ):
         def _message(func):
