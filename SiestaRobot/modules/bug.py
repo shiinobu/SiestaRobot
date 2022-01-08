@@ -12,7 +12,8 @@ from pyrogram.types import (
 
 from SiestaRobot import pbot as Client
 from SiestaRobot import (
-    OWNER_ID as owner,
+    OWNER_ID as owner_id,
+    OWNER_USERNAME as owner_usn,
     SUPPORT_CHAT as log,
 )
 from SiestaRobot.utils.errors import capture_err
@@ -36,10 +37,9 @@ def content(msg: Message) -> [None, str]:
 @capture_err
 async def bug(_, msg: Message):
     if msg.chat.username:
-        chat_username = (f"@{msg.chat.username}")
+        chat_username = (f"@{msg.chat.username} / `{msg.chat.id}`")
     else:
-        chat_username = ("Private Group")
-
+        chat_username = (f"Private Group / `{msg.chat.id}`")
 
     bugs = content(msg)
     user_id = msg.from_user.id
@@ -50,7 +50,7 @@ async def bug(_, msg: Message):
     thumb = "https://telegra.ph/file/bd218d4af1c69c586ebb0.jpg"
     
     bug_report = f"""
-**#BUG**
+**#BUG : ** **@{owner_usn}**
 
 **From User : ** **{mention}**
 **User ID : ** **{user_id}**
@@ -65,17 +65,17 @@ async def bug(_, msg: Message):
         await msg.reply_text("❎ <b>This command only works in groups.</b>")
         return
 
-    if user_id == owner:
+    if user_id == owner_id:
         if bugs:
             await msg.reply_text(
-                f"❎ <b>How can be owner bot reporting bug idiot??</b>",
+                "❎ <b>How can be owner bot reporting bug??</b>",
             )
             return
         else:
             await msg.reply_text(
-                f"❎ <b>Owner noob!</b>",
+                "Owner noob!"
             )
-    elif user_id != owner:
+    elif user_id != owner_id:
         if bugs:
             await msg.reply_text(
                 f"<b>Bug Report : {bugs}</b>\n\n"
@@ -101,7 +101,7 @@ async def bug(_, msg: Message):
                         ],
                         [
                             InlineKeyboardButton(
-                                "❌ Close", callback_data=f"close_send_photo")
+                                "❌ Close", callback_data="close_send_photo")
                         ]
                     ]
                 )
@@ -111,15 +111,21 @@ async def bug(_, msg: Message):
                 f"❎ <b>No bug to Report!</b>",
             )
         
-    
 
 @Client.on_callback_query(filters.regex("close_reply"))
 async def close_reply(msg, CallbackQuery):
     await CallbackQuery.message.delete()
 
 @Client.on_callback_query(filters.regex("close_send_photo"))
-async def close_send_photo(Client, CallbackQuery):
-    await CallbackQuery.message.delete()
-
+async def close_send_photo(_, CallbackQuery):
+    is_Admin = await Client.get_chat_member(
+        CallbackQuery.message.chat.id, CallbackQuery.from_user.id
+    )
+    if not is_Admin.can_delete_messages:
+        return await CallbackQuery.answer(
+            "You're not allowed to close this.", show_alert=True
+        )
+    else:
+        await CallbackQuery.message.delete()
 
 __mod_name__ = "Bug"
