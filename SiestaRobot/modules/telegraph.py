@@ -71,6 +71,11 @@ async def telegrap(event):
             if reply_msg.media:
                 if page_content != "":
                     title_of_page = page_content
+                else:
+                    await Client.send_message(
+                        event.chat_id,
+                        "Not Supported Format Text!"
+                    )
                 downloaded_file_name = await Client.download_media(
                     reply_msg,
                     TMP_DOWNLOAD_DIRECTORY
