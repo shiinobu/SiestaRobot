@@ -7,6 +7,7 @@ from telegram.ext import CallbackContext
 from SiestaRobot.modules.helper_funcs.decorators import siestacmd, siestamsg
 from SiestaRobot.modules.helper_funcs.channel_mode import user_admin, AdminPerms
 from SiestaRobot.modules.sql.antichannel_sql import antichannel_status, disable_antichannel, enable_antichannel
+from SiestaRobot.modules.language import gs
 
 @siestacmd(command="antichannelmode", group=100)
 @user_admin(AdminPerms.CAN_RESTRICT_MEMBERS)
@@ -18,15 +19,15 @@ def set_antichannel(update: Update, context: CallbackContext):
         s = args[0].lower()
         if s in ["yes", "on"]:
             enable_antichannel(chat.id)
-            message.reply_html("Enabled antichannel in {}".format(html.escape(chat.title)))
+            message.reply_html(text=gs(chat.id, "active_antichannel").format(html.escape(chat.title)))
         elif s in ["off", "no"]:
             disable_antichannel(chat.id)
-            message.reply_html("Disabled antichannel in {}".format(html.escape(chat.title)))
+            message.reply_html(text=gs(chat.id, "disable_antichannel").format(html.escape(chat.title)))
         else:
-            message.reply_text("Unrecognized arguments {}".format(s))
+            message.reply_text(text=gs(chat.id, "invalid_antichannel").format(s))
         return
     message.reply_html(
-        "Antichannel setting is currently {} in {}".format(antichannel_status(chat.id), html.escape(chat.title)))
+        text=gs(chat.id, "status_antichannel").format(antichannel_status(chat.id), html.escape(chat.title)))
 
 @siestamsg(Filters.chat_type.groups, group=110)
 def eliminate_channel(update: Update, context: CallbackContext):
@@ -40,18 +41,7 @@ def eliminate_channel(update: Update, context: CallbackContext):
         sender_chat = message.sender_chat
         bot.ban_chat_sender_chat(sender_chat_id=sender_chat.id, chat_id=chat.id)
         
-__help__ = """
-──「 Anti-Channels 」──
-
-    ⚠️ WARNING ⚠️
-
-*IF YOU USE THIS MODE, THE RESULT IS IN THE GROUP FOREVER YOU CAN'T CHAT USING THE CHANNEL*
-
-Anti Channel Mode is a mode to automatically ban users who chat using Channels. 
-This command can only be used by *Admins*.
-
-❂ /antichannelmode <'on'/'yes'> *:* enables anti-channel-mode
-❂ /antichannelmode <'off'/'no'> *:* disabled anti-channel-mode
-"""
+def helps(chat):
+    return gs(chat, "antichannel_help")
 
 __mod_name__ = "Anti-Channel"

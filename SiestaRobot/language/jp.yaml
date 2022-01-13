@@ -1,0 +1,872 @@
+# Language name in their native
+language: "Japanese 🇯🇵"
+# name of people(s) who worked on this translation
+authors: "@FurryChemistry"
+
+# languages
+curr_chat_lang: "おい。あなたの現在の言語は {}, 下のボタンからお好きなものをお選びください :)"
+set_chat_lang: "素晴らしい、使用 {} これからの言語!"
+
+# PM Text
+pm_start_text: |
+  *ちょっとダーリン, {} ❤️*
+  ✪ 私はアニメをテーマにした管理ロボットです [✨](https://telegra.ph/file/6d3e3ef24f64fb6e35df0.jpg)
+
+  ┏━━━━━━━━•❃°•°❀°•°❃•━━━━━━━━┓
+  × *サーバーの稼働時間 :* `{}`
+  × `{}` *ユーザー, 横切って* `{}` *チャット。*
+  ┗━━━━━━━━•❃°•°❀°•°❃•━━━━━━━━┛
+
+  ✪ 打つ /help 使用可能なコマンドを表示するには.
+   
+group_start_text: |
+  *👋🏻 こんにちはダーリン、私はシエスタロボットです!*
+  
+  *以来アクティブになりました :* `{}`
+
+pm_about_text: |
+  ✺ こんにちはダーリン私は* ロボットシエスタ *です。これは、グループを簡単に管理できるように構築された強力なグループ管理ボットです。 ✺
+
+  ✪ ユーザーを制限できます。
+  ✪ カスタマイズ可能なウェルカムメッセージでユーザーに挨拶したり、グループのルールを設定したりすることもできます。
+  ✪ 私は高度な洪水防止システムを持っています。
+  ✪ 禁止、ミュート、キックなどの事前定義された各アクションを使用して、最大警告に達するまでユーザーに警告できます。
+  ✪ 私はメモ保持システム、ブラックリスト、そして特定のキーワードに対する事前に決められた返信さえ持っています。
+  ✪ コマンドなどを実行する前に、管理者の権限を確認します。
+
+  _SiestaはGNUGeneral Public Licensev3.0の下でライセンスされています_
+  シエスタロボットの基本的なヘルプを表示するには、以下のボタンをクリックしてください。
+
+pm_about_admin_text: |
+  *✺ 今すぐあなたのグループを少し効果的にしましょう ✺*
+
+  おめでとうございます。SiestaRobotがグループを管理する準備が整いました。
+
+  *管理ツール*
+  基本的な管理ツールは、グループを保護してパワーアップするのに役立ちます。
+  ボットのコマンドを使用して、メンバーの禁止、メンバーのキック、管理者としての昇格を行うことができます。
+
+  *あいさつ*
+  グループに来る新しいユーザーを歓迎するウェルカムメッセージを設定しましょう。
+  `/setwelcome [message]`を送信して、ウェルカムメッセージを設定してください。
+
+pm_about_notes_text: |
+  *✺ メモの設定 ✺*
+
+  ✪ メッセージ/メディア/オーディオなどをメモとして保存して、単語の先頭に＃を使用するだけでメモを取得できます。
+  ✪ メモやフィルターのボタンを設定することもできます（ヘルプメニューを参照）
+
+pm_about_support_text: |
+  *✺ シエスタロボットサポートチャット ✺*
+
+  シエスタの問題を確認または報告するには、マイサポートグループ/チャネルに参加してください。
+
+pm_about_credit_text: |
+  *✺ シエスタのクレディス ✺*
+
+  ここで開発者はシエスタロボットを作ってインスピレーションを与えます
+
+pm_help_text: |
+  *✺ 以下のボタンをクリックして、詳細コマンドの説明を取得します。 ✺*
+
+# Group Help Text
+group_help_text: "可能なコマンドのリストを入手するには、PMで私に連絡してください。"
+group_help_modules_text: "の助けを得るためにPMで私に連絡してください *{}*"
+# Group Help Button
+group_help_button: "ヘルプ"
+# PM Settings
+pm_settings_personal_text: "これらは現在の設定です: "
+pm_settings_group_text: "{}の設定を確認したいモジュールはどれですか？"
+pm_settings_groups_text: "*{}*には、*{}*モジュールに対して次の設定があります:\n\n"
+pm_settings_groupss_text: |
+    やあ！ {}にはかなりの数の設定があります。先に進んで、興味のあるものを選択してください。
+# Group Settings Text
+group_settings_text: "このチャットの設定とあなたの設定を取得するには、ここをクリックしてください。"
+# Group Settings Button
+group_settings_button: "設定"
+
+# PM Button
+add_bot_to_group_button: "♕ 私をあなたのグループに追加してください ♕"
+support_chat_link_button: "サポート"
+updates_channel_link_button: "アップデート"
+notes_button: "ノート"
+source_button: "ソースコード"
+help_button: "助けを得ます"
+back_button: "戻る"
+about_button: "シエスタロボットについて"
+inline_button: "インラインでお試しください！"
+
+# MODULES
+admin_help: |
+    ──「 管理者 」──
+
+    *ユーザーコマンド*：
+    ❂ /admins*：*チャットの管理者のリスト
+    ❂ /pinned*：*現在の固定メッセージを取得します。
+
+    *次のコマンドは管理者のみです：*
+    ❂ /pin*：* 返信されたメッセージをサイレントに固定します-`'loud'`または `'notify'`を追加して、ユーザーに通知します
+    ❂ /unpin*：* 現在固定されているメッセージの固定を解除します
+    ❂ /invitelink*：* はinvitelinkを取得します
+    ❂ /promote*：* ユーザーが返信したものをプロモートします
+    ❂ /fullpromote*：* は、完全な権限で返信されたユーザーを宣伝します
+    ❂ /demote*：* ユーザーが返信したものを降格します
+    ❂ /title <ここでのタイトル>*：* ボットがプロモートした管理者のカスタムタイトルを設定します
+    ❂ /admincache*：* 管理者リストを強制的に更新します
+    ❂ /del*：* 返信したメッセージを削除します
+    ❂ /purge*：* は、これと返信されたメッセージの間のすべてのメッセージを削除します。
+    ❂ /purge <integer X>*：* は返信されたメッセージを削除し、メッセージに返信された場合はそれに続くXメッセージを削除します。
+    ❂ /setgtitle <text>*：* グループタイトルを設定
+    ❂ /setgpic*：* 集合写真として設定する画像に返信
+    ❂ /setdesc*：* グループの説明を設定します
+    ❂ /setsticker*：* グループステッカーを設定する
+
+    *ルール*：
+    ❂ /rules*：* このチャットのルールを取得します。
+    ❂ /setrules <ここにあなたのルール>*：* このチャットのルールを設定します。
+    ❂ /clearrules*：* このチャットのルールをクリアします。
+
+anime_help: |
+    ──「アニメ検索」──
+
+    ❂ /anime <anime>： アニメに関する情報を返します。
+    ❂ /whatanime： 写真またはgifに返信すると、アニメのソースを返します。
+    ❂ /character <character>： 文字に関する情報を返します。
+    ❂ /manga <manga>： マンガに関する情報を返します。
+    ❂ /user <user>： MyAnimeListユーザーに関する情報を返します。
+    ❂ /upcoming： 今後のシーズンの新しいアニメのリストを返します。
+    ❂ /airing <anime>： アニメの放送情報を返します。
+    ❂ /whatanime <アニメ>： gifまたは写真に返信します。
+    ❂ /kaizoku <アニメ>： animekaizoku.comでアニメを検索
+    ❂ /kayo <アニメ>： animekayo.comでアニメを検索
+
+    ──「アニメの名言」──
+
+    ❂/ animequotes： 写真としてランダムにアニメの引用をします。
+    ❂/ quote： 引用符をテキストとしてランダムに送信します
+
+antichannel_help: |
+    ──「アンチチャンネル」──
+
+        ⚠️警告⚠️
+
+    *このモードを使用した場合、結果はグループ内にあり、チャンネルを使用してチャットすることはできません*
+
+    アンチチャネルモードは、チャネルを使用してチャットするユーザーを自動的に禁止するモードです。
+    このコマンドは、*管理者*のみが使用できます。
+
+    ❂ /antichannelmode <'on'/'yes'>*：* アンチチャネルモードを有効にします
+    ❂ /antichannelmode <'off'/'no'>*：* 無効なanti-channel-mode
+
+antiflood_help: |
+    ──「洪水対策」──
+
+    Antifloodを使用すると、x個を超えるメッセージを連続して送信するユーザーに対してアクションを実行できます。設定された洪水を超える\
+    そのユーザーを制限することになります。
+    これにより、ユーザーが10を超えるメッセージを連続して送信した場合、ユーザーはミュートされ、ボットは無視されます。
+    ❂ `/flood` *：*現在の洪水制御設定を取得します
+
+    *管理者のみ：*
+
+    ❂ `setflood <int/'no'/'off'> `*：*洪水制御を有効または無効にします
+    *例：* `/setflood 10`
+    ❂ `/setfloodmode <ban/pick/mute/tban/tmute> <value> `*：*ユーザーがフラッド制限を超えたときに実行するアクション。禁止/キック/ミュート/ tmute/tban
+
+    *ノート：*
+    tbanとtmuteの値を入力する必要があります!!
+    かもね：
+    ➩`5m`= 5分
+    ➩`6h`= 6時間
+    ➩`3d`= 3日
+    ➩`1w`= 1週間
+
+antispam_help: |
+    ──「スパム対策」──
+
+    *管理者のみ：*
+    ❂ `/antispam <on/off/yes/no> `*：*スパム対策技術を切り替えるか、現在の設定を返します。
+
+    スパム対策。ボット開発者がすべてのグループのスパマーを禁止するために使用します。これは保護に役立ちます\
+    スパムフラッダーをできるだけ早く削除することにより、あなたとあなたのグループ。
+    *注：*ユーザーは@ {SUPPORT_CHAT}で、gbanにアピールしたり、スパマーを報告したりできます。
+
+    これはまた、@ Spamwatch APIを統合して、チャットルームからスパマーを可能な限り削除します。
+    * SpamWatchとは何ですか？*
+    SpamWatchは、スパムボット、トロール、ビットコインスパマー、不快なキャラクターの大規模な絶えず更新される禁止リストを維持しています[。]（https://telegra.ph/file/f584b643c6f4be0b1de53.jpg）
+    スパマーをグループから自動的に禁止するのを常に支援します。したがって、スパマーがグループを襲撃することを心配する必要はありません。
+    *注：*ユーザーは@SpamwatchSupportでスパムウォッチの禁止に異議を申し立てることができます
+
+approve_help: |
+    ──「承認済み」──
+
+    場合によっては、不要なコンテンツを送信しないようにユーザーを信頼することがあります。
+    それらを管理者にするのに十分ではないかもしれませんが、ロック、ブラックリスト、およびフラッド防止がそれらに適用されなくても大丈夫かもしれません。
+
+    それが承認の目的です-信頼できるユーザーが送信できるように承認します
+
+    *管理コマンド：*
+    ❂ /approval *：*このチャットでユーザーの承認ステータスを確認します。
+    ❂ /approve *：*ユーザーの承認。ロック、ブラックリスト、およびフラッド防止は、それらに適用されなくなります。
+    ❂ /unapprove *：*ユーザーの承認を取り消す。これらは、ロック、ブラックリスト、およびフラッド防止の対象になります。
+    ❂ /承認済み*：*承認されたすべてのユーザーを一覧表示します。
+    ❂ /unapproveall *：*チャットの* ALL *ユーザーの承認を取り消す。これは、元に戻すことはできません。
+
+bansmutes_help: |
+    ──「禁止/ミュート」──
+
+    *ユーザーコマンド：*
+
+    ❂/ kickme *：*コマンドを発行したユーザーをキックします
+
+    *管理者のみ：*
+
+    ❂ /ban <userhandle> *：*ユーザーを禁止します。 （ハンドルまたは返信経由）
+    ❂ /sban <userhandle> *：*ユーザーをサイレントに禁止します。コマンド、返信メッセージを削除し、返信しません。 （ハンドルまたは返信経由）
+    ❂ /tban <userhandle> x（m / h / d）*：*ユーザーをx時間禁止します。 （ハンドルまたは返信を介して）。 m =分、h =時間、d =日。
+    ❂ /unban <userhandle> *：*ユーザーの禁止を解除します。 （ハンドルまたは返信経由）
+    ❂ /kick <userhandle> *：*ユーザーをグループから追い出します（ハンドルまたは返信を介して）
+    ❂ /mute <userhandle> *：*ユーザーを無音にします。返信として使用することもでき、ユーザーへの返信をミュートします。
+    ❂ /tmute <userhandle> x（m / h / d）*：*ユーザーをx時間ミュートします。 （ハンドルまたは返信を介して）。 m =分、h =時間、d =日。
+    ❂ /unmute <userhandle> *：*ユーザーのミュートを解除します。返信として使用することもでき、ユーザーへの返信をミュートします。
+    ❂ /zombies *：*削除されたアカウントを検索します
+    ❂ /zombies clean *：*削除されたアカウントをグループから削除します。
+    ❂ /snipe <chatid> <string> *：*特定のチャットにメッセージを送信させます。
+
+blacklist_help: |
+    ──「ブラックリスト」──
+
+    ブラックリストは、特定のトリガーがグループ内で発言されるのを防ぐために使用されます。トリガーが言及されると、メッセージはすぐに削除されます。良い組み合わせは、これを警告フィルターと組み合わせることです！
+
+    *注*：ブラックリストはグループ管理者には影響しません。
+
+    ❂ /blacklist *：*現在ブラックリストに登録されている単語を表示します。
+
+    管理者のみ：
+    ❂ /addblacklist <トリガー> *：*ブラックリストにトリガーを追加します。各行は1つのトリガーと見なされるため、異なる行を使用すると、複数のトリガーを追加できます。
+    ❂ /unblacklist <triggers> *：*ブラックリストからトリガーを削除します。ここでも同じ改行ロジックが適用されるため、一度に複数のトリガーを削除できます。
+    ❂ /blacklistmode <off/del/warn/ban/kick/mute/tban/tmute> *：*誰かがブラックリストに載っている単語を送信したときに実行するアクション。
+
+    ブラックリストステッカーは、特定のステッカーを停止するために使用されます。ステッカーが送信されるたびに、メッセージはすぐに削除されます。
+    *注：*ブラックリストステッカーはグループ管理者には影響しません
+    ❂ /blsticker *：*現在のブラックリストに載っているステッカーを見る
+    *管理者のみ：*
+    ❂ /addblsticker <ステッカーリンク> *：*ステッカートリガーをブラックリストに追加します。返信ステッカーで追加できます
+    ❂ /unblsticker <ステッカーリンク> *：*ブラックリストからトリガーを削除します。ここでも同じ改行ロジックが適用されるため、一度に複数のトリガーを削除できます
+    ❂ /rmblsticker <ステッカーリンク> *：*上記と同じ
+    ❂ /blstickermode <delete/ban/tban/mute/tmute> *：*ユーザーがブラックリストに登録されたステッカーを使用した場合の対処方法に関するデフォルトのアクションを設定します
+    ノート：
+    ❂<ステッカーリンク>は `https://t.me/addstickers/ <sticker>`または単に `<sticker>`にするか、ステッカーメッセージに返信することができます
+
+chatbot_help: |
+    ──「チャットボットAI」──
+
+    Siesta AIは、最大200の言語を検出して返信できる唯一のAIシステムです。
+
+    ❂ /chatbot [ON/OFF]：AIチャットモードを有効または無効にします。
+    ❂ /chatbot EN：英語のみのチャットボットを有効にします。
+
+cleaner_help: |
+    ──「クリーナー」──
+
+    青いテキストクリーナーは、人々があなたのチャットで送信するすべての構成されたコマンドを削除しました。
+
+    ❂ /cleanblue <on/off/yes/no> *：*送信後にコマンドをクリーンアップします
+    ❂ /ignoreblue <word> *：*コマンドの自動クリーニングを防止します
+    ❂ /unignoreblue <word> *：* removeコマンドの自動クリーニングを防止します
+    ❂ /listblue *：*現在ホワイトリストに登録されているコマンドを一覧表示
+
+    *以下は災害専用コマンドであり、管理者はこれらを使用できません：*
+
+    ❂ /gignoreblue <word> *：*埼玉全体で保存された単語のブルーテキストクリーニングをグローバルに無視します。
+    ❂ /ungignoreblue <word> *：*グローバルクリーニングリストから上記のコマンドを削除します
+
+connection_help: |
+    ──「つながり」──
+
+    場合によっては、グループチャットにメモやフィルターを追加したいが、全員に見せたくない場合があります。これが接続の出番です...
+    これにより、チャットのデータベースに接続し、チャットにコマンドを表示せずにデータベースに追加することができます。明らかな理由で、物事を追加するには管理者である必要があります。ただし、グループ内のすべてのメンバーがデータを表示できます。
+
+    ❂ /connect：チャットに接続します（PMの/ connectまたは/ connect <chat id>によってグループで実行できます）
+    ❂ /connection：接続されているチャットを一覧表示します
+    ❂ /disconnect：チャットから切断します
+    ❂ /helpconnect：リモートで使用できる使用可能なコマンドを一覧表示します
+
+    *管理者のみ：*
+
+    ❂ /allowconnect <yes/no>：ユーザーがチャットに接続できるようにします
+
+disabling_help: |
+    ──「無効にする」──
+
+    ❂ /cmds *：*無効なコマンドの現在のステータスを確認します
+
+    *管理者のみ：*
+
+    ❂ /enable <cmd name> *：*そのコマンドを有効にする
+    ❂ /disable <コマンド名> *：*そのコマンドを無効にする
+    ❂ /enablemodule <モジュール名> *：*そのモジュール内のすべてのコマンドを有効にする
+    ❂ /disablemodule <モジュール名> *：*そのモジュール内のすべてのコマンドを無効にします
+    ❂ /listcmds *：*可能なすべての切り替え可能なコマンドを一覧表示します
+
+extras_help: |
+    ──「エクストラ」──
+
+    ❂ /markdownhelp *：*テレグラムでのマークダウンの仕組みの簡単な要約-プライベートチャットでのみ呼び出すことができます
+    ❂ /paste *：*返信されたコンテンツを `nekobin.com`に保存し、URLで返信します
+    ❂ /spaste *：*返信されたコンテンツを `spaceb.in`に保存し、URLで返信します
+    ❂ /react *：*ランダムな反応で反応します
+    ❂ /ud <word> *：*検索する単語または表現を入力します
+    ❂ /reverse *：*返信されたメディアの逆画像検索を行います。
+    ❂ /wiki <query> *：* wikipediaあなたのクエリ
+    ❂ /wall <query> *：* wall.alphacoders.comから壁紙を取得します
+    ❂ /cash *：*通貨コンバーター
+
+      例：
+      ➩`/Cash 1 USD INR`
+            _また_
+      ➩`/cash 1 usd inr`
+         出力： `1.0 USD = 75.505 INR`
+
+MARKDOWN_HELP: |
+    ──「マークダウンヘルプ」──
+
+    Markdownは、Telegramでサポートされている非常に強力なフォーマットツールです。 {dispatcher.bot.first_name}にはいくつかの機能拡張があり、\
+    保存されたメッセージは正しく解析され、ボタンを作成できるようになります。
+
+    ❂<code> _italic _ </code>：テキストを「_」で囲むと斜体のテキストが生成されます
+    ❂<code> * bold * </code>：テキストを「*」でラップすると太字のテキストが生成されます
+    ❂<code> `code` </code>：テキストを「`」でラップすると、「コード」とも呼ばれる等幅テキストが生成されます。
+    ❂<code> [sometext]（someURL）</code>：これによりリンクが作成されます-メッセージには<code> sometext </code>、\が表示されます
+    それをタップすると、<code> someURL </code>のページが開きます。
+    <b>例：</ b> <code> [test]（example.com）</code>
+
+    ❂<code> [buttontext]（buttonurl：someURL）</ ode>：これは、ユーザーが電報を受信できるようにするための特別な拡張機能です\
+    マークダウンのボタン。 <code> buttontext </code>はボタンに表示されるものになり、<code> someurl </ code> \
+    開かれるURLになります。
+    <b>例：</b> <code> [これはボタンです]（buttonurl：example.com）</code>
+
+    同じ行に複数のボタンが必要な場合は、：sameを使用します。
+    <コード> [one]（buttonurl：//example.com）
+    [2]（buttonurl：//google.com：same）</code>
+    これにより、1行に1つのボタンではなく、1つの行に2つのボタンが作成されます。
+
+    メッセージには、ボタン以外のテキストが<b>必ず</ b>含まれていることに注意してください。
+
+MARKDOWN_HELP_TEXT_1: "次のメッセージを私に転送してみてください。そうすれば、表示され、＃testを使用できます。"
+
+MARKDOWN_HELP_TEXT_2: |
+    /savetestこれはマークダウンテストです。 _italics _、*太字*、コード、
+    [URL]（example.com）[button]（buttonurl：github.com）
+    [button2]（buttonurl：//google.com：same）
+
+fsub_feds_help: |
+    ──「F-Subs / Feds」──
+
+    *強制購読：*
+
+    Siestaは、サブスクライブするまでチャンネルにサブスクライブしていないメンバーをミュートできます。有効にすると、サブスクライブしていないメンバーをミュートし、ミュート解除ボタンを表示します。彼らがボタンを押したとき、私は彼らのミュートを解除します
+
+    *セットアップ**：**作成者のみ*
+    ❂管理者としてあなたのグループに私を追加します
+    ❂管理者としてあなたのチャンネルに私を追加してください
+    
+    *コマンド*
+    ❂ /fsub {channelusername}-チャネルをオンにして設定します。
+
+      💡最初にこれを行ってください...
+
+    ❂ /fsub-現在の設定を取得します。
+    ❂ /fsubdisable-ForceSubscribeをオフにします。
+
+      💡fsubを無効にした場合は、動作するように再度設定する必要があります。/fsub {channel username}
+
+    ❂ /fsubclear-私がミュートしたすべてのメンバーのミュートを解除します。
+
+    *フェデレーション*
+    スパマーがあなたのグループに入り始め、あなたがそれをブロックしなければならないまで、すべてが楽しいです。それからあなたはますます禁止し始める必要があります、そしてそれは痛いです。
+    しかし、あなたには多くのグループがあり、このスパマーをあなたのグループの1つに入れたくないのですが、どうすれば対処できますか？すべてのグループで手動でブロックする必要がありますか？\ n
+    *もうありません！*フェデレーションを使用すると、1つのチャットで禁止を他のすべてのチャットと重複させることができます。\ n
+    フェデレーション管理者を指定することもできるので、信頼できる管理者は、保護したいチャットからすべてのスパマーを禁止できます。\ n
+    *コマンド：* \ n
+    連邦準備制度は、簡単にするために3つのセクションに分割されています。
+    ❂ `/fedownerhelp` *：*フィードされた作成と所有者のみのコマンドのヘルプを提供します
+    ❂ `/fedadminhelp` *：*フィードされた管理コマンドのヘルプを提供します
+    ❂ `/feduserhelp` *：*誰でも使用できるコマンドのヘルプを提供します
+
+FED_OWNER_HELP: | 
+    ──「FRB」──
+
+    *👑FRBの所有者のみ：*
+    ❂ `/newfed <fed_name>`*：*フェデレーションを作成します。ユーザーごとに1つ許可されます
+    ❂ `/renamefed <fed_id> <new_fed_name> `*：*フィードされたIDの名前を新しい名前に変更します
+    ❂ `/delfed <fed_id>`*：*フェデレーションとそれに関連する情報を削除します。ブロックされたユーザーをキャンセルしません
+    ❂ `/fpromote <user>`*：*ユーザーをフェデレーション管理者として割り当てます。 `FedAdmins`の下でユーザーのすべてのコマンドを有効にします
+    ❂ `/fdemote <user>`*：*ユーザーを管理者フェデレーションから通常のユーザーにドロップします
+    ❂ `/subfed <fed_id>`*：*指定されたフィードIDにサブスクライブし、そのサブスクライブされたフィードからの禁止は、あなたのフィードでも発生します
+    ❂ `/unsubfed <fed_id>`*：*指定されたフィードIDのサブスクライブを解除します
+    ❂ `/setfedlog <fed_id>`*：*グループをフェデレーションのフィードログレポートベースとして設定します
+    ❂ `/unsetfedlog <fed_id>`*：*フェデレーションのフィードログレポートベースとしてのグループを削除しました
+    ❂ `/fbroadcast <message>`*：*フィードに参加しているすべてのグループにメッセージをブロードキャストします
+    ❂ `/ edsubs` *：*グループがサブスクライブしているfedを表示します `（broken rn）`
+
+FED_ADMIN_HELP: |
+    ──「FRB」──
+
+    *🔱FRBの管理者：*
+    ❂ `/fban <user> <reason>`*：* FRBはユーザーを禁止します
+    ❂ `/unfban <user> <reason>`*：*ユーザーを連邦準備制度から削除します
+    ❂ `/fedinfo <fed_id>`*：*指定されたフェデレーションに関する情報
+    ❂ `/joinfed <fed_id>`*：*現在のチャットをフェデレーションに参加させます。チャットの所有者のみがこれを行うことができます。すべてのチャットは1つのフェデレーションにのみ参加できます
+    ❂ `/Leavefed <fed_id>`*：*フェデレーションを指定したままにします。チャットの所有者のみがこれを行うことができます
+    ❂ `/setfrules <rules>`*：*フェデレーションルールを配置します
+    ❂ `/fedadmins` *：*フェデレーション管理者を表示
+    ❂ `/fbanlist` *：*現時点でフェデレーションで被害を受けているすべてのユーザーを表示します
+    ❂ `/fedchats` *：*フェデレーションで接続されているすべてのチャットを取得します
+    ❂ `/chatfed` *：*現在のチャットでフェデレーションを参照してください\n
+
+FED_USER_HELP: | 
+    ──「FRB」──
+
+    *🎩すべてのユーザー：*
+    ❂ /fbanstat *：*あなた/またはあなたが返信しているユーザーまたはそのユーザー名がどこかで禁止されているかどうかを示します
+    ❂ /fednotif <on/off> *：* fbaned/unfbannedのユーザーがいる場合、フェデレーション設定はPMにありません
+    ❂ /frules *：*連邦規制を参照\n
+
+filters_help: |
+    ──「フィルター」──
+
+    ❂ /filters *：*チャットに保存されているすべてのアクティブなフィルターを一覧表示します。
+    *管理者のみ：*
+    ❂ /filter <キーワード> <返信メッセージ> *：*このチャットにフィルターを追加します。ボットは、「キーワード」\
+    言及されています。キーワードを使用してステッカーに返信すると、ボットはそのステッカーを使用して返信します。注：すべてのフィルター\
+    キーワードは小文字です。キーワードを文にしたい場合は、引用符を使用してください。例：/ filter "hey there" How you \
+    ドイン？
+    差分応答を `%%%`で区切って、ランダムな応答を取得します
+      *例：*
+      ➩`/filter "filtername"
+         返信1
+         ％％％
+         返信2
+         ％％％
+         返信3`
+
+    ❂ /stop <フィルターキーワード> *：*そのフィルターを停止します。
+
+    *チャット作成者のみ：*
+
+    ❂ /removeallfilters *：*すべてのチャットフィルターを一度に削除します。
+    *注*：フィルターは、{first}、{last}などのマークダウンフォーマッターやボタンもサポートしています。
+    詳細については、/ markdownhelpを確認してください。
+
+fun_help: |
+    ──「楽しい」──
+
+    ❂ /runs *：*応答の配列からランダムな文字列に応答します
+    ❂ /slap *：*ユーザーを平手打ちするか、返信がない場合は平手打ちします
+    ❂ /shrug *：*肩をすくめるXDを取得
+    ❂ /table *：* getflip / unflip：v
+    ❂ /decide *：*ランダムにyes / no / maybeと答えます
+    ❂ /toss *：*コインを投げる
+    ❂ /bluetext *：*自分自身をチェックしてください：V
+    ❂ /roll *：*サイコロを振る
+    ❂ /rlg *：*耳、鼻、口を結合してエモを作成します;-;
+    ❂ /shout <keyword> *：*大声で叫びたいものを書いてください
+    ❂ /weebify <text> *：*はweebifiedテキストを返します
+    ❂ /sanitize *：*常に/ patまたは連絡先の前にこれを使用してください
+    ❂ /pat *：*ユーザーを撫でるか、撫でる
+    ❂ /8ball *：*は8ballメソッドを使用して予測します
+
+    -アニメーション
+    ❂ /love *：*愛のためのアニメーション❤️
+    ❂ /hack *：*ハッキングのためのアニメーション
+    ❂ /moon *：*月のアニメーション🌕
+    ❂ /block *：*ブロックのアニメーション  
+    ❂ /bombs *：*爆弾のアニメーション💣
+    ❂ /kill *：*キルのアニメーション🔪
+
+    -配送
+    ❂ /couples-今日のカップルを取得
+
+    -Styletextモジュールのヘルプは次のとおりです。
+    ❂ /weebify <text>：テキストをweebifyします！
+    ❂ /bubble <text>：テキストをバブルします！
+    ❂ /fbubble <text>：テキストをバブルで埋めました！
+    ❂ /square <text>：テキストを2乗します！
+    ❂ /fsquare <text>：テキストを正方形で埋めました！
+    ❂ /blue <text>：テキストを青くします！
+    ❂ /latin <text>：テキストをラテン語化します！
+    ❂ /lined <text>：テキストを並べました！
+
+greetings_help: |
+    ──「ご挨拶」──
+
+    *管理者のみ：*
+    ❂ /welcome <on/off> *：*ウェルカムメッセージを有効/無効にします。
+    ❂ /welcome *：*は現在のウェルカム設定を示します。
+    ❂ /welcome noformat *：*は、フォーマットなしで現在のウェルカム設定を表示します-ウェルカムメッセージをリサイクルするのに便利です！
+    ❂ /goodbye *：* `/welcome`と同じ使用法と引数。
+    ❂ /setwelcome <sometext> *：*カスタムウェルカムメッセージを設定します。メディアへの返信に使用する場合は、そのメディアを使用します。
+    ❂ /setgoodbye <sometext> *：*カスタムのさようならメッセージを設定します。メディアへの返信に使用する場合は、そのメディアを使用します。
+    ❂ /resetwelcome *：*デフォルトのウェルカムメッセージにリセットします。
+    ❂ /resetgoodbye *：*デフォルトのさようならメッセージにリセットします。
+    ❂ /cleanwelcome <on/off> *：*新しいメンバーでは、チャットのスパムを回避するために、前のウェルカムメッセージを削除してみてください。
+    ❂ /welcomemutehelp *：*はウェルカムミュートに関する情報を提供します。
+    ❂ /cleanservice <on/off *：*テレグラムウェルカム/レフトサービスメッセージを削除します。
+    
+    *例：*
+    ユーザーがチャットに参加し、ユーザーがチャットから退出しました。
+    
+    *ようこそマークダウン：*
+    ❂ /welcomehelp *：*カスタムウェルカム/さようならメッセージのフォーマット情報を表示します。
+
+WELCOME_HELP_TEXT: |
+    ──「あいさつフォーマットヘルプ」──
+
+    「グループのウェルカム/さようならメッセージは、複数の方法でパーソナライズできます。メッセージが必要な場合は」
+    "デフォルトのウェルカムメッセージのように、個別に生成するには、*これらの*変数を使用できます：\n"
+    "❂ `{first}` *：*これはユーザーの*名*を表します\n "
+    "❂ `{last}` *：*これは、ユーザーの*姓*を表します。ユーザーに名前がない場合、デフォルトは*名*になります。 "
+    「名前。\n」
+    "❂ `{fullname}` *：*これはユーザーの*フル*名を表します。ユーザーに名前がない場合、デフォルトは*名*になります。
+    「名前。\n」
+    "❂ `{ユーザー名}` *：*これはユーザーの*ユーザー名*を表します。デフォルトはユーザーの*メンション*です。
+    「ユーザー名がない場合の名。\n」
+    "❂ `{メンション}` *：*これは単にユーザーに*メンション*します-ユーザーにファーストネームのタグを付けます。\n "
+    "❂ `{id}` *：*これはユーザーの* id * \nを表します "
+    "❂ `{count}` *：*これはユーザーの*メンバー番号*を表します。\n "
+    "❂ `{チャット名}` *：*これは*現在のチャット名*を表します。\n "
+    "\n置換するには、各変数を` {} `で囲む必要があります。\n"
+    「ウェルカムメッセージはマークダウンもサポートしているため、任意の要素を太字/斜体/コード/リンクにすることができます。」
+    「ボタンもサポートされているので、素敵なイントロであなたの歓迎を素晴らしく見せることができます」
+    「ボタン。\n」
+    f"ルールにリンクするボタンを作成するには、次を使用します：` [ルール]（buttonurl：//t.me/{dispatcher.bot.username}？start=group_id） `。"
+    「 `group_id`を/ idから取得できるグループのIDに置き換えるだけで、次のようになります。"
+    "go。グループIDの前には通常` -`記号が付いていることに注意してください。これは必須なので、しないでください。 "
+    「削除してください。\n」
+    「画像/ gif /動画/音声メッセージをウェルカムメッセージとして設定することもできます」
+    「目的のメディアに返信し、 `/setwelcome`を呼び出します。」
+
+WELCOME_MUTE_HELP_TEXT: |
+    ──「あいさつミュートフォーマットヘルプ」──
+
+    「ボットに、グループに参加する新しい人をミュートさせて、スパムボットがグループに殺到するのを防ぐことができます。」
+    「次のオプションが可能です：\ n」
+    "❂ `/welcomemute soft` *：*は、新しいメンバーが24時間メディアを送信することを制限します。\n"
+    "❂ `/welcomemute strong` *：*ボタンをタップするまで新しいメンバーをミュートし、それによってメンバーが人間であることを確認します。\n"
+    "❂ `/welcomemute captcha` *：*ボタンのキャプチャを解決するまで新しいメンバーをミュートし、それによってメンバーが人間であることを確認します。\n"
+    "❂ `/welcomemute off` *：* welcomemuteをオフにします。\n"
+    「*注：*ストロングモードは、ユーザーが120秒以内に確認しない場合、チャットからユーザーを追い出します。ただし、ユーザーはいつでも再参加できます。」
+
+info_and_afk_help: |
+    ──「情報とAFK」──
+
+    * ID：*
+    ❂ /id *：*現在のグループIDを取得します。メッセージへの返信で使用する場合は、そのユーザーのIDを取得します。
+    ❂ /gifid *：* gifに返信して、ファイルIDを教えてください。
+    
+    *自己追加情報：*
+    ❂ /setme <text> *：*はあなたの情報を設定します
+    ❂ /me *：*はあなたまたは他のユーザーの情報を取得します。
+    例：
+    ❂ /setme私はオオカミです。
+    ❂ /me @username（ユーザーが指定されていない場合、デフォルトはあなたのものになります）
+    
+    *他の人があなたに追加する情報：*
+    ❂ /bio *：*は、あなたまたは他のユーザーの略歴を取得します。これは自分で設定することはできません。
+    ❂ /setbio <text> *：*返信中に、別のユーザーの略歴を保存します
+    例：
+    ❂ /bio @username（指定されていない場合、デフォルトはあなたのものになります）。
+    ❂ /setbioこのユーザーはオオカミです（ユーザーへの返信）
+    
+    *あなたに関する全体的な情報：*
+    ❂ /info *：*ユーザーに関する情報を取得します。
+    
+    * json詳細情報：*
+    ❂ /json *：*メッセージに関する詳細情報を取得します。
+    
+    * AFk：*
+    AFKとしてマークされると、言及には、あなたが利用できないことを示すメッセージが返信されます。
+    ❂ /afk <理由> *：*自分をAFKとしてマークします。
+      --brb <reason>：afkコマンドと同じですが、コマンドではありません。
+      
+    *その健康は何ですか？*
+    [HPシステムの説明]（https://t.me/KennedyProject/44）をご覧ください。
+
+locks_help: |
+    ──「ロック」──
+
+    ステッカーはあなたを悩ませますか？または、リンクを共有する人を避けたいですか？または写真？ \
+    あなたは正しい場所にいます！
+    ロックモジュールを使用すると、\内のいくつかの一般的なアイテムをロックすることができます
+    電報の世界;ボットはそれらを自動的に削除します！
+
+    ❂ /locktypes *：*可能なすべてのロックタイプを一覧表示します
+
+    *管理者のみ：*
+    ❂ /lock <type> *：*特定のタイプのアイテムをロックします（プライベートでは使用できません）
+    ❂ /unlock <type> *：*特定のタイプのアイテムのロックを解除します（プライベートでは使用できません）
+    ❂ /locks *：*このチャットの現在のロックのリスト。
+
+    ロックを使用して、グループのユーザーを制限できます。
+    例えば：
+    URLをロックすると、URLを含むすべてのメッセージが自動的に削除され、ステッカーをロックするとすべての\が制限されます。
+    管理者以外のユーザーがステッカーなどを送信することはできません。
+    ボットをロックすると、管理者以外のユーザーがチャットにボットを追加するのを防ぐことができます。
+
+    *ノート：*
+    ❂ 権限のロック解除* info *により、メンバー（管理者以外）が説明やグループ名などのグループ情報を変更できるようになります
+    ❂ 権限のロックを解除する*ピン*により、メンバー（管理者以外）がグループ内のメッセージをピン留めできるようになります
+
+logchannel_help: |
+    ──「ログチャンネル」──
+
+    ❂ /logchannel *：*ログチャネル情報を取得
+    ❂ /setlog *：*ログチャネルを設定します。
+    ❂ /unsetlog *：*ログチャネルの設定を解除します。
+
+    *ログチャネルの設定は*によって行われます：
+
+    ➩ ボットを目的のチャネルに追加する（管理者として！）
+    ➩ チャネルで/ setlogを送信する
+    ➩ / setlogをグループに転送する
+
+logomarker_help: |
+    ──「ロゴマーカー」──
+    
+    これはlogomakerのヘルプメニューです
+    ❂ /logo <text / name>-ランダムビューのロゴを作成します。
+    ❂ /wlogo <text / name>-ワイドビューのみのロゴを作成します。
+
+    *画像エディタ：*
+    ❂ /edit <写真の返信>-画像を編集します。
+
+musicplayer_help: |
+    ──「ミュージックプレイヤー」──
+
+    ヘルプミュージックは、さまざまなコマンドでアクセスでき、ダッシュボードのヘルプと設定をサポートします。
+    ❂ /mhelp-ヘルプミュージックモジュール用
+    ❂ /msettings-音楽モジュールを設定するため
+
+    注：リクエストの曲やビデオでスパムを送信しないでください...
+
+notes_help: |
+    ──「メモ」──
+
+    ❂ /get <notename>*：*このnotenameでメモを取得します
+    ❂ ＃<notename>*：* / getと同じ
+    ❂ /notesまたは/ saved *：*このチャットに保存されているすべてのメモを一覧表示します
+    ❂ /number*：*リスト内のその番号のメモを取得します
+    フォーマットせずにノートの内容を取得したい場合は、 `/get <notename> noformat`を使用してください。これは\
+    現在のメモを更新するときに役立ちます
+
+    *管理者のみ：*
+    ❂ /save <notename> <notedata>*：* notedataをnotenameという名前のメモとして保存します
+    標準のマークダウンリンク構文を使用して、ボタンをメモに追加できます。リンクの前に\を付けるだけです。
+    `buttonurl：`セクション、そのようなもの： `[somelink]（buttonurl：example.com）`。詳細については、 `/markdownhelp`を確認してください
+    ❂ /save <notename>*：*返信されたメッセージをnotenameという名前のメモとして保存します
+    差分応答を `%%%`で区切って、ランダムなメモを取得します
+    *例：*
+      ➩`/ノート名を保存
+         返信1
+         ％％％
+         返信2
+         ％％％
+         返信3`
+
+    ❂ /clear <notename>*：*この名前のメモをクリアします
+    ❂ /removeallnotes*：*グループからすべてのメモを削除します
+
+    *注：*注名では大文字と小文字が区別されず、保存される前に自動的に小文字に変換されます。
+
+reports_help: |
+    ──「レポート」──
+
+    ❂ / report <reason>*：*メッセージに返信して、管理者に報告します。
+    ❂ @ admin*：*メッセージに返信して、管理者に報告します。
+    *注：*管理者が使用した場合、これらのいずれもトリガーされません。
+
+    *管理者のみ：*
+    ❂ /reports <on/off>*：*レポート設定を変更するか、現在のステータスを表示します。
+    ❂ 午後に行う場合は、ステータスを切り替えます。
+    ❂ グループ内の場合、そのグループのステータスを切り替えます。
+
+search_help: |
+    ──「検索」──
+
+    ❂ /google <query>*：*グーグル検索を実行します
+    ❂ /image <query>*：* Googleで画像を検索して返します\ n結果の中でlimを指定します。例： `/img hello lim=10`
+    ❂ /app <appname>*：* Playストアでアプリを検索し、その詳細を返します。
+    ❂ /reverse：返信されたメディアの逆画像検索を行います。
+    ❂ /gps <location>*：* gpsの場所を取得します。
+    ❂ /github <ユーザー名>*：* GitHubユーザーに関する情報を取得します。
+    ❂ /country <国名>*：*特定の国に関する情報を収集する
+    ❂ /imdb <映画名>*：* imdb.comで映画に関する完全な情報を取得する
+    ❂ Siesta<query>*：* Siestaがクエリに回答します
+
+    💡 例：「日本はどこにあるシエスタ？」
+
+stickers_help: |
+    ──「ステッカー」──
+
+    *ステッカーツールのヘルプメニュー*
+    ❂ /stickerid*：*ステッカーに返信して、ファイルIDを教えてください。
+    ❂ /getsticker*：*ステッカーに返信して、生のPNGファイルをアップロードします。
+    ❂ /kang*：*ステッカーに返信して、パックに追加します。
+    ❂ /delsticker*：*パックのアニメ存在ステッカーに返信して削除します。
+    ❂ /stickers*：* combotステッカーカタログで特定の用語のステッカーを検索します
+    ❂ /tiny*：*小さなステッカーを作る
+    ❂ /kamuii <1-8>*：*ステッカーを深くする
+    ❂ /mmf <テキストで返信>*：*ステッカーやpohotsのテキストを描画するには
+
+tools_help: |
+    ──「ツール」──
+
+    * Sangmata情報ボット*
+    ❂ /sg <返信>*：*履歴名を確認するには
+
+    *日時-天気*
+    ❂ /time <国コード>*：*タイムゾーンに関する情報を提供します。
+    ❂ /weather <city>*：*特定の場所の天気情報を取得します。
+    ❂ /wttr <city>*：*高度な天気モジュール、/ weatherと同じ使用法
+    ❂ /wttr moon*：*月の現在のステータスを取得します
+
+    *変換*
+    ❂ /encrypt*：*指定されたテキストを暗号化します
+    ❂ /decrypt*：*以前に暗号化されたテキストを復号化します
+    ❂ /zip*：*テレグラムファイルに返信して、.zip形式で圧縮します
+    ❂ /unzip*：*テレグラムファイルに返信して、.zip形式から解凍します
+
+    *ランダムAPI *
+    ❂ /ptl： Instagramのタイムラインからランダムなビデオを取得
+    ❂ /chika: chikakikuからランダムなビデオを取得します
+    ❂ /wibu： ランダムな短いアニメのビデオや写真を入手
+    ❂ /真実：挑戦
+    ❂ /あえて：チャレンジ
+    ファイルへのリンク：
+    ❂ /up： 直接ダウンロードリンクに返信して、ファイルとして電報にアップロードします
+    
+    リンクするファイル：
+    ❂ /transfersh： 電報ファイルに返信してtransfershにアップロードし、直接ダウンロードリンクを取得します
+    ❂ /tmpninja： 電報ファイルに返信してtmpninjaにアップロードし、直接ダウンロードリンクを取得します
+    電信へのファイルまたはテキスト：
+    ❂ /tgm： 返信されたメディアの電信リンクを取得
+    ❂ /tgt： 返信されたテキストの電信リンクを取得
+
+    タガー
+    ❂/tagall：タグの場合、最初に少なくとも100人のメンバー全員にタグを付けます。
+translator_help: |
+    ──「翻訳者」──
+
+    このモジュールを使用して翻訳してください！
+
+    *コマンド：*
+    ❂ /tl（または/tr： メッセージへの返信として、メッセージを英語に翻訳します。
+    ❂ /tl <lang>： <lang>に変換されます
+       例：/tl ja： 日本語に翻訳されます。
+    ❂ /tl <source>//<dest>：<source>から<lang>に変換します。
+       例：/tl ja//en： 日本語から英語に翻訳します。
+    ❂ /langs：翻訳でサポートされている言語のリストを取得します。
+
+    テキストを音声に、音声をテキストに変換できます。
+    ❂ /tts <言語コード>*：*任意のメッセージに返信して、テキスト読み上げ出力を取得します
+    ❂ /stt *：*音声メッセージ（英語のみをサポート）への返信を入力して、そこからテキストを抽出します。
+    
+    *言語コード*
+      `af,am,ar,az,be,bg,bn,bs,ca,ceb,co,cs,cy,da,de,el,en,eo,es,
+      et,eu,fa,fi,fr,fy,ga,gd,gl,gu,ha,haw,hi,hmn,hr,ht,hu,hy,
+      id,ig,is,it,iw,ja,jw,ka,kk,km,kn,ko,ku,ky,la,lb,lo,lt,lv,mg,mi,mk,
+      ml,mn,mr,ms,mt,my,ne,nl,no,ny,pa,pl,ps,pt,ro,ru,sd,si,sk,sl,
+      sm,sn,so,sq,sr,st,su,sv,sw,ta,te,tg,th,tl,tr,uk,ur,uz,
+      vi,xh,yi,yo,zh,zh_CN,zh_TW,zu`
+
+warns_help: |
+    ──「警告」──
+
+    ❂ /warns <userhandle>： 警告のユーザー番号と理由を取得します。
+    ❂ /warnlist： 現在のすべての警告フィルターのリスト
+    ❂ /warn <userhandle>： ユーザーに警告します。 3回の警告の後、ユーザーはグループから禁止されます。返信としても使用できます。
+    ❂ /dwarn <userhandle>： ユーザーに警告し、メッセージを削除します。 3回の警告の後、ユーザーはグループから禁止されます。返信としても使用できます。
+    ❂ /resetwarn <userhandle>： ユーザーの警告をリセットします。返信としても使用できます。
+    ❂ /addwarn <keyword> <reply message>： 特定のキーワードに警告フィルターを設定します。キーワードを文にしたい場合は、次のように引用符で囲みます。/addwarn "非常に怒っている"これは怒っているユーザーです。
+    ❂ /nowarn <keyword>： 警告フィルターを停止します
+    ❂ /warnlimit <num>： 警告制限を設定します
+    ❂ /strongwarn <on/yes/off/no>： onに設定されている場合、警告制限を超えると禁止されます。そうでなければ、ただパンチします。
+
+# Admin.py Variabel Text
+user_change_info: "You're missing rights to change chat info!"
+set_error: "Error! {}."
+set_sticker: "You need to reply to some sticker to set chat sticker set!"
+set_sticker_success: "Successfully set new group stickers in {}!"
+set_sticker_restrictions: "Sorry, due to telegram restrictions chat needs to have minimum 100 members before they can have group stickers!"
+set_chatpic: "You can only set some photo as chat pic!"
+set_chatpic_loading: "Just a sec..."
+set_chatpic_success: "Successfully set new chatpic!"
+set_chatpic_none: "Reply to some photo or file to set new chat pic!"
+rm_chatpic: "You don't have enough rights to delete group photo"
+rm_chatpic_success: "Successfully deleted chat's profile photo!"
+set_desc: "Setting empty description won't do anything!"
+set_desc_len: "Description must needs to be under 255 characters!"
+set_desc_success: "Successfully updated chat description in {}!"
+set_chat_title: "Enter some text to set new title in your chat!"
+set_chat_title_success: "Successfully set <b>{}</b> as new chat title!"
+promote_creator: "You don't have the necessary rights to do that!"
+promote_id_error: "You don't seem to be referring to a user or the ID specified is incorrect.."
+promote_admin: "How am I meant to promote someone that's already an admin?"
+promote_self: "I can't promote myself! Get an admin to do it for me."
+promote_error1: "I can't promote someone who isn't in the group."
+promote_error2: "An error occured while promoting."
+promote_success: "Promoting a user in <b>{}</b>\n\nUser: {}\nAdmin: {}"
+full_promote_success: "Fullpromoting a user in <b>{}</b>\n\n<b>User: {}</b>\n<b>Promoter: {}</b>"
+demote_creator: "This person CREATED the chat, how would I demote them?"
+demote_admin: "Can't demote what wasn't promoted!"
+demote_self: "I can't demote myself! Get an admin to do it for me."
+demote_success: "Sucessfully demoted a admins in <b>{}</b>\n\nAdmin: <b>{}</b>\nDemoter: {}"
+demote_error: "Could not demote. I might not be admin, or the admin status was appointed by another user, so I can't act upon them!"
+admin_refresh: "✅ Admins cache refreshed!"
+set_title_creator: "This person CREATED the chat, how can i set custom title for him?"
+set_title_admin: "Can't set title for non-admins!\nPromote them first to set custom title!"
+set_title_self: "I can't set my own title myself! Get the one who made me admin to do it for me."
+set_title_none: "Setting blank title doesn't do anything!"
+set_title_len: "The title length is longer than 16 characters.\nTruncating it to 16 characters."
+set_title_error: "Either they aren't promoted by me or you set a title text that is impossible to set."
+set_title_success: "Sucessfully set title for <code>{}</code> to <code>{}</code>"
+pin_none: "Reply a message to pin it!"
+pin_success: "I have pinned a message."
+unpin_creator: "You don't have the necessary rights to do that!"
+unpin_success: "Unpinned <a href='{}'>this message</a>."
+unpin_last_msg: "Unpinned the last pinned message."
+unpin_error: "I can't see pinned message, Maybe already unpined, or pin Message to old 🙂"
+pinned: '🔽 Pinned on {}.'
+pinned_none: "There is no pinned message in <b>{}!</b>"
+invite_error1: "I don't have access to the invite link, try changing my permissions!"
+invite_error2: "I can only give you invite links for supergroups and channels, sorry!"
+list_admin_error: "This command only works in Groups."
+list_admin_loading: "Fetching group admins..."
+list_admin_text: "Admins in <b>{}</b> :"
+list_admin_delete_acc: "☠ Deleted Account"
+demote_callback_success: "Admin {} Demoted {}!"
+demote_callback_answer: "Demoted!"
+demote_callback_error: "This user is not promoted or has left the group!" 
+# Admin.py Variabel Button
+demote_button: "Demote"
+pin_button: "👉 Go to message"
+
+# Afk.py Variabel
+reason_len: "\nYour afk reason was shortened to 100 characters."
+afk: "{} is now away! {}"
+afk_array1: "{} is here!"
+afk_array2: "{} is back!"
+afk_array3: "{} is now in the chat!"
+afk_array4: "{} is awake!"
+afk_array5: "{} is back online!"
+afk_array6: "{} is finally here!"
+afk_array7: "Welcome back! {}"
+afk_array8: "Where is {}?\nIn the chat!"
+afk_check: "{} is afk"
+afk_check_reason: "{} is afk.\nReason: <code>{}</code>"
+
+# Antichannel.py Variabel
+active_antichannel: "Enabled antichannel in {}"
+disable_antuchannel: "Disabled antichannel in {}"
+invalid_antichannel: "Unrecognized arguments {}"
+status_antichannel: "Antichannel setting is currently {} in {}"

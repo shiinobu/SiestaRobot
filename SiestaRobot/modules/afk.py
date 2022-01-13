@@ -1,4 +1,3 @@
-
 import random, html
 
 from SiestaRobot import dispatcher
@@ -8,6 +7,7 @@ from SiestaRobot.modules.disable import (
 )
 from SiestaRobot.modules.sql import afk_sql as sql
 from SiestaRobot.modules.users import get_user_id
+from SiestaRobot.modules.language import gs
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -27,6 +27,7 @@ AFK_REPLY_GROUP = 8
 def afk(update: Update, context: CallbackContext):
     args = update.effective_message.text.split(None, 1)
     user = update.effective_user
+    chat = update.effective_chat
 
     if not user:  # ignore channels
         return
@@ -39,14 +40,14 @@ def afk(update: Update, context: CallbackContext):
         reason = args[1]
         if len(reason) > 100:
             reason = reason[:100]
-            notice = "\nYour afk reason was shortened to 100 characters."
+            notice = gs(chat.id, "reason_len")
     else:
         reason = ""
 
     sql.set_afk(update.effective_user.id, reason)
     fname = update.effective_user.first_name
     try:
-        update.effective_message.reply_text("{} is now away!{}".format(fname, notice))
+        update.effective_message.reply_text(text=gs(chat.id, "afk").format(fname, notice))
     except BadRequest:
         pass
 
@@ -54,6 +55,7 @@ def afk(update: Update, context: CallbackContext):
 def no_longer_afk(update: Update, context: CallbackContext):
     user = update.effective_user
     message = update.effective_message
+    chat = update.effective_chat
 
     if not user:  # ignore channels
         return
@@ -65,14 +67,14 @@ def no_longer_afk(update: Update, context: CallbackContext):
         firstname = update.effective_user.first_name
         try:
             options = [
-                "{} is here!",
-                "{} is back!",
-                "{} is now in the chat!",
-                "{} is awake!",
-                "{} is back online!",
-                "{} is finally here!",
-                "Welcome back! {}",
-                "Where is {}?\nIn the chat!",
+                gs(chat.id, "afk_array1"),
+                gs(chat.id, "afk_array2"),
+                gs(chat.id, "afk_array3"),
+                gs(chat.id, "afk_array4"),
+                gs(chat.id, "afk_array5"),
+                gs(chat.id, "afk_array6"),
+                gs(chat.id, "afk_array7"),
+                gs(chat.id, "afk_array8"),
             ]
             chosen_option = random.choice(options)
             update.effective_message.reply_text(chosen_option.format(firstname))
@@ -130,15 +132,17 @@ def reply_afk(update: Update, context: CallbackContext):
 
 
 def check_afk(update, context, user_id, fst_name, userc_id):
+    chat = update.effective_chat
+
     if sql.is_afk(user_id):
         user = sql.check_afk_status(user_id)
         if int(userc_id) == int(user_id):
             return
         if not user.reason:
-            res = "{} is afk".format(fst_name)
+            res = gs(chat.id, "afk_check").format(fst_name)
             update.effective_message.reply_text(res)
         else:
-            res = "{} is afk.\nReason: <code>{}</code>".format(
+            res = gs(chat.id, "afk_check_reason").format(
                 html.escape(fst_name), html.escape(user.reason)
             )
             update.effective_message.reply_text(res, parse_mode="html")

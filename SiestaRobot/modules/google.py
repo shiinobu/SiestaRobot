@@ -24,6 +24,7 @@ from SiestaRobot import *
 
 from SiestaRobot.events import register
 from SiestaRobot import telethn as tbot
+from SiestaRobot.modules.language import gs
 
 opener = urllib.request.build_opener()
 useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.157 Mobile Safari/537.36"
@@ -276,18 +277,8 @@ async def apk(e):
         await e.reply("Exception Occured:- " + str(err))
 
 
+def helps(chat):
+    return gs(chat, "search_help")
+
+
 __mod_name__ = "Search"
-
-__help__ = """
-❂ /google <query>*:* Perform a google search
-❂ /image <query>*:* Search Google for images and returns them\nFor greater no. of results specify lim, For eg: `/img hello lim=10`
-❂ /app <appname>*:* Searches for an app in Play Store and returns its details.
-❂ /reverse: Does a reverse image search of the media which it was replied to.
-❂ /gps <location>*:* Get gps location.
-❂ /github <username>*:* Get information about a GitHub user.
-❂ /country <country name>*:* Gathering info about given country
-❂ /imdb <Movie name>*:* Get full info about a movie with imdb.com
-❂ Siesta <query>*:* Siesta answers the query
-
-  💡Ex: `Siesta where is Japan?`
-"""

@@ -10,6 +10,7 @@ from SiestaRobot import BOT_USERNAME as bu
 from SiestaRobot import BOT_ID, pbot, arq
 from SiestaRobot.ex_plugins.chatbot import add_chat, get_session, remove_chat
 from SiestaRobot.utils.pluginhelper import admins_only, edit_or_reply
+from SiestaRobot.modules.language import gs
 
 url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 
@@ -433,10 +434,7 @@ async def inuka(client, message):
         return
 
 
-__help__ = """
-❂ Siesta AI is the only ai system which can detect & reply upto 200 language's
-❂ /chatbot [ON/OFF]: Enables and disables AI Chat mode.
-❂ /chatbot EN : Enables English only chatbot.
-"""
+def helps(chat):
+    return gs(chat, "chatbot_help")
 
 __mod_name__ = "Chatbot"
