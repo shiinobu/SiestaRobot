@@ -160,18 +160,22 @@ def get_id(update: Update, context: CallbackContext):
 
             user = bot.get_chat(user_id)
             msg.reply_text(
-                f"{html.escape(user.first_name)}'s id is <code>{user.id}</code>.",
+                f"⁜ <b>Telegram Name :</b> {html.escape(user.first_name)}\n"
+                f"⁜ <b>Telegram ID :</b> <code>{user.id}</code>",
                 parse_mode=ParseMode.HTML,
             )
 
     elif chat.type == "private":
         msg.reply_text(
-            f"Your id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML,
+            f"⁜ <b>Telegram ID :</b> <code>{chat.id}</code>",
+            parse_mode=ParseMode.HTML,
         )
 
     else:
         msg.reply_text(
-            f"This group's id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML,
+            f"⁜ <b>Group Name :</b> {chat.title}\n"
+            f"⁜ <b>Group ID :</b> <code>{chat.id}</code>", 
+            parse_mode=ParseMode.HTML,
         )
 
 
