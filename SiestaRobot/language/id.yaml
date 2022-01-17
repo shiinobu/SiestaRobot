@@ -826,6 +826,6 @@ afk_check_reason: "{} sedang afk.\nAlasan: <code>{}</code>"
 
 # Antichannel.py Variabel
 active_antichannel: "Antichannel diaktifkan di {}"
-disable_antuchannel: "Antichannel dinonaktifkan di {}"
+disable_antichannel: "Antichannel dinonaktifkan di {}"
 invalid_antichannel: "Argumen tidak dikenal {}"
 status_antichannel: "Setelan antichannel saat ini {} di {}"
