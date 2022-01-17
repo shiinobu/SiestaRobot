@@ -91,7 +91,6 @@ help_button: "Get Help"
 back_button: "Go back"
 about_button: "About Siesta Robot"
 inline_button: "Try inline!​​"
-home_button: "Go Home"
 
 # MODULES
 admin_help: |
@@ -827,6 +826,6 @@ afk_check_reason: "{} is afk.\nReason: <code>{}</code>"
 
 # Antichannel.py Variabel
 active_antichannel: "Enabled antichannel in {}"
-disable_antichannel: "Disabled antichannel in {}"
+disable_antuchannel: "Disabled antichannel in {}"
 invalid_antichannel: "Unrecognized arguments {}"
 status_antichannel: "Antichannel setting is currently {} in {}"
