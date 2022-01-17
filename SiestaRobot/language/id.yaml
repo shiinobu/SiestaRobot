@@ -91,7 +91,6 @@ help_button: "Mendapatkan bantuan"
 back_button: "Kembali"
 about_button: "Tentang Siesta Robot"
 inline_button: "Mencoba inline!​​"
-home_button: "Kembali Halaman Utama"
 
 # MODULES
 admin_help: |
@@ -827,6 +826,6 @@ afk_check_reason: "{} sedang afk.\nAlasan: <code>{}</code>"
 
 # Antichannel.py Variabel
 active_antichannel: "Antichannel diaktifkan di {}"
-disable_antichannel: "Antichannel dinonaktifkan di {}"
+disable_antuchannel: "Antichannel dinonaktifkan di {}"
 invalid_antichannel: "Argumen tidak dikenal {}"
 status_antichannel: "Setelan antichannel saat ini {} di {}"
