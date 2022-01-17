@@ -91,6 +91,7 @@ help_button: "Get Help"
 back_button: "Go back"
 about_button: "About Siesta Robot"
 inline_button: "Try inline!​​"
+home_button: "Go Home"
 
 # MODULES
 admin_help: |

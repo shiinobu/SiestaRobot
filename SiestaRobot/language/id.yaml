@@ -91,6 +91,7 @@ help_button: "Mendapatkan bantuan"
 back_button: "Kembali"
 about_button: "Tentang Siesta Robot"
 inline_button: "Mencoba inline!​​"
+home_button: "Kembali Halaman Utama"
 
 # MODULES
 admin_help: |

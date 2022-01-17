@@ -95,6 +95,7 @@ help_button: "助けを得ます"
 back_button: "戻る"
 about_button: "シエスタロボットについて"
 inline_button: "インラインでお試しください！"
+home_button: "家に帰れ"
 
 # MODULES
 admin_help: |
