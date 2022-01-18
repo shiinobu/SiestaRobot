@@ -11,7 +11,7 @@
 <a href="https://github.com/shiinobu/SiestaRobot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-GPLv3-blueviolet?style=for-the-badge" alt="License" /> </a>
 <a href="https://makeapullrequest.com"> <img src="https://img.shields.io/badge/PRs-Welcome-yellow?style=for-the-badge" alt="PRs" /></a></br>
 <a href="https://www.python.org/"> <img src="https://img.shields.io/badge/Made%20With-Python-orange?style=for-the-badge&logo=python" alt="Python" /> </a>
-<a href="https://GitHub.com/shiinobu/SiestaRobot"> <img src="https://img.shields.io/badge/Maintained-Yes-lightgrey?style=for-the-badge" alt="Maintenance" /> </a>
+<a href="https://GitHub.com/shiinobu/SiestaRobot"> <img src="https://img.shields.io/badge/Maintained-No-lightgrey?style=for-the-badge" alt="Maintenance" /> </a>
 <a href="https://docs.sqlalchemy.org/en/14/"> <img src="https://img.shields.io/badge/SQL%20Alchemy-1.4.29-green?style=for-the-badge" alt="SQL Alchemy" /> </a><br>
 <a href="https://python-telegram-bot.org"> <img src="https://img.shields.io/badge/PTB-13.10-white?style=for-the-badge&logo=github" alt="Python Telegram Bot" /> </a>
 <a href="https://docs.telethon.dev"> <img src="https://img.shields.io/badge/Telethon-1.23.0-red?style=for-the-badge&logo=github" alt="Telethon" /> </a>
