@@ -601,7 +601,7 @@ def get_help(update: Update, context: CallbackContext):
         )
 
     else:
-        send_help(chat.id, "pm_help_text")
+        send_help(chat.id, (gs(chat.id, "pm_help_text")))
 
 
 def send_settings(chat_id, user_id, user=False):
