@@ -21,7 +21,7 @@ geopy
 nltk
 psutil
 aiohttp
-Pillow
+Pillow>==4.2.0
 CurrencyConverter
 google_images_download
 google-api-python-client
