@@ -5,8 +5,8 @@ wget
 gtts
 beautifulsoup4
 requests
-python-telegram-bot==13.10.0
-SQLAlchemy==1.4.29
+python-telegram-bot==13.9
+SQLAlchemy==1.4.11
 psycopg2-binary
 feedparser
 faker
@@ -20,8 +20,8 @@ zalgo-text
 geopy
 nltk
 psutil
-aiohttp
-Pillow
+aiohttp>==2.2.5
+Pillow>==4.2.0
 CurrencyConverter
 google_images_download
 google-api-python-client
@@ -34,7 +34,7 @@ regex
 bleach
 wikipedia
 markdown2
-telethon
+telethon==1.24.0
 telegraph
 heroku3
 spamwatch
